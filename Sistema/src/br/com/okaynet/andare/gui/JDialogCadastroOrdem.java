@@ -601,19 +601,29 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             try {
                 ordem.setParcelas(Integer.parseInt(jFormattedTextFieldQntParc.getText()));
             } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, "Erro no numero de parcelas");
             }
 
             try {
                 ordem.setParcelasRestantes(Integer.parseInt(jFormattedTextFieldParcRest.getText()));
             } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, "Erro no total de parcelas restantes");
             }
 
             ordem.setStatus(true);
             try {
                 ordem.setValor(Double.parseDouble(jFormattedTextFieldValor.getText()));
             } catch (Exception e) {
+                JOptionPane.showConfirmDialog(rootPane, "Erro no valor da ordem");
             }
 
+            Endereco endereco = new Endereco();
+            endereco.setBairro(jTextFieldBairro.getText());
+            endereco.setLogradouro(jTextFieldEndereco.getText());
+            endereco.setCep(jFormattedTextFieldCep.getText());
+            endereco.setCidade(jComboBoxCidade.getSelectedItem().toString());
+            endereco.setComplemento(jTextFieldComplemento.getText());
+            
             new DaoOrdemServico().persistir(ordem);
             novo();
 
