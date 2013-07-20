@@ -46,8 +46,17 @@ public class OrdemServico implements Serializable {
     private Endereco endereco;
     private String banco;
     private String tipoCheque;
+    private double juros;
 
     public OrdemServico() {
+    }
+
+    public double getJuros() {
+        return juros;
+    }
+
+    public void setJuros(double juros) {
+        this.juros = juros;
     }
 
     public String getBanco() {
