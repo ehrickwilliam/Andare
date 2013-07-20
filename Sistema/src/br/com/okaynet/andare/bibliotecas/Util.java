@@ -5,6 +5,7 @@ package br.com.okaynet.andare.bibliotecas;
 
 import java.awt.Component;
 import java.awt.Image;
+import static java.lang.Thread.sleep;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -21,6 +22,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 
@@ -291,4 +293,5 @@ public class Util {
         sen = hash.toString(16);              
         return sen;  
     }
+   
 }

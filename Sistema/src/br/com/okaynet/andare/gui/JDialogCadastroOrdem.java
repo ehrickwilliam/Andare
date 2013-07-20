@@ -16,10 +16,13 @@ import br.com.okaynet.andare.model.Endereco;
 import br.com.okaynet.andare.model.Funcionario;
 import br.com.okaynet.andare.model.OrdemServico;
 import br.com.okaynet.andare.model.Pessoa;
+import static java.lang.Thread.sleep;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -38,6 +41,8 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         popularComboCliente();
         preencherEndereco();
         modificarEndereco();
+        iniciarPreencher();
+
     }
 
     /**
@@ -83,7 +88,6 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaDescricao = new javax.swing.JTextArea();
         jFormattedTextFieldDataVencimento = new javax.swing.JFormattedTextField();
-        jFormattedTextFieldValor = new javax.swing.JFormattedTextField();
         jFormattedTextFieldQntParc = new javax.swing.JFormattedTextField();
         jFormattedTextFieldNumero = new javax.swing.JFormattedTextField();
         jFormattedTextFieldCep = new javax.swing.JFormattedTextField();
@@ -97,6 +101,7 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         jComboBoxFuncionarios = new javax.swing.JComboBox();
         jLabel27 = new javax.swing.JLabel();
         jComboBoxBanco = new javax.swing.JComboBox();
+        jTextFieldValor = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
@@ -140,7 +145,7 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel8.setText("Valor* :");
+        jLabel8.setText("Valor* ##.# :");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, -1, 10));
 
         jTextFieldEndereco.setEditable(false);
@@ -260,9 +265,6 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         }
         getContentPane().add(jFormattedTextFieldDataVencimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 150, -1));
 
-        jFormattedTextFieldValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-        getContentPane().add(jFormattedTextFieldValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, 70, -1));
-
         jFormattedTextFieldQntParc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         jFormattedTextFieldQntParc.setText("0");
         getContentPane().add(jFormattedTextFieldQntParc, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 50, -1));
@@ -294,6 +296,12 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         jLabel24.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel24.setText("Parc. Rest:");
         getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 90, -1, 10));
+
+        jTextFieldJuros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldJurosActionPerformed(evt);
+            }
+        });
         getContentPane().add(jTextFieldJuros, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, 110, -1));
 
         jLabel25.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
@@ -312,6 +320,13 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
 
         jComboBoxBanco.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Banco do Brasil", "Bradesco", "Caixa", "HSBC", "Itaú", "Safra", "Santander", "Sicredi" }));
         getContentPane().add(jComboBoxBanco, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 140, -1));
+
+        jTextFieldValor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldValorActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextFieldValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, 70, -1));
 
         jMenuBar1.setMinimumSize(new java.awt.Dimension(56, 31));
         jMenuBar1.setPreferredSize(new java.awt.Dimension(396, 31));
@@ -447,6 +462,14 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         modificarEndereco();
     }//GEN-LAST:event_jCheckBoxEnderecoActionPerformed
 
+    private void jTextFieldJurosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldJurosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldJurosActionPerformed
+
+    private void jTextFieldValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldValorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldValorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -503,7 +526,6 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
     private javax.swing.JFormattedTextField jFormattedTextFieldNumero;
     private javax.swing.JFormattedTextField jFormattedTextFieldParcRest;
     private javax.swing.JFormattedTextField jFormattedTextFieldQntParc;
-    private javax.swing.JFormattedTextField jFormattedTextFieldValor;
     private javax.swing.JFormattedTextField jFormattedTextFieldValorPar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -542,6 +564,7 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldDataCadastro;
     private javax.swing.JTextField jTextFieldEndereco;
     private javax.swing.JTextField jTextFieldJuros;
+    private javax.swing.JTextField jTextFieldValor;
     // End of variables declaration//GEN-END:variables
 
     private void novo() {
@@ -557,7 +580,7 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         jFormattedTextFieldDataVencimento.setText(null);
         jFormattedTextFieldNumero.setText(null);
         jFormattedTextFieldParcRest.setText(null);
-        jFormattedTextFieldValor.setText(null);
+        jTextFieldValor.setText(null);
         jFormattedTextFieldValorPar.setText(null);
         jFormattedTextFieldQntParc.setText(null);
         jTextFieldDataCadastro.setText(Util.calendarToString(Calendar.getInstance()));
@@ -618,9 +641,9 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             ordem.setStatus(jComboBoxStatus.getSelectedItem().toString());
             ordem.setBanco(jComboBoxBanco.getSelectedItem().toString());
             ordem.setTipoCheque(jComboBoxTipoCheque.getSelectedItem().toString());
-            
+
             try {
-                ordem.setValor(Double.parseDouble(jFormattedTextFieldValor.getText()));
+                ordem.setValor(Double.parseDouble(jTextFieldValor.getText()));
             } catch (Exception e) {
                 JOptionPane.showConfirmDialog(rootPane, "Erro no valor da ordem");
             }
@@ -632,7 +655,7 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             endereco.setCidade(jComboBoxCidade.getSelectedItem().toString());
             endereco.setComplemento(jTextFieldComplemento.getText());
             endereco.setNumero(Integer.parseInt(jFormattedTextFieldNumero.getText()));
-            
+
             ordem.setEndereco(endereco);
             TransactionManager.beginTransaction();
             new DaoOrdemServico().persistir(ordem);
@@ -658,7 +681,6 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         jFormattedTextFieldCep.setText(endereco.getCep());
         jTextFieldBairro.setText(endereco.getBairro());
         jComboBoxCidade.setSelectedItem(endereco.getCidade());
-
     }
 
     private void modificarEndereco() {
@@ -687,5 +709,39 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             jComboBoxTipoLogradouro.setSelectedIndex(0);
             jComboBoxCliente.setSelectedItem("Ubiratã");
         }
+    }
+
+    private void iniciarPreencher() {
+        new Thread() {
+            @Override
+            public void run() {
+                while (true) {
+                    if (!jTextFieldValor.getText().isEmpty() && !jFormattedTextFieldQntParc.getText().isEmpty()) {
+                        try {
+                            double valor = Double.parseDouble(jTextFieldValor.getText());
+                            double parcelas = Double.parseDouble(jFormattedTextFieldQntParc.getText());
+
+                            BigDecimal a = new BigDecimal(calcularParc(valor, parcelas));
+                            BigDecimal aArredondado = a.divide(BigDecimal.ONE, 2, BigDecimal.ROUND_HALF_UP);
+
+                            jFormattedTextFieldValorPar.setText(String.valueOf(aArredondado));
+                        } catch (Exception e) {
+                            jFormattedTextFieldValorPar.setText("0");
+                        }
+                    } else {
+                        jFormattedTextFieldValorPar.setText("0");
+                    }
+                    try {
+                        sleep(1000);
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+                }
+            }
+        }.start();
+    }
+
+    private double calcularParc(double valor, double parcelas) {
+        return valor / parcelas;
     }
 }
