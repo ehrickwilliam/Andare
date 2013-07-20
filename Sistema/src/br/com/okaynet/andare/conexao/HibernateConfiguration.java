@@ -4,8 +4,6 @@
  */
 package br.com.okaynet.andare.conexao;
 
-
-import br.com.okaynet.andare.model.Cidade;
 import br.com.okaynet.andare.model.ClienteFisico;
 import br.com.okaynet.andare.model.ClienteJuridico;
 import br.com.okaynet.andare.model.Endereco;
@@ -53,7 +51,6 @@ public class HibernateConfiguration {
             cfg.setProperty("hibernate.connection.autocommit", "true");
 
             cfg.addAnnotatedClass(Endereco.class);
-            cfg.addAnnotatedClass(Estado.class);
             cfg.addAnnotatedClass(Fisico.class);
             cfg.addAnnotatedClass(Juridico.class);
             cfg.addAnnotatedClass(Pessoa.class);
@@ -62,8 +59,8 @@ public class HibernateConfiguration {
             cfg.addAnnotatedClass(ClienteFisico.class);
             cfg.addAnnotatedClass(ClienteJuridico.class);
             cfg.addAnnotatedClass(Usuarios.class);
-            
-            
+
+
             sessionFactory = cfg.buildSessionFactory();
         }
         return sessionFactory.openSession();

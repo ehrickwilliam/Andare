@@ -7,6 +7,7 @@ package br.com.okaynet.andare.model;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -15,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
+import org.hibernate.annotations.Cascade;
 
 /**
  *
@@ -36,27 +38,32 @@ public class OrdemServico implements Serializable {
     private Funcionario funcionario;
     private String descricao;
     private Double valor;
-    private Boolean status;
+    private String status;
     private Integer parcelas;
     private Integer parcelasRestantes;
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @Cascade(org.hibernate.annotations.CascadeType.REMOVE)
     private Endereco endereco;
+    private String banco;
+    private String tipoCheque;
 
     public OrdemServico() {
     }
 
-    public OrdemServico(Integer id, Calendar dataCadastro, Calendar dataVencimento, Pessoa cliente, Funcionario funcionario, String descricao, Double valor, Boolean status, Integer parcelas, Integer parcelasRestantes, Endereco endereco) {
-        this.id = id;
-        this.dataCadastro = dataCadastro;
-        this.dataVencimento = dataVencimento;
-        this.cliente = cliente;
-        this.funcionario = funcionario;
-        this.descricao = descricao;
-        this.valor = valor;
-        this.status = status;
-        this.parcelas = parcelas;
-        this.parcelasRestantes = parcelasRestantes;
-        this.endereco = endereco;
+    public String getBanco() {
+        return banco;
+    }
+
+    public void setBanco(String banco) {
+        this.banco = banco;
+    }
+
+    public String getTipoCheque() {
+        return tipoCheque;
+    }
+
+    public void setTipoCheque(String tipoCheque) {
+        this.tipoCheque = tipoCheque;
     }
 
     public Funcionario getFuncionario() {
@@ -123,11 +130,11 @@ public class OrdemServico implements Serializable {
         this.valor = valor;
     }
 
-    public Boolean getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -148,65 +155,8 @@ public class OrdemServico implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 53 * hash + Objects.hashCode(this.id);
-        hash = 53 * hash + Objects.hashCode(this.dataCadastro);
-        hash = 53 * hash + Objects.hashCode(this.dataVencimento);
-        hash = 53 * hash + Objects.hashCode(this.cliente);
-        hash = 53 * hash + Objects.hashCode(this.funcionario);
-        hash = 53 * hash + Objects.hashCode(this.descricao);
-        hash = 53 * hash + Objects.hashCode(this.valor);
-        hash = 53 * hash + Objects.hashCode(this.status);
-        hash = 53 * hash + Objects.hashCode(this.parcelas);
-        hash = 53 * hash + Objects.hashCode(this.endereco);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final OrdemServico other = (OrdemServico) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.dataCadastro, other.dataCadastro)) {
-            return false;
-        }
-        if (!Objects.equals(this.dataVencimento, other.dataVencimento)) {
-            return false;
-        }
-        if (!Objects.equals(this.cliente, other.cliente)) {
-            return false;
-        }
-        if (!Objects.equals(this.funcionario, other.funcionario)) {
-            return false;
-        }
-        if (!Objects.equals(this.descricao, other.descricao)) {
-            return false;
-        }
-        if (!Objects.equals(this.valor, other.valor)) {
-            return false;
-        }
-        if (!Objects.equals(this.status, other.status)) {
-            return false;
-        }
-        if (!Objects.equals(this.parcelas, other.parcelas)) {
-            return false;
-        }
-        if (!Objects.equals(this.endereco, other.endereco)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public String toString() {
-        return "OrdemServico{" + "id=" + id + ", dataCadastro=" + dataCadastro + ", dataVencimento=" + dataVencimento + ", cliente=" + cliente + ", funcionario=" + funcionario + ", descricao=" + descricao + ", valor=" + valor + ", status=" + status + ", parcelas=" + parcelas + ", endereco=" + endereco + '}';
+        return "OrdemServico{" + "id=" + id + ", dataCadastro=" + dataCadastro + ", dataVencimento=" + dataVencimento + ", cliente=" + cliente + ", funcionario=" + funcionario + ", descricao=" + descricao + ", valor=" + valor + ", status=" + status + ", parcelas=" + parcelas + ", parcelasRestantes=" + parcelasRestantes + ", endereco=" + endereco + ", banco=" + banco + ", tipoCheque=" + tipoCheque + '}';
     }
+
 }

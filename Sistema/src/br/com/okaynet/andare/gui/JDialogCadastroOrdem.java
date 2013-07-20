@@ -5,6 +5,7 @@
 package br.com.okaynet.andare.gui;
 
 import br.com.okaynet.andare.bibliotecas.Util;
+import br.com.okaynet.andare.conexao.TransactionManager;
 import br.com.okaynet.andare.daos.DaoClienteFisico;
 import br.com.okaynet.andare.daos.DaoClienteJuridico;
 import br.com.okaynet.andare.daos.DaoFuncionario;
@@ -332,12 +333,12 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             }
         });
         jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenu4MenuSelected(evt);
             }
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
-            public void menuSelected(javax.swing.event.MenuEvent evt) {
-                jMenu4MenuSelected(evt);
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
         });
         jMenu4.addActionListener(new java.awt.event.ActionListener() {
@@ -564,7 +565,9 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
     }
 
     private void popularComboFuncionario() {
+        TransactionManager.beginTransaction();
         List<Funcionario> fun = new DaoFuncionario().listar("", "nome");
+        TransactionManager.commit();
         jComboBoxFuncionarios.removeAllItems();
         for (Funcionario funAgora : fun) {
             jComboBoxFuncionarios.addItem(funAgora);
@@ -573,8 +576,10 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
 
     private void popularComboCliente() {
         List<Pessoa> pessoa = new ArrayList<Pessoa>();
+        TransactionManager.beginTransaction();
         List<ClienteFisico> clientesF = new DaoClienteFisico().listar("", "nome");
         List<ClienteJuridico> clientesJ = new DaoClienteJuridico().listar("", "razaoSocial");
+        TransactionManager.commit();
 
         for (ClienteJuridico clienteJuridico : clientesJ) {
             pessoa.add(clienteJuridico);
@@ -597,7 +602,7 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             ordem.setDataCadastro(Util.stringToCalendar(jTextFieldDataCadastro.getText()));
             ordem.setDataVencimento(Util.stringToCalendar(jFormattedTextFieldDataVencimento.getText()));
             ordem.setDescricao(jTextAreaDescricao.getText());
-            ordem.setFuncionario((Funcionario) jComboBoxTipoCheque.getSelectedItem());
+            ordem.setFuncionario((Funcionario) jComboBoxFuncionarios.getSelectedItem());
             try {
                 ordem.setParcelas(Integer.parseInt(jFormattedTextFieldQntParc.getText()));
             } catch (Exception e) {
@@ -610,7 +615,10 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(rootPane, "Erro no total de parcelas restantes");
             }
 
-            ordem.setStatus(true);
+            ordem.setStatus(jComboBoxStatus.getSelectedItem().toString());
+            ordem.setBanco(jComboBoxBanco.getSelectedItem().toString());
+            ordem.setTipoCheque(jComboBoxTipoCheque.getSelectedItem().toString());
+            
             try {
                 ordem.setValor(Double.parseDouble(jFormattedTextFieldValor.getText()));
             } catch (Exception e) {
@@ -623,8 +631,12 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             endereco.setCep(jFormattedTextFieldCep.getText());
             endereco.setCidade(jComboBoxCidade.getSelectedItem().toString());
             endereco.setComplemento(jTextFieldComplemento.getText());
+            endereco.setNumero(Integer.parseInt(jFormattedTextFieldNumero.getText()));
             
+            ordem.setEndereco(endereco);
+            TransactionManager.beginTransaction();
             new DaoOrdemServico().persistir(ordem);
+            TransactionManager.commit();
             novo();
 
         } else {
