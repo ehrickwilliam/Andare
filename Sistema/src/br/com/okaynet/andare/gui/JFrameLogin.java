@@ -58,7 +58,7 @@ public class JFrameLogin extends javax.swing.JFrame {
 
         jTextUser.setBackground(new java.awt.Color(204, 204, 204));
         jTextUser.setForeground(new java.awt.Color(51, 51, 51));
-        jTextUser.setText("root");
+        jTextUser.setText("Okaynet");
         jTextUser.setToolTipText("");
         jTextUser.setBorder(null);
         jTextUser.setCaretColor(new java.awt.Color(153, 153, 153));

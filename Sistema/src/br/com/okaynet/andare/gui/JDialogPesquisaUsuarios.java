@@ -135,10 +135,15 @@ public class JDialogPesquisaUsuarios extends javax.swing.JDialog {
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
         // TODO add your handling code here:
-        if (jTableCliente.getSelectedRow() != -1) {
+        Usuarios autenticado = (Usuarios) Data.hash.get("usuario");
+        if (jTableCliente.getSelectedRow() > 0) {
             if (Util.mostraMensagemEmTela("Deseja realmente excluir?")) {
                 deletar();
             }
+        } else if (jTableCliente.getSelectedRow() == 0 && !"Okaynet".equals(autenticado.getUsuario())) {
+            JOptionPane.showMessageDialog(rootPane, "Você não tem acesso a este usuário");
+        } else if (jTableCliente.getSelectedRow() == 0 && "Okaynet".equals(autenticado.getUsuario())) {
+            JOptionPane.showMessageDialog(rootPane, "Impossivel excluir o usuário Administrador");
         } else {
             JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
         }
@@ -147,7 +152,14 @@ public class JDialogPesquisaUsuarios extends javax.swing.JDialog {
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         // TODO add your handling code here:
-        if (jTableCliente.getSelectedRow() != -1) {
+        Usuarios autenticado = (Usuarios) Data.hash.get("usuario");
+        if (jTableCliente.getSelectedRow() > 0) {
+            Data.hash.put("usuarioEditar", usuarios.get(jTableCliente.getSelectedRow()));
+            Util.abrirDialogCentralizado(new JDialogCadastroUsuarioPopUp(null, rootPaneCheckingEnabled));
+            popularTabela();
+        } else if (jTableCliente.getSelectedRow() == 0 && !"Okaynet".equals(autenticado.getUsuario())) {
+            JOptionPane.showMessageDialog(rootPane, "Você não tem acesso a este usuário");
+        } else if (jTableCliente.getSelectedRow() == 0 && "Okaynet".equals(autenticado.getUsuario())) {
             Data.hash.put("usuarioEditar", usuarios.get(jTableCliente.getSelectedRow()));
             Util.abrirDialogCentralizado(new JDialogCadastroUsuarioPopUp(null, rootPaneCheckingEnabled));
             popularTabela();
