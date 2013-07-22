@@ -4,8 +4,28 @@
  */
 package br.com.okaynet.andare.gui;
 
-import static java.awt.image.ImageObserver.WIDTH;
+import br.com.okaynet.andare.bibliotecas.Util;
+import br.com.okaynet.andare.conexao.Data;
+import br.com.okaynet.andare.conexao.TransactionManager;
+import br.com.okaynet.andare.daos.DaoClienteFisico;
+import br.com.okaynet.andare.daos.DaoClienteJuridico;
+import br.com.okaynet.andare.daos.DaoFuncionario;
+import br.com.okaynet.andare.daos.DaoOrdemServico;
+import br.com.okaynet.andare.daos.DaoPessoa;
+import br.com.okaynet.andare.model.ClienteFisico;
+import br.com.okaynet.andare.model.ClienteJuridico;
+import br.com.okaynet.andare.model.Endereco;
+import br.com.okaynet.andare.model.Funcionario;
+import br.com.okaynet.andare.model.OrdemServico;
+import br.com.okaynet.andare.model.Pessoa;
+import java.awt.Color;
+import static java.lang.Thread.sleep;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -19,6 +39,14 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
     public JDialogCadastroOrdemPopUp(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+
+        popularComboFuncionario();
+        popularComboCliente();
+        preencherEndereco();
+        modificarEndereco();
+        iniciarPreencher();
+        preencher();
+
     }
 
     /**
@@ -34,40 +62,51 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JSeparator();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldCod = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jTextFieldDataCadastro = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        jTextFieldEndereco = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        jComboBoxTipoLogradouro = new javax.swing.JComboBox();
         jLabel10 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
+        jTextFieldComplemento = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
+        jTextFieldBairro = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
+        jComboBoxCidade = new javax.swing.JComboBox();
         jLabel16 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox();
+        jComboBoxStatus = new javax.swing.JComboBox();
         jLabel20 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox();
-        jComboBox5 = new javax.swing.JComboBox();
+        jComboBoxTipoCheque = new javax.swing.JComboBox();
+        jComboBoxCliente = new javax.swing.JComboBox();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
+        jCheckBoxEndereco = new javax.swing.JCheckBox();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
-        jFormattedTextField3 = new javax.swing.JFormattedTextField();
-        jFormattedTextField4 = new javax.swing.JFormattedTextField();
-        jFormattedTextField5 = new javax.swing.JFormattedTextField();
+        jTextAreaDescricao = new javax.swing.JTextArea();
+        jFormattedTextFieldDataVencimento = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldNumero = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldCep = new javax.swing.JFormattedTextField();
+        jLabel23 = new javax.swing.JLabel();
+        jFormattedTextFieldValorPar = new javax.swing.JFormattedTextField();
+        jLabel24 = new javax.swing.JLabel();
+        jTextFieldJuros = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jComboBoxFuncionarios = new javax.swing.JComboBox();
+        jLabel27 = new javax.swing.JLabel();
+        jComboBoxBanco = new javax.swing.JComboBox();
+        jTextFieldValor = new javax.swing.JTextField();
+        jComboBoxQuantParcelas = new javax.swing.JComboBox();
+        jComboBoxParcelasRest = new javax.swing.JComboBox();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
 
@@ -79,135 +118,237 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de OS");
-        setMinimumSize(new java.awt.Dimension(608, 470));
+        setMinimumSize(new java.awt.Dimension(608, 535));
         setModal(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.setEditable(false);
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 40, -1));
+        jTextFieldCod.setEditable(false);
+        getContentPane().add(jTextFieldCod, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 80, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel1.setText("Data Cadastro:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, -1));
+        jLabel1.setText("Data Cadastro* :");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, -1, -1));
 
-        jTextField2.setEditable(false);
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 170, -1));
+        jTextFieldDataCadastro.setEditable(false);
+        getContentPane().add(jTextFieldDataCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 150, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel2.setText("Código:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel3.setText("Data Vencimento:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, -1, -1));
+        jLabel3.setText("Data Vencimento* :");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel4.setText("Status:");
+        jLabel4.setText("Status* :");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel8.setText("Valor:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, -1, 10));
-        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 240, -1));
+        jLabel8.setText("Valor* ##.# :");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, -1, 10));
+
+        jTextFieldEndereco.setEditable(false);
+        getContentPane().add(jTextFieldEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 240, -1));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel9.setText("Endereço:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+        jLabel9.setText("Endereço* :");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rua", "Avenida" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+        jComboBoxTipoLogradouro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rua", "Avenida" }));
+        getContentPane().add(jComboBoxTipoLogradouro, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel10.setText("Numero:");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, -1, -1));
-        getContentPane().add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 170, -1));
+        jLabel10.setText("Numero* :");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, -1, -1));
+
+        jTextFieldComplemento.setEditable(false);
+        getContentPane().add(jTextFieldComplemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 260, 170, -1));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel11.setText("Complemento:");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, -1, -1));
+        jLabel11.setText("Complemento* :");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 240, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel12.setText("CEP:");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
-        getContentPane().add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 130, -1));
+        jLabel12.setText("CEP* :");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
+
+        jTextFieldBairro.setEditable(false);
+        getContentPane().add(jTextFieldBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 130, -1));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel13.setText("Bairro:");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
+        jLabel13.setText("Bairro* :");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel14.setText("Cidade:");
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, -1, -1));
+        jLabel14.setText("Cidade* :");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, -1, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ubiratã", "Cascavel" }));
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 120, -1));
+        jComboBoxCidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Abatiá", "Adrianópolis", "Agudos do Sul", "Almirante Tamandaré", "Altamira do Paraná", "Alto Paraíso", "Alto Paraná", "Alto Piquiri", "Altônia", "Alvorada do Sul", "Amaporã", "Ampére", "Anahy", "Andirá", "Ângulo", "Antonina", "Antônio Olinto", "Apucarana", "Arapongas", "Arapoti", "Arapuã", "Araruna", "Araucária", "Ariranha do Ivaí", "Assaí", "Assis Chateaubriand", "Astorga", "Atalaia", "Balsa Nova", "Bandeirantes", "Barbosa Ferraz", "Barra do Jacaré", "Barracão", "Bela Vista da Caroba", "Bela Vista do Paraíso", "Bituruna", "Boa Esperança", "Boa Esperança do Iguaçu", "Boa Ventura de São Roque", "Boa Vista da Aparecida", "Bocaiuva do Sul", "Bom Jesus do Sul", "Bom Sucesso", "Bom Sucesso do Sul", "Borrazópolis", "Braganey", "Brasilândia do Sul", "Cafeara", "Cafelândia", "Cafezal do Sul", "Califórnia", "Cambará", "Cambé", "Cambira", "Campina da Lagoa", "Campina do Simão", "Campina Grande do Sul", "Campo Bonito", "Campo do Tenente", "Campo Largo", "Campo Magro", "Campo Mourão", "Cândido de Abreu", "Candói", "Cantagalo", "Capanema", "Capitão Leônidas Marques", "Carambeí", "Carlópolis", "Cascavel", "Castro", "Catanduvas", "Centenário do Sul", "Cerro Azul", "Céu Azul", "Chopinzinho", "Cianorte", "Cidade Gaúcha", "Clevelândia", "Colombo", "Colorado", "Congonhinhas", "Conselheiro Mairinck", "Contenda", "Corbélia", "Cornélio Procópio", "Coronel Domingos Soares", "Coronel Vivida", "Corumbataí do Sul", "Cruz Machado", "Cruzeiro do Iguaçu", "Cruzeiro do Oeste", "Cruzeiro do Sul", "Cruzmaltina", "Curitiba", "Curiúva", "Diamante do Norte", "Diamante do Sul", "Diamante d'Oeste", "Dois Vizinhos", "Douradina", "Doutor Camargo", "Doutor Ulysses", "Enéas Marques", "Engenheiro Beltrão", "Entre Rios do Oeste", "Esperança Nova", "Espigão Alto do Iguaçu", "Farol", "Faxinal", "Fazenda Rio Grande", "Fênix", "Fernandes Pinheiro", "Figueira", "Flor da Serra do Sul", "Floraí", "Floresta", "Florestópolis", "Flórida", "Formosa do Oeste", "Foz do Iguaçu", "Foz do Jordão", "Francisco Alves", "Francisco Beltrão", "General Carneiro", "Godoy Moreira", "Goioerê", "Goioxim", "Grandes Rios", "Guaíra", "Guairaçá", "Guamiranga", "Guapirama", "Guaporema", "Guaraci", "Guaraniaçu", "Guarapuava", "Guaraqueçaba", "Guaratuba", "Honório Serpa", "Ibaiti", "Ibema", "Ibiporã", "Icaraíma", "Iguaraçu", "Iguatu", "Imbaú", "Imbituva", "Inácio Martins", "Inajá", "Indianópolis", "Ipiranga", "Iporã", "Iracema do Oeste", "Irati", "Iretama", "Itaguajé", "Itaipulândia", "Itambaracá", "Itambé", "Itapejara d'Oeste", "Itaperuçu", "Itaúna do Sul", "Ivaí", "Ivaiporã", "Ivaté", "Ivatuba", "Jaboti", "Jacarezinho", "Jaguapitã", "Jaguariaíva", "Jandaia do Sul", "Janiópolis", "Japira", "Japurá", "Jardim Alegre", "Jardim Olinda", "Jataizinho", "Jesuítas", "Joaquim Távora", "Jundiaí do Sul", "Juranda", "Jussara", "Kaloré", "Lapa", "Laranjal", "Laranjeiras do Sul", "Leópolis", "Lidianópolis", "Lindoeste", "Loanda", "Lobato", "Londrina", "Luiziana", "Lunardelli", "Lupionópolis", "Mallet", "Mamborê", "Mandaguaçu", "Mandaguari", "Mandirituba", "Manfrinópolis", "Mangueirinha", "Manoel Ribas", "Marechal Cândido Rondon", "Maria Helena", "Marialva", "Marilândia do Sul", "Marilena", "Mariluz", "Maringá", "Mariópolis", "Maripá", "Marmeleiro", "Marquinho", "Marumbi", "Matelândia", "Matinhos", "Mato Rico", "Mauá da Serra", "Medianeira", "Mercedes", "Mirador", "Miraselva", "Missal", "Moreira Sales", "Morretes", "Munhoz de Melo", "Nossa Senhora das Graças", "Nova Aliança do Ivaí", "Nova América da Colina", "Nova Aurora", "Nova Cantu", "Nova Esperança", "Nova Esperança do Sudoeste", "Nova Fátima", "Nova Laranjeiras", "Nova Londrina", "Nova Olímpia", "Nova Prata do Iguaçu", "Nova Santa Bárbara", "Nova Santa Rosa", "Nova Tebas", "Novo Itacolomi", "Ortigueira", "Ourizona", "Ouro Verde do Oeste", "Paiçandu", "Palmas", "Palmeira", "Palmital", "Palotina", "Paraíso do Norte", "Paranacity", "Paranaguá", "Paranapoema", "Paranavaí", "Pato Bragado", "Pato Branco", "Paula Freitas", "Paulo Frontin", "Peabiru", "Perobal", "Pérola", "Pérola d'Oeste", "Piên", "Pinhais", "Pinhal de São Bento", "Pinhalão", "Pinhão", "Piraí do Sul", "Pitanga", "Pitangueiras", "Planaltina do Paraná", "Planalto", "Ponta Grossa", "Pontal do Paraná", "Porecatu", "Porto Amazonas", "Porto Barreiro", "Porto Rico", "Porto Vitória", "Prado Ferreira", "Pranchita", "Presidente Castelo Branco", "Primeiro de Maio", "Prudentópolis", "Prudentópolis", "Quarto Centenário", "Quatiguá", "Quatro Barras", "Quatro Pontes", "Quedas do Iguaçu", "Querência do Norte", "Quinta do Sol", "Quitandinha", "Ramilândia", "Rancho Alegre", "Rancho Alegre d'Oeste", "Realeza", "Rebouças", "Renascença", "Reserva", "Reserva do Iguaçu", "Ribeirão Claro", "Ribeirão do Pinhal", "Rio Azul", "Rio Bom", "Rio Bonito do Iguaçu", "Rio Branco do Ivaí", "Rio Branco do Sul", "Rio Negro", "Rolândia", "Roncador", "Rondon", "Rosário do Ivaí", "Sabáudia", "Salgado Filho", "Salto do Itararé", "Salto do Lontra", "Santa Amélia", "Santa Cecília do Pavão", "Santa Cruz de Monte Castelo", "Santa Fé", "Santa Helena", "Santa Inês", "Santa Isabel do Ivaí", "Santa Izabel do Oeste", "Santa Lúcia", "Santa Maria do Oeste", "Santa Mariana", "Santa Mônica", "Santa Tereza do Oeste", "Santa Terezinha de Itaipu", "Santana do Itararé", "Santo Antônio da Platina", "Santo Antônio do Caiuá", "Santo Antônio do Paraíso", "Santo Antônio do Sudoeste", "Santo Inácio", "São Carlos do Ivaí", "São Jerônimo da Serra", "São João", "São João do Caiuá", "São João do Ivaí", "São João do Triunfo", "São Jorge do Ivaí", "São Jorge do Patrocínio", "São Jorge d'Oeste", "São José da Boa Vista", "São José das Palmeiras", "São José dos Pinhais", "São Manoel do Paraná", "São Mateus do Sul", "São Miguel do Iguaçu", "São Pedro do Iguaçu", "São Pedro do Ivaí", "São Pedro do Paraná", "São Sebastião da Amoreira", "São Tomé", "Sapopema", "Sarandi", "Saudade do Iguaçu", "Sengés", "Serranópolis do Iguaçu", "Sertaneja", "Sertanópolis", "Siqueira Campos", "Sulina", "Tamarana", "Tamboara", "Tapejara", "Tapira", "Teixeira Soares", "Telêmaco Borba", "Terra Boa", "Terra Rica", "Terra Roxa", "Tibagi", "Tijucas do Sul", "Toledo", "Tomazina", "Três Barras do Paraná", "Tunas do Paraná", "Tuneiras do Oeste", "Tupãssi", "Turvo", "Ubiratã", "Umuarama", "União da Vitória", "Uniflor", "Uraí", "Ventania", "Vera Cruz do Oeste", "Verê", "Virmond", "Vitorino", "Wenceslau Braz", "Xambrê" }));
+        getContentPane().add(jComboBoxCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 120, -1));
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel16.setText("Descrição:");
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
+        jLabel16.setText("Descrição* :");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, -1, -1));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "Pagamento Avista", "Aguardando Pagamento" }));
-        getContentPane().add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 150, -1));
+        jComboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Aguardando Pagamento", "Pagamento Concluido", "Pagamento em Cheque" }));
+        jComboBoxStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxStatusActionPerformed(evt);
+            }
+        });
+        jComboBoxStatus.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jComboBoxStatusPropertyChange(evt);
+            }
+        });
+        getContentPane().add(jComboBoxStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 150, -1));
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel20.setText("Funcionario:");
+        jLabel20.setText("Funcionario* :");
         getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "Jhonatan", "André" }));
-        getContentPane().add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 190, -1));
+        jComboBoxTipoCheque.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "A vista", "Deposito", "Cruzado" }));
+        getContentPane().add(jComboBoxTipoCheque, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 140, -1));
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "Okaynet Informática LTDA ME" }));
-        getContentPane().add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 200, -1));
+        jComboBoxCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxClienteActionPerformed(evt);
+            }
+        });
+        jComboBoxCliente.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jComboBoxClientePropertyChange(evt);
+            }
+        });
+        getContentPane().add(jComboBoxCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 140, -1));
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel21.setText("Cliente:");
-        getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, -1, -1));
+        jLabel21.setText("Cliente* :");
+        getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, -1, -1));
 
         jLabel22.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel22.setText("Qnt. Parcelas:");
-        getContentPane().add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 90, -1, 10));
+        jLabel22.setText("Qnt. Parc:");
+        getContentPane().add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, -1, 10));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jCheckBoxEndereco.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jCheckBoxEndereco.setForeground(new java.awt.Color(204, 0, 0));
+        jCheckBoxEndereco.setSelected(true);
+        jCheckBoxEndereco.setText("O Endereço de cobrança é o mesmo endereço do Cliente selecionado");
+        jCheckBoxEndereco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxEnderecoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jCheckBoxEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 500, 130));
+        jTextAreaDescricao.setColumns(20);
+        jTextAreaDescricao.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaDescricao);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, 500, 110));
 
         try {
-            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/##")));
+            jFormattedTextFieldDataVencimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        getContentPane().add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 170, -1));
+        getContentPane().add(jFormattedTextFieldDataVencimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 150, -1));
 
-        jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-        getContentPane().add(jFormattedTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, 70, -1));
+        jFormattedTextFieldNumero.setEditable(false);
+        jFormattedTextFieldNumero.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        getContentPane().add(jFormattedTextFieldNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 60, -1));
 
-        jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        getContentPane().add(jFormattedTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, 70, -1));
-
-        jFormattedTextField4.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        getContentPane().add(jFormattedTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 60, -1));
-
+        jFormattedTextFieldCep.setEditable(false);
         try {
-            jFormattedTextField5.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
+            jFormattedTextFieldCep.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        getContentPane().add(jFormattedTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 160, -1));
+        getContentPane().add(jFormattedTextFieldCep, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 160, -1));
+
+        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel23.setText("Juros % ao dia:");
+        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 140, 80, 10));
+
+        jFormattedTextFieldValorPar.setEditable(false);
+        jFormattedTextFieldValorPar.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        getContentPane().add(jFormattedTextFieldValorPar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, 60, -1));
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel24.setText("Parc. Rest:");
+        getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 90, -1, 10));
+
+        jTextFieldJuros.setText("0");
+        jTextFieldJuros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldJurosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextFieldJuros, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, 110, -1));
+
+        jLabel25.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel25.setText("Valor Parc:");
+        getContentPane().add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, 50, 10));
+
+        jLabel26.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel26.setText("Banco do cheque:");
+        getContentPane().add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 120, 10));
+
+        getContentPane().add(jComboBoxFuncionarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 140, -1));
+
+        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel27.setText("Tipo do cheque:");
+        getContentPane().add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 80, 10));
+
+        jComboBoxBanco.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "Banco do Brasil", "Bradesco", "Caixa", "HSBC", "Itaú", "Safra", "Santander", "Sicredi" }));
+        getContentPane().add(jComboBoxBanco, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 140, -1));
+
+        jTextFieldValor.setText("0.0");
+        jTextFieldValor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldValorActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextFieldValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, 70, -1));
+
+        jComboBoxQuantParcelas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        getContentPane().add(jComboBoxQuantParcelas, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 50, -1));
+
+        jComboBoxParcelasRest.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        getContentPane().add(jComboBoxParcelasRest, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 50, -1));
 
         jMenuBar1.setMinimumSize(new java.awt.Dimension(56, 31));
         jMenuBar1.setPreferredSize(new java.awt.Dimension(396, 31));
 
-        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/004.png"))); // NOI18N
-        jMenu3.setText("Apagar");
-        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/004.png"))); // NOI18N
+        jMenu4.setText("Apagar");
+        jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu3MouseClicked(evt);
+                jMenu4MouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu3);
+        jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenu4MenuSelected(evt);
+            }
+        });
+        jMenu4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu4ActionPerformed(evt);
+            }
+        });
+        jMenu4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jMenu4KeyReleased(evt);
+            }
+        });
+        jMenuBar1.add(jMenu4);
 
         jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/010.png"))); // NOI18N
         jMenu6.setText("Voltar");
@@ -232,15 +373,32 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+    private void jMenu4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jMenu4KeyReleased
         // TODO add your handling code here:
-        JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir?", "Excluir", WIDTH);
+    }//GEN-LAST:event_jMenu4KeyReleased
 
-    }//GEN-LAST:event_jMenu3MouseClicked
+    private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu4ActionPerformed
+
+    private void jMenu4MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu4MenuSelected
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu4MenuSelected
+
+    private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
+        // TODO add your handling code here:
+
+        if (Util.mostraMensagemEmTela("Deseja realmente excluir?")) {
+            deletar();
+        }
+
+    }//GEN-LAST:event_jMenu4MouseClicked
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         // TODO add your handling code here:
-        JOptionPane.showConfirmDialog(rootPane, "Deseja salvar?", "Salvar", WIDTH);
+        if (Util.mostraMensagemEmTela("Deseja salvar?")) {
+            salvar();
+        }
 
     }//GEN-LAST:event_jMenu1MouseClicked
 
@@ -248,6 +406,41 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jMenu6MouseClicked
+
+    private void jComboBoxStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxStatusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxStatusActionPerformed
+
+    private void jComboBoxStatusPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jComboBoxStatusPropertyChange
+        // TODO add your handling code here:
+        if (jComboBoxStatus.getSelectedIndex() == 2) {
+            jComboBoxBanco.setEnabled(true);
+            jComboBoxTipoCheque.setEnabled(true);
+        } else {
+            jComboBoxBanco.setEnabled(false);
+            jComboBoxTipoCheque.setEnabled(false);
+        }
+    }//GEN-LAST:event_jComboBoxStatusPropertyChange
+
+    private void jComboBoxClientePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jComboBoxClientePropertyChange
+    }//GEN-LAST:event_jComboBoxClientePropertyChange
+
+    private void jComboBoxClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxClienteActionPerformed
+        // TODO add your handling code here:
+        preencherEndereco();
+    }//GEN-LAST:event_jComboBoxClienteActionPerformed
+
+    private void jCheckBoxEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxEnderecoActionPerformed
+        modificarEndereco();
+    }//GEN-LAST:event_jCheckBoxEnderecoActionPerformed
+
+    private void jTextFieldJurosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldJurosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldJurosActionPerformed
+
+    private void jTextFieldValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldValorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldValorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -291,16 +484,20 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox3;
-    private javax.swing.JComboBox jComboBox4;
-    private javax.swing.JComboBox jComboBox5;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
-    private javax.swing.JFormattedTextField jFormattedTextField3;
-    private javax.swing.JFormattedTextField jFormattedTextField4;
-    private javax.swing.JFormattedTextField jFormattedTextField5;
+    private javax.swing.JCheckBox jCheckBoxEndereco;
+    private javax.swing.JComboBox jComboBoxBanco;
+    private javax.swing.JComboBox jComboBoxCidade;
+    private javax.swing.JComboBox jComboBoxCliente;
+    private javax.swing.JComboBox jComboBoxFuncionarios;
+    private javax.swing.JComboBox jComboBoxParcelasRest;
+    private javax.swing.JComboBox jComboBoxQuantParcelas;
+    private javax.swing.JComboBox jComboBoxStatus;
+    private javax.swing.JComboBox jComboBoxTipoCheque;
+    private javax.swing.JComboBox jComboBoxTipoLogradouro;
+    private javax.swing.JFormattedTextField jFormattedTextFieldCep;
+    private javax.swing.JFormattedTextField jFormattedTextFieldDataVencimento;
+    private javax.swing.JFormattedTextField jFormattedTextFieldNumero;
+    private javax.swing.JFormattedTextField jFormattedTextFieldValorPar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -312,12 +509,17 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
@@ -325,11 +527,326 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextArea jTextAreaDescricao;
+    private javax.swing.JTextField jTextFieldBairro;
+    private javax.swing.JTextField jTextFieldCod;
+    private javax.swing.JTextField jTextFieldComplemento;
+    private javax.swing.JTextField jTextFieldDataCadastro;
+    private javax.swing.JTextField jTextFieldEndereco;
+    private javax.swing.JTextField jTextFieldJuros;
+    private javax.swing.JTextField jTextFieldValor;
     // End of variables declaration//GEN-END:variables
+
+    private void novo() {
+
+        jTextAreaDescricao.setText(null);
+        jTextFieldBairro.setText(null);
+        jTextFieldCod.setText(null);
+        jTextFieldComplemento.setText(null);
+        jTextFieldDataCadastro.setText(null);
+        jTextFieldEndereco.setText(null);
+        jTextFieldJuros.setText("0");
+        jFormattedTextFieldCep.setText(null);
+        jFormattedTextFieldDataVencimento.setText(null);
+        jFormattedTextFieldNumero.setText(null);
+        jComboBoxQuantParcelas.setSelectedIndex(0);
+        jComboBoxParcelasRest.setSelectedIndex(0);
+        jTextFieldValor.setText(null);
+        jFormattedTextFieldValorPar.setText("0");
+        jTextFieldDataCadastro.setText(Util.calendarToString(Calendar.getInstance()));
+        preencherEndereco();
+
+    }
+
+    private void popularComboFuncionario() {
+        TransactionManager.beginTransaction();
+        List<Funcionario> fun = new DaoFuncionario().listar("", "nome");
+        TransactionManager.commit();
+        jComboBoxFuncionarios.removeAllItems();
+        for (Funcionario funAgora : fun) {
+            jComboBoxFuncionarios.addItem(funAgora);
+        }
+    }
+
+    private void popularComboCliente() {
+        List<Pessoa> pessoa = new ArrayList<Pessoa>();
+        TransactionManager.beginTransaction();
+        List<ClienteFisico> clientesF = new DaoClienteFisico().listar("", "nome");
+        List<ClienteJuridico> clientesJ = new DaoClienteJuridico().listar("", "razaoSocial");
+        TransactionManager.commit();
+
+        for (ClienteJuridico clienteJuridico : clientesJ) {
+            pessoa.add(clienteJuridico);
+        }
+
+        for (ClienteFisico clienteFisico : clientesF) {
+            pessoa.add(clienteFisico);
+        }
+
+        jComboBoxCliente.removeAllItems();
+        for (Pessoa funAgora : pessoa) {
+            jComboBoxCliente.addItem(funAgora);
+        }
+    }
+
+    private void salvar() {
+        if (validaCamposEmBranco()) {
+            OrdemServico ordem = new OrdemServico();
+            ordem.setId(Integer.parseInt(jTextFieldCod.getText()));
+            ordem.setCliente((Pessoa) jComboBoxCliente.getSelectedItem());
+            ordem.setDataCadastro(Util.stringToCalendar(jTextFieldDataCadastro.getText()));
+            ordem.setDataVencimento(Util.stringToCalendar(jFormattedTextFieldDataVencimento.getText()));
+            ordem.setDescricao(jTextAreaDescricao.getText());
+            ordem.setFuncionario((Funcionario) jComboBoxFuncionarios.getSelectedItem());
+
+
+            try {
+                ordem.setParcelas(Integer.parseInt(jComboBoxQuantParcelas.getSelectedItem().toString()));
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, "Erro no numero de parcelas");
+            }
+
+
+            try {
+                ordem.setParcelasRestantes(Integer.parseInt(jComboBoxParcelasRest.getSelectedItem().toString()));
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, "Erro no total de parcelas restantes");
+            }
+
+            ordem.setStatus(jComboBoxStatus.getSelectedItem().toString());
+            ordem.setBanco(jComboBoxBanco.getSelectedItem().toString());
+            ordem.setTipoCheque(jComboBoxTipoCheque.getSelectedItem().toString());
+
+            if (!jTextFieldJuros.getText().isEmpty()) {
+                try {
+                    ordem.setJuros(Double.parseDouble(jTextFieldJuros.getText()));
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(rootPane, "Erro no campo de juros, valor não confere");
+                }
+            } else {
+                ordem.setJuros(0.0);
+            }
+
+            try {
+                ordem.setValor(Double.parseDouble(jTextFieldValor.getText()));
+            } catch (Exception e) {
+                JOptionPane.showConfirmDialog(rootPane, "Erro no valor da ordem");
+            }
+
+            Endereco endereco = new Endereco();
+            endereco.setBairro(jTextFieldBairro.getText());
+            endereco.setLogradouro(jTextFieldEndereco.getText());
+            endereco.setCep(jFormattedTextFieldCep.getText());
+            endereco.setCidade(jComboBoxCidade.getSelectedItem().toString());
+            endereco.setComplemento(jTextFieldComplemento.getText());
+            endereco.setNumero(Integer.parseInt(jFormattedTextFieldNumero.getText()));
+
+            ordem.setEndereco(endereco);
+            TransactionManager.beginTransaction();
+            new DaoOrdemServico().persistir(ordem);
+            TransactionManager.commit();
+            this.dispose();
+
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Contem campo(s) vazio ou tipo incorreto de dado !");
+        }
+    }
+
+    private boolean validaCamposEmBranco() {
+
+        int flag = 0;
+        Color color = new Color(252, 196, 196);
+
+        if (jTextFieldDataCadastro.getText().isEmpty()) {
+            jTextFieldDataCadastro.setBackground(color);
+            flag = 1;
+        } else {
+            jTextFieldDataCadastro.setBackground(Color.white);
+        }
+
+        if ("  /  /    ".equals(jFormattedTextFieldDataVencimento.getText())) {
+            jFormattedTextFieldDataVencimento.setBackground(color);
+            flag = 1;
+        } else {
+            jFormattedTextFieldDataVencimento.setBackground(Color.white);
+        }
+
+        if (jTextFieldValor.getText().isEmpty()) {
+            jTextFieldValor.setBackground(color);
+            flag = 1;
+        } else {
+            jTextFieldValor.setBackground(Color.white);
+        }
+
+        if (jTextFieldEndereco.getText().isEmpty()) {
+            jTextFieldEndereco.setBackground(color);
+            flag = 1;
+        } else {
+            jTextFieldEndereco.setBackground(Color.white);
+        }
+
+        if (jFormattedTextFieldNumero.getText().isEmpty()) {
+            jFormattedTextFieldNumero.setBackground(color);
+            flag = 1;
+        } else {
+            jFormattedTextFieldNumero.setBackground(Color.white);
+        }
+
+        if (jTextFieldComplemento.getText().isEmpty()) {
+            jTextFieldComplemento.setBackground(color);
+            flag = 1;
+        } else {
+            jTextFieldComplemento.setBackground(Color.white);
+        }
+
+        if ("     -   ".equals(jFormattedTextFieldCep.getText())) {
+            jFormattedTextFieldCep.setBackground(color);
+            flag = 1;
+        } else {
+            jFormattedTextFieldCep.setBackground(Color.white);
+        }
+
+        if (jTextFieldBairro.getText().isEmpty()) {
+            jTextFieldBairro.setBackground(color);
+            flag = 1;
+        } else {
+            jTextFieldBairro.setBackground(Color.white);
+        }
+
+        if (jTextAreaDescricao.getText().isEmpty()) {
+            jTextAreaDescricao.setBackground(color);
+            flag = 1;
+        } else {
+            jTextAreaDescricao.setBackground(Color.white);
+        }
+
+        if (flag == 1) {
+            return false;
+        }
+        return true;
+    }
+
+    private void preencherEndereco() {
+        Pessoa clienteAlvo = (Pessoa) jComboBoxCliente.getSelectedItem();
+        Endereco endereco = clienteAlvo.getEndereco();
+        jComboBoxTipoLogradouro.setSelectedItem(endereco.getTipoLogradouro());
+        jTextFieldEndereco.setText(endereco.getLogradouro());
+        jFormattedTextFieldNumero.setText(String.valueOf(endereco.getNumero()));
+        jTextFieldComplemento.setText(endereco.getComplemento());
+        jFormattedTextFieldCep.setText(endereco.getCep());
+        jTextFieldBairro.setText(endereco.getBairro());
+        jComboBoxCidade.setSelectedItem(endereco.getCidade());
+    }
+
+    private void modificarEndereco() {
+        if (jCheckBoxEndereco.isSelected()) {
+            jTextFieldEndereco.setEditable(false);
+            jComboBoxTipoLogradouro.setEnabled(false);
+            jFormattedTextFieldNumero.setEditable(false);
+            jTextFieldComplemento.setEditable(false);
+            jFormattedTextFieldCep.setEditable(false);
+            jTextFieldBairro.setEditable(false);
+            jComboBoxCidade.setEnabled(false);
+            preencherEndereco();
+        } else {
+            jTextFieldEndereco.setEditable(true);
+            jTextFieldEndereco.setText(null);
+            jComboBoxTipoLogradouro.setEnabled(true);
+            jFormattedTextFieldNumero.setEditable(true);
+            jFormattedTextFieldNumero.setText(null);
+            jTextFieldComplemento.setEditable(true);
+            jTextFieldComplemento.setText(null);
+            jFormattedTextFieldCep.setEditable(true);
+            jFormattedTextFieldCep.setText(null);
+            jTextFieldBairro.setEditable(true);
+            jTextFieldBairro.setText(null);
+            jComboBoxCidade.setEnabled(true);
+            jComboBoxTipoLogradouro.setSelectedIndex(0);
+            jComboBoxCliente.setSelectedItem("Ubiratã");
+        }
+    }
+
+    private void iniciarPreencher() {
+        new Thread() {
+            @Override
+            public void run() {
+                while (true) {
+                    if (!jTextFieldValor.getText().isEmpty()) {
+                        try {
+                            double valor = Double.parseDouble(jTextFieldValor.getText());
+                            double parcelas = Double.parseDouble(jComboBoxQuantParcelas.getSelectedItem().toString());
+
+                            BigDecimal a = new BigDecimal(calcularParc(valor, parcelas));
+                            BigDecimal aArredondado = a.divide(BigDecimal.ONE, 2, BigDecimal.ROUND_HALF_UP);
+
+                            jFormattedTextFieldValorPar.setText(String.valueOf(aArredondado));
+                        } catch (Exception e) {
+                            jFormattedTextFieldValorPar.setText("0");
+                        }
+                    } else {
+                        jFormattedTextFieldValorPar.setText("0");
+                    }
+                    try {
+                        sleep(1000);
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+                }
+            }
+        }.start();
+    }
+
+    private double calcularParc(double valor, double parcelas) {
+        return valor / parcelas;
+    }
+
+    private void preencher() {
+        if (Data.hash.get("ordem") == null) {
+            JOptionPane.showMessageDialog(this, "Aconteceu um problema ao obter os dados.");
+        } else {
+            if (Data.hash.get("ordem") instanceof OrdemServico) {
+                OrdemServico ordem = (OrdemServico) Data.hash.get("ordem");
+                Data.hash.remove("ordem");
+                if (ordem == null) {
+                    JOptionPane.showMessageDialog(this, "Aconteceu um problema ao obter os dados.");
+                } else {
+                    jTextFieldCod.setText(String.valueOf(ordem.getId()));
+                    jTextFieldDataCadastro.setText(Util.calendarToString(ordem.getDataCadastro()));
+                    jFormattedTextFieldDataVencimento.setText(Util.calendarToString(ordem.getDataVencimento()));
+                    jComboBoxStatus.setSelectedItem(ordem.getStatus());
+                    jComboBoxFuncionarios.setSelectedItem(ordem.getFuncionario());
+                    jComboBoxCliente.setSelectedItem(ordem.getCliente());
+                    jTextFieldValor.setText(String.valueOf(ordem.getValor()));
+                    jComboBoxQuantParcelas.setSelectedItem(ordem.getParcelas());
+
+                    jComboBoxParcelasRest.setSelectedIndex((ordem.getParcelasRestantes() - 1));
+
+                    jComboBoxBanco.setSelectedItem(ordem.getBanco());
+                    jComboBoxTipoCheque.setSelectedItem(ordem.getTipoCheque());
+                    jTextFieldJuros.setText(String.valueOf(ordem.getJuros()));
+                    jTextAreaDescricao.setText(ordem.getDescricao());
+                    jTextFieldEndereco.setText(ordem.getEndereco().getLogradouro());
+                    jFormattedTextFieldNumero.setText(String.valueOf(ordem.getEndereco().getNumero()));
+                    jTextFieldComplemento.setText(ordem.getEndereco().getComplemento());
+                    jFormattedTextFieldCep.setText(ordem.getEndereco().getCep());
+                    jTextFieldBairro.setText(ordem.getEndereco().getBairro());
+                    jComboBoxTipoLogradouro.setSelectedItem(ordem.getEndereco().getTipoLogradouro());
+                    jComboBoxCidade.setSelectedItem(ordem.getEndereco().getCidade());
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Aconteceu um problema ao obter os dados.");
+                Data.hash.remove("ordem");
+            }
+        }
+    }
+
+    private void deletar() {
+
+        TransactionManager.beginTransaction();
+        OrdemServico funcionarioApagar = new DaoOrdemServico().obterPorId(Integer.parseInt(jTextFieldCod.getText()));
+        new DaoOrdemServico().remover(funcionarioApagar);
+        TransactionManager.commit();
+        this.dispose();
+    }
 }

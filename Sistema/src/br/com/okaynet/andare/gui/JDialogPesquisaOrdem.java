@@ -5,6 +5,7 @@
 package br.com.okaynet.andare.gui;
 
 import br.com.okaynet.andare.bibliotecas.Util;
+import br.com.okaynet.andare.conexao.Data;
 import br.com.okaynet.andare.conexao.TransactionManager;
 import br.com.okaynet.andare.daos.DaoFuncionario;
 import br.com.okaynet.andare.daos.DaoOrdemServico;
@@ -25,7 +26,7 @@ public class JDialogPesquisaOrdem extends javax.swing.JDialog {
      * Creates new form JDialogPesquisaCliente
      */
     private DefaultTableModel model;
-    private String styleModelOrdem[] = new String[]{"ID", "Cliente", "Funcionario", "Status", "Valor", "Data de Cadastro","Data de Vencimento"};
+    private String styleModelOrdem[] = new String[]{"ID", "Cliente", "Funcionario", "Status", "Valor", "Data de Cadastro", "Data de Vencimento"};
     private List<OrdemServico> orderns;
 
     public JDialogPesquisaOrdem(java.awt.Frame parent, boolean modal) {
@@ -248,7 +249,13 @@ public class JDialogPesquisaOrdem extends javax.swing.JDialog {
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
         // TODO add your handling code here:
-        JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir?", "Excluir", WIDTH);
+        if (jTableOrdemServico.getSelectedRow() != -1) {
+            if (Util.mostraMensagemEmTela("Deseja realmente excluir?")) {
+                deletar();
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
+        }
 
     }//GEN-LAST:event_jMenu3MouseClicked
 
@@ -259,9 +266,9 @@ public class JDialogPesquisaOrdem extends javax.swing.JDialog {
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         // TODO add your handling code here:
         if (jTableOrdemServico.getSelectedRow() != -1) {
-
+             Data.hash.put("ordem", orderns.get(jTableOrdemServico.getSelectedRow()));
             Util.abrirDialogCentralizado(new JDialogCadastroOrdemPopUp(null, true));
-
+            popularTabela();
         } else {
             JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
         }
@@ -289,9 +296,9 @@ public class JDialogPesquisaOrdem extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         if (jTableOrdemServico.getSelectedRow() != -1) {
-
+            Data.hash.put("ordem", orderns.get(jTableOrdemServico.getSelectedRow()));
             Util.abrirDialogCentralizado(new JDialogViewOrdemServico(null, true));
-
+            popularTabela();
         } else {
             JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
         }
@@ -379,7 +386,7 @@ public class JDialogPesquisaOrdem extends javax.swing.JDialog {
             model = new DefaultTableModel();
             model.setColumnIdentifiers(styleModelOrdem);
             for (OrdemServico ordem : orderns) {
-                model.addRow(new Object[]{ordem.getId(), ordem.getCliente(), ordem.getFuncionario(), ordem.getStatus(),ordem.getValor(), Util.calendarToString(ordem.getDataCadastro()),Util.calendarToString(ordem.getDataVencimento())});
+                model.addRow(new Object[]{ordem.getId(), ordem.getCliente(), ordem.getFuncionario(), ordem.getStatus(), ordem.getValor(), Util.calendarToString(ordem.getDataCadastro()), Util.calendarToString(ordem.getDataVencimento())});
             }
             jTableOrdemServico.setModel(model);
         } else {
@@ -387,5 +394,14 @@ public class JDialogPesquisaOrdem extends javax.swing.JDialog {
             model.setColumnIdentifiers(styleModelOrdem);
             jTableOrdemServico.setModel(model);
         }
+    }
+
+    private void deletar() {
+
+        TransactionManager.beginTransaction();
+        new DaoOrdemServico().remover(orderns.get(jTableOrdemServico.getSelectedRow()));
+        TransactionManager.commit();
+        popularTabela();
+
     }
 }

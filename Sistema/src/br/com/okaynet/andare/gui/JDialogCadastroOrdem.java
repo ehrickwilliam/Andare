@@ -38,13 +38,13 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
     public JDialogCadastroOrdem(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        novo();
+
         popularComboFuncionario();
         popularComboCliente();
         preencherEndereco();
         modificarEndereco();
         iniciarPreencher();
-
+        novo();
 
     }
 
@@ -221,7 +221,7 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         jLabel20.setText("Funcionario* :");
         getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
-        jComboBoxTipoCheque.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A vista", "Deposito", "Cruzado" }));
+        jComboBoxTipoCheque.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "A vista", "Deposito", "Cruzado" }));
         getContentPane().add(jComboBoxTipoCheque, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 140, -1));
 
         jComboBoxCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -314,7 +314,7 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         jLabel27.setText("Tipo do cheque:");
         getContentPane().add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 80, 10));
 
-        jComboBoxBanco.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Banco do Brasil", "Bradesco", "Caixa", "HSBC", "Itaú", "Safra", "Santander", "Sicredi" }));
+        jComboBoxBanco.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "Banco do Brasil", "Bradesco", "Caixa", "HSBC", "Itaú", "Safra", "Santander", "Sicredi" }));
         getContentPane().add(jComboBoxBanco, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 140, -1));
 
         jTextFieldValor.setText("0.0");
@@ -351,12 +351,12 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             }
         });
         jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenu4MenuSelected(evt);
-            }
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
         });
         jMenu4.addActionListener(new java.awt.event.ActionListener() {
@@ -587,6 +587,7 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         jTextFieldValor.setText(null);
         jFormattedTextFieldValorPar.setText("0");
         jTextFieldDataCadastro.setText(Util.calendarToString(Calendar.getInstance()));
+        preencherEndereco();
 
     }
 
@@ -654,6 +655,8 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(rootPane, "Erro no campo de juros, valor não confere");
                 }
+            }else{
+                ordem.setJuros(0.0);
             }
 
             try {

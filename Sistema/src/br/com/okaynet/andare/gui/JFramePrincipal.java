@@ -360,7 +360,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenu2.setText("Ordem de Serviço (OS)");
 
         jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/application_form.png"))); // NOI18N
-        jMenuItem7.setText("Todas as OS");
+        jMenuItem7.setText("Todas as OS do mês");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem7ActionPerformed(evt);

@@ -108,7 +108,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/br/com/okaynet/andare/icons/application_form.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Todas as OS"/>
+                <Property name="text" type="java.lang.String" value="Todas as OS do m&#xea;s"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem7ActionPerformed"/>
