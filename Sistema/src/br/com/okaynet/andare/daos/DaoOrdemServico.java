@@ -34,7 +34,6 @@ public class DaoOrdemServico extends DaoGenerics<OrdemServico> {
                 + alvo.getSimpleName()
                 + " where dataCadastro LIKE '%" + dataFormatada + "%' ORDER BY id DESC");
         lista = query.list();
-
         return lista;
     }
 
@@ -44,7 +43,6 @@ public class DaoOrdemServico extends DaoGenerics<OrdemServico> {
                 + alvo.getSimpleName()
                 + " where dataVencimento < '" + dataFormatadaNormal + "' AND status = 'Aguardando Pagamento' ORDER BY id");
         lista = query.list();
-
         return lista;
     }
 
@@ -61,7 +59,6 @@ public class DaoOrdemServico extends DaoGenerics<OrdemServico> {
                 + alvo.getSimpleName()
                 + " where dataVencimento < '" + dataFormatadaNormal + "' AND status = 'Aguardando Pagamento' AND cliente.id = " + id + " ORDER BY id");
         lista = query.list();
-
         return lista;
     }
 
@@ -71,7 +68,6 @@ public class DaoOrdemServico extends DaoGenerics<OrdemServico> {
                 + alvo.getSimpleName()
                 + " where dataVencimento < '" + dataFormatadaNormal + "' AND status = 'Aguardando Pagamento' AND funcionario.id = " + id + " ORDER BY id");
         lista = query.list();
-
         return lista;
     }
 
@@ -81,7 +77,6 @@ public class DaoOrdemServico extends DaoGenerics<OrdemServico> {
                 + alvo.getSimpleName()
                 + " where dataVencimento < '" + dataFormatadaNormal + "' AND status = 'Aguardando Pagamento' AND funcionario.id = " + id + " AND cliente.id = " + id0 + " ORDER BY id");
         lista = query.list();
-
         return lista;
     }
 }
