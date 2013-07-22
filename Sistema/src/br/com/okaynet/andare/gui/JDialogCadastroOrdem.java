@@ -630,20 +630,20 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             ordem.setDescricao(jTextAreaDescricao.getText());
             ordem.setFuncionario((Funcionario) jComboBoxFuncionarios.getSelectedItem());
 
-            
-                try {
-                    ordem.setParcelas(Integer.parseInt(jComboBoxQuantParcelas.getSelectedItem().toString()));
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(rootPane, "Erro no numero de parcelas");
-                }
-         
-           
-                try {
-                    ordem.setParcelasRestantes(Integer.parseInt(jComboBoxParcelasRest.getSelectedItem().toString()));
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(rootPane, "Erro no total de parcelas restantes");
-                }
-        
+
+            try {
+                ordem.setParcelas(Integer.parseInt(jComboBoxQuantParcelas.getSelectedItem().toString()));
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, "Erro no numero de parcelas");
+            }
+
+
+            try {
+                ordem.setParcelasRestantes(Integer.parseInt(jComboBoxParcelasRest.getSelectedItem().toString()));
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, "Erro no total de parcelas restantes");
+            }
+
             ordem.setStatus(jComboBoxStatus.getSelectedItem().toString());
             ordem.setBanco(jComboBoxBanco.getSelectedItem().toString());
             ordem.setTipoCheque(jComboBoxTipoCheque.getSelectedItem().toString());

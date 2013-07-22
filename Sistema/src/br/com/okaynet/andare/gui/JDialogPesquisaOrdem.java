@@ -5,8 +5,15 @@
 package br.com.okaynet.andare.gui;
 
 import br.com.okaynet.andare.bibliotecas.Util;
+import br.com.okaynet.andare.conexao.TransactionManager;
+import br.com.okaynet.andare.daos.DaoFuncionario;
+import br.com.okaynet.andare.daos.DaoOrdemServico;
+import br.com.okaynet.andare.model.Funcionario;
+import br.com.okaynet.andare.model.OrdemServico;
 import static java.awt.image.ImageObserver.WIDTH;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,9 +24,14 @@ public class JDialogPesquisaOrdem extends javax.swing.JDialog {
     /**
      * Creates new form JDialogPesquisaCliente
      */
+    private DefaultTableModel model;
+    private String styleModelOrdem[] = new String[]{"ID", "Cliente", "Funcionario", "Status", "Valor", "Data de Cadastro","Data de Vencimento"};
+    private List<OrdemServico> orderns;
+
     public JDialogPesquisaOrdem(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        popularTabela();
     }
 
     /**
@@ -353,4 +365,27 @@ public class JDialogPesquisaOrdem extends javax.swing.JDialog {
     private javax.swing.JTable jTableOrdemServico;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+    private void popularTabela() {
+        TransactionManager.beginTransaction();
+        orderns = new DaoOrdemServico().obter();
+        TransactionManager.commit();
+
+        prencherOrdem();
+    }
+
+    private void prencherOrdem() {
+        if (orderns != null && !orderns.isEmpty()) {
+            model = new DefaultTableModel();
+            model.setColumnIdentifiers(styleModelOrdem);
+            for (OrdemServico ordem : orderns) {
+                model.addRow(new Object[]{ordem.getId(), ordem.getCliente(), ordem.getFuncionario(), ordem.getStatus(),ordem.getValor(), Util.calendarToString(ordem.getDataCadastro()),Util.calendarToString(ordem.getDataVencimento())});
+            }
+            jTableOrdemServico.setModel(model);
+        } else {
+            model = new DefaultTableModel();
+            model.setColumnIdentifiers(styleModelOrdem);
+            jTableOrdemServico.setModel(model);
+        }
+    }
 }
