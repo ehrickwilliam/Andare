@@ -15,7 +15,7 @@ public class Datas {
     
     public static void main(String[] args) {
         Date data = new Date();  
-        SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM");  
+        SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");  
         String dataFormatada = formatador.format(data);  
         System.out.println(dataFormatada);
     }

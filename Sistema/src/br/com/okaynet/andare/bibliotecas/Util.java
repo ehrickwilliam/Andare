@@ -1,8 +1,6 @@
 package br.com.okaynet.andare.bibliotecas;
 
-
-
-
+import br.com.okaynet.andare.daos.DaoOrdemServico;
 import java.awt.Component;
 import java.awt.Image;
 import static java.lang.Thread.sleep;
@@ -25,7 +23,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-
 /**
  *
  * @author ehrickwilliam
@@ -37,6 +34,7 @@ public class Util {
 
     /**
      * Metodo utilitario que abre um formulario posicionado no centro da tela.
+     *
      * @param dialog Objeto de formulario JDialog a abrir centralizado.
      */
     public static void abrirDialogCentralizadoForm(JFrame dialog) {
@@ -52,8 +50,9 @@ public class Util {
     }
 
     /**
-     * Mostra seletor de arquivo com filtro para imagem e devolve objeto ImageIcon com imagem redimensionada
-     * para o tamanho informado.
+     * Mostra seletor de arquivo com filtro para imagem e devolve objeto
+     * ImageIcon com imagem redimensionada para o tamanho informado.
+     *
      * @param larguraParaImagem Largura para a imagem devolvida.
      * @param alturaParaImagem Altura para a imagem devolvida.
      * @return ImageIcon com a imagem redimensionada.
@@ -87,6 +86,7 @@ public class Util {
 
     /**
      * Captura a data e hora do sistema. A hora da maquina.
+     *
      * @return A string contendo a data e hora.
      */
     public static String getDateTime() {
@@ -97,11 +97,11 @@ public class Util {
 
     /**
      * Inicia uma thread com função de atualizar o relogio do sistema.
+     *
      * @param label O label que vai receber a hora.
      */
     public static void iniciarRelogio(final JLabel label) {
         new Thread() {
-
             @Override
             public void run() {
                 while (true) {
@@ -118,11 +118,10 @@ public class Util {
 
     public static void buscaAtendimentos(final JLabel label) {
         new Thread() {
-
             @Override
             public void run() {
                 while (true) {
-                  //  label.setText(new DaoAtendimento().count() + "");
+                    label.setText(new DaoOrdemServico().count() + "");
                     try {
                         sleep(100000);
                     } catch (Exception e) {
@@ -132,9 +131,6 @@ public class Util {
             }
         }.start();
     }
-
-
-
 
     public static Calendar stringToCalendar(String data) {
         try {
@@ -280,18 +276,17 @@ public class Util {
         }
 
     }
-    
-    public static String md5(String senha){  
-        String sen = "";  
-        MessageDigest md = null;  
-        try {  
-            md = MessageDigest.getInstance("MD5");  
-        } catch (NoSuchAlgorithmException e) {  
-            e.printStackTrace();  
-        }  
-        BigInteger hash = new BigInteger(1, md.digest(senha.getBytes()));  
-        sen = hash.toString(16);              
-        return sen;  
+
+    public static String md5(String senha) {
+        String sen = "";
+        MessageDigest md = null;
+        try {
+            md = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        BigInteger hash = new BigInteger(1, md.digest(senha.getBytes()));
+        sen = hash.toString(16);
+        return sen;
     }
-   
 }

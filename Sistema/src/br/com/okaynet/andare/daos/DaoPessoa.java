@@ -15,4 +15,5 @@ public class DaoPessoa extends DaoGenerics<Pessoa> {
     public DaoPessoa() {
         super.alvo = Pessoa.class;
     }
+    
 }
