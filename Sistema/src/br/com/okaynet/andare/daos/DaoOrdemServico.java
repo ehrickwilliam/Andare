@@ -6,6 +6,7 @@ package br.com.okaynet.andare.daos;
 
 import br.com.okaynet.andare.model.OrdemServico;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import org.hibernate.Query;
@@ -76,6 +77,64 @@ public class DaoOrdemServico extends DaoGenerics<OrdemServico> {
         Query query = session.createQuery("From "
                 + alvo.getSimpleName()
                 + " where dataVencimento < '" + dataFormatadaNormal + "' AND status = 'Aguardando Pagamento' AND funcionario.id = " + id + " AND cliente.id = " + id0 + " ORDER BY id");
+        lista = query.list();
+        return lista;
+    }
+
+    public List<OrdemServico> obterVencidasId(String text) {
+        List<OrdemServico> lista = null;
+        Query query = session.createQuery("From "
+                + alvo.getSimpleName()
+                + " where dataVencimento < '" + dataFormatadaNormal + "' AND status = 'Aguardando Pagamento' AND id LIKE '" + text + "' ORDER BY id");
+        lista = query.list();
+        return lista;
+    }
+
+    public List<OrdemServico> obterId(String text) {
+        List<OrdemServico> lista = null;
+        Query query = session.createQuery("From "
+                + alvo.getSimpleName()
+                + " where dataCadastro LIKE '%" + dataFormatada + "%' AND id LIKE '" + text + "' ORDER BY id DESC");
+        lista = query.list();
+        return lista;
+    }
+
+    public List<OrdemServico> obterClientes(Integer id) {
+        List<OrdemServico> lista = null;
+        Query query = session.createQuery("From "
+                + alvo.getSimpleName()
+                + " where dataCadastro LIKE '%" + dataFormatada + "%'AND cliente.id = " + id + " ORDER BY id DESC");
+        lista = query.list();
+        return lista;
+    }
+
+    public List<OrdemServico> obterFuncionariosClientes(Integer id, Integer id0) {
+        List<OrdemServico> lista = null;
+        Query query = session.createQuery("From "
+                + alvo.getSimpleName()
+                + " where dataCadastro LIKE '%" + dataFormatada + "%' AND funcionario.id = " + id + " AND cliente.id = " + id0 + " ORDER BY id DESC");
+        lista = query.list();
+        return lista;
+    }
+
+    public List<OrdemServico> obterFuncionarios(Integer id) {
+        List<OrdemServico> lista = null;
+        Query query = session.createQuery("From "
+                + alvo.getSimpleName()
+                + " where dataCadastro LIKE '%" + dataFormatada + "%' AND funcionario.id = " + id + " ORDER BY id DESC");
+        lista = query.list();
+        return lista;
+    }
+
+    public List<OrdemServico> obterDataCad(Calendar stringToCalendar) {
+
+        SimpleDateFormat formatadorLocal = new SimpleDateFormat("yyyy-MM-dd");
+        String dataTotal = formatadorLocal.format(stringToCalendar.getTime());
+
+        List<OrdemServico> lista = null;
+        Query query = session.createQuery("From "
+                + alvo.getSimpleName()
+                + " where dataCadastro LIKE '%" + dataFormatada + "%' AND dataCadastro LIKE '" + dataTotal + "' ORDER BY id DESC");
         lista = query.list();
         return lista;
     }

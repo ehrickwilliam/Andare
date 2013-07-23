@@ -409,7 +409,7 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
     private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
-        Util.abrirDialogCentralizado(new JDialogPesquisaOrdem(null, true));
+        Util.abrirDialogCentralizado(new JDialogPesquisaOrdemMes(null, true));
         this.dispose();
     }//GEN-LAST:event_jMenu4MouseClicked
 
@@ -424,7 +424,7 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        Util.abrirDialogCentralizado(new JDialogPesquisaOrdem(null, true));
+        Util.abrirDialogCentralizado(new JDialogPesquisaOrdemMes(null, true));
         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 

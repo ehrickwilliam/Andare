@@ -514,7 +514,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         // TODO add your handling code here:
-        Util.abrirDialogCentralizado(new JDialogPesquisaOrdem(this, true));
+        Util.abrirDialogCentralizado(new JDialogPesquisaOrdemMes(this, true));
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
@@ -554,7 +554,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
         // TODO add your handling code here:
-        Util.abrirDialogCentralizado(new JDialogPesquisaOrdem(this, true));
+        Util.abrirDialogCentralizado(new JDialogPesquisaOrdemMes(this, true));
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
