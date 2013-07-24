@@ -431,7 +431,7 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="jCheckBoxAdminOrdem">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Todas OS do m&#xea;s"/>
+            <Property name="text" type="java.lang.String" value="Todas as OS "/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

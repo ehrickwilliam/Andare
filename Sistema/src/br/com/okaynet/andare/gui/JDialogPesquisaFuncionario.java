@@ -9,6 +9,7 @@ import br.com.okaynet.andare.conexao.Data;
 import br.com.okaynet.andare.conexao.TransactionManager;
 import br.com.okaynet.andare.daos.DaoFuncionario;
 import br.com.okaynet.andare.model.Funcionario;
+import br.com.okaynet.andare.model.Usuarios;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -30,6 +31,20 @@ public class JDialogPesquisaFuncionario extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         popularTabela();
+        Usuarios autenticado = (Usuarios) Data.hash.get("usuario");
+        int indexOf = autenticado.getPermissoes().indexOf("D");
+        if (indexOf > 0) {
+            jMenu1.setEnabled(true);
+        } else {
+            jMenu1.setEnabled(false);
+        }
+
+        indexOf = autenticado.getPermissoes().indexOf("E");
+        if (indexOf > 0) {
+            jMenu3.setEnabled(true);
+        } else {
+            jMenu3.setEnabled(false);
+        }
     }
 
     /**
@@ -54,7 +69,6 @@ public class JDialogPesquisaFuncionario extends javax.swing.JDialog {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -163,10 +177,6 @@ public class JDialogPesquisaFuncionario extends javax.swing.JDialog {
         });
         jMenuBar1.add(jMenu3);
 
-        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/026.png"))); // NOI18N
-        jMenu5.setText("Relatório");
-        jMenuBar1.add(jMenu5);
-
         jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/010.png"))); // NOI18N
         jMenu6.setText("Voltar");
         jMenu6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -183,24 +193,28 @@ public class JDialogPesquisaFuncionario extends javax.swing.JDialog {
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
         // TODO add your handling code here:
-        if (jTableCliente.getSelectedRow() != -1) {
-            if (Util.mostraMensagemEmTela("Deseja realmente excluir?")) {
-                deletar();
+        if (jMenu3.isEnabled()) {
+            if (jTableCliente.getSelectedRow() != -1) {
+                if (Util.mostraMensagemEmTela("Deseja realmente excluir?")) {
+                    deletar();
+                }
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
             }
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
         }
 
     }//GEN-LAST:event_jMenu3MouseClicked
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         // TODO add your handling code here:
-        if (jTableCliente.getSelectedRow() != -1) {
-            Data.hash.put("funcionario", funcionarios.get(jTableCliente.getSelectedRow()));
-            Util.abrirDialogCentralizado(new JDialogCadastroFuncionarioPopUp(null, true));
-            popularTabela();
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
+        if (jMenu1.isEnabled()) {
+            if (jTableCliente.getSelectedRow() != -1) {
+                Data.hash.put("funcionario", funcionarios.get(jTableCliente.getSelectedRow()));
+                Util.abrirDialogCentralizado(new JDialogCadastroFuncionarioPopUp(null, true));
+                popularTabela();
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
+            }
         }
     }//GEN-LAST:event_jMenu1MouseClicked
 
@@ -285,7 +299,6 @@ public class JDialogPesquisaFuncionario extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;

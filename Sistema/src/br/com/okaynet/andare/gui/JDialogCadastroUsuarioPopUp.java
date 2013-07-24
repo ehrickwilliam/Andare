@@ -64,8 +64,8 @@ public class JDialogCadastroUsuarioPopUp extends javax.swing.JDialog {
         jCheckBoxUsuarioRemove = new javax.swing.JCheckBox();
         jLabel12 = new javax.swing.JLabel();
         jCheckBoxRelatorios = new javax.swing.JCheckBox();
-        jCheckBoxAdminOrdem = new javax.swing.JCheckBox();
         jLabel13 = new javax.swing.JLabel();
+        jCheckBoxAdminOrdem = new javax.swing.JCheckBox();
         jLabel8 = new javax.swing.JLabel();
         jPasswordFieldSenha = new javax.swing.JPasswordField();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -161,12 +161,12 @@ public class JDialogCadastroUsuarioPopUp extends javax.swing.JDialog {
         jCheckBoxRelatorios.setText("Relatórios");
         jPanel1.add(jCheckBoxRelatorios, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, -1, -1));
 
-        jCheckBoxAdminOrdem.setText("Todas OS do mês");
-        jPanel1.add(jCheckBoxAdminOrdem, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, -1, -1));
-
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel13.setText("Clientes:");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        jCheckBoxAdminOrdem.setText("Todas as OS ");
+        jPanel1.add(jCheckBoxAdminOrdem, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 560, 170));
 
@@ -340,9 +340,10 @@ public class JDialogCadastroUsuarioPopUp extends javax.swing.JDialog {
             usuario.setId(Integer.parseInt(jTextFieldCod.getText()));
             usuario.setSenha(jPasswordFieldSenha.getText());
             StringBuilder permissoes = new StringBuilder();
-            permissoes.append("");
+            permissoes.append("ZX");
+
             if (jCheckBoxAdminOrdem.isSelected()) {
-                permissoes.append("N");
+                permissoes.append("S");
             }
             if (jCheckBoxClienteAdd.isSelected()) {
                 permissoes.append("A");
@@ -504,7 +505,7 @@ public class JDialogCadastroUsuarioPopUp extends javax.swing.JDialog {
                             jCheckBoxUsuarioCon.doClick();
                         }
 
-                        indexOf = permissoes.indexOf("N");
+                        indexOf = permissoes.indexOf("S");
                         if (indexOf > -1) {
                             jCheckBoxAdminOrdem.doClick();
                         }

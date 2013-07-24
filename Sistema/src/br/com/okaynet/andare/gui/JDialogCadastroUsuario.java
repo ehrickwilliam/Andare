@@ -185,7 +185,7 @@ public class JDialogCadastroUsuario extends javax.swing.JDialog {
         jCheckBoxRelatorios.setText("Relatórios");
         jPanel1.add(jCheckBoxRelatorios, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, -1, -1));
 
-        jCheckBoxAdminOrdem.setText("Todas OS do mês");
+        jCheckBoxAdminOrdem.setText("Todas as OS ");
         jPanel1.add(jCheckBoxAdminOrdem, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
@@ -218,12 +218,12 @@ public class JDialogCadastroUsuario extends javax.swing.JDialog {
             }
         });
         jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-            }
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenu4MenuSelected(evt);
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
         });
         jMenu4.addActionListener(new java.awt.event.ActionListener() {
@@ -421,9 +421,10 @@ public class JDialogCadastroUsuario extends javax.swing.JDialog {
                     usuario.setSenha(Util.md5(jPasswordFieldSenha2.getText()));
 
                     StringBuilder permissoes = new StringBuilder();
-                    permissoes.append("");
+                    permissoes.append("ZX");
+                    
                     if (jCheckBoxAdminOrdem.isSelected()) {
-                        permissoes.append("N");
+                        permissoes.append("S");
                     }
                     if (jCheckBoxClienteAdd.isSelected()) {
                         permissoes.append("A");

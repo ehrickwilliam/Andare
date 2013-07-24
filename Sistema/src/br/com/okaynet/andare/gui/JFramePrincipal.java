@@ -6,11 +6,8 @@ package br.com.okaynet.andare.gui;
 
 import br.com.okaynet.andare.bibliotecas.Util;
 import br.com.okaynet.andare.conexao.Data;
-import br.com.okaynet.andare.daos.DaoOrdemServico;
 import br.com.okaynet.andare.model.Usuarios;
-import static java.lang.Thread.sleep;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 
 /**
  *
@@ -57,11 +54,60 @@ public class JFramePrincipal extends javax.swing.JFrame {
             } else {
                 jMenuItemTodosFuncionarios.setEnabled(false);
             }
+
+            indexOf = autenticado.getPermissoes().indexOf("G");
+            if (indexOf > 0) {
+                jMenuItemNovaOs.setEnabled(true);
+            } else {
+                jMenuItemNovaOs.setEnabled(false);
+            }
+
+            indexOf = autenticado.getPermissoes().indexOf("I");
+            if (indexOf > 0) {
+                jMenuItemOsMes.setEnabled(true);
+                jMenuItemOsMesAdmin.setEnabled(true);
+                jMenuItemVencidas.setEnabled(true);
+                jLabel2.setEnabled(true);
+
+            } else {
+                jMenuItemOsMes.setEnabled(false);
+                jMenuItemOsMesAdmin.setEnabled(false);
+                jMenuItemVencidas.setEnabled(false);
+                jLabel2.setEnabled(false);
+            }
+
+            indexOf = autenticado.getPermissoes().indexOf("O");
+            if (indexOf > 0) {
+                jMenuRelatorios.setEnabled(true);
+            } else {
+                jMenuRelatorios.setEnabled(false);
+            }
+
+            indexOf = autenticado.getPermissoes().indexOf("S");
+            if (indexOf > 0) {
+                jMenuItemTodasOsAdmin.setEnabled(true);
+            } else {
+                jMenuItemTodasOsAdmin.setEnabled(false);
+            }
+
+            indexOf = autenticado.getPermissoes().indexOf("J");
+            if (indexOf > 0) {
+                jMenuItemAddUser.setEnabled(true);
+            } else {
+                jMenuItemAddUser.setEnabled(false);
+            }
+
+            indexOf = autenticado.getPermissoes().indexOf("M");
+            if (indexOf > 0) {
+                jMenuItemUserCom.setEnabled(true);
+            } else {
+                jMenuItemUserCom.setEnabled(false);
+            }
         }
-        
-        
-        
-        
+
+
+
+
     }
 
     /**
@@ -106,16 +152,16 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItemTodosFuncionarios = new javax.swing.JMenuItem();
         jMenuItemNovoFuncionario = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItemOsMes = new javax.swing.JMenuItem();
+        jMenuItemNovaOs = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
+        jMenuItemVencidas = new javax.swing.JMenuItem();
+        jMenuItemOsMesAdmin = new javax.swing.JMenuItem();
+        jMenuItemTodasOsAdmin = new javax.swing.JMenuItem();
+        jMenuItemUserCom = new javax.swing.JMenuItem();
+        jMenuItemAddUser = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        jMenuRelatorios = new javax.swing.JMenu();
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem16 = new javax.swing.JMenuItem();
         jMenuItem17 = new javax.swing.JMenuItem();
@@ -377,68 +423,68 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/ordem.png"))); // NOI18N
         jMenu2.setText("Ordem de Serviço (OS)");
 
-        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/application_form.png"))); // NOI18N
-        jMenuItem7.setText("Todas as OS do mês");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemOsMes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/application_form.png"))); // NOI18N
+        jMenuItemOsMes.setText("Todas as OS do mês");
+        jMenuItemOsMes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
+                jMenuItemOsMesActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem7);
+        jMenu2.add(jMenuItemOsMes);
 
-        jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/application_form_add.png"))); // NOI18N
-        jMenuItem8.setText("Nova OS");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemNovaOs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/application_form_add.png"))); // NOI18N
+        jMenuItemNovaOs.setText("Nova OS");
+        jMenuItemNovaOs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
+                jMenuItemNovaOsActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem8);
+        jMenu2.add(jMenuItemNovaOs);
 
         jMenuBar1.add(jMenu2);
 
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/administrativo.png"))); // NOI18N
         jMenu3.setText("Administrativo");
 
-        jMenuItem10.setText("OS Vencidas");
-        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemVencidas.setText("OS Vencidas");
+        jMenuItemVencidas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem10ActionPerformed(evt);
+                jMenuItemVencidasActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem10);
+        jMenu3.add(jMenuItemVencidas);
 
-        jMenuItem9.setText("Todas as OS do Mês");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemOsMesAdmin.setText("Todas as OS do Mês");
+        jMenuItemOsMesAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
+                jMenuItemOsMesAdminActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem9);
+        jMenu3.add(jMenuItemOsMesAdmin);
 
-        jMenuItem2.setText("Todas as OS");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemTodasOsAdmin.setText("Todas as OS");
+        jMenuItemTodasOsAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jMenuItemTodasOsAdminActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem2);
+        jMenu3.add(jMenuItemTodasOsAdmin);
 
-        jMenuItem11.setText("Todos os Usuários ");
-        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemUserCom.setText("Todos os Usuários ");
+        jMenuItemUserCom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem11ActionPerformed(evt);
+                jMenuItemUserComActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem11);
+        jMenu3.add(jMenuItemUserCom);
 
-        jMenuItem12.setText("Novo Usuário");
-        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemAddUser.setText("Novo Usuário");
+        jMenuItemAddUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem12ActionPerformed(evt);
+                jMenuItemAddUserActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem12);
+        jMenu3.add(jMenuItemAddUser);
 
         jMenuItem13.setText("Alterar Minha Senha");
         jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
@@ -450,22 +496,22 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/relatorios.png"))); // NOI18N
-        jMenu4.setText("Relatórios");
+        jMenuRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/relatorios.png"))); // NOI18N
+        jMenuRelatorios.setText("Relatórios");
 
         jMenuItem15.setText("Total de OS do mês ");
-        jMenu4.add(jMenuItem15);
+        jMenuRelatorios.add(jMenuItem15);
 
         jMenuItem16.setText("Total Arrecadado no mês");
-        jMenu4.add(jMenuItem16);
+        jMenuRelatorios.add(jMenuItem16);
 
         jMenuItem17.setText("Total de OS geral");
-        jMenu4.add(jMenuItem17);
+        jMenuRelatorios.add(jMenuItem17);
 
         jMenuItem18.setText("Clientes em Debito");
-        jMenu4.add(jMenuItem18);
+        jMenuRelatorios.add(jMenuItem18);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(jMenuRelatorios);
 
         setJMenuBar(jMenuBar1);
 
@@ -477,7 +523,9 @@ public class JFramePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton8MouseEntered
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        Util.abrirDialogCentralizado(new JDialogPesquisaOrdemVencidas(this, true));
+        if (jLabel2.isEnabled()) {
+            Util.abrirDialogCentralizado(new JDialogPesquisaOrdemVencidas(this, true));
+        }
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jMenuItemTodosClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTodosClientesActionPerformed
@@ -512,25 +560,25 @@ public class JFramePrincipal extends javax.swing.JFrame {
         Util.abrirDialogCentralizado(new JDialogPesquisaFuncionario(this, true));
     }//GEN-LAST:event_jMenuItemTodosFuncionariosActionPerformed
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+    private void jMenuItemOsMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemOsMesActionPerformed
         // TODO add your handling code here:
         Util.abrirDialogCentralizado(new JDialogPesquisaOrdemMes(this, true));
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+    }//GEN-LAST:event_jMenuItemOsMesActionPerformed
 
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+    private void jMenuItemNovaOsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNovaOsActionPerformed
         // TODO add your handling code here:
         Util.abrirDialogCentralizado(new JDialogCadastroOrdem(this, true));
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
+    }//GEN-LAST:event_jMenuItemNovaOsActionPerformed
 
-    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+    private void jMenuItemAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAddUserActionPerformed
         // TODO add your handling code here:
         Util.abrirDialogCentralizado(new JDialogCadastroUsuario(this, true));
-    }//GEN-LAST:event_jMenuItem12ActionPerformed
+    }//GEN-LAST:event_jMenuItemAddUserActionPerformed
 
-    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+    private void jMenuItemUserComActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUserComActionPerformed
         // TODO add your handling code here:
         Util.abrirDialogCentralizado(new JDialogPesquisaUsuarios(this, true));
-    }//GEN-LAST:event_jMenuItem11ActionPerformed
+    }//GEN-LAST:event_jMenuItemUserComActionPerformed
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
         // TODO add your handling code here:
@@ -547,20 +595,20 @@ public class JFramePrincipal extends javax.swing.JFrame {
         Util.abrirDialogCentralizado(new JDialogPesquisaCliente(this, rootPaneCheckingEnabled, null));
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+    private void jMenuItemVencidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVencidasActionPerformed
         // TODO add your handling code here:
         Util.abrirDialogCentralizado(new JDialogPesquisaOrdemVencidas(this, true));
-    }//GEN-LAST:event_jMenuItem10ActionPerformed
+    }//GEN-LAST:event_jMenuItemVencidasActionPerformed
 
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+    private void jMenuItemOsMesAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemOsMesAdminActionPerformed
         // TODO add your handling code here:
         Util.abrirDialogCentralizado(new JDialogPesquisaOrdemMes(this, true));
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
+    }//GEN-LAST:event_jMenuItemOsMesAdminActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jMenuItemTodasOsAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTodasOsAdminActionPerformed
         // TODO add your handling code here:
         Util.abrirDialogCentralizado(new JDialogPesquisaOrdemTodas(this, true));
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jMenuItemTodasOsAdminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -619,33 +667,30 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem jMenuItemAddUser;
+    private javax.swing.JMenuItem jMenuItemNovaOs;
     private javax.swing.JMenuItem jMenuItemNovoClienteFisico;
     private javax.swing.JMenuItem jMenuItemNovoClienteJuridico;
     private javax.swing.JMenuItem jMenuItemNovoFuncionario;
+    private javax.swing.JMenuItem jMenuItemOsMes;
+    private javax.swing.JMenuItem jMenuItemOsMesAdmin;
+    private javax.swing.JMenuItem jMenuItemTodasOsAdmin;
     private javax.swing.JMenuItem jMenuItemTodosClientes;
     private javax.swing.JMenuItem jMenuItemTodosFuncionarios;
+    private javax.swing.JMenuItem jMenuItemUserCom;
+    private javax.swing.JMenuItem jMenuItemVencidas;
+    private javax.swing.JMenu jMenuRelatorios;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
-
-
-
 }

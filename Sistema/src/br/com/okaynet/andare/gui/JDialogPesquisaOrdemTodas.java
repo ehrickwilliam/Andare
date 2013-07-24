@@ -67,8 +67,8 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
+        jMenu7 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pesquisa de Ordem Serviço");
@@ -229,10 +229,6 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
         });
         jMenuBar1.add(jMenu3);
 
-        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/026.png"))); // NOI18N
-        jMenu5.setText("Relatório");
-        jMenuBar1.add(jMenu5);
-
         jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/010.png"))); // NOI18N
         jMenu6.setText("Voltar");
         jMenu6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -241,6 +237,15 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
             }
         });
         jMenuBar1.add(jMenu6);
+
+        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/024.png"))); // NOI18N
+        jMenu7.setText("Limpar Pesquisa");
+        jMenu7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu7MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu7);
 
         setJMenuBar(jMenuBar1);
 
@@ -304,6 +309,15 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jMenu7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7MouseClicked
+        // TODO add your handling code here:
+        popularTabela();
+      //  jTextFieldCod.setText(null);
+        //jComboBoxCliente.setSelectedIndex(-1);
+        //jComboBoxFuncionario.setSelectedIndex(-1);
+        jFormattedTextField1.setText(null);
+    }//GEN-LAST:event_jMenu7MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -362,8 +376,8 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButtonFisico;

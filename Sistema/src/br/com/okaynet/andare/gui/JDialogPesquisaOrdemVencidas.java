@@ -66,7 +66,6 @@ public class JDialogPesquisaOrdemVencidas extends javax.swing.JDialog {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
 
@@ -188,10 +187,6 @@ public class JDialogPesquisaOrdemVencidas extends javax.swing.JDialog {
             }
         });
         jMenuBar1.add(jMenu3);
-
-        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/026.png"))); // NOI18N
-        jMenu5.setText("Relatório");
-        jMenuBar1.add(jMenu5);
 
         jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/010.png"))); // NOI18N
         jMenu6.setText("Voltar");
@@ -365,7 +360,6 @@ public class JDialogPesquisaOrdemVencidas extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;

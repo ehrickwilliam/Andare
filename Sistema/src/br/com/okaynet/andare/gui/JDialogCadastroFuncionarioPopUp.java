@@ -10,6 +10,7 @@ import br.com.okaynet.andare.conexao.TransactionManager;
 import br.com.okaynet.andare.daos.DaoFuncionario;
 import br.com.okaynet.andare.model.Endereco;
 import br.com.okaynet.andare.model.Funcionario;
+import br.com.okaynet.andare.model.Usuarios;
 import java.awt.Color;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -27,6 +28,14 @@ public class JDialogCadastroFuncionarioPopUp extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         preencher();
+        Usuarios autenticado = (Usuarios) Data.hash.get("usuario");
+        int indexOf = autenticado.getPermissoes().indexOf("E");
+        if (indexOf > 0) {
+            jMenu3.setEnabled(true);
+        } else {
+            jMenu3.setEnabled(false);
+        }
+
     }
 
     /**
@@ -257,10 +266,11 @@ public class JDialogCadastroFuncionarioPopUp extends javax.swing.JDialog {
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
         // TODO add your handling code here:
-        if (Util.mostraMensagemEmTela("Deseja realmente excluir?")) {
-            deletar();
+        if (jMenu3.isEnabled()) {
+            if (Util.mostraMensagemEmTela("Deseja realmente excluir?")) {
+                deletar();
+            }
         }
-
     }//GEN-LAST:event_jMenu3MouseClicked
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked

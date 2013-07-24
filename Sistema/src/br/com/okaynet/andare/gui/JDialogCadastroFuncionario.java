@@ -5,10 +5,12 @@
 package br.com.okaynet.andare.gui;
 
 import br.com.okaynet.andare.bibliotecas.Util;
+import br.com.okaynet.andare.conexao.Data;
 import br.com.okaynet.andare.conexao.TransactionManager;
 import br.com.okaynet.andare.daos.DaoFuncionario;
 import br.com.okaynet.andare.model.Endereco;
 import br.com.okaynet.andare.model.Funcionario;
+import br.com.okaynet.andare.model.Usuarios;
 import java.awt.Color;
 import java.util.Calendar;
 import java.util.regex.Pattern;
@@ -27,6 +29,13 @@ public class JDialogCadastroFuncionario extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         limparCampos();
+        Usuarios autenticado = (Usuarios) Data.hash.get("usuario");
+         int indexOf = autenticado.getPermissoes().indexOf("J");
+            if (indexOf > 0) {
+                jButtonUsuario.setEnabled(true);
+            } else {
+                jButtonUsuario.setEnabled(false);
+            }
     }
 
     /**
@@ -265,12 +274,12 @@ public class JDialogCadastroFuncionario extends javax.swing.JDialog {
             }
         });
         jMenuPesquisar.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-            }
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenuPesquisarMenuSelected(evt);
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
         });
         jMenuPesquisar.addActionListener(new java.awt.event.ActionListener() {
