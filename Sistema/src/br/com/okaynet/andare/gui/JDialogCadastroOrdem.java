@@ -10,7 +10,6 @@ import br.com.okaynet.andare.daos.DaoClienteFisico;
 import br.com.okaynet.andare.daos.DaoClienteJuridico;
 import br.com.okaynet.andare.daos.DaoFuncionario;
 import br.com.okaynet.andare.daos.DaoOrdemServico;
-import br.com.okaynet.andare.daos.DaoPessoa;
 import br.com.okaynet.andare.model.ClienteFisico;
 import br.com.okaynet.andare.model.ClienteJuridico;
 import br.com.okaynet.andare.model.Endereco;
@@ -24,7 +23,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 /**
  *
@@ -45,7 +43,7 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         modificarEndereco();
         iniciarPreencher();
         novo();
-
+        
     }
 
     /**
@@ -353,10 +351,10 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
             public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
-            }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenu4MenuSelected(evt);
+            }
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
         });
         jMenu4.addActionListener(new java.awt.event.ActionListener() {
@@ -655,7 +653,7 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(rootPane, "Erro no campo de juros, valor não confere");
                 }
-            }else{
+            } else {
                 ordem.setJuros(0.0);
             }
 

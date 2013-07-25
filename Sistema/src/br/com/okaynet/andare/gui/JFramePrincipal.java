@@ -6,8 +6,19 @@ package br.com.okaynet.andare.gui;
 
 import br.com.okaynet.andare.bibliotecas.Util;
 import br.com.okaynet.andare.conexao.Data;
+import br.com.okaynet.andare.conexao.TransactionManager;
+import br.com.okaynet.andare.daos.DaoClienteFisico;
+import br.com.okaynet.andare.daos.DaoClienteJuridico;
+import br.com.okaynet.andare.daos.DaoFuncionario;
+import br.com.okaynet.andare.model.ClienteFisico;
+import br.com.okaynet.andare.model.ClienteJuridico;
+import br.com.okaynet.andare.model.Funcionario;
+import br.com.okaynet.andare.model.Pessoa;
 import br.com.okaynet.andare.model.Usuarios;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -567,7 +578,29 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
     private void jMenuItemNovaOsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNovaOsActionPerformed
         // TODO add your handling code here:
-        Util.abrirDialogCentralizado(new JDialogCadastroOrdem(this, true));
+        TransactionManager.beginTransaction();
+        List<Funcionario> fun = new DaoFuncionario().listar("", "nome");
+        TransactionManager.commit();
+
+        List<Pessoa> pessoa = new ArrayList<Pessoa>();
+        TransactionManager.beginTransaction();
+        List<ClienteFisico> clientesF = new DaoClienteFisico().listar("", "nome");
+        List<ClienteJuridico> clientesJ = new DaoClienteJuridico().listar("", "razaoSocial");
+        TransactionManager.commit();
+
+        for (ClienteJuridico clienteJuridico : clientesJ) {
+            pessoa.add(clienteJuridico);
+        }
+
+        for (ClienteFisico clienteFisico : clientesF) {
+            pessoa.add(clienteFisico);
+        }
+
+        if (!fun.isEmpty() && !pessoa.isEmpty() ) {
+            Util.abrirDialogCentralizado(new JDialogCadastroOrdem(this, true));
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Você não realizou o cadastro de clientes e funcionarios.");
+        }
     }//GEN-LAST:event_jMenuItemNovaOsActionPerformed
 
     private void jMenuItemAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAddUserActionPerformed
