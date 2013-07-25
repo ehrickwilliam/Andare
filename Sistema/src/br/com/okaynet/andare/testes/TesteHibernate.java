@@ -17,7 +17,7 @@ public class TesteHibernate {
 
     public static void main(String[] args) {
         HibernateConfiguration.setBase("andare");
-        HibernateConfiguration.setHost("172.16.4.238:3306");
+        HibernateConfiguration.setHost("127.0.0.1:3306");
         HibernateConfiguration.setPass("root");
         HibernateConfiguration.setUser("root");
         
