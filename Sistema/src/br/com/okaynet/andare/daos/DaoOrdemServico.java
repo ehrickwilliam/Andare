@@ -125,14 +125,25 @@ public class DaoOrdemServico extends DaoGenerics<OrdemServico> {
         lista = query.list();
         return lista;
     }
-    
-        public List<OrdemServico> obterFuncionariosID(Integer id) {
+
+    public List<OrdemServico> obterClientesID(Integer id) {
+        List<OrdemServico> lista = null;
+        Query query = session.createQuery("From "
+                + alvo.getSimpleName()
+                + " where cliente.id = " + id + " ORDER BY id DESC");
+        lista = query.list();
+        return lista;
+    }
+
+    public List<OrdemServico> obterFuncionariosID(Integer id) {
         List<OrdemServico> lista = null;
         Query query = session.createQuery("From "
                 + alvo.getSimpleName()
                 + " where funcionario.id = " + id + " ORDER BY id DESC");
         lista = query.list();
         return lista;
+
+
     }
 
     public List<OrdemServico> obterDataCad(Calendar stringToCalendar) {

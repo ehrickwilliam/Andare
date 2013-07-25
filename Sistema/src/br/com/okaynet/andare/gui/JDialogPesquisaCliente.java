@@ -9,8 +9,10 @@ import br.com.okaynet.andare.conexao.Data;
 import br.com.okaynet.andare.conexao.TransactionManager;
 import br.com.okaynet.andare.daos.DaoClienteFisico;
 import br.com.okaynet.andare.daos.DaoClienteJuridico;
+import br.com.okaynet.andare.daos.DaoOrdemServico;
 import br.com.okaynet.andare.model.ClienteFisico;
 import br.com.okaynet.andare.model.ClienteJuridico;
+import br.com.okaynet.andare.model.OrdemServico;
 import br.com.okaynet.andare.model.Usuarios;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -263,11 +265,11 @@ public class JDialogPesquisaCliente extends javax.swing.JDialog {
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/004.png"))); // NOI18N
         jMenu3.setText("Apagar");
         jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu3MouseClicked(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jMenu3MouseEntered(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu3MouseClicked(evt);
             }
         });
         jMenuBar1.add(jMenu3);
@@ -593,12 +595,25 @@ public class JDialogPesquisaCliente extends javax.swing.JDialog {
     private void deletar() {
         if (jRadioButtonFisico.isSelected()) {
             TransactionManager.beginTransaction();
-            new DaoClienteFisico().remover(clientesFisicos.get(jTableCliente.getSelectedRow()));
+
+            List<OrdemServico> obterClienteID = new DaoOrdemServico().obterClientesID(clientesFisicos.get(jTableCliente.getSelectedRow()).getId());
+            if (obterClienteID.isEmpty()) {
+
+                new DaoClienteFisico().remover(clientesFisicos.get(jTableCliente.getSelectedRow()));
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Este cliente possui OS vinculadas a ele.");
+            }
             TransactionManager.commit();
             popularTabelaFisico();
         } else if (jRadioButtonJuridico.isSelected()) {
             TransactionManager.beginTransaction();
-            new DaoClienteJuridico().remover(clientesJuridicos.get(jTableCliente.getSelectedRow()));
+            List<OrdemServico> obterClienteID = new DaoOrdemServico().obterClientesID(clientesJuridicos.get(jTableCliente.getSelectedRow()).getId());
+            if (obterClienteID.isEmpty()) {
+
+                new DaoClienteJuridico().remover(clientesJuridicos.get(jTableCliente.getSelectedRow()));
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Este cliente possui OS vinculadas a ele.");
+            }
             TransactionManager.commit();
             popularTabelaJuridico();
         }
