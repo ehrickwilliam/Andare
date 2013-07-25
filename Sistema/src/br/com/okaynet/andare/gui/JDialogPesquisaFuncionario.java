@@ -8,7 +8,9 @@ import br.com.okaynet.andare.bibliotecas.Util;
 import br.com.okaynet.andare.conexao.Data;
 import br.com.okaynet.andare.conexao.TransactionManager;
 import br.com.okaynet.andare.daos.DaoFuncionario;
+import br.com.okaynet.andare.daos.DaoOrdemServico;
 import br.com.okaynet.andare.model.Funcionario;
+import br.com.okaynet.andare.model.OrdemServico;
 import br.com.okaynet.andare.model.Usuarios;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -196,7 +198,9 @@ public class JDialogPesquisaFuncionario extends javax.swing.JDialog {
         if (jMenu3.isEnabled()) {
             if (jTableCliente.getSelectedRow() != -1) {
                 if (Util.mostraMensagemEmTela("Deseja realmente excluir?")) {
+
                     deletar();
+
                 }
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
@@ -310,7 +314,12 @@ public class JDialogPesquisaFuncionario extends javax.swing.JDialog {
     private void deletar() {
 
         TransactionManager.beginTransaction();
-        new DaoFuncionario().remover(funcionarios.get(jTableCliente.getSelectedRow()));
+        List<OrdemServico> obterFuncionariosID = new DaoOrdemServico().obterFuncionariosID(funcionarios.get(jTableCliente.getSelectedRow()).getId());
+        if (obterFuncionariosID.isEmpty()) {
+            new DaoFuncionario().remover(funcionarios.get(jTableCliente.getSelectedRow()));
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Este funcionario possui OS vinculadas a ele.");
+        }
         TransactionManager.commit();
         popularTabela();
 

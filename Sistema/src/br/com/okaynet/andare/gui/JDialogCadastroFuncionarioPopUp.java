@@ -8,10 +8,13 @@ import br.com.okaynet.andare.bibliotecas.Util;
 import br.com.okaynet.andare.conexao.Data;
 import br.com.okaynet.andare.conexao.TransactionManager;
 import br.com.okaynet.andare.daos.DaoFuncionario;
+import br.com.okaynet.andare.daos.DaoOrdemServico;
 import br.com.okaynet.andare.model.Endereco;
 import br.com.okaynet.andare.model.Funcionario;
+import br.com.okaynet.andare.model.OrdemServico;
 import br.com.okaynet.andare.model.Usuarios;
 import java.awt.Color;
+import java.util.List;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
@@ -372,9 +375,15 @@ public class JDialogCadastroFuncionarioPopUp extends javax.swing.JDialog {
 
     private void deletar() {
 
+
         TransactionManager.beginTransaction();
-        Funcionario funcionarioApagar = new DaoFuncionario().obterPorId(Integer.parseInt(jTextFieldCod.getText()));
-        new DaoFuncionario().remover(funcionarioApagar);
+        List<OrdemServico> obterFuncionariosID = new DaoOrdemServico().obterFuncionariosID(Integer.parseInt(jTextFieldCod.getText()));
+        if (obterFuncionariosID.isEmpty()) {
+            Funcionario funcionarioApagar = new DaoFuncionario().obterPorId(Integer.parseInt(jTextFieldCod.getText()));
+            new DaoFuncionario().remover(funcionarioApagar);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Este funcionario possui OS vinculadas a ele.");
+        }
         TransactionManager.commit();
         this.dispose();
     }
