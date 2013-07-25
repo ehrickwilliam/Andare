@@ -37,11 +37,6 @@ public abstract class Conexao {
 
     public static Connection getConnectionJasper() throws SQLException {
 
-        HibernateConfiguration.setBase("andare");
-        HibernateConfiguration.setHost("127.0.0.1:3306");
-        HibernateConfiguration.setPass("root");
-        HibernateConfiguration.setUser("root");
-
         String conecaoMysql = "jdbc:mysql://" + HibernateConfiguration.getHost() + "/" + HibernateConfiguration.getBase()
                 + "?user=" + HibernateConfiguration.getUser() + "&password=" + HibernateConfiguration.getPass();
         System.out.println(conecaoMysql);
