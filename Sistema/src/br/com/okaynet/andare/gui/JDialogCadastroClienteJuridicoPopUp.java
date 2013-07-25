@@ -8,10 +8,13 @@ import br.com.okaynet.andare.bibliotecas.Util;
 import br.com.okaynet.andare.conexao.Data;
 import br.com.okaynet.andare.conexao.TransactionManager;
 import br.com.okaynet.andare.daos.DaoClienteJuridico;
+import br.com.okaynet.andare.daos.DaoOrdemServico;
 import br.com.okaynet.andare.model.ClienteJuridico;
 import br.com.okaynet.andare.model.Endereco;
+import br.com.okaynet.andare.model.OrdemServico;
 import br.com.okaynet.andare.model.Usuarios;
 import java.awt.Color;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -394,8 +397,16 @@ public class JDialogCadastroClienteJuridicoPopUp extends javax.swing.JDialog {
     private void deletar() {
 
         TransactionManager.beginTransaction();
-        ClienteJuridico clienteApagar = new DaoClienteJuridico().obterPorId(Integer.parseInt(jTextFieldCod.getText()));
-        new DaoClienteJuridico().remover(clienteApagar);
+
+        List<OrdemServico> obterClienteID = new DaoOrdemServico().obterClientesID(Integer.parseInt(jTextFieldCod.getText()));
+        if (obterClienteID.isEmpty()) {
+
+            ClienteJuridico clienteApagar = new DaoClienteJuridico().obterPorId(Integer.parseInt(jTextFieldCod.getText()));
+            new DaoClienteJuridico().remover(clienteApagar);
+
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Este cliente possui OS vinculadas a ele.");
+        }
         TransactionManager.commit();
         this.dispose();
     }
