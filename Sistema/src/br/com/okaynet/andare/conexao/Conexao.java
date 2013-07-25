@@ -15,17 +15,19 @@ import java.sql.Statement;
  * @author ehrickwilliam
  */
 public abstract class Conexao {
+
     private static Connection conexaoJasper = null;
     private static Connection conexao = null;
     private static com.mysql.jdbc.Driver mysqlDriver;
 
     /**
      * Estabelece uma conexão a base de dados
+     *
      * @return A conexão estabelecida
      */
     public static Connection getConnection() throws SQLException {
-        String conecaoMysql = "jdbc:mysql://"+HibernateConfiguration.getHost()+"/?user=" + HibernateConfiguration.getUser() +
-                "&password=" + HibernateConfiguration.getPass();
+        String conecaoMysql = "jdbc:mysql://" + HibernateConfiguration.getHost() + "/?user=" + HibernateConfiguration.getUser()
+                + "&password=" + HibernateConfiguration.getPass();
         if (conexao == null) {
             mysqlDriver = new com.mysql.jdbc.Driver();
             conexao = DriverManager.getConnection(conecaoMysql);
@@ -34,8 +36,15 @@ public abstract class Conexao {
     }
 
     public static Connection getConnectionJasper() throws SQLException {
-        String conecaoMysql = "jdbc:mysql://"+HibernateConfiguration.getHost()+"/" + HibernateConfiguration.getBase()
+
+        HibernateConfiguration.setBase("andare");
+        HibernateConfiguration.setHost("127.0.0.1:3306");
+        HibernateConfiguration.setPass("root");
+        HibernateConfiguration.setUser("root");
+
+        String conecaoMysql = "jdbc:mysql://" + HibernateConfiguration.getHost() + "/" + HibernateConfiguration.getBase()
                 + "?user=" + HibernateConfiguration.getUser() + "&password=" + HibernateConfiguration.getPass();
+        System.out.println(conecaoMysql);
         if (conexaoJasper == null) {
             mysqlDriver = new com.mysql.jdbc.Driver();
             conexaoJasper = DriverManager.getConnection(conecaoMysql);
