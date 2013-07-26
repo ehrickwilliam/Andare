@@ -403,9 +403,7 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
         String dataFormatadaNormal = formatadorTotal.format(data);
         try {
             int diferencaEntreDatas = diferencaEntreDatas(jFormattedTextFieldDataVencimento.getText(), dataFormatadaNormal) - 1;
-            System.out.println(diferencaEntreDatas);
-            System.out.println(dataFormatadaNormal);
-            System.out.println(jFormattedTextFieldDataVencimento.getText());
+       
             if (diferencaEntreDatas > 0) {
                 double juro = Double.parseDouble(jTextFieldJuros.getText());
                 double valor = Double.parseDouble(jTextFieldValor.getText());
