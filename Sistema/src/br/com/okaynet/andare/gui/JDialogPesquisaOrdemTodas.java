@@ -294,6 +294,7 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
 
     private void jButtonPesquisaDataCadastroActionPerformed(java.awt.event.ActionEvent evt) {                                                            
         // TODO add your handling code here:
+        pesquisarPorDataCadastro();
     }                                                           
 
     private void jRadioButtonVencidasActionPerformed(java.awt.event.ActionEvent evt) {                                                     
@@ -436,6 +437,17 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, "ID inválido!");
             return false;
+        }
+    }
+
+    private void pesquisarPorDataCadastro() {
+        TransactionManager.beginTransaction();
+        if (!jFormattedTextFieldDataCadastro.getText().equals("  /  /    ")) {
+            orderns = new DaoOrdemServico().obterDataCad(Util.stringToCalendar(jFormattedTextFieldDataCadastro.getText()));
+            TransactionManager.commit();
+            prencherOrdem();
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
         }
     }
 }
