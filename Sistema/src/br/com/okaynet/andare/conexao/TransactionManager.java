@@ -4,7 +4,6 @@
  */
 package br.com.okaynet.andare.conexao;
 
-
 import org.hibernate.FlushMode;
 
 import org.hibernate.Session;
@@ -15,51 +14,55 @@ import org.hibernate.Transaction;
  * @author ehrickwilliam
  */
 public class TransactionManager {
-    
+
     static Session session = null;
     static Transaction transaction = null;
-    
-    public static void beginTransaction(){
-        if(transaction != null){
-            throw new RuntimeException("Já existe uma transação iniciada.");
+
+    public static void beginTransaction() {
+        if (transaction != null) {
+            //throw new RuntimeException("Já existe uma transação iniciada.");
+            getCurrentSession();
+        } else {
+            session = HibernateConfiguration.openConnect();
+            transaction = session.beginTransaction();
         }
-        session = HibernateConfiguration.openConnect();
-        transaction = session.beginTransaction();        
     }
-    
-    public static void commit(){
-        if(transaction == null){
-            throw new RuntimeException("Erro tentando executar commit() sem antes ter executado beginTrans()..");
+
+    public static void commit() {
+        if (transaction == null) {
+            //throw new RuntimeException("Erro tentando executar commit() sem antes ter executado beginTrans()..");
+            beginTransaction();
+            transaction.commit();
+        } else {
+            transaction.commit();
+            closeCurrentSession();
         }
-        transaction.commit();
-        closeCurrentSession();
-        
+
     }
-    
-    public static void rollback(){
-        if(transaction == null){
+
+    public static void rollback() {
+        if (transaction == null) {
             throw new RuntimeException("Erro tentando executar rollback() sem antes ter executado beginTrans()..");
         }
-        transaction.rollback();        
+        transaction.rollback();
         closeCurrentSession();
     }
-    
-    public static Session getCurrentSession(){
+
+    public static Session getCurrentSession() {
         /*Automatizando a criação da transação.*/
-        if(session == null){
-            Session session2 = HibernateConfiguration.openConnect();           
-           // System.out.println("========================="+session2.getFlushMode());
-            session2.setFlushMode(FlushMode.ALWAYS);            
-            return session2; 
+        if (session == null) {
+            Session session2 = HibernateConfiguration.openConnect();
+            // System.out.println("========================="+session2.getFlushMode());
+            session2.setFlushMode(FlushMode.ALWAYS);
+            return session2;
         }
-        return session;        
+        return session;
     }
-    
-    
-    public  static void closeCurrentSession(){
+
+    public static void closeCurrentSession() {
         session.flush();
         session.close();
         transaction = null;
         session = null;
-    }  
+    }
 }
