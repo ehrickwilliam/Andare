@@ -134,22 +134,12 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jToolBar1 = new javax.swing.JToolBar();
         jButton8 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabelAdmin = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabelAdmin = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabelAtendimentos = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabelDate = new javax.swing.JLabel();
         jLabelStatus = new javax.swing.JLabel();
@@ -169,14 +159,17 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItemVencidas = new javax.swing.JMenuItem();
         jMenuItemOsMesAdmin = new javax.swing.JMenuItem();
         jMenuItemTodasOsAdmin = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItemUserCom = new javax.swing.JMenuItem();
         jMenuItemAddUser = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenuItem13 = new javax.swing.JMenuItem();
         jMenuRelatorios = new javax.swing.JMenu();
         jMenuItem15 = new javax.swing.JMenuItem();
-        jMenuItem16 = new javax.swing.JMenuItem();
         jMenuItem17 = new javax.swing.JMenuItem();
         jMenuItem18 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -204,88 +197,17 @@ public class JFramePrincipal extends javax.swing.JFrame {
         });
         jToolBar1.add(jButton8);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/cliente_bar.png"))); // NOI18N
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jButton1);
-
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/cliente_pesquisa_bar.png"))); // NOI18N
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jButton2);
-
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/entrada_bar.png"))); // NOI18N
-        jButton3.setFocusable(false);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton3);
-
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/produtos_bar.png"))); // NOI18N
-        jButton4.setFocusable(false);
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton4);
-
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/balanco_bar.png"))); // NOI18N
-        jButton5.setFocusable(false);
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton5);
-
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/atendimento_bar.png"))); // NOI18N
-        jButton6.setFocusable(false);
-        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton6);
-
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/estoque_bar.png"))); // NOI18N
-        jButton7.setFocusable(false);
-        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton7);
-
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/distribuidor_bar.png"))); // NOI18N
-        jButton9.setFocusable(false);
-        jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton9.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton9);
-
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/venda_bar.png"))); // NOI18N
-        jButton10.setFocusable(false);
-        jButton10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton10.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton10);
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel3.setText("Olá");
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/user_male_16.png"))); // NOI18N
 
         jLabelAdmin.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelAdmin.setText("Administrador");
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/user_male_16.png"))); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel3.setText("Olá");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/exit.png"))); // NOI18N
-        jLabel4.setText("Sair");
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
-            }
-        });
+        jLabelAtendimentos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabelAtendimentos.setForeground(new java.awt.Color(255, 0, 0));
+        jLabelAtendimentos.setText("0");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 0, 0));
@@ -297,47 +219,41 @@ public class JFramePrincipal extends javax.swing.JFrame {
             }
         });
 
-        jLabelAtendimentos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabelAtendimentos.setForeground(new java.awt.Color(255, 0, 0));
-        jLabelAtendimentos.setText("0");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(59, Short.MAX_VALUE)
+                .addGap(2, 2, 2)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelAtendimentos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelAtendimentos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 613, Short.MAX_VALUE)
+                .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addGap(16, 16, 16))
+                .addComponent(jLabelAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabelAtendimentos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(jLabelAdmin)
-                        .addComponent(jLabel4)))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel5)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelAdmin)
+                            .addComponent(jLabel3)))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabelAtendimentos)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jToolBar1.add(jPanel2);
 
-        getContentPane().add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 50));
+        getContentPane().add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 30));
 
         jLabelDate.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelDate.setForeground(new java.awt.Color(102, 102, 102));
@@ -371,7 +287,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 970, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/main_bg.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 970, 490));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 970, 500));
 
         jMenuBar1.setToolTipText("Menu Princípal");
 
@@ -457,6 +373,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/administrativo.png"))); // NOI18N
         jMenu3.setText("Administrativo");
 
+        jMenuItemVencidas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/015.png"))); // NOI18N
         jMenuItemVencidas.setText("OS Vencidas");
         jMenuItemVencidas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -465,6 +382,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItemVencidas);
 
+        jMenuItemOsMesAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/038.png"))); // NOI18N
         jMenuItemOsMesAdmin.setText("Todas as OS do Mês");
         jMenuItemOsMesAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -473,6 +391,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItemOsMesAdmin);
 
+        jMenuItemTodasOsAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/057.png"))); // NOI18N
         jMenuItemTodasOsAdmin.setText("Todas as OS");
         jMenuItemTodasOsAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -480,7 +399,9 @@ public class JFramePrincipal extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jMenuItemTodasOsAdmin);
+        jMenu3.add(jSeparator1);
 
+        jMenuItemUserCom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/136.png"))); // NOI18N
         jMenuItemUserCom.setText("Todos os Usuários ");
         jMenuItemUserCom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -489,6 +410,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItemUserCom);
 
+        jMenuItemAddUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/132.png"))); // NOI18N
         jMenuItemAddUser.setText("Novo Usuário");
         jMenuItemAddUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -496,7 +418,9 @@ public class JFramePrincipal extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jMenuItemAddUser);
+        jMenu3.add(jSeparator2);
 
+        jMenuItem13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/068.png"))); // NOI18N
         jMenuItem13.setText("Alterar Minha Senha");
         jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -510,46 +434,42 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/relatorios.png"))); // NOI18N
         jMenuRelatorios.setText("Relatórios");
 
-        jMenuItem15.setText("Total de OS do mês ");
+        jMenuItem15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/026.png"))); // NOI18N
+        jMenuItem15.setText("Todas OS do mês ");
         jMenuRelatorios.add(jMenuItem15);
 
-        jMenuItem16.setText("Total Arrecadado no mês");
-        jMenuRelatorios.add(jMenuItem16);
-
-        jMenuItem17.setText("Total de OS geral");
+        jMenuItem17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/008.png"))); // NOI18N
+        jMenuItem17.setText("Todas OS geral");
         jMenuRelatorios.add(jMenuItem17);
 
-        jMenuItem18.setText("Clientes em Debito");
+        jMenuItem18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/137.png"))); // NOI18N
+        jMenuItem18.setText("Todos os Clientes");
         jMenuRelatorios.add(jMenuItem18);
 
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/137.png"))); // NOI18N
+        jMenuItem2.setText("Todos os Funcionarios");
+        jMenuRelatorios.add(jMenuItem2);
+
         jMenuBar1.add(jMenuRelatorios);
+
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/003.png"))); // NOI18N
+        jMenu4.setText("Sair");
+        jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu4MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseEntered
-        jLabelStatus.setText(((JButton) evt.getSource()).getToolTipText());
-    }//GEN-LAST:event_jButton8MouseEntered
-
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        if (jLabel2.isEnabled()) {
-            Util.abrirDialogCentralizado(new JDialogPesquisaOrdemVencidas(this, true));
-        }
-    }//GEN-LAST:event_jLabel2MouseClicked
-
     private void jMenuItemTodosClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTodosClientesActionPerformed
         // TODO add your handling code here:
         Util.abrirDialogCentralizado(new JDialogPesquisaCliente(this, true, null));
     }//GEN-LAST:event_jMenuItemTodosClientesActionPerformed
-
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        // TODO add your handling code here:
-        Data.hash.remove("usuario");
-        Util.abrirDialogCentralizadoForm(new JFrameLogin());
-        this.dispose();
-    }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jMenuItemNovoClienteJuridicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNovoClienteJuridicoActionPerformed
         // TODO add your handling code here:
@@ -618,16 +538,6 @@ public class JFramePrincipal extends javax.swing.JFrame {
         Util.abrirDialogCentralizado(new JDialogAlterarSenhaCadastroFuncionario(this, true));
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        Util.abrirDialogCentralizado(new JDialogCadastroClienteJuridico(this, true));
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        Util.abrirDialogCentralizado(new JDialogPesquisaCliente(this, rootPaneCheckingEnabled, null));
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void jMenuItemVencidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVencidasActionPerformed
         // TODO add your handling code here:
         Util.abrirDialogCentralizado(new JDialogPesquisaOrdemVencidas(this, true));
@@ -642,6 +552,23 @@ public class JFramePrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         Util.abrirDialogCentralizado(new JDialogPesquisaOrdemTodas(this, true));
     }//GEN-LAST:event_jMenuItemTodasOsAdminActionPerformed
+
+    private void jButton8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseEntered
+        jLabelStatus.setText(((JButton) evt.getSource()).getToolTipText());
+    }//GEN-LAST:event_jButton8MouseEntered
+
+    private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
+        // TODO add your handling code here:
+        Util.abrirDialogCentralizadoForm(new JFrameLogin());
+        Data.hash.remove("usuario");
+        this.dispose();
+    }//GEN-LAST:event_jMenu4MouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        if(jLabel2.isEnabled()){
+        Util.abrirDialogCentralizado(new JDialogPesquisaOrdemVencidas(this, true));
+        }
+    }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -678,20 +605,10 @@ public class JFramePrincipal extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelAdmin;
     private javax.swing.JLabel jLabelAtendimentos;
@@ -700,14 +617,15 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem15;
-    private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItemAddUser;
     private javax.swing.JMenuItem jMenuItemNovaOs;
@@ -724,6 +642,8 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuRelatorios;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }
