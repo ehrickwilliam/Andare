@@ -27,7 +27,7 @@ public class testeRelatorio {
         
         ReportManage report = new ReportManage();
         try {
-            report.relatorioPronto("clientes");
+            report.relatorioPronto("OrdemServicoSimples");
         } catch (JRException ex) {
             Logger.getLogger(testeRelatorio.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

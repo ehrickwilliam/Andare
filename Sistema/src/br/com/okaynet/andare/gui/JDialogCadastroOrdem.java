@@ -4,6 +4,7 @@
  */
 package br.com.okaynet.andare.gui;
 
+import br.com.okaynet.andare.bibliotecas.ReportManage;
 import br.com.okaynet.andare.bibliotecas.Util;
 import br.com.okaynet.andare.conexao.TransactionManager;
 import br.com.okaynet.andare.daos.DaoClienteFisico;
@@ -16,13 +17,18 @@ import br.com.okaynet.andare.model.Endereco;
 import br.com.okaynet.andare.model.Funcionario;
 import br.com.okaynet.andare.model.OrdemServico;
 import br.com.okaynet.andare.model.Pessoa;
+import br.com.okaynet.andare.testes.testeRelatorio;
 import java.awt.Color;
 import static java.lang.Thread.sleep;
 import java.math.BigDecimal;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
 
 /**
  *
@@ -43,7 +49,7 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         modificarEndereco();
         iniciarPreencher();
         novo();
-        
+
     }
 
     /**
@@ -663,6 +669,9 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
                 JOptionPane.showConfirmDialog(rootPane, "Erro no valor da ordem");
             }
 
+            Pessoa clienteAlvo = (Pessoa) jComboBoxCliente.getSelectedItem();
+
+
             Endereco endereco = new Endereco();
             endereco.setBairro(jTextFieldBairro.getText());
             endereco.setLogradouro(jTextFieldEndereco.getText());
@@ -670,13 +679,24 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             endereco.setCidade(jComboBoxCidade.getSelectedItem().toString());
             endereco.setComplemento(jTextFieldComplemento.getText());
             endereco.setNumero(Integer.parseInt(jFormattedTextFieldNumero.getText()));
+            endereco.setTipoLogradouro(jComboBoxTipoLogradouro.getSelectedItem().toString());
+            endereco.setTelefone1(clienteAlvo.getEndereco().getTelefone1());
 
             ordem.setEndereco(endereco);
             TransactionManager.beginTransaction();
             new DaoOrdemServico().persistir(ordem);
             TransactionManager.commit();
             novo();
-
+            if (Util.mostraMensagemEmTela("Deseja Imprimir a via para o Funcionario?")) {
+                ReportManage report = new ReportManage();
+                try {
+                    report.relatorioPronto("OrdemServicoSimples");
+                } catch (JRException ex) {
+                    Logger.getLogger(testeRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(testeRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         } else {
             JOptionPane.showMessageDialog(rootPane, "Contem campo(s) vazio ou tipo incorreto de dado !");
         }

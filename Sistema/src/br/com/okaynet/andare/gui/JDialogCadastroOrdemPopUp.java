@@ -330,12 +330,12 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
             }
         });
         jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-            }
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenu4MenuSelected(evt);
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
         });
         jMenu4.addActionListener(new java.awt.event.ActionListener() {
@@ -640,6 +640,9 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
             endereco.setCidade(jComboBoxCidade.getSelectedItem().toString());
             endereco.setComplemento(jTextFieldComplemento.getText());
             endereco.setNumero(Integer.parseInt(jFormattedTextFieldNumero.getText()));
+             endereco.setTipoLogradouro(jComboBoxTipoLogradouro.getSelectedItem().toString());
+             Pessoa clienteAlvo = (Pessoa) jComboBoxCliente.getSelectedItem();
+            endereco.setTelefone1(clienteAlvo.getEndereco().getTelefone1());
 
             ordem.setEndereco(endereco);
             TransactionManager.beginTransaction();
