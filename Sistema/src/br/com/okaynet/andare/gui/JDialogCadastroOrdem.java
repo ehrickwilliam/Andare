@@ -690,10 +690,15 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             if (Util.mostraMensagemEmTela("Deseja Imprimir a via para o Funcionario e via para o Cliente?")) {
                 this.setModal(false);
                 ReportManage report = new ReportManage();
-                
+
                 try {
-                    report.relatorioPronto("OrdemServicoSimples");
+                    if (jComboBoxCliente.getSelectedItem() instanceof ClienteFisico) {
+                        report.relatorioPronto("OrdemServicoSimples","Ordem de serviço");
+                    } else {
+                        report.relatorioPronto("OrdemServicoSimplesJuridico","Ordem de serviço");
+                    }
                     this.dispose();
+
                 } catch (JRException ex) {
                     Logger.getLogger(testeRelatorio.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (SQLException ex) {

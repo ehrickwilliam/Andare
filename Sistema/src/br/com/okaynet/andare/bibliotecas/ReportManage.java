@@ -141,7 +141,7 @@ public class ReportManage {
         }
     }
 
-    public void relatorioPronto(String relatorio) throws JRException, SQLException {
+    public void relatorioPronto(String relatorio, String titulo) throws JRException, SQLException {
         // obtem o arquivo de relatorio compilado
         URL arquivo = getClass().getResource("/br/com/okaynet/andare/reports/" + relatorio + ".jasper");
         // carrega o relatorio
@@ -151,7 +151,7 @@ public class ReportManage {
         // cria visualizador de relatorio
         JasperViewer jrviewer = new JasperViewer(jasperPrint, false);
         // mostra o visualizador
-        jrviewer.setTitle("Ordem de Serviço");
+        jrviewer.setTitle(titulo);
         jrviewer.setVisible(true);
     }
 }
