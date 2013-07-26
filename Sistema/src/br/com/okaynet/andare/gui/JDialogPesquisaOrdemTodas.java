@@ -51,24 +51,24 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
         jLabel14 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jRadioButtonJuridico = new javax.swing.JRadioButton();
-        jRadioButtonFisico = new javax.swing.JRadioButton();
-        jTextField1 = new javax.swing.JTextField();
+        jRadioButtonVencidas = new javax.swing.JRadioButton();
+        jRadioButtonComPrazo = new javax.swing.JRadioButton();
+        jTextFieldID = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jComboBox1 = new javax.swing.JComboBox();
-        jComboBox2 = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        jButtonPesquisaDataVencimento = new javax.swing.JButton();
+        jButtonPesquisaID = new javax.swing.JButton();
+        jButtonPesquisaDataCadastro = new javax.swing.JButton();
+        jRadioButtonTodas = new javax.swing.JRadioButton();
+        jComboBoxCliente = new javax.swing.JComboBox();
+        jComboBoxFuncionario = new javax.swing.JComboBox();
+        jButtonVisualizarOS = new javax.swing.JButton();
+        jFormattedTextFieldDataCadastro = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldDataVencimento = new javax.swing.JFormattedTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu6 = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
+        jMenuEditar = new javax.swing.JMenu();
+        jMenuApagar = new javax.swing.JMenu();
+        jMenuVoltar = new javax.swing.JMenu();
+        jMenuLimpar = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pesquisa de Ordem Serviço");
@@ -121,138 +121,138 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
         jLabel17.setText("Cliente:");
         getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, -1, -1));
 
-        buttonGroup1.add(jRadioButtonJuridico);
-        jRadioButtonJuridico.setText("Vencidas");
-        jRadioButtonJuridico.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(jRadioButtonVencidas);
+        jRadioButtonVencidas.setText("Vencidas");
+        jRadioButtonVencidas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonJuridicoActionPerformed(evt);
+                jRadioButtonVencidasActionPerformed(evt);
             }
         });
-        getContentPane().add(jRadioButtonJuridico, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, -1, -1));
+        getContentPane().add(jRadioButtonVencidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, -1, -1));
 
-        buttonGroup1.add(jRadioButtonFisico);
-        jRadioButtonFisico.setText("Com prazo");
-        jRadioButtonFisico.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(jRadioButtonComPrazo);
+        jRadioButtonComPrazo.setText("Com prazo");
+        jRadioButtonComPrazo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonFisicoActionPerformed(evt);
+                jRadioButtonComPrazoActionPerformed(evt);
             }
         });
-        getContentPane().add(jRadioButtonFisico, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 40, -1, -1));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 40, -1));
+        getContentPane().add(jRadioButtonComPrazo, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 40, -1, -1));
+        getContentPane().add(jTextFieldID, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 40, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel2.setText("Código:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/1372094443_Magnifier2.png"))); // NOI18N
-        jButton7.setBorderPainted(false);
-        jButton7.setFocusPainted(false);
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPesquisaDataVencimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/1372094443_Magnifier2.png"))); // NOI18N
+        jButtonPesquisaDataVencimento.setBorderPainted(false);
+        jButtonPesquisaDataVencimento.setFocusPainted(false);
+        jButtonPesquisaDataVencimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                jButtonPesquisaDataVencimentoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 30, 30));
+        getContentPane().add(jButtonPesquisaDataVencimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 30, 30));
 
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/1372094443_Magnifier2.png"))); // NOI18N
-        jButton8.setBorderPainted(false);
-        jButton8.setFocusPainted(false);
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPesquisaID.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/1372094443_Magnifier2.png"))); // NOI18N
+        jButtonPesquisaID.setBorderPainted(false);
+        jButtonPesquisaID.setFocusPainted(false);
+        jButtonPesquisaID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                jButtonPesquisaIDActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 30, 30));
+        getContentPane().add(jButtonPesquisaID, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 30, 30));
 
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/1372094443_Magnifier2.png"))); // NOI18N
-        jButton9.setBorderPainted(false);
-        jButton9.setFocusPainted(false);
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPesquisaDataCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/1372094443_Magnifier2.png"))); // NOI18N
+        jButtonPesquisaDataCadastro.setBorderPainted(false);
+        jButtonPesquisaDataCadastro.setFocusPainted(false);
+        jButtonPesquisaDataCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                jButtonPesquisaDataCadastroActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 30, 30));
+        getContentPane().add(jButtonPesquisaDataCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 30, 30));
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setSelected(true);
-        jRadioButton1.setText("Todas");
-        getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 40, -1, -1));
+        buttonGroup1.add(jRadioButtonTodas);
+        jRadioButtonTodas.setSelected(true);
+        jRadioButtonTodas.setText("Todas");
+        getContentPane().add(jRadioButtonTodas, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 40, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "Okaynet Informática LTDA ME" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 200, -1));
+        jComboBoxCliente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "Okaynet Informática LTDA ME" }));
+        getContentPane().add(jComboBoxCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 200, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "Jhonatan", "André" }));
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 190, -1));
+        jComboBoxFuncionario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "Jhonatan", "André" }));
+        getContentPane().add(jComboBoxFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 190, -1));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/074.png"))); // NOI18N
-        jButton1.setText("Visualizar Ordem de Serviço");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonVisualizarOS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/074.png"))); // NOI18N
+        jButtonVisualizarOS.setText("Visualizar Ordem de Serviço");
+        jButtonVisualizarOS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonVisualizarOSActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 89, 184, 22));
+        getContentPane().add(jButtonVisualizarOS, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 89, 184, 22));
 
         try {
-            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/##")));
+            jFormattedTextFieldDataCadastro.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        getContentPane().add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 90, -1));
+        getContentPane().add(jFormattedTextFieldDataCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 90, -1));
 
         try {
-            jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/##")));
+            jFormattedTextFieldDataVencimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        getContentPane().add(jFormattedTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 90, -1));
+        getContentPane().add(jFormattedTextFieldDataVencimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 90, -1));
 
         jMenuBar1.setMinimumSize(new java.awt.Dimension(56, 31));
         jMenuBar1.setPreferredSize(new java.awt.Dimension(396, 31));
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/108.png"))); // NOI18N
-        jMenu1.setText("Editar");
-        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenuEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/108.png"))); // NOI18N
+        jMenuEditar.setText("Editar");
+        jMenuEditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu1MouseClicked(evt);
+                jMenuEditarMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jMenuEditar);
 
-        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/004.png"))); // NOI18N
-        jMenu3.setText("Apagar");
-        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenuApagar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/004.png"))); // NOI18N
+        jMenuApagar.setText("Apagar");
+        jMenuApagar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu3MouseClicked(evt);
+                jMenuApagarMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(jMenuApagar);
 
-        jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/010.png"))); // NOI18N
-        jMenu6.setText("Voltar");
-        jMenu6.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenuVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/010.png"))); // NOI18N
+        jMenuVoltar.setText("Voltar");
+        jMenuVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu6MouseClicked(evt);
+                jMenuVoltarMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu6);
+        jMenuBar1.add(jMenuVoltar);
 
-        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/024.png"))); // NOI18N
-        jMenu7.setText("Limpar Pesquisa");
-        jMenu7.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenuLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/024.png"))); // NOI18N
+        jMenuLimpar.setText("Limpar Pesquisa");
+        jMenuLimpar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu7MouseClicked(evt);
+                jMenuLimparMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu7);
+        jMenuBar1.add(jMenuLimpar);
 
         setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+    private void jMenuApagarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuApagarMouseClicked
         // TODO add your handling code here:
         if (jTableOrdemServico.getSelectedRow() != -1) {
             if (Util.mostraMensagemEmTela("Deseja realmente excluir?")) {
@@ -262,13 +262,13 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
         }
 
-    }//GEN-LAST:event_jMenu3MouseClicked
+    }//GEN-LAST:event_jMenuApagarMouseClicked
 
-    private void jRadioButtonFisicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonFisicoActionPerformed
+    private void jRadioButtonComPrazoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonComPrazoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonFisicoActionPerformed
+    }//GEN-LAST:event_jRadioButtonComPrazoActionPerformed
 
-    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+    private void jMenuEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuEditarMouseClicked
         // TODO add your handling code here:
         if (jTableOrdemServico.getSelectedRow() != -1) {
              Data.hash.put("ordem", orderns.get(jTableOrdemServico.getSelectedRow()));
@@ -277,28 +277,28 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
         } else {
             JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
         }
-    }//GEN-LAST:event_jMenu1MouseClicked
+    }//GEN-LAST:event_jMenuEditarMouseClicked
 
-    private void jMenu6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu6MouseClicked
+    private void jMenuVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuVoltarMouseClicked
         // TODO add your handling code here:
         this.dispose();
-    }//GEN-LAST:event_jMenu6MouseClicked
+    }//GEN-LAST:event_jMenuVoltarMouseClicked
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-    }//GEN-LAST:event_jButton7ActionPerformed
+    private void jButtonPesquisaDataVencimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisaDataVencimentoActionPerformed
+    }//GEN-LAST:event_jButtonPesquisaDataVencimentoActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void jButtonPesquisaIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisaIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_jButtonPesquisaIDActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void jButtonPesquisaDataCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisaDataCadastroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
+    }//GEN-LAST:event_jButtonPesquisaDataCadastroActionPerformed
 
-    private void jRadioButtonJuridicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonJuridicoActionPerformed
-    }//GEN-LAST:event_jRadioButtonJuridicoActionPerformed
+    private void jRadioButtonVencidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonVencidasActionPerformed
+    }//GEN-LAST:event_jRadioButtonVencidasActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonVisualizarOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVisualizarOSActionPerformed
         // TODO add your handling code here:
         if (jTableOrdemServico.getSelectedRow() != -1) {
             Data.hash.put("ordem", orderns.get(jTableOrdemServico.getSelectedRow()));
@@ -307,16 +307,16 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
         } else {
             JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonVisualizarOSActionPerformed
 
-    private void jMenu7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7MouseClicked
+    private void jMenuLimparMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuLimparMouseClicked
         // TODO add your handling code here:
         popularTabela();
       //  jTextFieldCod.setText(null);
         //jComboBoxCliente.setSelectedIndex(-1);
         //jComboBoxFuncionario.setSelectedIndex(-1);
-        jFormattedTextField1.setText(null);
-    }//GEN-LAST:event_jMenu7MouseClicked
+        jFormattedTextFieldDataCadastro.setText(null);
+    }//GEN-LAST:event_jMenuLimparMouseClicked
 
     /**
      * @param args the command line arguments
@@ -361,30 +361,30 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
+    private javax.swing.JButton jButtonPesquisaDataCadastro;
+    private javax.swing.JButton jButtonPesquisaDataVencimento;
+    private javax.swing.JButton jButtonPesquisaID;
+    private javax.swing.JButton jButtonVisualizarOS;
+    private javax.swing.JComboBox jComboBoxCliente;
+    private javax.swing.JComboBox jComboBoxFuncionario;
+    private javax.swing.JFormattedTextField jFormattedTextFieldDataCadastro;
+    private javax.swing.JFormattedTextField jFormattedTextFieldDataVencimento;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenuApagar;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButtonFisico;
-    private javax.swing.JRadioButton jRadioButtonJuridico;
+    private javax.swing.JMenu jMenuEditar;
+    private javax.swing.JMenu jMenuLimpar;
+    private javax.swing.JMenu jMenuVoltar;
+    private javax.swing.JRadioButton jRadioButtonComPrazo;
+    private javax.swing.JRadioButton jRadioButtonTodas;
+    private javax.swing.JRadioButton jRadioButtonVencidas;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableOrdemServico;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextFieldID;
     // End of variables declaration//GEN-END:variables
 
     private void popularTabela() {
