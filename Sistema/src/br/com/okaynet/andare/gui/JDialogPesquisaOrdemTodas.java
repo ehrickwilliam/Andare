@@ -271,7 +271,7 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
     private void jMenuEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuEditarMouseClicked
         // TODO add your handling code here:
         if (jTableOrdemServico.getSelectedRow() != -1) {
-             Data.hash.put("ordem", orderns.get(jTableOrdemServico.getSelectedRow()));
+            Data.hash.put("ordem", orderns.get(jTableOrdemServico.getSelectedRow()));
             Util.abrirDialogCentralizado(new JDialogCadastroOrdemPopUp(null, true));
             popularTabela();
         } else {
@@ -289,6 +289,7 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
 
     private void jButtonPesquisaIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisaIDActionPerformed
         // TODO add your handling code here:
+        pesquisarPorID();
     }//GEN-LAST:event_jButtonPesquisaIDActionPerformed
 
     private void jButtonPesquisaDataCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisaDataCadastroActionPerformed
@@ -312,7 +313,7 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
     private void jMenuLimparMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuLimparMouseClicked
         // TODO add your handling code here:
         popularTabela();
-      //  jTextFieldCod.setText(null);
+        //  jTextFieldCod.setText(null);
         //jComboBoxCliente.setSelectedIndex(-1);
         //jComboBoxFuncionario.setSelectedIndex(-1);
         jFormattedTextFieldDataCadastro.setText(null);
@@ -417,5 +418,24 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
         TransactionManager.commit();
         popularTabela();
 
+    }
+
+    private void pesquisarPorID() {
+        if (verificarSeENumero(jTextFieldID.getText())) {
+            TransactionManager.beginTransaction();
+            orderns = new DaoOrdemServico().obterOSPorId(Integer.parseInt(jTextFieldID.getText()));
+            TransactionManager.commit();
+            prencherOrdem();
+        }
+    }
+
+    private boolean verificarSeENumero(String text) {
+        try {
+            int opcao = Integer.parseInt(text);
+            return true;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "ID inválido!");
+            return false;
+        }
     }
 }

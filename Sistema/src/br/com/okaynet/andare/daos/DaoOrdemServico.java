@@ -158,4 +158,13 @@ public class DaoOrdemServico extends DaoGenerics<OrdemServico> {
         lista = query.list();
         return lista;
     }
+
+    public List<OrdemServico> obterOSPorId(Integer id) {
+        List<OrdemServico> lista = null;
+        Query query = session.createQuery("From "
+                + alvo.getSimpleName()
+                + " where id = " + id + " ORDER BY id DESC");
+        lista = query.list();
+        return lista;
+    }
 }
