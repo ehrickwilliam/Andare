@@ -266,9 +266,14 @@ public class JDialogPesquisaOrdemMes extends javax.swing.JDialog {
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
         TransactionManager.beginTransaction();
-        orderns = new DaoOrdemServico().obterDataCad(Util.stringToCalendar(jFormattedTextField1.getText()));
-        TransactionManager.commit();
-        prencherOrdem();
+        if (!jFormattedTextField1.getText().equals("  /  /    ")) {
+            orderns = new DaoOrdemServico().obterDataCad(Util.stringToCalendar(jFormattedTextField1.getText()));
+            TransactionManager.commit();
+            prencherOrdem();
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
+        }
+            
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jMenu7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7MouseClicked
