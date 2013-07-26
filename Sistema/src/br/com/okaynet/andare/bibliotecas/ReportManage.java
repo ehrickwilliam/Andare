@@ -151,7 +151,7 @@ public class ReportManage {
         // cria visualizador de relatorio
         JasperViewer jrviewer = new JasperViewer(jasperPrint, false);
         // mostra o visualizador
-        jrviewer.toFront();
+        jrviewer.setTitle("Ordem de Serviço");
         jrviewer.setVisible(true);
     }
 }
