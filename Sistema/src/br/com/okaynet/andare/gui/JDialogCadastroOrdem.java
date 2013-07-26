@@ -698,7 +698,7 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
                         report.relatorioPronto("OrdemServicoSimplesJuridico","Ordem de serviço");
                     }
                     this.dispose();
-
+                    
                 } catch (JRException ex) {
                     Logger.getLogger(testeRelatorio.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (SQLException ex) {
