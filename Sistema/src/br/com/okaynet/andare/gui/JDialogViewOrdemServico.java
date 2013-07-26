@@ -20,8 +20,14 @@ import br.com.okaynet.andare.model.Pessoa;
 import java.awt.Color;
 import static java.lang.Thread.sleep;
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -97,6 +103,7 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
         jTextFieldValor = new javax.swing.JTextField();
         jComboBoxQuantParcelas = new javax.swing.JComboBox();
         jComboBoxParcelasRest = new javax.swing.JComboBox();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu6 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
@@ -259,7 +266,7 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel23.setText("Juros % ao dia:");
-        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 140, 80, 10));
+        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 80, 10));
 
         jFormattedTextFieldValorPar.setEditable(false);
         jFormattedTextFieldValorPar.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
@@ -277,7 +284,7 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
                 jTextFieldJurosActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldJuros, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, 110, -1));
+        getContentPane().add(jTextFieldJuros, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, 110, -1));
 
         jLabel25.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel25.setText("Valor Parc:");
@@ -313,6 +320,15 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
 
         jComboBoxParcelasRest.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         getContentPane().add(jComboBoxParcelasRest, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 50, -1));
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/002.png"))); // NOI18N
+        jButton1.setText("Calcular Juros");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, 130, 20));
 
         jMenuBar1.setMinimumSize(new java.awt.Dimension(56, 31));
         jMenuBar1.setPreferredSize(new java.awt.Dimension(396, 31));
@@ -380,6 +396,38 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jMenu1MouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Date data = new Date();
+        SimpleDateFormat formatadorTotal = new SimpleDateFormat("dd/MM/yyyy");
+        String dataFormatadaNormal = formatadorTotal.format(data);
+        try {
+            int diferencaEntreDatas = diferencaEntreDatas(jFormattedTextFieldDataVencimento.getText(), dataFormatadaNormal) - 1;
+            System.out.println(diferencaEntreDatas);
+            System.out.println(dataFormatadaNormal);
+            System.out.println(jFormattedTextFieldDataVencimento.getText());
+            if (diferencaEntreDatas > 0) {
+                double juro = Double.parseDouble(jTextFieldJuros.getText());
+                double valor = Double.parseDouble(jTextFieldValor.getText());
+
+                double resultadoJuro = valor * juro / 100;
+                resultadoJuro = resultadoJuro * diferencaEntreDatas;
+                resultadoJuro = resultadoJuro + valor;
+
+                BigDecimal a = new BigDecimal(resultadoJuro);
+                BigDecimal aArredondado = a.divide(BigDecimal.ONE, 2, BigDecimal.ROUND_HALF_UP);
+
+
+                JOptionPane.showMessageDialog(rootPane, "Valor com juro adicionado referente a " + diferencaEntreDatas + " dia(s) de atraso é: R$ " + aArredondado);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Calculo demostra que está OS ainda não está vencida.");
+            }
+        } catch (ParseException ex) {
+            Logger.getLogger(JDialogViewOrdemServico.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -422,6 +470,7 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox jComboBoxBanco;
     private javax.swing.JComboBox jComboBoxCidade;
     private javax.swing.JComboBox jComboBoxCliente;
@@ -491,9 +540,9 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
                     jComboBoxCliente.setSelectedItem(ordem.getCliente());
                     jTextFieldValor.setText(String.valueOf(ordem.getValor()));
                     jComboBoxQuantParcelas.setSelectedItem(ordem.getParcelas());
-                    
-                    jComboBoxParcelasRest.setSelectedIndex((ordem.getParcelasRestantes()-1));
-                    
+
+                    jComboBoxParcelasRest.setSelectedIndex((ordem.getParcelasRestantes() - 1));
+
                     jComboBoxBanco.setSelectedItem(ordem.getBanco());
                     jComboBoxTipoCheque.setSelectedItem(ordem.getTipoCheque());
                     jTextFieldJuros.setText(String.valueOf(ordem.getJuros()));
@@ -578,8 +627,8 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
     private double calcularParc(double valor, double parcelas) {
         return valor / parcelas;
     }
-    
-        private void salvar() {
+
+    private void salvar() {
         if (validaCamposEmBranco()) {
             OrdemServico ordem = new OrdemServico();
             ordem.setId(Integer.parseInt(jTextFieldCod.getText()));
@@ -714,4 +763,14 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
         return true;
     }
 
+    public int diferencaEntreDatas(String data1, String data2) throws ParseException {
+        GregorianCalendar ini = new GregorianCalendar();
+        GregorianCalendar fim = new GregorianCalendar();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        ini.setTime(sdf.parse(data1));
+        fim.setTime(sdf.parse(data2));
+        long dt1 = ini.getTimeInMillis();
+        long dt2 = fim.getTimeInMillis();
+        return (int) (((dt2 - dt1) / 86400000) + 1);
+    }
 }
