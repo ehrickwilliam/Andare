@@ -46,6 +46,15 @@ public class DaoOrdemServico extends DaoGenerics<OrdemServico> {
         lista = query.list();
         return lista;
     }
+    
+    public List<OrdemServico> obterAVencer() {
+        List<OrdemServico> lista = null;
+        Query query = session.createQuery("From "
+                + alvo.getSimpleName()
+                + " where dataVencimento > '" + dataFormatadaNormal + "' AND status = 'Aguardando Pagamento' ORDER BY id");
+        lista = query.list();
+        return lista;
+    }
 
     public Long count() {
         Query query = session.createQuery("select count(*) from "

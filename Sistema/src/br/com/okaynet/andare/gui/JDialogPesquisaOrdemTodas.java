@@ -25,7 +25,7 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
     private DefaultTableModel model;
     private String styleModelOrdem[] = new String[]{"ID", "Cliente", "Funcionario", "Status", "Valor", "Data de Cadastro", "Data de Vencimento"};
     private List<OrdemServico> orderns;
-    
+
     public JDialogPesquisaOrdemTodas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -41,6 +41,7 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroupTipo = new javax.swing.ButtonGroup();
         jLabel2 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jTextFieldID = new javax.swing.JTextField();
@@ -127,6 +128,7 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
         });
         getContentPane().add(jButtonPesquisaDataVencimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 30, 30));
 
+        buttonGroupTipo.add(jRadioButtonVencidas);
         jRadioButtonVencidas.setText("Vencidas");
         jRadioButtonVencidas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,6 +137,7 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
         });
         getContentPane().add(jRadioButtonVencidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, -1, -1));
 
+        buttonGroupTipo.add(jRadioButtonComPrazo);
         jRadioButtonComPrazo.setText("Com prazo");
         jRadioButtonComPrazo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,8 +146,14 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
         });
         getContentPane().add(jRadioButtonComPrazo, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 40, -1, -1));
 
+        buttonGroupTipo.add(jRadioButtonTodas);
         jRadioButtonTodas.setSelected(true);
         jRadioButtonTodas.setText("Todas");
+        jRadioButtonTodas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonTodasActionPerformed(evt);
+            }
+        });
         getContentPane().add(jRadioButtonTodas, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 40, -1, -1));
 
         jComboBoxFuncionario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "Jhonatan", "André" }));
@@ -288,10 +297,12 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
 
     private void jRadioButtonVencidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonVencidasActionPerformed
         // TODO add your handling code here:
+        pesquisarPorVencidas();
     }//GEN-LAST:event_jRadioButtonVencidasActionPerformed
 
     private void jRadioButtonComPrazoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonComPrazoActionPerformed
         // TODO add your handling code here:
+        pesquisarPorDentroDoPrazo();
     }//GEN-LAST:event_jRadioButtonComPrazoActionPerformed
 
     private void jButtonVisualizarOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVisualizarOSActionPerformed
@@ -304,6 +315,11 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
         }
     }//GEN-LAST:event_jButtonVisualizarOSActionPerformed
+
+    private void jRadioButtonTodasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonTodasActionPerformed
+        // TODO add your handling code here:
+        pesquisarPorTodas();
+    }//GEN-LAST:event_jRadioButtonTodasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -347,6 +363,7 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroupTipo;
     private javax.swing.JButton jButtonPesquisaDataCadastro;
     private javax.swing.JButton jButtonPesquisaDataVencimento;
     private javax.swing.JButton jButtonPesquisaID;
@@ -428,7 +445,7 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
             orderns = new DaoOrdemServico().obterDataCad(Util.stringToCalendar(jFormattedTextFieldDataCadastro.getText()));
             TransactionManager.commit();
             prencherOrdem();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(rootPane, "Nenhum registro encontrado!");
         }
     }
@@ -439,8 +456,26 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
             orderns = new DaoOrdemServico().obterDataVencimento(Util.stringToCalendar(jFormattedTextFieldDataVencimento.getText()));
             TransactionManager.commit();
             prencherOrdem();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(rootPane, "Nenhum registro encontrado!");
         }
+    }
+
+    private void pesquisarPorVencidas() {
+        TransactionManager.beginTransaction();
+        orderns = new DaoOrdemServico().obterVencidas();
+        TransactionManager.commit();
+        prencherOrdem();
+    }
+
+    private void pesquisarPorDentroDoPrazo() {
+        TransactionManager.beginTransaction();
+        orderns = new DaoOrdemServico().obterAVencer();
+        TransactionManager.commit();
+        prencherOrdem();
+    }
+
+    private void pesquisarPorTodas() {
+        popularTabela();
     }
 }
