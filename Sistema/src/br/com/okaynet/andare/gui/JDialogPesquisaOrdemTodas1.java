@@ -4,6 +4,15 @@
  */
 package br.com.okaynet.andare.gui;
 
+import br.com.okaynet.andare.bibliotecas.Util;
+import br.com.okaynet.andare.conexao.Data;
+import br.com.okaynet.andare.conexao.TransactionManager;
+import br.com.okaynet.andare.daos.DaoOrdemServico;
+import br.com.okaynet.andare.model.OrdemServico;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author paulo
@@ -13,9 +22,14 @@ public class JDialogPesquisaOrdemTodas1 extends javax.swing.JDialog {
     /**
      * Creates new form JDialogPesquisaOrdemTodas1
      */
+    private DefaultTableModel model;
+    private String styleModelOrdem[] = new String[]{"ID", "Cliente", "Funcionario", "Status", "Valor", "Data de Cadastro", "Data de Vencimento"};
+    private List<OrdemServico> orderns;
+    
     public JDialogPesquisaOrdemTodas1(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        popularTabela();
     }
 
     /**
@@ -227,14 +241,29 @@ public class JDialogPesquisaOrdemTodas1 extends javax.swing.JDialog {
 
     private void jMenuEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuEditarMouseClicked
         // TODO add your handling code here:
+        if (jTableOrdemServico.getSelectedRow() != -1) {
+            Data.hash.put("ordem", orderns.get(jTableOrdemServico.getSelectedRow()));
+            Util.abrirDialogCentralizado(new JDialogCadastroOrdemPopUp(null, true));
+            popularTabela();
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
+        }
     }//GEN-LAST:event_jMenuEditarMouseClicked
 
     private void jMenuApagarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuApagarMouseClicked
         // TODO add your handling code here:
+        if (jTableOrdemServico.getSelectedRow() != -1) {
+            if (Util.mostraMensagemEmTela("Deseja realmente excluir?")) {
+                deletar();
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
+        }
     }//GEN-LAST:event_jMenuApagarMouseClicked
 
     private void jMenuVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuVoltarMouseClicked
         // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_jMenuVoltarMouseClicked
 
     private void jMenuLimparMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuLimparMouseClicked
@@ -243,10 +272,12 @@ public class JDialogPesquisaOrdemTodas1 extends javax.swing.JDialog {
 
     private void jButtonPesquisaIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisaIDActionPerformed
         // TODO add your handling code here:
+        pesquisarPorID();
     }//GEN-LAST:event_jButtonPesquisaIDActionPerformed
 
     private void jButtonPesquisaDataCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisaDataCadastroActionPerformed
         // TODO add your handling code here:
+        pesquisarPorDataCadastro();
     }//GEN-LAST:event_jButtonPesquisaDataCadastroActionPerformed
 
     private void jButtonPesquisaDataVencimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisaDataVencimentoActionPerformed
@@ -263,6 +294,13 @@ public class JDialogPesquisaOrdemTodas1 extends javax.swing.JDialog {
 
     private void jButtonVisualizarOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVisualizarOSActionPerformed
         // TODO add your handling code here:
+        if (jTableOrdemServico.getSelectedRow() != -1) {
+            Data.hash.put("ordem", orderns.get(jTableOrdemServico.getSelectedRow()));
+            Util.abrirDialogCentralizado(new JDialogViewOrdemServico(null, true));
+            popularTabela();
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
+        }
     }//GEN-LAST:event_jButtonVisualizarOSActionPerformed
 
     /**
@@ -332,4 +370,64 @@ public class JDialogPesquisaOrdemTodas1 extends javax.swing.JDialog {
     private javax.swing.JTable jTableOrdemServico;
     private javax.swing.JTextField jTextFieldID;
     // End of variables declaration//GEN-END:variables
+
+    private void popularTabela() {
+        TransactionManager.beginTransaction();
+        orderns = new DaoOrdemServico().obter();
+        TransactionManager.commit();
+
+        prencherOrdem();
+    }
+
+    private void prencherOrdem() {
+        if (orderns != null && !orderns.isEmpty()) {
+            model = new DefaultTableModel();
+            model.setColumnIdentifiers(styleModelOrdem);
+            for (OrdemServico ordem : orderns) {
+                model.addRow(new Object[]{ordem.getId(), ordem.getCliente(), ordem.getFuncionario(), ordem.getStatus(), ordem.getValor(), Util.calendarToString(ordem.getDataCadastro()), Util.calendarToString(ordem.getDataVencimento())});
+            }
+            jTableOrdemServico.setModel(model);
+        } else {
+            model = new DefaultTableModel();
+            model.setColumnIdentifiers(styleModelOrdem);
+            jTableOrdemServico.setModel(model);
+        }
+    }
+
+    private void deletar() {
+        TransactionManager.beginTransaction();
+        new DaoOrdemServico().remover(orderns.get(jTableOrdemServico.getSelectedRow()));
+        TransactionManager.commit();
+        popularTabela();
+    }
+
+    private void pesquisarPorID() {
+        if (verificarSeENumero(jTextFieldID.getText())) {
+            TransactionManager.beginTransaction();
+            orderns = new DaoOrdemServico().obterOSPorId(Integer.parseInt(jTextFieldID.getText()));
+            TransactionManager.commit();
+            prencherOrdem();
+        }
+    }
+
+    private boolean verificarSeENumero(String text) {
+        try {
+            int opcao = Integer.parseInt(text);
+            return true;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "ID inválido!");
+            return false;
+        }
+    }
+
+    private void pesquisarPorDataCadastro() {
+        TransactionManager.beginTransaction();
+        if (!jFormattedTextFieldDataCadastro.getText().equals("  /  /    ")) {
+            orderns = new DaoOrdemServico().obterDataCad(Util.stringToCalendar(jFormattedTextFieldDataCadastro.getText()));
+            TransactionManager.commit();
+            prencherOrdem();
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
+        }
+    }
 }
