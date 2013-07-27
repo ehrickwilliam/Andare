@@ -7,8 +7,16 @@ package br.com.okaynet.andare.gui;
 import br.com.okaynet.andare.bibliotecas.Util;
 import br.com.okaynet.andare.conexao.Data;
 import br.com.okaynet.andare.conexao.TransactionManager;
+import br.com.okaynet.andare.daos.DaoClienteFisico;
+import br.com.okaynet.andare.daos.DaoClienteJuridico;
+import br.com.okaynet.andare.daos.DaoFuncionario;
 import br.com.okaynet.andare.daos.DaoOrdemServico;
+import br.com.okaynet.andare.model.ClienteFisico;
+import br.com.okaynet.andare.model.ClienteJuridico;
+import br.com.okaynet.andare.model.Funcionario;
 import br.com.okaynet.andare.model.OrdemServico;
+import br.com.okaynet.andare.model.Pessoa;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -30,6 +38,8 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         popularTabela();
+        popularComboCliente();
+        popularComboFuncionario();
     }
 
     /**
@@ -157,6 +167,16 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
         getContentPane().add(jRadioButtonTodas, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 40, -1, -1));
 
         jComboBoxFuncionario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "Jhonatan", "André" }));
+        jComboBoxFuncionario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBoxFuncionarioMouseClicked(evt);
+            }
+        });
+        jComboBoxFuncionario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jComboBoxFuncionarioFocusGained(evt);
+            }
+        });
         getContentPane().add(jComboBoxFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 190, -1));
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
@@ -168,6 +188,21 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
         getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, -1, -1));
 
         jComboBoxCliente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "Okaynet Informática LTDA ME" }));
+        jComboBoxCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBoxClienteMouseClicked(evt);
+            }
+        });
+        jComboBoxCliente.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jComboBoxClienteFocusGained(evt);
+            }
+        });
+        jComboBoxCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboBoxClienteKeyPressed(evt);
+            }
+        });
         getContentPane().add(jComboBoxCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 200, -1));
 
         jButtonVisualizarOS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/074.png"))); // NOI18N
@@ -320,6 +355,31 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
         // TODO add your handling code here:
         pesquisarPorTodas();
     }//GEN-LAST:event_jRadioButtonTodasActionPerformed
+
+    private void jComboBoxClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxClienteMouseClicked
+        // TODO add your handling code here:
+        pesquisarPorOSComClienteEFuncionario();
+    }//GEN-LAST:event_jComboBoxClienteMouseClicked
+
+    private void jComboBoxFuncionarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxFuncionarioMouseClicked
+        // TODO add your handling code here:
+        pesquisarPorOSComClienteEFuncionario();
+    }//GEN-LAST:event_jComboBoxFuncionarioMouseClicked
+
+    private void jComboBoxClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBoxClienteKeyPressed
+        // TODO add your handling code here:
+        pesquisarPorOSComClienteEFuncionario();
+    }//GEN-LAST:event_jComboBoxClienteKeyPressed
+
+    private void jComboBoxFuncionarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxFuncionarioFocusGained
+        // TODO add your handling code here:
+        pesquisarPorOSComClienteEFuncionario();
+    }//GEN-LAST:event_jComboBoxFuncionarioFocusGained
+
+    private void jComboBoxClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxClienteFocusGained
+        // TODO add your handling code here:
+        pesquisarPorOSComClienteEFuncionario();
+    }//GEN-LAST:event_jComboBoxClienteFocusGained
 
     /**
      * @param args the command line arguments
@@ -477,5 +537,63 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
 
     private void pesquisarPorTodas() {
         popularTabela();
+    }
+
+    private void popularComboCliente() {
+        List<Pessoa> pessoa = new ArrayList<Pessoa>();
+        TransactionManager.beginTransaction();
+        List<ClienteFisico> clientesF = new DaoClienteFisico().listar("", "nome");
+        List<ClienteJuridico> clientesJ = new DaoClienteJuridico().listar("", "razaoSocial");
+        TransactionManager.commit();
+
+        for (ClienteJuridico clienteJuridico : clientesJ) {
+            pessoa.add(clienteJuridico);
+        }
+
+        for (ClienteFisico clienteFisico : clientesF) {
+            pessoa.add(clienteFisico);
+        }
+
+        jComboBoxCliente.removeAllItems();
+        for (Pessoa funAgora : pessoa) {
+            jComboBoxCliente.addItem(funAgora);
+        }
+        jComboBoxCliente.setSelectedIndex(-1);
+    }
+
+    private void popularComboFuncionario() {
+        TransactionManager.beginTransaction();
+        List<Funcionario> fun = new DaoFuncionario().listar("", "nome");
+        TransactionManager.commit();
+        jComboBoxFuncionario.removeAllItems();
+        for (Funcionario funAgora : fun) {
+            jComboBoxFuncionario.addItem(funAgora);
+        }
+        jComboBoxFuncionario.setSelectedIndex(-1);
+    }
+
+    private void pesquisarPorOSComClienteEFuncionario() {
+        if (jComboBoxCliente.getSelectedIndex() >= 0 && jComboBoxFuncionario.getSelectedIndex() == -1) {
+            Pessoa p = (Pessoa) jComboBoxCliente.getSelectedItem();
+            TransactionManager.beginTransaction();
+            orderns = new DaoOrdemServico().obterClientes(p.getId());
+            TransactionManager.commit();
+            prencherOrdem();
+        } else if (jComboBoxCliente.getSelectedIndex() >= 0 && jComboBoxFuncionario.getSelectedIndex() >= 0) {
+
+            Pessoa p1 = (Pessoa) jComboBoxFuncionario.getSelectedItem();
+            Pessoa p2 = (Pessoa) jComboBoxCliente.getSelectedItem();
+            TransactionManager.beginTransaction();
+            orderns = new DaoOrdemServico().obterFuncionariosClientes(p1.getId(), p2.getId());
+            TransactionManager.commit();
+            prencherOrdem();
+
+        } else if (jComboBoxFuncionario.getSelectedIndex() >= 0 && jComboBoxCliente.getSelectedIndex() == -1) {
+            Pessoa p = (Pessoa) jComboBoxFuncionario.getSelectedItem();
+            TransactionManager.beginTransaction();
+            orderns = new DaoOrdemServico().obterFuncionarios(p.getId());
+            TransactionManager.commit();
+            prencherOrdem();
+        }
     }
 }
