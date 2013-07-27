@@ -89,10 +89,11 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
         getContentPane().add(jButtonPesquisaID, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 30, 30));
 
         try {
-            jFormattedTextFieldDataCadastro.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("")));
+            jFormattedTextFieldDataCadastro.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jFormattedTextFieldDataCadastro.setToolTipText("");
         getContentPane().add(jFormattedTextFieldDataCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 90, -1));
 
         jButtonPesquisaDataCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/1372094443_Magnifier2.png"))); // NOI18N
