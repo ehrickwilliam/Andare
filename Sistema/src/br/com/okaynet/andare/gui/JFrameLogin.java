@@ -31,7 +31,7 @@ public class JFrameLogin extends javax.swing.JFrame {
         }
 
         HibernateConfiguration.setBase("andare");
-        HibernateConfiguration.setHost("192.168.0.2:3306");
+        HibernateConfiguration.setHost("localhost:3306");
         HibernateConfiguration.setPass("root");
         HibernateConfiguration.setUser("root");
 
