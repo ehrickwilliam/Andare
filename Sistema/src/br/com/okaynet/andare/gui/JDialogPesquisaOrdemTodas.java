@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author paulo
  */
-public class JDialogPesquisaOrdemTodas1 extends javax.swing.JDialog {
+public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
 
     /**
      * Creates new form JDialogPesquisaOrdemTodas1
@@ -26,7 +26,7 @@ public class JDialogPesquisaOrdemTodas1 extends javax.swing.JDialog {
     private String styleModelOrdem[] = new String[]{"ID", "Cliente", "Funcionario", "Status", "Valor", "Data de Cadastro", "Data de Vencimento"};
     private List<OrdemServico> orderns;
     
-    public JDialogPesquisaOrdemTodas1(java.awt.Frame parent, boolean modal) {
+    public JDialogPesquisaOrdemTodas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         popularTabela();
@@ -89,7 +89,7 @@ public class JDialogPesquisaOrdemTodas1 extends javax.swing.JDialog {
         getContentPane().add(jButtonPesquisaID, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 30, 30));
 
         try {
-            jFormattedTextFieldDataCadastro.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            jFormattedTextFieldDataCadastro.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -320,20 +320,20 @@ public class JDialogPesquisaOrdemTodas1 extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JDialogPesquisaOrdemTodas1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDialogPesquisaOrdemTodas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JDialogPesquisaOrdemTodas1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDialogPesquisaOrdemTodas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JDialogPesquisaOrdemTodas1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDialogPesquisaOrdemTodas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JDialogPesquisaOrdemTodas1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDialogPesquisaOrdemTodas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JDialogPesquisaOrdemTodas1 dialog = new JDialogPesquisaOrdemTodas1(new javax.swing.JFrame(), true);
+                JDialogPesquisaOrdemTodas dialog = new JDialogPesquisaOrdemTodas(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
