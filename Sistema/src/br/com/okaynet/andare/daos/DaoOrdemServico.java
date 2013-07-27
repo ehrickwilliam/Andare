@@ -167,4 +167,16 @@ public class DaoOrdemServico extends DaoGenerics<OrdemServico> {
         lista = query.list();
         return lista;
     }
+
+    public List<OrdemServico> obterDataVencimento(Calendar stringToCalendar) {
+        SimpleDateFormat formatadorLocal = new SimpleDateFormat("yyyy-MM-dd");
+        String dataTotal = formatadorLocal.format(stringToCalendar.getTime());
+
+        List<OrdemServico> lista = null;
+        Query query = session.createQuery("From "
+                + alvo.getSimpleName()
+                + " where dataVencimento  LIKE '" + dataTotal + "' ORDER BY id DESC");
+        lista = query.list();
+        return lista;
+    }
 }

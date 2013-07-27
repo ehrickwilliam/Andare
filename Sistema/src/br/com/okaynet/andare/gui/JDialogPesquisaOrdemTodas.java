@@ -283,6 +283,7 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
 
     private void jButtonPesquisaDataVencimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisaDataVencimentoActionPerformed
         // TODO add your handling code here:
+        pesquisaPorDataVencimento();
     }//GEN-LAST:event_jButtonPesquisaDataVencimentoActionPerformed
 
     private void jRadioButtonVencidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonVencidasActionPerformed
@@ -428,7 +429,18 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
             TransactionManager.commit();
             prencherOrdem();
         }else{
-            JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
+            JOptionPane.showMessageDialog(rootPane, "Nenhum registro encontrado!");
+        }
+    }
+
+    private void pesquisaPorDataVencimento() {
+        TransactionManager.beginTransaction();
+        if (!jFormattedTextFieldDataVencimento.getText().equals("  /  /    ")) {
+            orderns = new DaoOrdemServico().obterDataVencimento(Util.stringToCalendar(jFormattedTextFieldDataVencimento.getText()));
+            TransactionManager.commit();
+            prencherOrdem();
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Nenhum registro encontrado!");
         }
     }
 }
