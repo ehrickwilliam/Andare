@@ -317,6 +317,7 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
 
     private void jMenuLimparMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuLimparMouseClicked
         // TODO add your handling code here:
+        limparFormulario();
     }//GEN-LAST:event_jMenuLimparMouseClicked
 
     private void jButtonPesquisaIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisaIDActionPerformed
@@ -599,5 +600,15 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
             TransactionManager.commit();
             prencherOrdem();
         }
+    }
+
+    private void limparFormulario() {
+        popularTabela();
+        jTextFieldID.setText(null);
+        jComboBoxCliente.setSelectedIndex(-1);
+        jComboBoxFuncionario.setSelectedIndex(-1);
+        jFormattedTextFieldDataCadastro.setText(null);
+        jFormattedTextFieldDataVencimento.setText(null);
+        jRadioButtonTodas.setSelected(true);
     }
 }
