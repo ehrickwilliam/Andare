@@ -79,6 +79,8 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
         jMenuLimpar = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(639, 505));
+        setPreferredSize(new java.awt.Dimension(639, 505));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
@@ -87,7 +89,7 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel13.setText("Data Cadastro:");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
         getContentPane().add(jTextFieldID, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 40, -1));
 
         jButtonPesquisaID.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/1372094443_Magnifier2.png"))); // NOI18N
@@ -106,7 +108,12 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         jFormattedTextFieldDataCadastro.setToolTipText("");
-        getContentPane().add(jFormattedTextFieldDataCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 90, -1));
+        jFormattedTextFieldDataCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextFieldDataCadastroActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jFormattedTextFieldDataCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 90, -1));
 
         jButtonPesquisaDataCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/1372094443_Magnifier2.png"))); // NOI18N
         jButtonPesquisaDataCadastro.setBorderPainted(false);
@@ -116,18 +123,18 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
                 jButtonPesquisaDataCadastroActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonPesquisaDataCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 30, 30));
+        getContentPane().add(jButtonPesquisaDataCadastro, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 30, 30));
 
         try {
             jFormattedTextFieldDataVencimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        getContentPane().add(jFormattedTextFieldDataVencimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 90, -1));
+        getContentPane().add(jFormattedTextFieldDataVencimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 90, -1));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel14.setText("Data Vencimento:");
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, -1, -1));
 
         jButtonPesquisaDataVencimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/1372094443_Magnifier2.png"))); // NOI18N
         jButtonPesquisaDataVencimento.setBorderPainted(false);
@@ -137,7 +144,7 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
                 jButtonPesquisaDataVencimentoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonPesquisaDataVencimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 30, 30));
+        getContentPane().add(jButtonPesquisaDataVencimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 30, 30));
 
         buttonGroupTipo.add(jRadioButtonVencidas);
         jRadioButtonVencidas.setText("Vencidas");
@@ -146,7 +153,7 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
                 jRadioButtonVencidasActionPerformed(evt);
             }
         });
-        getContentPane().add(jRadioButtonVencidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, -1, -1));
+        getContentPane().add(jRadioButtonVencidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, -1, -1));
 
         buttonGroupTipo.add(jRadioButtonComPrazo);
         jRadioButtonComPrazo.setText("Com prazo");
@@ -155,7 +162,7 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
                 jRadioButtonComPrazoActionPerformed(evt);
             }
         });
-        getContentPane().add(jRadioButtonComPrazo, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 40, -1, -1));
+        getContentPane().add(jRadioButtonComPrazo, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, -1, -1));
 
         buttonGroupTipo.add(jRadioButtonTodas);
         jRadioButtonTodas.setSelected(true);
@@ -165,10 +172,10 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
                 jRadioButtonTodasActionPerformed(evt);
             }
         });
-        getContentPane().add(jRadioButtonTodas, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 40, -1, -1));
+        getContentPane().add(jRadioButtonTodas, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 40, -1, -1));
 
         jComboBoxFuncionario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "Jhonatan", "André" }));
-        getContentPane().add(jComboBoxFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 190, -1));
+        getContentPane().add(jComboBoxFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 150, -1));
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel16.setText("Funcionario:");
@@ -176,10 +183,10 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel17.setText("Cliente:");
-        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, -1, -1));
+        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, -1, -1));
 
         jComboBoxCliente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "Okaynet Informática LTDA ME" }));
-        getContentPane().add(jComboBoxCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 180, -1));
+        getContentPane().add(jComboBoxCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 160, -1));
 
         jButtonVisualizarOS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/074.png"))); // NOI18N
         jButtonVisualizarOS.setText("Visualizar Ordem de Serviço");
@@ -188,7 +195,7 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
                 jButtonVisualizarOSActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonVisualizarOS, new org.netbeans.lib.awtextra.AbsoluteConstraints(444, 89, 170, 22));
+        getContentPane().add(jButtonVisualizarOS, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 210, 22));
 
         jTableOrdemServico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -217,7 +224,7 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jTableOrdemServico);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 590, 270));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 590, 270));
 
         jButtonPesquisaFuncionarioCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/1372094443_Magnifier2.png"))); // NOI18N
         jButtonPesquisaFuncionarioCliente.setBorderPainted(false);
@@ -232,7 +239,7 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
                 jButtonPesquisaFuncionarioClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonPesquisaFuncionarioCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 30, 30));
+        getContentPane().add(jButtonPesquisaFuncionarioCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 30, 30));
 
         jMenuBar1.setMinimumSize(new java.awt.Dimension(56, 31));
         jMenuBar1.setPreferredSize(new java.awt.Dimension(500, 31));
@@ -360,6 +367,10 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
         // TODO add your handling code here:
         pesquisarPorOSComClienteEFuncionario();
     }//GEN-LAST:event_jButtonPesquisaFuncionarioClienteMouseClicked
+
+    private void jFormattedTextFieldDataCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldDataCadastroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextFieldDataCadastroActionPerformed
 
     /**
      * @param args the command line arguments
