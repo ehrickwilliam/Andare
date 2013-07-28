@@ -71,6 +71,7 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
         jButtonVisualizarOS = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableOrdemServico = new javax.swing.JTable();
+        jButtonPesquisaFuncionarioCliente = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuEditar = new javax.swing.JMenu();
         jMenuApagar = new javax.swing.JMenu();
@@ -167,16 +168,6 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
         getContentPane().add(jRadioButtonTodas, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 40, -1, -1));
 
         jComboBoxFuncionario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "Jhonatan", "André" }));
-        jComboBoxFuncionario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jComboBoxFuncionarioMouseClicked(evt);
-            }
-        });
-        jComboBoxFuncionario.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jComboBoxFuncionarioFocusGained(evt);
-            }
-        });
         getContentPane().add(jComboBoxFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 190, -1));
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
@@ -188,22 +179,7 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
         getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, -1, -1));
 
         jComboBoxCliente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "Okaynet Informática LTDA ME" }));
-        jComboBoxCliente.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jComboBoxClienteMouseClicked(evt);
-            }
-        });
-        jComboBoxCliente.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jComboBoxClienteFocusGained(evt);
-            }
-        });
-        jComboBoxCliente.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jComboBoxClienteKeyPressed(evt);
-            }
-        });
-        getContentPane().add(jComboBoxCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 200, -1));
+        getContentPane().add(jComboBoxCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 180, -1));
 
         jButtonVisualizarOS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/074.png"))); // NOI18N
         jButtonVisualizarOS.setText("Visualizar Ordem de Serviço");
@@ -212,7 +188,7 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
                 jButtonVisualizarOSActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonVisualizarOS, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 89, 184, 22));
+        getContentPane().add(jButtonVisualizarOS, new org.netbeans.lib.awtextra.AbsoluteConstraints(444, 89, 170, 22));
 
         jTableOrdemServico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -243,8 +219,23 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 590, 270));
 
+        jButtonPesquisaFuncionarioCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/1372094443_Magnifier2.png"))); // NOI18N
+        jButtonPesquisaFuncionarioCliente.setBorderPainted(false);
+        jButtonPesquisaFuncionarioCliente.setFocusPainted(false);
+        jButtonPesquisaFuncionarioCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonPesquisaFuncionarioClienteMouseClicked(evt);
+            }
+        });
+        jButtonPesquisaFuncionarioCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPesquisaFuncionarioClienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonPesquisaFuncionarioCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 30, 30));
+
         jMenuBar1.setMinimumSize(new java.awt.Dimension(56, 31));
-        jMenuBar1.setPreferredSize(new java.awt.Dimension(396, 31));
+        jMenuBar1.setPreferredSize(new java.awt.Dimension(500, 31));
 
         jMenuEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/108.png"))); // NOI18N
         jMenuEditar.setText("Editar");
@@ -361,30 +352,14 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
         pesquisarPorTodas();
     }//GEN-LAST:event_jRadioButtonTodasActionPerformed
 
-    private void jComboBoxClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxClienteMouseClicked
+    private void jButtonPesquisaFuncionarioClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisaFuncionarioClienteActionPerformed
         // TODO add your handling code here:
-        pesquisarPorOSComClienteEFuncionario();
-    }//GEN-LAST:event_jComboBoxClienteMouseClicked
+    }//GEN-LAST:event_jButtonPesquisaFuncionarioClienteActionPerformed
 
-    private void jComboBoxFuncionarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxFuncionarioMouseClicked
+    private void jButtonPesquisaFuncionarioClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPesquisaFuncionarioClienteMouseClicked
         // TODO add your handling code here:
         pesquisarPorOSComClienteEFuncionario();
-    }//GEN-LAST:event_jComboBoxFuncionarioMouseClicked
-
-    private void jComboBoxClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBoxClienteKeyPressed
-        // TODO add your handling code here:
-        pesquisarPorOSComClienteEFuncionario();
-    }//GEN-LAST:event_jComboBoxClienteKeyPressed
-
-    private void jComboBoxFuncionarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxFuncionarioFocusGained
-        // TODO add your handling code here:
-        pesquisarPorOSComClienteEFuncionario();
-    }//GEN-LAST:event_jComboBoxFuncionarioFocusGained
-
-    private void jComboBoxClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxClienteFocusGained
-        // TODO add your handling code here:
-        pesquisarPorOSComClienteEFuncionario();
-    }//GEN-LAST:event_jComboBoxClienteFocusGained
+    }//GEN-LAST:event_jButtonPesquisaFuncionarioClienteMouseClicked
 
     /**
      * @param args the command line arguments
@@ -431,6 +406,7 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
     private javax.swing.ButtonGroup buttonGroupTipo;
     private javax.swing.JButton jButtonPesquisaDataCadastro;
     private javax.swing.JButton jButtonPesquisaDataVencimento;
+    private javax.swing.JButton jButtonPesquisaFuncionarioCliente;
     private javax.swing.JButton jButtonPesquisaID;
     private javax.swing.JButton jButtonVisualizarOS;
     private javax.swing.JComboBox jComboBoxCliente;
