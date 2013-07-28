@@ -695,12 +695,12 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
             jFormattedTextFieldNumero.setBackground(Color.white);
         }
 
-        if (jTextFieldComplemento.getText().isEmpty()) {
-            jTextFieldComplemento.setBackground(color);
-            flag = 1;
-        } else {
-            jTextFieldComplemento.setBackground(Color.white);
-        }
+//        if (jTextFieldComplemento.getText().isEmpty()) {
+//            jTextFieldComplemento.setBackground(color);
+//            flag = 1;
+//        } else {
+//            jTextFieldComplemento.setBackground(Color.white);
+//        }
 
         if ("     -   ".equals(jFormattedTextFieldCep.getText())) {
             jFormattedTextFieldCep.setBackground(color);

@@ -355,12 +355,12 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             }
         });
         jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-            }
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenu4MenuSelected(evt);
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
         });
         jMenu4.addActionListener(new java.awt.event.ActionListener() {
@@ -750,12 +750,12 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             jFormattedTextFieldNumero.setBackground(Color.white);
         }
 
-        if (jTextFieldComplemento.getText().isEmpty()) {
-            jTextFieldComplemento.setBackground(color);
-            flag = 1;
-        } else {
-            jTextFieldComplemento.setBackground(Color.white);
-        }
+//        if (jTextFieldComplemento.getText().isEmpty()) {
+//            jTextFieldComplemento.setBackground(color);
+//            flag = 1;
+//        } else {
+//            jTextFieldComplemento.setBackground(Color.white);
+//        }
 
         if ("     -   ".equals(jFormattedTextFieldCep.getText())) {
             jFormattedTextFieldCep.setBackground(color);
