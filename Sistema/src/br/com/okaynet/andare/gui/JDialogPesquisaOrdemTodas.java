@@ -243,8 +243,12 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 590, 270));
 
+        jMenuBar1.setMinimumSize(new java.awt.Dimension(56, 31));
+        jMenuBar1.setPreferredSize(new java.awt.Dimension(396, 31));
+
         jMenuEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/108.png"))); // NOI18N
         jMenuEditar.setText("Editar");
+        jMenuEditar.setMinimumSize(new java.awt.Dimension(56, 31));
         jMenuEditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenuEditarMouseClicked(evt);
