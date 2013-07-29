@@ -24,6 +24,15 @@ public class JDialogCadastroUsuario extends javax.swing.JDialog {
     public JDialogCadastroUsuario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        Usuarios autenticado = (Usuarios) Data.hash.get("usuario");
+        int indexOf = autenticado.getPermissoes().indexOf("M");
+        if (indexOf > 0) {
+            jMenu4.setEnabled(true);
+            jMenu4.setEnabled(true);
+        } else {
+            jMenu4.setEnabled(false);
+            jMenu4.setEnabled(false);
+        }
     }
 
     /**
@@ -218,12 +227,12 @@ public class JDialogCadastroUsuario extends javax.swing.JDialog {
             }
         });
         jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenu4MenuSelected(evt);
             }
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
         });
         jMenu4.addActionListener(new java.awt.event.ActionListener() {
@@ -275,9 +284,11 @@ public class JDialogCadastroUsuario extends javax.swing.JDialog {
 
     private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
         // TODO add your handling code here:
-        this.setVisible(false);
-        Util.abrirDialogCentralizado(new JDialogPesquisaUsuarios(null, true));
-        this.dispose();
+        if (jMenu4.isEnabled()) {
+            this.setVisible(false);
+            Util.abrirDialogCentralizado(new JDialogPesquisaUsuarios(null, true));
+            this.dispose();
+        }
     }//GEN-LAST:event_jMenu4MouseClicked
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
@@ -422,7 +433,7 @@ public class JDialogCadastroUsuario extends javax.swing.JDialog {
 
                     StringBuilder permissoes = new StringBuilder();
                     permissoes.append("ZX");
-                    
+
                     if (jCheckBoxAdminOrdem.isSelected()) {
                         permissoes.append("S");
                     }

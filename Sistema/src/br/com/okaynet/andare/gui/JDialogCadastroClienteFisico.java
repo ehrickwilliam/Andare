@@ -5,10 +5,12 @@
 package br.com.okaynet.andare.gui;
 
 import br.com.okaynet.andare.bibliotecas.Util;
+import br.com.okaynet.andare.conexao.Data;
 import br.com.okaynet.andare.conexao.TransactionManager;
 import br.com.okaynet.andare.daos.DaoClienteFisico;
 import br.com.okaynet.andare.model.ClienteFisico;
 import br.com.okaynet.andare.model.Endereco;
+import br.com.okaynet.andare.model.Usuarios;
 import java.awt.Color;
 import java.util.Calendar;
 import java.util.regex.Pattern;
@@ -27,6 +29,15 @@ public class JDialogCadastroClienteFisico extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         limparCampos();
+        Usuarios autenticado = (Usuarios) Data.hash.get("usuario");
+        int indexOf = autenticado.getPermissoes().indexOf("C");
+        if (indexOf > 0) {
+            jMenuPesquizar.setEnabled(true);
+            jMenuPesquizar.setEnabled(true);
+        } else {
+            jMenuPesquizar.setEnabled(false);
+            jMenuPesquizar.setEnabled(false);
+        }
     }
 
     /**
@@ -275,10 +286,10 @@ public class JDialogCadastroClienteFisico extends javax.swing.JDialog {
         jMenuPesquizar.addMenuListener(new javax.swing.event.MenuListener() {
             public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
-            }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenuPesquizarMenuSelected(evt);
+            }
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
         });
         jMenuPesquizar.addActionListener(new java.awt.event.ActionListener() {
@@ -330,9 +341,11 @@ public class JDialogCadastroClienteFisico extends javax.swing.JDialog {
 
     private void jMenuPesquizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuPesquizarMouseClicked
         // TODO add your handling code here:
-        this.setVisible(false);
-        Util.abrirDialogCentralizado(new JDialogPesquisaCliente(null, true, "F"));
-        this.dispose();
+        if (jMenuPesquizar.isEnabled()) {
+            this.setVisible(false);
+            Util.abrirDialogCentralizado(new JDialogPesquisaCliente(null, true, "F"));
+            this.dispose();
+        }
     }//GEN-LAST:event_jMenuPesquizarMouseClicked
 
     private void jMenuSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSalvarMouseClicked

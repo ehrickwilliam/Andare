@@ -16,6 +16,7 @@ import br.com.okaynet.andare.model.ClienteJuridico;
 import br.com.okaynet.andare.model.Funcionario;
 import br.com.okaynet.andare.model.OrdemServico;
 import br.com.okaynet.andare.model.Pessoa;
+import br.com.okaynet.andare.model.Usuarios;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -40,6 +41,24 @@ public class JDialogPesquisaOrdemMes extends javax.swing.JDialog {
         popularComboCliente();
         popularComboFuncionario();
         popularTabela();
+        Usuarios autenticado = (Usuarios) Data.hash.get("usuario");
+        int indexOf = autenticado.getPermissoes().indexOf("G");
+        if (indexOf > 0) {
+            jMenu1.setEnabled(true);
+            jMenu1.setEnabled(true);
+        } else {
+            jMenu1.setEnabled(false);
+            jMenu1.setEnabled(false);
+        }
+
+        indexOf = autenticado.getPermissoes().indexOf("H");
+        if (indexOf > 0) {
+            jMenu3.setEnabled(true);
+            jMenu3.setEnabled(true);
+        } else {
+            jMenu3.setEnabled(false);
+            jMenu3.setEnabled(false);
+        }
     }
 
     /**
@@ -237,24 +256,27 @@ public class JDialogPesquisaOrdemMes extends javax.swing.JDialog {
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
         // TODO add your handling code here:
-        if (jTableOrdemServico.getSelectedRow() != -1) {
-            if (Util.mostraMensagemEmTela("Deseja realmente excluir?")) {
-                deletar();
+        if (jMenu3.isEnabled()) {
+            if (jTableOrdemServico.getSelectedRow() != -1) {
+                if (Util.mostraMensagemEmTela("Deseja realmente excluir?")) {
+                    deletar();
+                }
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
             }
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
         }
-
     }//GEN-LAST:event_jMenu3MouseClicked
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         // TODO add your handling code here:
-        if (jTableOrdemServico.getSelectedRow() != -1) {
-            Data.hash.put("ordem", orderns.get(jTableOrdemServico.getSelectedRow()));
-            Util.abrirDialogCentralizado(new JDialogCadastroOrdemPopUp(null, true));
-            popularTabela();
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
+        if (jMenu1.isEnabled()) {
+            if (jTableOrdemServico.getSelectedRow() != -1) {
+                Data.hash.put("ordem", orderns.get(jTableOrdemServico.getSelectedRow()));
+                Util.abrirDialogCentralizado(new JDialogCadastroOrdemPopUp(null, true));
+                popularTabela();
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
+            }
         }
     }//GEN-LAST:event_jMenu1MouseClicked
 
@@ -270,10 +292,10 @@ public class JDialogPesquisaOrdemMes extends javax.swing.JDialog {
             orderns = new DaoOrdemServico().obterDataCad(Util.stringToCalendar(jFormattedTextField1.getText()));
             TransactionManager.commit();
             prencherOrdem();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
         }
-            
+
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jMenu7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7MouseClicked

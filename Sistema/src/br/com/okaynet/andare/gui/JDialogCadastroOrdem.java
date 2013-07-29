@@ -6,6 +6,7 @@ package br.com.okaynet.andare.gui;
 
 import br.com.okaynet.andare.bibliotecas.ReportManage;
 import br.com.okaynet.andare.bibliotecas.Util;
+import br.com.okaynet.andare.conexao.Data;
 import br.com.okaynet.andare.conexao.TransactionManager;
 import br.com.okaynet.andare.daos.DaoClienteFisico;
 import br.com.okaynet.andare.daos.DaoClienteJuridico;
@@ -17,6 +18,7 @@ import br.com.okaynet.andare.model.Endereco;
 import br.com.okaynet.andare.model.Funcionario;
 import br.com.okaynet.andare.model.OrdemServico;
 import br.com.okaynet.andare.model.Pessoa;
+import br.com.okaynet.andare.model.Usuarios;
 import br.com.okaynet.andare.testes.testeRelatorio;
 import java.awt.Color;
 import static java.lang.Thread.sleep;
@@ -49,6 +51,15 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         modificarEndereco();
         iniciarPreencher();
         novo();
+        Usuarios autenticado = (Usuarios) Data.hash.get("usuario");
+        int indexOf = autenticado.getPermissoes().indexOf("I");
+        if (indexOf > 0) {
+            jMenu4.setEnabled(true);
+            jMenu4.setEnabled(true);
+        } else {
+            jMenu4.setEnabled(false);
+            jMenu4.setEnabled(false);
+        }
 
     }
 
@@ -355,12 +366,12 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             }
         });
         jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenu4MenuSelected(evt);
             }
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
         });
         jMenu4.addActionListener(new java.awt.event.ActionListener() {
@@ -412,9 +423,11 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
 
     private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
         // TODO add your handling code here:
-        this.setVisible(false);
-        Util.abrirDialogCentralizado(new JDialogPesquisaOrdemMes(null, true));
-        this.dispose();
+        if (jMenu4.isEnabled()) {
+            this.setVisible(false);
+            Util.abrirDialogCentralizado(new JDialogPesquisaOrdemMes(null, true));
+            this.dispose();
+        }
     }//GEN-LAST:event_jMenu4MouseClicked
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
@@ -693,12 +706,12 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
 
                 try {
                     if (jComboBoxCliente.getSelectedItem() instanceof ClienteFisico) {
-                        report.relatorioPronto("OrdemServicoSimples","Ordem de serviço");
+                        report.relatorioPronto("OrdemServicoSimples", "Ordem de serviço");
                     } else {
-                        report.relatorioPronto("OrdemServicoSimplesJuridico","Ordem de serviço");
+                        report.relatorioPronto("OrdemServicoSimplesJuridico", "Ordem de serviço");
                     }
                     this.dispose();
-                    
+
                 } catch (JRException ex) {
                     Logger.getLogger(testeRelatorio.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (SQLException ex) {

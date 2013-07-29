@@ -30,12 +30,19 @@ public class JDialogCadastroFuncionario extends javax.swing.JDialog {
         initComponents();
         limparCampos();
         Usuarios autenticado = (Usuarios) Data.hash.get("usuario");
-         int indexOf = autenticado.getPermissoes().indexOf("J");
-            if (indexOf > 0) {
-                jButtonUsuario.setEnabled(true);
-            } else {
-                jButtonUsuario.setEnabled(false);
-            }
+        int indexOf = autenticado.getPermissoes().indexOf("J");
+        if (indexOf > 0) {
+            jButtonUsuario.setEnabled(true);
+        } else {
+            jButtonUsuario.setEnabled(false);
+        }
+
+        indexOf = autenticado.getPermissoes().indexOf("F");
+        if (indexOf > 0) {
+            jMenuPesquisar.setEnabled(true);
+        } else {
+            jMenuPesquisar.setEnabled(false);
+        }
     }
 
     /**
@@ -274,12 +281,12 @@ public class JDialogCadastroFuncionario extends javax.swing.JDialog {
             }
         });
         jMenuPesquisar.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenuPesquisarMenuSelected(evt);
             }
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
         });
         jMenuPesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -331,9 +338,11 @@ public class JDialogCadastroFuncionario extends javax.swing.JDialog {
 
     private void jMenuPesquisarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuPesquisarMouseClicked
         // TODO add your handling code here:
-        this.setVisible(false);
-        Util.abrirDialogCentralizado(new JDialogPesquisaFuncionario(null, true));
-        this.dispose();
+        if (jMenuPesquisar.isEnabled()) {
+            this.setVisible(false);
+            Util.abrirDialogCentralizado(new JDialogPesquisaFuncionario(null, true));
+            this.dispose();
+        }
     }//GEN-LAST:event_jMenuPesquisarMouseClicked
 
     private void jMenuSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSalvarMouseClicked

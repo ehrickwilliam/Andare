@@ -26,6 +26,15 @@ public class JDialogCadastroUsuarioPopUp extends javax.swing.JDialog {
         initComponents();
         preencher();
         jPasswordFieldSenha.setVisible(false);
+        Usuarios autenticado = (Usuarios) Data.hash.get("usuario");
+        int indexOf = autenticado.getPermissoes().indexOf("L");
+        if (indexOf > 0) {
+            jMenu2.setEnabled(true);
+            jMenu2.setEnabled(true);
+        } else {
+            jMenu2.setEnabled(false);
+            jMenu2.setEnabled(false);
+        }
     }
 
     /**
@@ -229,8 +238,10 @@ public class JDialogCadastroUsuarioPopUp extends javax.swing.JDialog {
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
         // TODO add your handling code here:
-        if (Util.mostraMensagemEmTela("Deseja realmente excluir?")) {
-            deletar();
+        if (jMenu2.isEnabled()) {
+            if (Util.mostraMensagemEmTela("Deseja realmente excluir?")) {
+                deletar();
+            }
         }
     }//GEN-LAST:event_jMenu2MouseClicked
 

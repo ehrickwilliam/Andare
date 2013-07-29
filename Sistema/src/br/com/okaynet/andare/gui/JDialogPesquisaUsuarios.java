@@ -30,6 +30,25 @@ public class JDialogPesquisaUsuarios extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         popularTabela();
+        
+                Usuarios autenticado = (Usuarios) Data.hash.get("usuario");
+        int indexOf = autenticado.getPermissoes().indexOf("J");
+        if (indexOf > 0) {
+            jMenu1.setEnabled(true);
+            jMenu1.setEnabled(true);
+        } else {
+            jMenu1.setEnabled(false);
+            jMenu1.setEnabled(false);
+        }
+
+        indexOf = autenticado.getPermissoes().indexOf("L");
+        if (indexOf > 0) {
+            jMenu3.setEnabled(true);
+            jMenu3.setEnabled(true);
+        } else {
+            jMenu3.setEnabled(false);
+            jMenu3.setEnabled(false);
+        }
     }
 
     /**
@@ -135,36 +154,39 @@ public class JDialogPesquisaUsuarios extends javax.swing.JDialog {
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
         // TODO add your handling code here:
-        Usuarios autenticado = (Usuarios) Data.hash.get("usuario");
-        if (jTableCliente.getSelectedRow() > 0) {
-            if (Util.mostraMensagemEmTela("Deseja realmente excluir?")) {
-                deletar();
+        if (jMenu3.isEnabled()) {
+            Usuarios autenticado = (Usuarios) Data.hash.get("usuario");
+            if (jTableCliente.getSelectedRow() > 0) {
+                if (Util.mostraMensagemEmTela("Deseja realmente excluir?")) {
+                    deletar();
+                }
+            } else if (jTableCliente.getSelectedRow() == 0 && !"Okaynet".equals(autenticado.getUsuario())) {
+                JOptionPane.showMessageDialog(rootPane, "Você não tem acesso a este usuário");
+            } else if (jTableCliente.getSelectedRow() == 0 && "Okaynet".equals(autenticado.getUsuario())) {
+                JOptionPane.showMessageDialog(rootPane, "Impossivel excluir o usuário Administrador");
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
             }
-        } else if (jTableCliente.getSelectedRow() == 0 && !"Okaynet".equals(autenticado.getUsuario())) {
-            JOptionPane.showMessageDialog(rootPane, "Você não tem acesso a este usuário");
-        } else if (jTableCliente.getSelectedRow() == 0 && "Okaynet".equals(autenticado.getUsuario())) {
-            JOptionPane.showMessageDialog(rootPane, "Impossivel excluir o usuário Administrador");
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
         }
-
     }//GEN-LAST:event_jMenu3MouseClicked
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         // TODO add your handling code here:
-        Usuarios autenticado = (Usuarios) Data.hash.get("usuario");
-        if (jTableCliente.getSelectedRow() > 0) {
-            Data.hash.put("usuarioEditar", usuarios.get(jTableCliente.getSelectedRow()));
-            Util.abrirDialogCentralizado(new JDialogCadastroUsuarioPopUp(null, rootPaneCheckingEnabled));
-            popularTabela();
-        } else if (jTableCliente.getSelectedRow() == 0 && !"Okaynet".equals(autenticado.getUsuario())) {
-            JOptionPane.showMessageDialog(rootPane, "Você não tem acesso a este usuário");
-        } else if (jTableCliente.getSelectedRow() == 0 && "Okaynet".equals(autenticado.getUsuario())) {
-            Data.hash.put("usuarioEditar", usuarios.get(jTableCliente.getSelectedRow()));
-            Util.abrirDialogCentralizado(new JDialogCadastroUsuarioPopUp(null, rootPaneCheckingEnabled));
-            popularTabela();
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
+        if (jMenu1.isEnabled()) {
+            Usuarios autenticado = (Usuarios) Data.hash.get("usuario");
+            if (jTableCliente.getSelectedRow() > 0) {
+                Data.hash.put("usuarioEditar", usuarios.get(jTableCliente.getSelectedRow()));
+                Util.abrirDialogCentralizado(new JDialogCadastroUsuarioPopUp(null, rootPaneCheckingEnabled));
+                popularTabela();
+            } else if (jTableCliente.getSelectedRow() == 0 && !"Okaynet".equals(autenticado.getUsuario())) {
+                JOptionPane.showMessageDialog(rootPane, "Você não tem acesso a este usuário");
+            } else if (jTableCliente.getSelectedRow() == 0 && "Okaynet".equals(autenticado.getUsuario())) {
+                Data.hash.put("usuarioEditar", usuarios.get(jTableCliente.getSelectedRow()));
+                Util.abrirDialogCentralizado(new JDialogCadastroUsuarioPopUp(null, rootPaneCheckingEnabled));
+                popularTabela();
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
+            }
         }
     }//GEN-LAST:event_jMenu1MouseClicked
 

@@ -18,6 +18,7 @@ import br.com.okaynet.andare.model.Endereco;
 import br.com.okaynet.andare.model.Funcionario;
 import br.com.okaynet.andare.model.OrdemServico;
 import br.com.okaynet.andare.model.Pessoa;
+import br.com.okaynet.andare.model.Usuarios;
 import java.awt.Color;
 import static java.lang.Thread.sleep;
 import java.math.BigDecimal;
@@ -46,6 +47,15 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
         modificarEndereco();
         iniciarPreencher();
         preencher();
+        Usuarios autenticado = (Usuarios) Data.hash.get("usuario");
+        int indexOf = autenticado.getPermissoes().indexOf("H");
+        if (indexOf > 0) {
+            jMenu4.setEnabled(true);
+            jMenu4.setEnabled(true);
+        } else {
+            jMenu4.setEnabled(false);
+            jMenu4.setEnabled(false);
+        }
 
     }
 
@@ -330,12 +340,12 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
             }
         });
         jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenu4MenuSelected(evt);
             }
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
         });
         jMenu4.addActionListener(new java.awt.event.ActionListener() {
@@ -387,11 +397,11 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
 
     private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
         // TODO add your handling code here:
-
-        if (Util.mostraMensagemEmTela("Deseja realmente excluir?")) {
-            deletar();
+        if (jMenu4.isEnabled()) {
+            if (Util.mostraMensagemEmTela("Deseja realmente excluir?")) {
+                deletar();
+            }
         }
-
     }//GEN-LAST:event_jMenu4MouseClicked
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
@@ -640,8 +650,8 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
             endereco.setCidade(jComboBoxCidade.getSelectedItem().toString());
             endereco.setComplemento(jTextFieldComplemento.getText());
             endereco.setNumero(Integer.parseInt(jFormattedTextFieldNumero.getText()));
-             endereco.setTipoLogradouro(jComboBoxTipoLogradouro.getSelectedItem().toString());
-             Pessoa clienteAlvo = (Pessoa) jComboBoxCliente.getSelectedItem();
+            endereco.setTipoLogradouro(jComboBoxTipoLogradouro.getSelectedItem().toString());
+            Pessoa clienteAlvo = (Pessoa) jComboBoxCliente.getSelectedItem();
             endereco.setTelefone1(clienteAlvo.getEndereco().getTelefone1());
 
             ordem.setEndereco(endereco);

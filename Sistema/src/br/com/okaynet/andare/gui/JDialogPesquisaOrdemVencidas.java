@@ -16,6 +16,7 @@ import br.com.okaynet.andare.model.ClienteJuridico;
 import br.com.okaynet.andare.model.Funcionario;
 import br.com.okaynet.andare.model.OrdemServico;
 import br.com.okaynet.andare.model.Pessoa;
+import br.com.okaynet.andare.model.Usuarios;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -40,6 +41,24 @@ public class JDialogPesquisaOrdemVencidas extends javax.swing.JDialog {
         popularComboCliente();
         popularComboFuncionario();
         popularTabela();
+        Usuarios autenticado = (Usuarios) Data.hash.get("usuario");
+        int indexOf = autenticado.getPermissoes().indexOf("G");
+        if (indexOf > 0) {
+            jMenu1.setEnabled(true);
+            jMenu1.setEnabled(true);
+        } else {
+            jMenu1.setEnabled(false);
+            jMenu1.setEnabled(false);
+        }
+
+        indexOf = autenticado.getPermissoes().indexOf("H");
+        if (indexOf > 0) {
+            jMenu3.setEnabled(true);
+            jMenu3.setEnabled(true);
+        } else {
+            jMenu3.setEnabled(false);
+            jMenu3.setEnabled(false);
+        }
     }
 
     /**
@@ -213,24 +232,27 @@ public class JDialogPesquisaOrdemVencidas extends javax.swing.JDialog {
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
         // TODO add your handling code here:
-        if (jTableOrdemServico.getSelectedRow() != -1) {
-            if (Util.mostraMensagemEmTela("Deseja realmente excluir?")) {
-                deletar();
+        if (jMenu3.isEnabled()) {
+            if (jTableOrdemServico.getSelectedRow() != -1) {
+                if (Util.mostraMensagemEmTela("Deseja realmente excluir?")) {
+                    deletar();
+                }
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
             }
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
         }
-
     }//GEN-LAST:event_jMenu3MouseClicked
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         // TODO add your handling code here:
-        if (jTableOrdemServico.getSelectedRow() != -1) {
-            Data.hash.put("ordem", orderns.get(jTableOrdemServico.getSelectedRow()));
-            Util.abrirDialogCentralizado(new JDialogCadastroOrdemPopUp(null, true));
-            popularTabela();
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
+        if (jMenu1.isEnabled()) {
+            if (jTableOrdemServico.getSelectedRow() != -1) {
+                Data.hash.put("ordem", orderns.get(jTableOrdemServico.getSelectedRow()));
+                Util.abrirDialogCentralizado(new JDialogCadastroOrdemPopUp(null, true));
+                popularTabela();
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Nenhum registro selecionado!");
+            }
         }
     }//GEN-LAST:event_jMenu1MouseClicked
 
@@ -271,17 +293,17 @@ public class JDialogPesquisaOrdemVencidas extends javax.swing.JDialog {
             TransactionManager.commit();
             prencherOrdem();
         } else if (jComboBoxCliente.getSelectedIndex() >= 0 && jComboBoxFuncionario.getSelectedIndex() >= 0) {
-            
+
             Pessoa p1 = (Pessoa) jComboBoxFuncionario.getSelectedItem();
-             Pessoa p2 = (Pessoa) jComboBoxCliente.getSelectedItem();
+            Pessoa p2 = (Pessoa) jComboBoxCliente.getSelectedItem();
             TransactionManager.beginTransaction();
-            orderns = new DaoOrdemServico().obterVencidasFuncionariosClientes(p1.getId(),p2.getId());
+            orderns = new DaoOrdemServico().obterVencidasFuncionariosClientes(p1.getId(), p2.getId());
             TransactionManager.commit();
             prencherOrdem();
-            
-           
+
+
         } else if (jComboBoxFuncionario.getSelectedIndex() >= 0 && jComboBoxCliente.getSelectedIndex() == -1) {
-             Pessoa p = (Pessoa) jComboBoxFuncionario.getSelectedItem();
+            Pessoa p = (Pessoa) jComboBoxFuncionario.getSelectedItem();
             TransactionManager.beginTransaction();
             orderns = new DaoOrdemServico().obterVencidasFuncionarios(p.getId());
             TransactionManager.commit();
@@ -291,12 +313,12 @@ public class JDialogPesquisaOrdemVencidas extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-       
-            TransactionManager.beginTransaction();
-            orderns = new DaoOrdemServico().obterVencidasId(jTextFieldCod.getText());
-            TransactionManager.commit();
-            prencherOrdem();
-        
+
+        TransactionManager.beginTransaction();
+        orderns = new DaoOrdemServico().obterVencidasId(jTextFieldCod.getText());
+        TransactionManager.commit();
+        prencherOrdem();
+
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jMenu7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7MouseClicked

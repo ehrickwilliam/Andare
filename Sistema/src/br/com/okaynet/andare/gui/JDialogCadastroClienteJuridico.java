@@ -5,10 +5,12 @@
 package br.com.okaynet.andare.gui;
 
 import br.com.okaynet.andare.bibliotecas.Util;
+import br.com.okaynet.andare.conexao.Data;
 import br.com.okaynet.andare.conexao.TransactionManager;
 import br.com.okaynet.andare.daos.DaoClienteJuridico;
 import br.com.okaynet.andare.model.ClienteJuridico;
 import br.com.okaynet.andare.model.Endereco;
+import br.com.okaynet.andare.model.Usuarios;
 import java.awt.Color;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
@@ -26,6 +28,15 @@ public class JDialogCadastroClienteJuridico extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         limparCampos();
+        Usuarios autenticado = (Usuarios) Data.hash.get("usuario");
+        int indexOf = autenticado.getPermissoes().indexOf("C");
+        if (indexOf > 0) {
+            jMenu4.setEnabled(true);
+            jMenu4.setEnabled(true);
+        } else {
+            jMenu4.setEnabled(false);
+            jMenu4.setEnabled(false);
+        }
     }
 
     /**
@@ -268,10 +279,10 @@ public class JDialogCadastroClienteJuridico extends javax.swing.JDialog {
         jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
             public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
-            }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenu4MenuSelected(evt);
+            }
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
         });
         jMenu4.addActionListener(new java.awt.event.ActionListener() {
@@ -323,9 +334,11 @@ public class JDialogCadastroClienteJuridico extends javax.swing.JDialog {
 
     private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
         // TODO add your handling code here:
-        this.setVisible(false);
-        Util.abrirDialogCentralizado(new JDialogPesquisaCliente(null, true, "J"));
-        this.dispose();
+        if (jMenu4.isEnabled()) {
+            this.setVisible(false);
+            Util.abrirDialogCentralizado(new JDialogPesquisaCliente(null, true, "J"));
+            this.dispose();
+        }
     }//GEN-LAST:event_jMenu4MouseClicked
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
