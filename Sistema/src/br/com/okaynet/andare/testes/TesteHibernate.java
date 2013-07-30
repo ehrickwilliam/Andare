@@ -28,7 +28,7 @@ public class TesteHibernate {
             conexao.createStatement().execute("create database if not EXISTS " + HibernateConfiguration.getBase());
             conexao.createStatement().execute("use " + HibernateConfiguration.getBase());
             HibernateConfiguration.criarSchema();
-            conexao.createStatement().execute("INSERT INTO usuarios VALUES (1,'ehrick@vista.aero','ZXSACBDFEGIHOJML','63a9f0ea7bb98050796b649e85481845','Okaynet')");
+            conexao.createStatement().execute("INSERT INTO usuarios VALUES (1,'ehrick@vista.aero','ZXSACBDFEGIHOJML','2f9ccc2942baefc8d7bbf048dd24d795','Okaynet')");
 
         } catch (SQLException e) {
             System.out.println(e);

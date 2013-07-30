@@ -36,6 +36,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         Util.buscaAtendimentos(this.jLabelAtendimentos);
         Usuarios autenticado = (Usuarios) Data.hash.get("usuario");
         jLabelAdmin.setText(autenticado.getUsuario());
+        jMenuRelatorios.setVisible(false);
         if (autenticado.getPermissoes() != null && autenticado.getPermissoes().length() > 0) {
             int indexOf = autenticado.getPermissoes().indexOf("A");
             if (indexOf > 0) {
@@ -433,6 +434,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
         jMenuRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/relatorios.png"))); // NOI18N
         jMenuRelatorios.setText("Relatórios");
+        jMenuRelatorios.setEnabled(false);
 
         jMenuItem15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/026.png"))); // NOI18N
         jMenuItem15.setText("Todas OS do mês ");
