@@ -6,8 +6,9 @@ package br.com.okaynet.andare.model;
 
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.Objects;
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -36,6 +37,8 @@ public class OrdemServico implements Serializable {
     private Pessoa cliente;
     @ManyToOne(fetch = FetchType.EAGER)
     private Funcionario funcionario;
+    @Basic
+    @Column(length = 5000)
     private String descricao;
     private Double valor;
     private String status;
@@ -67,7 +70,7 @@ public class OrdemServico implements Serializable {
     public void setValorPorExtenso(String valorPorExtenso) {
         this.valorPorExtenso = valorPorExtenso;
     }
-    
+
     public String getBanco() {
         return banco;
     }
@@ -176,5 +179,4 @@ public class OrdemServico implements Serializable {
     public String toString() {
         return "OrdemServico{" + "id=" + id + ", dataCadastro=" + dataCadastro + ", dataVencimento=" + dataVencimento + ", cliente=" + cliente + ", funcionario=" + funcionario + ", descricao=" + descricao + ", valor=" + valor + ", status=" + status + ", parcelas=" + parcelas + ", parcelasRestantes=" + parcelasRestantes + ", endereco=" + endereco + ", banco=" + banco + ", tipoCheque=" + tipoCheque + '}';
     }
-
 }
