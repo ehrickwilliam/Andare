@@ -19,6 +19,7 @@ import br.com.okaynet.andare.model.Funcionario;
 import br.com.okaynet.andare.model.OrdemServico;
 import br.com.okaynet.andare.model.Pessoa;
 import br.com.okaynet.andare.model.Usuarios;
+import br.com.okaynet.andare.bibliotecas.Extenso;
 import br.com.okaynet.andare.testes.testeRelatorio;
 import java.awt.Color;
 import static java.lang.Thread.sleep;
@@ -27,6 +28,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -368,10 +370,10 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
             public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenu4MenuSelected(evt);
-            }
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
         });
         jMenu4.addActionListener(new java.awt.event.ActionListener() {
@@ -653,6 +655,7 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
                 ordem.setParcelas(Integer.parseInt(jComboBoxQuantParcelas.getSelectedItem().toString()));
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(rootPane, "Erro no numero de parcelas");
+                return;
             }
 
 
@@ -670,7 +673,8 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
                 try {
                     ordem.setJuros(Double.parseDouble(jTextFieldJuros.getText()));
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(rootPane, "Erro no campo de juros, valor não confere");
+                    JOptionPane.showMessageDialog(rootPane, "Erro no campo de juros, valor não confere. \n Verifique se você colocou virgulas e substitua por 'Ponto'");
+                    return;
                 }
             } else {
                 ordem.setJuros(0.0);
@@ -679,9 +683,15 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             try {
                 ordem.setValor(Double.parseDouble(jTextFieldValor.getText()));
             } catch (Exception e) {
-                JOptionPane.showConfirmDialog(rootPane, "Erro no valor da ordem");
+                JOptionPane.showMessageDialog(rootPane, "Erro no campo de valor. \n Verifique se você colocou virgulas e substitua por 'Ponto'");
+                return;
             }
+            BigDecimal a = new BigDecimal(ordem.getValor());
+            BigDecimal aArredondado = a.divide(BigDecimal.ONE, 2, BigDecimal.ROUND_HALF_UP);
+            Extenso extenso = new Extenso(aArredondado);
 
+            ordem.setValorPorExtenso(extenso.toString().toUpperCase());
+            
             Pessoa clienteAlvo = (Pessoa) jComboBoxCliente.getSelectedItem();
 
 

@@ -4,6 +4,7 @@
  */
 package br.com.okaynet.andare.gui;
 
+import br.com.okaynet.andare.bibliotecas.Extenso;
 import br.com.okaynet.andare.bibliotecas.Util;
 import br.com.okaynet.andare.conexao.Data;
 import br.com.okaynet.andare.conexao.TransactionManager;
@@ -342,10 +343,10 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
         jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
             public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenu4MenuSelected(evt);
-            }
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
         });
         jMenu4.addActionListener(new java.awt.event.ActionListener() {
@@ -631,7 +632,8 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
                 try {
                     ordem.setJuros(Double.parseDouble(jTextFieldJuros.getText()));
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(rootPane, "Erro no campo de juros, valor não confere");
+                    JOptionPane.showMessageDialog(rootPane, "Erro no campo de juros, valor não confere. \n Verifique se você colocou virgulas e substitua por 'Ponto'");
+                    return;
                 }
             } else {
                 ordem.setJuros(0.0);
@@ -640,8 +642,14 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
             try {
                 ordem.setValor(Double.parseDouble(jTextFieldValor.getText()));
             } catch (Exception e) {
-                JOptionPane.showConfirmDialog(rootPane, "Erro no valor da ordem");
+                JOptionPane.showMessageDialog(rootPane, "Erro no campo de valor. \n Verifique se você colocou virgulas e substitua por 'Ponto'");
+                return;
             }
+            BigDecimal a = new BigDecimal(ordem.getValor());
+            BigDecimal aArredondado = a.divide(BigDecimal.ONE, 2, BigDecimal.ROUND_HALF_UP);
+            Extenso extenso = new Extenso(aArredondado);
+
+            ordem.setValorPorExtenso(extenso.toString().toUpperCase());
 
             Endereco endereco = new Endereco();
             endereco.setBairro(jTextFieldBairro.getText());

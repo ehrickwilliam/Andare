@@ -47,6 +47,7 @@ public class OrdemServico implements Serializable {
     private String banco;
     private String tipoCheque;
     private double juros;
+    private String valorPorExtenso;
 
     public OrdemServico() {
     }
@@ -59,6 +60,14 @@ public class OrdemServico implements Serializable {
         this.juros = juros;
     }
 
+    public String getValorPorExtenso() {
+        return valorPorExtenso;
+    }
+
+    public void setValorPorExtenso(String valorPorExtenso) {
+        this.valorPorExtenso = valorPorExtenso;
+    }
+    
     public String getBanco() {
         return banco;
     }
