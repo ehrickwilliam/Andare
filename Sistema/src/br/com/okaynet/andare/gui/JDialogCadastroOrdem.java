@@ -368,12 +368,12 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             }
         });
         jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenu4MenuSelected(evt);
             }
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
-            public void menuSelected(javax.swing.event.MenuEvent evt) {
-                jMenu4MenuSelected(evt);
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
         });
         jMenu4.addActionListener(new java.awt.event.ActionListener() {
@@ -710,24 +710,9 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             new DaoOrdemServico().persistir(ordem);
             TransactionManager.commit();
             novo();
-            if (Util.mostraMensagemEmTela("Deseja Imprimir a via para o Funcionario e via para o Cliente?")) {
-                this.setModal(false);
-                ReportManage report = new ReportManage();
-
-                try {
-                    if (jComboBoxCliente.getSelectedItem() instanceof ClienteFisico) {
-                        report.relatorioPronto("OrdemServicoSimples", "Ordem de serviço");
-                    } else {
-                        report.relatorioPronto("OrdemServicoSimplesJuridico", "Ordem de serviço");
-                    }
-                    this.dispose();
-
-                } catch (JRException ex) {
-                    Logger.getLogger(testeRelatorio.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (SQLException ex) {
-                    Logger.getLogger(testeRelatorio.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+            
+            Util.abrirDialogCentralizado(new JDialogRelatorioSelecao(null, false));
+           
         } else {
             JOptionPane.showMessageDialog(rootPane, "Contem campo(s) vazio ou tipo incorreto de dado !");
         }

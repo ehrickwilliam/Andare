@@ -12,6 +12,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
@@ -60,7 +61,7 @@ public class ReportManage {
             jasperDesign.setPageHeight(toPixels(21));
             jasperDesign.setPageWidth(toPixels(27.9f));
             jasperDesign.setOrientation(OrientationEnum.LANDSCAPE);
-            
+
 
             /* TITLE BAND */
             JRDesignBand titleBand = new JRDesignBand();
@@ -97,7 +98,7 @@ public class ReportManage {
                     headerBand.addElement(headerText);
 
                     /* Incrementa a posição x para a próxima coluna 
-                    para 5cm*/
+                     para 5cm*/
                     espacoTitlesColunas += toPixels(3);
 
                     // DISPONIBILIZA A PROPRIEDADE ATUAL DA CLASSE 
@@ -124,7 +125,7 @@ public class ReportManage {
                     detailFieldText.setExpression(new JRDesignExpression("$F{" + field.getName() + "}"));
                     detailBand.addElement(detailFieldText);
                     /* Incrementa a posição x para a próxima coluna 
-                    para 5cm*/
+                     para 5cm*/
                     espacoTitlesColunas += toPixels(3);
                 }
             }
@@ -142,6 +143,9 @@ public class ReportManage {
     }
 
     public void relatorioPronto(String relatorio, String titulo) throws JRException, SQLException {
+        JDialog viewer = new JDialog(new javax.swing.JFrame(), "Visualização do Relatório", true);
+        viewer.setSize(900, 600);
+        viewer.setLocationRelativeTo(null);
         // obtem o arquivo de relatorio compilado
         URL arquivo = getClass().getResource("/br/com/okaynet/andare/reports/" + relatorio + ".jasper");
         // carrega o relatorio
@@ -151,7 +155,7 @@ public class ReportManage {
         // cria visualizador de relatorio
         JasperViewer jrviewer = new JasperViewer(jasperPrint, false);
         // mostra o visualizador
-        jrviewer.setTitle(titulo);
-        jrviewer.setVisible(true);
+        viewer.getContentPane().add(jrviewer.getContentPane());
+        viewer.setVisible(true);
     }
 }

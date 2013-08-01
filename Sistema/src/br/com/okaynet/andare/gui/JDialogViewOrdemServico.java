@@ -4,6 +4,7 @@
  */
 package br.com.okaynet.andare.gui;
 
+import br.com.okaynet.andare.bibliotecas.Extenso;
 import br.com.okaynet.andare.bibliotecas.Util;
 import br.com.okaynet.andare.conexao.Data;
 import br.com.okaynet.andare.conexao.TransactionManager;
@@ -668,14 +669,22 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
                 JOptionPane.showConfirmDialog(rootPane, "Erro no valor da ordem");
             }
 
+            BigDecimal a = new BigDecimal(ordem.getValor());
+            BigDecimal aArredondado = a.divide(BigDecimal.ONE, 2, BigDecimal.ROUND_HALF_UP);
+            Extenso extenso = new Extenso(aArredondado);
+            Pessoa clienteAlvo = (Pessoa) jComboBoxCliente.getSelectedItem();
+            ordem.setValorPorExtenso(extenso.toString().toUpperCase());
+            
             Endereco endereco = new Endereco();
             endereco.setBairro(jTextFieldBairro.getText());
             endereco.setLogradouro(jTextFieldEndereco.getText());
             endereco.setCep(jFormattedTextFieldCep.getText());
             endereco.setCidade(jComboBoxCidade.getSelectedItem().toString());
             endereco.setComplemento(jTextFieldComplemento.getText());
+            endereco.setTipoLogradouro(jComboBoxTipoLogradouro.getSelectedItem().toString());
             endereco.setNumero(Integer.parseInt(jFormattedTextFieldNumero.getText()));
-
+            endereco.setTelefone1(clienteAlvo.getEndereco().getTelefone1());
+            
             ordem.setEndereco(endereco);
             TransactionManager.beginTransaction();
             new DaoOrdemServico().persistir(ordem);
