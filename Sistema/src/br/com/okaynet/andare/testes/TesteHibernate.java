@@ -7,7 +7,11 @@ package br.com.okaynet.andare.testes;
 import br.com.okaynet.andare.conexao.Conexao;
 import br.com.okaynet.andare.conexao.HibernateConfiguration;
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -20,15 +24,32 @@ public class TesteHibernate {
         HibernateConfiguration.setHost("127.0.0.1:3306");
         HibernateConfiguration.setPass("root");
         HibernateConfiguration.setUser("root");
-        
+
+
+
 
         try {
-            
+
             Connection conexao = Conexao.getConnection();
             conexao.createStatement().execute("create database if not EXISTS " + HibernateConfiguration.getBase());
             conexao.createStatement().execute("use " + HibernateConfiguration.getBase());
-            HibernateConfiguration.criarSchema();
-            conexao.createStatement().execute("INSERT INTO usuarios VALUES (1,'ehrick@vista.aero','ZXSACBDFEGIHOJML','63a9f0ea7bb98050796b649e85481845','Okaynet')");
+
+            ResultSet execute = conexao.createStatement().executeQuery("show tables");
+
+            if (execute.next()) {
+
+                System.out.println("com tabela");
+
+            } else {
+                System.out.println("sem tabela");
+            }
+
+            //   HibernateConfiguration.criarSchema();
+            // conexao.createStatement().execute("INSERT INTO usuarios VALUES (1,'ehrick@vista.aero','ZXSACBDFEGIHOJML','63a9f0ea7bb98050796b649e85481845','Okaynet')");
+
+
+
+
 
         } catch (SQLException e) {
             System.out.println(e);

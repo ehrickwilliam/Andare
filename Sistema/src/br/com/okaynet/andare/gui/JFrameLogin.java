@@ -1,11 +1,18 @@
 package br.com.okaynet.andare.gui;
 
 import br.com.okaynet.andare.bibliotecas.Util;
+import br.com.okaynet.andare.conexao.Conexao;
 import br.com.okaynet.andare.conexao.Data;
 import br.com.okaynet.andare.conexao.HibernateConfiguration;
 import br.com.okaynet.andare.daos.DaoUsuarios;
 import br.com.okaynet.andare.model.Usuarios;
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -20,7 +27,7 @@ public class JFrameLogin extends javax.swing.JFrame {
      */
     public JFrameLogin() {
         initComponents();
-        //mudarFavicon();
+        mudarFavicon();
         jTextUser.setBackground(new Color(58, 96, 99));
         jPassword.setBackground(new Color(58, 96, 99));
 
@@ -34,6 +41,26 @@ public class JFrameLogin extends javax.swing.JFrame {
         HibernateConfiguration.setHost("localhost:3306");
         HibernateConfiguration.setPass("root");
         HibernateConfiguration.setUser("root");
+
+        try {
+
+            Connection conexao = Conexao.getConnection();
+            conexao.createStatement().execute("create database if not EXISTS " + HibernateConfiguration.getBase());
+            conexao.createStatement().execute("use " + HibernateConfiguration.getBase());
+
+            ResultSet execute = conexao.createStatement().executeQuery("show tables");
+
+            if (!execute.next()) {
+                HibernateConfiguration.criarSchema();
+                conexao.createStatement().execute("INSERT INTO usuarios VALUES (1,'ehrick@vista.aero','ZXSACBDFEGIHOJML','63a9f0ea7bb98050796b649e85481845','Okaynet')");
+
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(rootPane, "Aconteceu erro inesperado, entre em contato com seu desenvolvedor Okaynet");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Aconteceu erro inesperado, entre em contato com seu desenvolvedor Okaynet");
+        }
 
     }
 
@@ -102,9 +129,9 @@ public class JFrameLogin extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void mudarFavicon() {
-//        URL url = this.getClass().getResource("/br/edu/utfpr/cm/tsi/pi/unknownexpress/icons/favicon.png");
-//        Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
-//        this.setIconImage(imagemTitulo);
+        URL url = this.getClass().getResource("/br/com/okaynet/andare/icons/png/026.png");
+        Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
+        this.setIconImage(imagemTitulo);
     }
 
     private void verificarLogin(String usuario, String senha) {

@@ -15,6 +15,9 @@ import br.com.okaynet.andare.model.ClienteJuridico;
 import br.com.okaynet.andare.model.Funcionario;
 import br.com.okaynet.andare.model.Pessoa;
 import br.com.okaynet.andare.model.Usuarios;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
@@ -116,7 +119,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
                 jMenuItemUserCom.setEnabled(false);
             }
         }
-
+        mudarFavicon();
 
 
 
@@ -647,4 +650,10 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
+
+    private void mudarFavicon() {
+        URL url = this.getClass().getResource("/br/com/okaynet/andare/icons/png/026.png");
+        Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
+        this.setIconImage(imagemTitulo);
+    }
 }
