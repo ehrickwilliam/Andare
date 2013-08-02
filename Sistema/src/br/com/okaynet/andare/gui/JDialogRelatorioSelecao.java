@@ -6,6 +6,8 @@ package br.com.okaynet.andare.gui;
 
 import br.com.okaynet.andare.bibliotecas.ReportManage;
 import br.com.okaynet.andare.conexao.Data;
+import br.com.okaynet.andare.model.ClienteFisico;
+import br.com.okaynet.andare.model.Pessoa;
 import br.com.okaynet.andare.model.Usuarios;
 import br.com.okaynet.andare.testes.testeRelatorio;
 import java.sql.SQLException;
@@ -23,11 +25,13 @@ public class JDialogRelatorioSelecao extends javax.swing.JDialog {
      * Creates new form JDialogCadastroClienteFisico
      */
     private Usuarios autenticado;
+    private Pessoa pessoaNota;
 
-    public JDialogRelatorioSelecao(java.awt.Frame parent, boolean modal) {
+    public JDialogRelatorioSelecao(java.awt.Frame parent, boolean modal, Pessoa pessoa) {
         super(parent, modal);
         initComponents();
         autenticado = (Usuarios) Data.hash.get("usuario");
+        pessoaNota = pessoa;
     }
 
     /**
@@ -117,12 +121,11 @@ public class JDialogRelatorioSelecao extends javax.swing.JDialog {
         ReportManage report = new ReportManage();
 
         try {
-            // if (jComboBoxCliente.getSelectedItem() instanceof ClienteFisico) {
-            report.relatorioPronto("OrdemServicoSimples", "Ordem de serviço");
-            //} else {
-            //  report.relatorioPronto("OrdemServicoSimplesJuridico", "Ordem de serviço");
-            //}
-
+            if (pessoaNota instanceof ClienteFisico) {
+                report.relatorioPronto("OrdemServicoSimples", "Ordem de serviço");
+            } else {
+                report.relatorioPronto("OrdemServicoSimplesJuridico", "Ordem de serviço");
+            }
 
         } catch (JRException ex) {
             Logger.getLogger(testeRelatorio.class.getName()).log(Level.SEVERE, null, ex);
@@ -138,13 +141,12 @@ public class JDialogRelatorioSelecao extends javax.swing.JDialog {
         ReportManage report = new ReportManage();
 
         try {
-            // if (jComboBoxCliente.getSelectedItem() instanceof ClienteFisico) {
-            this.setModal(false);
-            report.relatorioPronto("OrdemServicoComplexaFisico", "Ordem de serviço");
-            //} else {
-            //  report.relatorioPronto("OrdemServicoSimplesJuridico", "Ordem de serviço");
-            //}
 
+            if (pessoaNota instanceof ClienteFisico) {
+                report.relatorioPronto("OrdemServicoComplexaFisico", "Ordem de serviço");
+            } else {
+                report.relatorioPronto("OrdemServicoComplexaJuridico", "Ordem de serviço");
+            }
 
         } catch (JRException ex) {
             Logger.getLogger(testeRelatorio.class.getName()).log(Level.SEVERE, null, ex);
@@ -152,48 +154,6 @@ public class JDialogRelatorioSelecao extends javax.swing.JDialog {
             Logger.getLogger(testeRelatorio.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JDialogRelatorioSelecao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JDialogRelatorioSelecao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JDialogRelatorioSelecao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JDialogRelatorioSelecao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                JDialogRelatorioSelecao dialog = new JDialogRelatorioSelecao(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

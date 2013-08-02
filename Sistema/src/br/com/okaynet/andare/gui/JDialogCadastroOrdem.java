@@ -691,7 +691,7 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             Extenso extenso = new Extenso(aArredondado);
 
             ordem.setValorPorExtenso(extenso.toString().toUpperCase());
-            
+
             Pessoa clienteAlvo = (Pessoa) jComboBoxCliente.getSelectedItem();
 
 
@@ -710,9 +710,9 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             new DaoOrdemServico().persistir(ordem);
             TransactionManager.commit();
             novo();
-            
-            Util.abrirDialogCentralizado(new JDialogRelatorioSelecao(null, false));
-           
+
+            Util.abrirDialogCentralizado(new JDialogRelatorioSelecao(null, false, clienteAlvo));
+
         } else {
             JOptionPane.showMessageDialog(rootPane, "Contem campo(s) vazio ou tipo incorreto de dado !");
         }
