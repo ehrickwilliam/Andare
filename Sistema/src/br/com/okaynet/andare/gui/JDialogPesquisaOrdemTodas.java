@@ -488,7 +488,7 @@ public class JDialogPesquisaOrdemTodas extends javax.swing.JDialog {
             model = new DefaultTableModel();
             model.setColumnIdentifiers(styleModelOrdem);
             for (OrdemServico ordem : orderns) {
-                model.addRow(new Object[]{ordem.getId(), ordem.getCliente(), ordem.getFuncionario(), ordem.getStatus(), ordem.getValor(), Util.calendarToString(ordem.getDataCadastro()), Util.calendarToString(ordem.getDataVencimento())});
+                model.addRow(new Object[]{ordem.getId(), ordem.getCliente(), ordem.getFuncionario(), ordem.getStatus(), ordem.getValorTotal(), Util.calendarToString(ordem.getDataCadastro()), Util.calendarToString(ordem.getDataVencimento())});
             }
             jTableOrdemServico.setModel(model);
         } else {
