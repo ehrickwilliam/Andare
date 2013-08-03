@@ -478,6 +478,7 @@ public class JDialogPesquisaOrdemMes extends javax.swing.JDialog {
                 model.addRow(new Object[]{ordem.getId(), ordem.getCliente(), ordem.getFuncionario(), ordem.getStatus(), ordem.getValor(), Util.calendarToString(ordem.getDataCadastro()), Util.calendarToString(ordem.getDataVencimento())});
             }
             jTableOrdemServico.setModel(model);
+
         } else {
             model = new DefaultTableModel();
             model.setColumnIdentifiers(styleModelOrdem);
