@@ -96,7 +96,6 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jComboBoxCidade = new javax.swing.JComboBox();
-        jLabel16 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
         jComboBoxStatus = new javax.swing.JComboBox();
         jLabel20 = new javax.swing.JLabel();
@@ -105,8 +104,6 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jCheckBoxEndereco = new javax.swing.JCheckBox();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextAreaDescricao = new javax.swing.JTextArea();
         jFormattedTextFieldDataVencimento = new javax.swing.JFormattedTextField();
         jFormattedTextFieldNumero = new javax.swing.JFormattedTextField();
         jFormattedTextFieldCep = new javax.swing.JFormattedTextField();
@@ -122,6 +119,17 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         jTextFieldValor = new javax.swing.JTextField();
         jComboBoxQuantParcelas = new javax.swing.JComboBox();
         jComboBoxParcelasRest = new javax.swing.JComboBox();
+        jPanel1 = new javax.swing.JPanel();
+        jTextFieldItem1 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jTextFieldValor1 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jTextFieldItem2 = new javax.swing.JTextField();
+        jTextFieldValor2 = new javax.swing.JTextField();
+        jTextFieldValor3 = new javax.swing.JTextField();
+        jTextFieldItem3 = new javax.swing.JTextField();
+        jTextFieldValor4 = new javax.swing.JTextField();
+        jTextFieldItem4 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
@@ -207,10 +215,6 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         jComboBoxCidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Abatiá", "Adrianópolis", "Agudos do Sul", "Almirante Tamandaré", "Altamira do Paraná", "Alto Paraíso", "Alto Paraná", "Alto Piquiri", "Altônia", "Alvorada do Sul", "Amaporã", "Ampére", "Anahy", "Andirá", "Ângulo", "Antonina", "Antônio Olinto", "Apucarana", "Arapongas", "Arapoti", "Arapuã", "Araruna", "Araucária", "Ariranha do Ivaí", "Assaí", "Assis Chateaubriand", "Astorga", "Atalaia", "Balsa Nova", "Bandeirantes", "Barbosa Ferraz", "Barra do Jacaré", "Barracão", "Bela Vista da Caroba", "Bela Vista do Paraíso", "Bituruna", "Boa Esperança", "Boa Esperança do Iguaçu", "Boa Ventura de São Roque", "Boa Vista da Aparecida", "Bocaiuva do Sul", "Bom Jesus do Sul", "Bom Sucesso", "Bom Sucesso do Sul", "Borrazópolis", "Braganey", "Brasilândia do Sul", "Cafeara", "Cafelândia", "Cafezal do Sul", "Califórnia", "Cambará", "Cambé", "Cambira", "Campina da Lagoa", "Campina do Simão", "Campina Grande do Sul", "Campo Bonito", "Campo do Tenente", "Campo Largo", "Campo Magro", "Campo Mourão", "Cândido de Abreu", "Candói", "Cantagalo", "Capanema", "Capitão Leônidas Marques", "Carambeí", "Carlópolis", "Cascavel", "Castro", "Catanduvas", "Centenário do Sul", "Cerro Azul", "Céu Azul", "Chopinzinho", "Cianorte", "Cidade Gaúcha", "Clevelândia", "Colombo", "Colorado", "Congonhinhas", "Conselheiro Mairinck", "Contenda", "Corbélia", "Cornélio Procópio", "Coronel Domingos Soares", "Coronel Vivida", "Corumbataí do Sul", "Cruz Machado", "Cruzeiro do Iguaçu", "Cruzeiro do Oeste", "Cruzeiro do Sul", "Cruzmaltina", "Curitiba", "Curiúva", "Diamante do Norte", "Diamante do Sul", "Diamante d'Oeste", "Dois Vizinhos", "Douradina", "Doutor Camargo", "Doutor Ulysses", "Enéas Marques", "Engenheiro Beltrão", "Entre Rios do Oeste", "Esperança Nova", "Espigão Alto do Iguaçu", "Farol", "Faxinal", "Fazenda Rio Grande", "Fênix", "Fernandes Pinheiro", "Figueira", "Flor da Serra do Sul", "Floraí", "Floresta", "Florestópolis", "Flórida", "Formosa do Oeste", "Foz do Iguaçu", "Foz do Jordão", "Francisco Alves", "Francisco Beltrão", "General Carneiro", "Godoy Moreira", "Goioerê", "Goioxim", "Grandes Rios", "Guaíra", "Guairaçá", "Guamiranga", "Guapirama", "Guaporema", "Guaraci", "Guaraniaçu", "Guarapuava", "Guaraqueçaba", "Guaratuba", "Honório Serpa", "Ibaiti", "Ibema", "Ibiporã", "Icaraíma", "Iguaraçu", "Iguatu", "Imbaú", "Imbituva", "Inácio Martins", "Inajá", "Indianópolis", "Ipiranga", "Iporã", "Iracema do Oeste", "Irati", "Iretama", "Itaguajé", "Itaipulândia", "Itambaracá", "Itambé", "Itapejara d'Oeste", "Itaperuçu", "Itaúna do Sul", "Ivaí", "Ivaiporã", "Ivaté", "Ivatuba", "Jaboti", "Jacarezinho", "Jaguapitã", "Jaguariaíva", "Jandaia do Sul", "Janiópolis", "Japira", "Japurá", "Jardim Alegre", "Jardim Olinda", "Jataizinho", "Jesuítas", "Joaquim Távora", "Jundiaí do Sul", "Juranda", "Jussara", "Kaloré", "Lapa", "Laranjal", "Laranjeiras do Sul", "Leópolis", "Lidianópolis", "Lindoeste", "Loanda", "Lobato", "Londrina", "Luiziana", "Lunardelli", "Lupionópolis", "Mallet", "Mamborê", "Mandaguaçu", "Mandaguari", "Mandirituba", "Manfrinópolis", "Mangueirinha", "Manoel Ribas", "Marechal Cândido Rondon", "Maria Helena", "Marialva", "Marilândia do Sul", "Marilena", "Mariluz", "Maringá", "Mariópolis", "Maripá", "Marmeleiro", "Marquinho", "Marumbi", "Matelândia", "Matinhos", "Mato Rico", "Mauá da Serra", "Medianeira", "Mercedes", "Mirador", "Miraselva", "Missal", "Moreira Sales", "Morretes", "Munhoz de Melo", "Nossa Senhora das Graças", "Nova Aliança do Ivaí", "Nova América da Colina", "Nova Aurora", "Nova Cantu", "Nova Esperança", "Nova Esperança do Sudoeste", "Nova Fátima", "Nova Laranjeiras", "Nova Londrina", "Nova Olímpia", "Nova Prata do Iguaçu", "Nova Santa Bárbara", "Nova Santa Rosa", "Nova Tebas", "Novo Itacolomi", "Ortigueira", "Ourizona", "Ouro Verde do Oeste", "Paiçandu", "Palmas", "Palmeira", "Palmital", "Palotina", "Paraíso do Norte", "Paranacity", "Paranaguá", "Paranapoema", "Paranavaí", "Pato Bragado", "Pato Branco", "Paula Freitas", "Paulo Frontin", "Peabiru", "Perobal", "Pérola", "Pérola d'Oeste", "Piên", "Pinhais", "Pinhal de São Bento", "Pinhalão", "Pinhão", "Piraí do Sul", "Pitanga", "Pitangueiras", "Planaltina do Paraná", "Planalto", "Ponta Grossa", "Pontal do Paraná", "Porecatu", "Porto Amazonas", "Porto Barreiro", "Porto Rico", "Porto Vitória", "Prado Ferreira", "Pranchita", "Presidente Castelo Branco", "Primeiro de Maio", "Prudentópolis", "Prudentópolis", "Quarto Centenário", "Quatiguá", "Quatro Barras", "Quatro Pontes", "Quedas do Iguaçu", "Querência do Norte", "Quinta do Sol", "Quitandinha", "Ramilândia", "Rancho Alegre", "Rancho Alegre d'Oeste", "Realeza", "Rebouças", "Renascença", "Reserva", "Reserva do Iguaçu", "Ribeirão Claro", "Ribeirão do Pinhal", "Rio Azul", "Rio Bom", "Rio Bonito do Iguaçu", "Rio Branco do Ivaí", "Rio Branco do Sul", "Rio Negro", "Rolândia", "Roncador", "Rondon", "Rosário do Ivaí", "Sabáudia", "Salgado Filho", "Salto do Itararé", "Salto do Lontra", "Santa Amélia", "Santa Cecília do Pavão", "Santa Cruz de Monte Castelo", "Santa Fé", "Santa Helena", "Santa Inês", "Santa Isabel do Ivaí", "Santa Izabel do Oeste", "Santa Lúcia", "Santa Maria do Oeste", "Santa Mariana", "Santa Mônica", "Santa Tereza do Oeste", "Santa Terezinha de Itaipu", "Santana do Itararé", "Santo Antônio da Platina", "Santo Antônio do Caiuá", "Santo Antônio do Paraíso", "Santo Antônio do Sudoeste", "Santo Inácio", "São Carlos do Ivaí", "São Jerônimo da Serra", "São João", "São João do Caiuá", "São João do Ivaí", "São João do Triunfo", "São Jorge do Ivaí", "São Jorge do Patrocínio", "São Jorge d'Oeste", "São José da Boa Vista", "São José das Palmeiras", "São José dos Pinhais", "São Manoel do Paraná", "São Mateus do Sul", "São Miguel do Iguaçu", "São Pedro do Iguaçu", "São Pedro do Ivaí", "São Pedro do Paraná", "São Sebastião da Amoreira", "São Tomé", "Sapopema", "Sarandi", "Saudade do Iguaçu", "Sengés", "Serranópolis do Iguaçu", "Sertaneja", "Sertanópolis", "Siqueira Campos", "Sulina", "Tamarana", "Tamboara", "Tapejara", "Tapira", "Teixeira Soares", "Telêmaco Borba", "Terra Boa", "Terra Rica", "Terra Roxa", "Tibagi", "Tijucas do Sul", "Toledo", "Tomazina", "Três Barras do Paraná", "Tunas do Paraná", "Tuneiras do Oeste", "Tupãssi", "Turvo", "Ubiratã", "Umuarama", "União da Vitória", "Uniflor", "Uraí", "Ventania", "Vera Cruz do Oeste", "Verê", "Virmond", "Vitorino", "Wenceslau Braz", "Xambrê" }));
         getContentPane().add(jComboBoxCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 120, -1));
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel16.setText("Descrição* :");
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, -1, -1));
-
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/1372094443_Magnifier2.png"))); // NOI18N
         jButton7.setBorderPainted(false);
         jButton7.setFocusPainted(false);
@@ -272,12 +276,6 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         });
         getContentPane().add(jCheckBoxEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
 
-        jTextAreaDescricao.setColumns(20);
-        jTextAreaDescricao.setRows(5);
-        jScrollPane1.setViewportView(jTextAreaDescricao);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, 500, 110));
-
         try {
             jFormattedTextFieldDataVencimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
@@ -334,6 +332,7 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         jComboBoxBanco.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "Banco do Brasil", "Bradesco", "Caixa", "HSBC", "Itaú", "Safra", "Santander", "Sicredi" }));
         getContentPane().add(jComboBoxBanco, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 140, -1));
 
+        jTextFieldValor.setEditable(false);
         jTextFieldValor.setText("0.0");
         jTextFieldValor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -347,6 +346,79 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
 
         jComboBoxParcelasRest.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         getContentPane().add(jComboBoxParcelasRest, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 50, -1));
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Serviços"));
+
+        jLabel5.setText("Itens:");
+
+        jTextFieldValor1.setText("0.0");
+
+        jLabel6.setText("Valores R$:");
+
+        jTextFieldValor2.setText("0.0");
+
+        jTextFieldValor3.setText("0.0");
+
+        jTextFieldValor4.setText("0.0");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldItem1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(0, 59, Short.MAX_VALUE))
+                            .addComponent(jTextFieldValor1)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTextFieldItem2, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldValor2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTextFieldItem3, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldValor3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTextFieldItem4, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldValor4)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(7, 7, 7)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldItem1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldValor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldValor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldItem2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldValor3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldItem3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldValor4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldItem4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(57, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 560, 220));
 
         jMenuBar1.setMinimumSize(new java.awt.Dimension(56, 31));
         jMenuBar1.setPreferredSize(new java.awt.Dimension(396, 31));
@@ -368,12 +440,12 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             }
         });
         jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuSelected(javax.swing.event.MenuEvent evt) {
-                jMenu4MenuSelected(evt);
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenu4MenuSelected(evt);
             }
         });
         jMenu4.addActionListener(new java.awt.event.ActionListener() {
@@ -555,7 +627,6 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
@@ -567,6 +638,8 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
@@ -577,21 +650,35 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextArea jTextAreaDescricao;
     private javax.swing.JTextField jTextFieldBairro;
     private javax.swing.JTextField jTextFieldCod;
     private javax.swing.JTextField jTextFieldComplemento;
     private javax.swing.JTextField jTextFieldDataCadastro;
     private javax.swing.JTextField jTextFieldEndereco;
+    private javax.swing.JTextField jTextFieldItem1;
+    private javax.swing.JTextField jTextFieldItem2;
+    private javax.swing.JTextField jTextFieldItem3;
+    private javax.swing.JTextField jTextFieldItem4;
     private javax.swing.JTextField jTextFieldJuros;
     private javax.swing.JTextField jTextFieldValor;
+    private javax.swing.JTextField jTextFieldValor1;
+    private javax.swing.JTextField jTextFieldValor2;
+    private javax.swing.JTextField jTextFieldValor3;
+    private javax.swing.JTextField jTextFieldValor4;
     // End of variables declaration//GEN-END:variables
 
     private void novo() {
 
-        jTextAreaDescricao.setText(null);
+        jTextFieldItem1.setText(null);
+        jTextFieldItem2.setText(null);
+        jTextFieldItem3.setText(null);
+        jTextFieldItem4.setText(null);
+        jTextFieldValor1.setText(null);
+        jTextFieldValor2.setText(null);
+        jTextFieldValor3.setText(null);
+        jTextFieldValor4.setText(null);
         jTextFieldBairro.setText(null);
         jTextFieldCod.setText(null);
         jTextFieldComplemento.setText(null);
@@ -647,7 +734,10 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             ordem.setCliente((Pessoa) jComboBoxCliente.getSelectedItem());
             ordem.setDataCadastro(Util.stringToCalendar(jTextFieldDataCadastro.getText()));
             ordem.setDataVencimento(Util.stringToCalendar(jFormattedTextFieldDataVencimento.getText()));
-            ordem.setDescricao(jTextAreaDescricao.getText());
+            ordem.setItem1(jTextFieldItem1.getText());
+            ordem.setItem2(jTextFieldItem2.getText());
+            ordem.setItem3(jTextFieldItem3.getText());
+            ordem.setItem4(jTextFieldItem4.getText());
             ordem.setFuncionario((Funcionario) jComboBoxFuncionarios.getSelectedItem());
 
 
@@ -681,12 +771,16 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             }
 
             try {
-                ordem.setValor(Double.parseDouble(jTextFieldValor.getText()));
+                ordem.setValor1(Double.parseDouble(jTextFieldValor1.getText()));
+                ordem.setValor2(Double.parseDouble(jTextFieldValor2.getText()));
+                ordem.setValor3(Double.parseDouble(jTextFieldValor3.getText()));
+                ordem.setValor4(Double.parseDouble(jTextFieldValor4.getText()));
+                Double valorTotal = calculcarValorTotal(ordem);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(rootPane, "Erro no campo de valor. \n Verifique se você colocou virgulas e substitua por 'Ponto'");
                 return;
             }
-            BigDecimal a = new BigDecimal(ordem.getValor());
+            BigDecimal a = new BigDecimal(ordem.getValorTotal());
             BigDecimal aArredondado = a.divide(BigDecimal.ONE, 2, BigDecimal.ROUND_HALF_UP);
             Extenso extenso = new Extenso(aArredondado);
 
@@ -864,5 +958,9 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
 
     private double calcularParc(double valor, double parcelas) {
         return valor / parcelas;
+    }
+
+    private Double calculcarValorTotal(OrdemServico ordem) {
+        return ordem.getValor1() + ordem.getValor2() + ordem.getValor3() + ordem.getValor4();
     }
 }
