@@ -51,9 +51,8 @@ public class JFrameLogin extends javax.swing.JFrame {
             ResultSet execute = conexao.createStatement().executeQuery("show tables");
 
             if (!execute.next()) {
-                HibernateConfiguration.criarSchema();
-                conexao.createStatement().execute("INSERT INTO usuarios VALUES (1,'ehrick@vista.aero','ZXSACBDFEGIHOJML','63a9f0ea7bb98050796b649e85481845','Okaynet')");
-
+                
+                Util.abrirDialogCentralizado(new JDialogCriacaoBase(this, true, null));
             }
 
         } catch (SQLException e) {
