@@ -769,17 +769,18 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             } else {
                 ordem.setJuros(0.0);
             }
-
+            Double valorTotal = 0.0;
             try {
                 ordem.setValor1(Double.parseDouble(jTextFieldValor1.getText()));
                 ordem.setValor2(Double.parseDouble(jTextFieldValor2.getText()));
                 ordem.setValor3(Double.parseDouble(jTextFieldValor3.getText()));
                 ordem.setValor4(Double.parseDouble(jTextFieldValor4.getText()));
-                Double valorTotal = calculcarValorTotal(ordem);
+                valorTotal = calculcarValorTotal(ordem);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(rootPane, "Erro no campo de valor. \n Verifique se você colocou virgulas e substitua por 'Ponto'");
                 return;
             }
+            ordem.setValorTotal(valorTotal);
             BigDecimal a = new BigDecimal(ordem.getValorTotal());
             BigDecimal aArredondado = a.divide(BigDecimal.ONE, 2, BigDecimal.ROUND_HALF_UP);
             Extenso extenso = new Extenso(aArredondado);
@@ -831,11 +832,11 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             jFormattedTextFieldDataVencimento.setBackground(Color.white);
         }
 
-        if (jTextFieldValor.getText().isEmpty()) {
-            jTextFieldValor.setBackground(color);
+        if (jTextFieldValor1.getText().isEmpty()) {
+            jTextFieldValor1.setBackground(color);
             flag = 1;
         } else {
-            jTextFieldValor.setBackground(Color.white);
+            jTextFieldValor1.setBackground(Color.white);
         }
 
         if (jTextFieldEndereco.getText().isEmpty()) {
@@ -873,11 +874,11 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             jTextFieldBairro.setBackground(Color.white);
         }
 
-        if (jTextAreaDescricao.getText().isEmpty()) {
-            jTextAreaDescricao.setBackground(color);
+        if (jTextFieldItem1.getText().isEmpty()) {
+            jTextFieldItem1.setBackground(color);
             flag = 1;
         } else {
-            jTextAreaDescricao.setBackground(Color.white);
+            jTextFieldItem1.setBackground(Color.white);
         }
 
         if (flag == 1) {
