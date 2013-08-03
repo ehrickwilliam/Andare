@@ -80,15 +80,12 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jComboBoxCidade = new javax.swing.JComboBox();
-        jLabel16 = new javax.swing.JLabel();
         jComboBoxStatus = new javax.swing.JComboBox();
         jLabel20 = new javax.swing.JLabel();
         jComboBoxTipoCheque = new javax.swing.JComboBox();
         jComboBoxCliente = new javax.swing.JComboBox();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextAreaDescricao = new javax.swing.JTextArea();
         jFormattedTextFieldDataVencimento = new javax.swing.JFormattedTextField();
         jFormattedTextFieldNumero = new javax.swing.JFormattedTextField();
         jFormattedTextFieldCep = new javax.swing.JFormattedTextField();
@@ -105,6 +102,17 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
         jComboBoxQuantParcelas = new javax.swing.JComboBox();
         jComboBoxParcelasRest = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jTextFieldItem1 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jTextFieldValor1 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jTextFieldItem2 = new javax.swing.JTextField();
+        jTextFieldValor2 = new javax.swing.JTextField();
+        jTextFieldValor3 = new javax.swing.JTextField();
+        jTextFieldItem3 = new javax.swing.JTextField();
+        jTextFieldValor4 = new javax.swing.JTextField();
+        jTextFieldItem4 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu6 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
@@ -192,10 +200,6 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
         jComboBoxCidade.setEnabled(false);
         getContentPane().add(jComboBoxCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, 120, -1));
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel16.setText("Descrição :");
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, -1, -1));
-
         jComboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Aguardando Pagamento", "Pagamento Concluido", "Pagamento em Cheque" }));
         jComboBoxStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,14 +241,6 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
         jLabel22.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel22.setText("Qnt. Parc:");
         getContentPane().add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, -1, 10));
-
-        jTextAreaDescricao.setEditable(false);
-        jTextAreaDescricao.setColumns(20);
-        jTextAreaDescricao.setRows(5);
-        jTextAreaDescricao.setEnabled(false);
-        jScrollPane1.setViewportView(jTextAreaDescricao);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 500, 110));
 
         try {
             jFormattedTextFieldDataVencimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -330,6 +326,79 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, 130, 20));
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Serviços"));
+
+        jLabel5.setText("Itens:");
+
+        jTextFieldValor1.setText("0.0");
+
+        jLabel6.setText("Valores R$:");
+
+        jTextFieldValor2.setText("0.0");
+
+        jTextFieldValor3.setText("0.0");
+
+        jTextFieldValor4.setText("0.0");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldItem1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(0, 59, Short.MAX_VALUE))
+                            .addComponent(jTextFieldValor1)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTextFieldItem2, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldValor2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTextFieldItem3, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldValor3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTextFieldItem4, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldValor4)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(7, 7, 7)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldItem1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldValor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldValor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldItem2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldValor3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldItem3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldValor4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldItem4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 560, 170));
 
         jMenuBar1.setMinimumSize(new java.awt.Dimension(56, 31));
         jMenuBar1.setPreferredSize(new java.awt.Dimension(396, 31));
@@ -489,7 +558,6 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
@@ -501,6 +569,8 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
@@ -509,16 +579,23 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextArea jTextAreaDescricao;
     private javax.swing.JTextField jTextFieldBairro;
     private javax.swing.JTextField jTextFieldCod;
     private javax.swing.JTextField jTextFieldComplemento;
     private javax.swing.JTextField jTextFieldDataCadastro;
     private javax.swing.JTextField jTextFieldEndereco;
+    private javax.swing.JTextField jTextFieldItem1;
+    private javax.swing.JTextField jTextFieldItem2;
+    private javax.swing.JTextField jTextFieldItem3;
+    private javax.swing.JTextField jTextFieldItem4;
     private javax.swing.JTextField jTextFieldJuros;
     private javax.swing.JTextField jTextFieldValor;
+    private javax.swing.JTextField jTextFieldValor1;
+    private javax.swing.JTextField jTextFieldValor2;
+    private javax.swing.JTextField jTextFieldValor3;
+    private javax.swing.JTextField jTextFieldValor4;
     // End of variables declaration//GEN-END:variables
 
     private void preencher() {
@@ -537,7 +614,7 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
                     jComboBoxStatus.setSelectedItem(ordem.getStatus());
                     jComboBoxFuncionarios.setSelectedItem(ordem.getFuncionario());
                     jComboBoxCliente.setSelectedItem(ordem.getCliente());
-                    jTextFieldValor.setText(String.valueOf(ordem.getValor()));
+                    jTextFieldValor.setText(String.valueOf(ordem.getValorTotal()));
                     jComboBoxQuantParcelas.setSelectedItem(ordem.getParcelas());
 
                     jComboBoxParcelasRest.setSelectedIndex((ordem.getParcelasRestantes() - 1));
@@ -545,7 +622,17 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
                     jComboBoxBanco.setSelectedItem(ordem.getBanco());
                     jComboBoxTipoCheque.setSelectedItem(ordem.getTipoCheque());
                     jTextFieldJuros.setText(String.valueOf(ordem.getJuros()));
-                    jTextAreaDescricao.setText(ordem.getDescricao());
+                    
+                    jTextFieldItem1.setText(ordem.getItem1());
+                    jTextFieldItem2.setText(ordem.getItem2());
+                    jTextFieldItem3.setText(ordem.getItem3());
+                    jTextFieldItem4.setText(ordem.getItem4());
+                    jTextFieldValor1.setText(String.valueOf(ordem.getValor1()));
+                    jTextFieldValor2.setText(String.valueOf(ordem.getValor2()));
+                    jTextFieldValor3.setText(String.valueOf(ordem.getValor3()));
+                    jTextFieldValor4.setText(String.valueOf(ordem.getValor4()));
+                    
+                    
                     jTextFieldEndereco.setText(ordem.getEndereco().getLogradouro());
                     jFormattedTextFieldNumero.setText(String.valueOf(ordem.getEndereco().getNumero()));
                     jTextFieldComplemento.setText(ordem.getEndereco().getComplemento());
@@ -634,7 +721,13 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
             ordem.setCliente((Pessoa) jComboBoxCliente.getSelectedItem());
             ordem.setDataCadastro(Util.stringToCalendar(jTextFieldDataCadastro.getText()));
             ordem.setDataVencimento(Util.stringToCalendar(jFormattedTextFieldDataVencimento.getText()));
-            ordem.setDescricao(jTextAreaDescricao.getText());
+            
+            ordem.setItem1(jTextFieldItem1.getText());
+            ordem.setItem2(jTextFieldItem2.getText());
+            ordem.setItem3(jTextFieldItem3.getText());
+            ordem.setItem4(jTextFieldItem4.getText());
+            
+            
             ordem.setFuncionario((Funcionario) jComboBoxFuncionarios.getSelectedItem());
 
 
@@ -662,14 +755,20 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
                     JOptionPane.showMessageDialog(rootPane, "Erro no campo de juros, valor não confere");
                 }
             }
-
+            
+            Double valorTotal = 0.0;            
             try {
-                ordem.setValor(Double.parseDouble(jTextFieldValor.getText()));
+                ordem.setValor1(Double.parseDouble(jTextFieldValor1.getText()));
+                ordem.setValor2(Double.parseDouble(jTextFieldValor2.getText()));
+                ordem.setValor3(Double.parseDouble(jTextFieldValor3.getText()));
+                ordem.setValor4(Double.parseDouble(jTextFieldValor4.getText()));
+                valorTotal = calculcarValorTotal(ordem);
             } catch (Exception e) {
                 JOptionPane.showConfirmDialog(rootPane, "Erro no valor da ordem");
             }
-
-            BigDecimal a = new BigDecimal(ordem.getValor());
+            
+            ordem.setValorTotal(valorTotal);
+            BigDecimal a = new BigDecimal(ordem.getValorTotal());
             BigDecimal aArredondado = a.divide(BigDecimal.ONE, 2, BigDecimal.ROUND_HALF_UP);
             Extenso extenso = new Extenso(aArredondado);
             Pessoa clienteAlvo = (Pessoa) jComboBoxCliente.getSelectedItem();
@@ -757,11 +856,11 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
             jTextFieldBairro.setBackground(Color.white);
         }
 
-        if (jTextAreaDescricao.getText().isEmpty()) {
-            jTextAreaDescricao.setBackground(color);
+        if (jTextFieldItem1.getText().isEmpty()) {
+            jTextFieldItem1.setBackground(color);
             flag = 1;
         } else {
-            jTextAreaDescricao.setBackground(Color.white);
+            jTextFieldItem1.setBackground(Color.white);
         }
 
         if (flag == 1) {
@@ -779,5 +878,9 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
         long dt1 = ini.getTimeInMillis();
         long dt2 = fim.getTimeInMillis();
         return (int) (((dt2 - dt1) / 86400000) + 1);
+    }
+
+    private Double calculcarValorTotal(OrdemServico ordem) {
+        return ordem.getValor1() + ordem.getValor2() + ordem.getValor3() + ordem.getValor4();
     }
 }
