@@ -125,9 +125,9 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Visualizar e Alterar Status OS");
-        setMinimumSize(new java.awt.Dimension(608, 535));
+        setMinimumSize(new java.awt.Dimension(608, 550));
         setModal(true);
-        setPreferredSize(new java.awt.Dimension(608, 535));
+        setPreferredSize(new java.awt.Dimension(608, 550));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
