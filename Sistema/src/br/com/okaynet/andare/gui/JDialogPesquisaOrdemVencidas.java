@@ -486,8 +486,8 @@ public class JDialogPesquisaOrdemVencidas extends javax.swing.JDialog {
         }
         jComboBoxFuncionario.setSelectedIndex(-1);
     }
-    
-        private void orderServicoNota() {
+
+    private void orderServicoNota() {
         OrdemServico orderView = orderns.get(jTableOrdemServico.getSelectedRow());
         Connection conexao;
         try {
@@ -509,14 +509,21 @@ public class JDialogPesquisaOrdemVencidas extends javax.swing.JDialog {
                     + "     ordemservico.`banco` AS ordemservico_banco,\n"
                     + "     ordemservico.`dataCadastro` AS ordemservico_dataCadastro,\n"
                     + "     ordemservico.`dataVencimento` AS ordemservico_dataVencimento,\n"
-                    + "     ordemservico.`descricao` AS ordemservico_descricao,\n"
+                    + "     ordemservico.`item1` AS ordemservico_item1,\n"
+                    + "     ordemservico.`item2` AS ordemservico_item2,\n"
+                    + "     ordemservico.`item3` AS ordemservico_item3,\n"
+                    + "     ordemservico.`item4` AS ordemservico_item4,\n"
                     + "     ordemservico.`juros` AS ordemservico_juros,\n"
                     + "     ordemservico.`parcelas` AS ordemservico_parcelas,\n"
                     + "     ordemservico.`parcelasRestantes` AS ordemservico_parcelasRestantes,\n"
                     + "     ordemservico.`status` AS ordemservico_status,\n"
                     + "     ordemservico.`tipoCheque` AS ordemservico_tipoCheque,\n"
-                    + "     ordemservico.`valor` AS ordemservico_valor,\n"
+                    + "     ordemservico.`valor1` AS ordemservico_valor1,\n"
+                    + "     ordemservico.`valor2` AS ordemservico_valor2,\n"
+                    + "     ordemservico.`valor3` AS ordemservico_valor3,\n"
+                    + "     ordemservico.`valor4` AS ordemservico_valor4,\n"
                     + "     ordemservico.`valorPorExtenso` AS ordemservico_valorPorExtenso,\n"
+                    + "     ordemservico.`valorTotal` AS ordemservico_valorTotal,\n"
                     + "     ordemservico.`cliente_id` AS ordemservico_cliente_id,\n"
                     + "     ordemservico.`endereco_id` AS ordemservico_endereco_id,\n"
                     + "     ordemservico.`funcionario_id` AS ordemservico_funcionario_id,\n"
@@ -538,10 +545,9 @@ public class JDialogPesquisaOrdemVencidas extends javax.swing.JDialog {
                     + "     pessoa.`referencia3` AS pessoa_referencia3,\n"
                     + "     pessoa.`endereco_id` AS pessoa_endereco_id\n"
                     + "FROM\n"
-                    + "     `pessoa` pessoa INNER JOIN `ordemservico` ordemservico ON pessoa.`id` = ordemservico.`cliente_id`\n"
-                    + "     INNER JOIN `endereco` endereco ON ordemservico.`endereco_id` = endereco.`id`\n"
+                    + "     pessoa, ordemservico, endereco\n"
                     + "WHERE\n"
-                    + "     ordemservico.`id` = " + orderView.getId());
+                    + "     ordemservico.`id` = " + +orderView.getId() + " AND pessoa.`id` = ordemservico.`cliente_id` AND endereco.`id` = ordemservico.`endereco_id`");
 
 
             JRResultSetDataSource jrRS = new JRResultSetDataSource(executeQuery);

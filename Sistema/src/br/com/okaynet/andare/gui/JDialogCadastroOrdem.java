@@ -360,6 +360,11 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextFieldItem1.setMaximumSize(new java.awt.Dimension(370, 2147483647));
+        jTextFieldItem1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldItem1FocusGained(evt);
+            }
+        });
         jPanel1.add(jTextFieldItem1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 43, 370, -1));
 
         jLabel5.setText("Itens:");
@@ -425,10 +430,10 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             }
         });
         jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
-            }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenu4MenuSelected(evt);
+            }
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
             public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
@@ -548,6 +553,10 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
     private void jTextFieldValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldValorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldValorActionPerformed
+
+    private void jTextFieldItem1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldItem1FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldItem1FocusGained
 
     /**
      * @param args the command line arguments
@@ -763,24 +772,24 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
                 if (!jTextFieldValor1.getText().isEmpty()) {
                     ordem.setValor1(Double.parseDouble(jTextFieldValor1.getText()));
                 } else {
-                    ordem.setValor1(0.0);
+                    //ordem.setValor1(0.0);
                 }
                 if (!jTextFieldValor2.getText().isEmpty()) {
                     ordem.setValor2(Double.parseDouble(jTextFieldValor2.getText()));
                 } else {
-                    ordem.setValor2(0.0);
+                   // ordem.setValor2(0.0);
                 }
                 if (!jTextFieldValor3.getText().isEmpty()) {
                     ordem.setValor3(Double.parseDouble(jTextFieldValor3.getText()));
                 } else {
-                    ordem.setValor3(0.0);
+                  //  ordem.setValor3(0.0);
                 }
                 if (!jTextFieldValor4.getText().isEmpty()) {
                     ordem.setValor4(Double.parseDouble(jTextFieldValor4.getText()));
                 } else {
-                    ordem.setValor4(0.0);
+                   // ordem.setValor4(0.0);
                 }
-                valorTotal = calculcarValorTotal(ordem);
+                valorTotal = Double.parseDouble(jTextFieldValor.getText());
 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(rootPane, "Erro no campo de valor. \n Verifique se você colocou virgulas e substitua por 'Ponto'");

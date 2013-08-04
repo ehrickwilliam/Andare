@@ -47,7 +47,7 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
         preencherEndereco();
         modificarEndereco();
         iniciarPreencher();
-        iniciarThreadCalculoValor();        
+        iniciarThreadCalculoValor();
         iniciarThreadQtdeCarateres();
         preencher();
         Usuarios autenticado = (Usuarios) Data.hash.get("usuario");
@@ -443,10 +443,10 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
             }
         });
         jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
-            }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenu4MenuSelected(evt);
+            }
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
             public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
@@ -764,26 +764,27 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
             }
             Double valorTotal = 0.0;
             try {
-                if(!jTextFieldValor1.getText().isEmpty()){
+                if (!jTextFieldValor1.getText().isEmpty()) {
                     ordem.setValor1(Double.parseDouble(jTextFieldValor1.getText()));
-                }else{
-                    ordem.setValor1(0.0);
+                } else {
+                    //  ordem.setValor1(0.0);
                 }
-                if(!jTextFieldValor2.getText().isEmpty()){
+                if (!jTextFieldValor2.getText().isEmpty()) {
                     ordem.setValor2(Double.parseDouble(jTextFieldValor2.getText()));
-                }else{
-                    ordem.setValor2(0.0);
-                }if(!jTextFieldValor3.getText().isEmpty()){
+                } else {
+                    // ordem.setValor2(0.0);
+                }
+                if (!jTextFieldValor3.getText().isEmpty()) {
                     ordem.setValor3(Double.parseDouble(jTextFieldValor3.getText()));
-                }else{
-                    ordem.setValor3(0.0);
+                } else {
+                    // ordem.setValor3(0.0);
                 }
-                if(!jTextFieldValor4.getText().isEmpty()){
+                if (!jTextFieldValor4.getText().isEmpty()) {
                     ordem.setValor4(Double.parseDouble(jTextFieldValor4.getText()));
-                }else{
-                    ordem.setValor4(0.0);
+                } else {
+                    // ordem.setValor4(0.0);
                 }
-                valorTotal = calculcarValorTotal(ordem); 
+                valorTotal = Double.parseDouble(jTextFieldValor.getText());
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(rootPane, "Erro no campo de valor. \n Verifique se você colocou virgulas e substitua por 'Ponto'");
                 return;
@@ -989,17 +990,25 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
                     jComboBoxBanco.setSelectedItem(ordem.getBanco());
                     jComboBoxTipoCheque.setSelectedItem(ordem.getTipoCheque());
                     jTextFieldJuros.setText(String.valueOf(ordem.getJuros()));
-                    
+
                     jTextFieldItem1.setText(ordem.getItem1());
                     jTextFieldItem2.setText(ordem.getItem2());
                     jTextFieldItem3.setText(ordem.getItem3());
                     jTextFieldItem4.setText(ordem.getItem4());
-                    jTextFieldValor1.setText(String.valueOf(ordem.getValor1()));
-                    jTextFieldValor2.setText(String.valueOf(ordem.getValor2()));
-                    jTextFieldValor3.setText(String.valueOf(ordem.getValor3()));
-                    jTextFieldValor4.setText(String.valueOf(ordem.getValor4()));
-                    
-                    
+                    if (ordem.getValor1() != null) {
+                        jTextFieldValor1.setText(String.valueOf(ordem.getValor1()));
+                    }
+                    if (ordem.getValor2() != null) {
+                        jTextFieldValor2.setText(String.valueOf(ordem.getValor2()));
+                    }
+                    if (ordem.getValor3() != null) {
+                        jTextFieldValor3.setText(String.valueOf(ordem.getValor3()));
+                    }
+                    if (ordem.getValor4() != null) {
+                        jTextFieldValor4.setText(String.valueOf(ordem.getValor4()));
+                    }
+
+
                     jTextFieldEndereco.setText(ordem.getEndereco().getLogradouro());
                     jFormattedTextFieldNumero.setText(String.valueOf(ordem.getEndereco().getNumero()));
                     jTextFieldComplemento.setText(ordem.getEndereco().getComplemento());
@@ -1030,7 +1039,7 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
     }
 
     private void iniciarThreadCalculoValor() {
-       new Thread() {
+        new Thread() {
             @Override
             public void run() {
                 while (true) {
@@ -1042,9 +1051,9 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
                     }
                 }
             }
-        }.start(); 
+        }.start();
     }
-    
+
     private void calcularValorTotal() {
         double valor1 = 0.0;
         double valor2 = 0.0;
@@ -1074,7 +1083,7 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
         total = valor1 + valor2 + valor3 + valor4;
         jTextFieldValor.setText(String.valueOf(total));
     }
-    
+
     private int contarCaracteres(JTextField campoDeTexto) {
         return campoDeTexto.getText().length();
     }
@@ -1085,45 +1094,48 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
             jLabelItem1.setText(String.valueOf(qtdeCaracteres));
             jLabelItem1.setForeground(Color.red);
             jTextFieldItem1.setBackground(new Color(252, 196, 196));
-        }else{
+        } else {
             jLabelItem1.setText(String.valueOf(qtdeCaracteres));
-            jLabelItem1.setForeground(new Color(7,129,17));
+            jLabelItem1.setForeground(new Color(7, 129, 17));
             jTextFieldItem1.setBackground(Color.WHITE);
         }
     }
+
     private void atualizarNumeroDecaracteresItem2() {
         int qtdeCaracteres = contarCaracteres(jTextFieldItem2);
         if (qtdeCaracteres > 120) {
             jLabelItem2.setText(String.valueOf(qtdeCaracteres));
             jLabelItem2.setForeground(Color.red);
             jTextFieldItem2.setBackground(new Color(252, 196, 196));
-        }else{
+        } else {
             jLabelItem2.setText(String.valueOf(qtdeCaracteres));
-            jLabelItem2.setForeground(new Color(7,129,17));
+            jLabelItem2.setForeground(new Color(7, 129, 17));
             jTextFieldItem2.setBackground(Color.WHITE);
         }
     }
+
     private void atualizarNumeroDecaracteresItem3() {
         int qtdeCaracteres = contarCaracteres(jTextFieldItem3);
         if (qtdeCaracteres > 120) {
             jLabelItem3.setText(String.valueOf(qtdeCaracteres));
             jLabelItem3.setForeground(Color.red);
             jTextFieldItem3.setBackground(new Color(252, 196, 196));
-        }else{
+        } else {
             jLabelItem3.setText(String.valueOf(qtdeCaracteres));
-            jLabelItem3.setForeground(new Color(7,129,17));
+            jLabelItem3.setForeground(new Color(7, 129, 17));
             jTextFieldItem3.setBackground(Color.WHITE);
         }
     }
+
     private void atualizarNumeroDecaracteresItem4() {
         int qtdeCaracteres = contarCaracteres(jTextFieldItem4);
         if (qtdeCaracteres > 120) {
             jLabelItem4.setText(String.valueOf(qtdeCaracteres));
             jLabelItem4.setForeground(Color.red);
             jTextFieldItem4.setBackground(new Color(252, 196, 196));
-        }else{
+        } else {
             jLabelItem4.setText(String.valueOf(qtdeCaracteres));
-            jLabelItem4.setForeground(new Color(7,129,17));
+            jLabelItem4.setForeground(new Color(7, 129, 17));
             jTextFieldItem4.setBackground(Color.WHITE);
         }
     }
@@ -1146,9 +1158,9 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
             }
         }.start();
     }
-    
+
     private boolean verificarQtdeDeCaracteresItens() {
-        if (jTextFieldItem1.getText().length() > 120 || jTextFieldItem2.getText().length() > 120 || jTextFieldItem3.getText().length() > 120 || jTextFieldItem4.getText().length() > 120 ) {
+        if (jTextFieldItem1.getText().length() > 120 || jTextFieldItem2.getText().length() > 120 || jTextFieldItem3.getText().length() > 120 || jTextFieldItem4.getText().length() > 120) {
             JOptionPane.showMessageDialog(rootPane, "Item(ns) com número de caracteres maior que o permitido! (max. 120 caracteres)");
             return false;
         } else {

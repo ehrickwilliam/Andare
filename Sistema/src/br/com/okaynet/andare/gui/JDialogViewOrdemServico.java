@@ -808,24 +808,24 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
                 if (!jTextFieldValor1.getText().isEmpty()) {
                     ordem.setValor1(Double.parseDouble(jTextFieldValor1.getText()));
                 } else {
-                    ordem.setValor1(0.0);
+                    //ordem.setValor1(0.0);
                 }
                 if (!jTextFieldValor2.getText().isEmpty()) {
                     ordem.setValor2(Double.parseDouble(jTextFieldValor2.getText()));
                 } else {
-                    ordem.setValor2(0.0);
+                   // ordem.setValor2(0.0);
                 }
                 if (!jTextFieldValor3.getText().isEmpty()) {
                     ordem.setValor3(Double.parseDouble(jTextFieldValor3.getText()));
                 } else {
-                    ordem.setValor3(0.0);
+                   // ordem.setValor3(0.0);
                 }
                 if (!jTextFieldValor4.getText().isEmpty()) {
                     ordem.setValor4(Double.parseDouble(jTextFieldValor4.getText()));
                 } else {
-                    ordem.setValor4(0.0);
+                   // ordem.setValor4(0.0);
                 }
-                valorTotal = calculcarValorTotal(ordem);
+                valorTotal = Double.parseDouble(jTextFieldValor.getText());
             } catch (Exception e) {
                 JOptionPane.showConfirmDialog(rootPane, "Erro no valor da ordem");
             }
