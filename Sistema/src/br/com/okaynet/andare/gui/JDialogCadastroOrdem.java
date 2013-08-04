@@ -358,6 +358,8 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Serviços"));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTextFieldItem1.setMaximumSize(new java.awt.Dimension(370, 2147483647));
         jPanel1.add(jTextFieldItem1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 43, 370, -1));
 
         jLabel5.setText("Itens:");
@@ -1024,9 +1026,11 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         if (qtdeCaracteres > 120) {
             jLabelItem1.setText(String.valueOf(qtdeCaracteres));
             jLabelItem1.setForeground(Color.red);
+            jTextFieldItem1.setBackground(new Color(252, 196, 196));
         }else{
             jLabelItem1.setText(String.valueOf(qtdeCaracteres));
             jLabelItem1.setForeground(new Color(7,129,17));
+            jTextFieldItem1.setBackground(Color.WHITE);
         }
     }
     private void atualizarNumeroDecaracteresItem2() {
@@ -1034,9 +1038,11 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         if (qtdeCaracteres > 120) {
             jLabelItem2.setText(String.valueOf(qtdeCaracteres));
             jLabelItem2.setForeground(Color.red);
+            jTextFieldItem2.setBackground(new Color(252, 196, 196));
         }else{
             jLabelItem2.setText(String.valueOf(qtdeCaracteres));
             jLabelItem2.setForeground(new Color(7,129,17));
+            jTextFieldItem2.setBackground(Color.WHITE);
         }
     }
     private void atualizarNumeroDecaracteresItem3() {
@@ -1044,9 +1050,11 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         if (qtdeCaracteres > 120) {
             jLabelItem3.setText(String.valueOf(qtdeCaracteres));
             jLabelItem3.setForeground(Color.red);
+            jTextFieldItem3.setBackground(new Color(252, 196, 196));
         }else{
             jLabelItem3.setText(String.valueOf(qtdeCaracteres));
             jLabelItem3.setForeground(new Color(7,129,17));
+            jTextFieldItem3.setBackground(Color.WHITE);
         }
     }
     private void atualizarNumeroDecaracteresItem4() {
@@ -1054,9 +1062,11 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         if (qtdeCaracteres > 120) {
             jLabelItem4.setText(String.valueOf(qtdeCaracteres));
             jLabelItem4.setForeground(Color.red);
+            jTextFieldItem4.setBackground(new Color(252, 196, 196));
         }else{
             jLabelItem4.setText(String.valueOf(qtdeCaracteres));
             jLabelItem4.setForeground(new Color(7,129,17));
+            jTextFieldItem4.setBackground(Color.WHITE);
         }
     }
 
