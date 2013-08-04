@@ -722,7 +722,7 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
     }
 
     private void salvar() {
-        if (validaCamposEmBranco()) {
+        if (validaCamposEmBranco() && verificarQtdeDeCaracteresItens()) {
             OrdemServico ordem = new OrdemServico();
             ordem.setId(Integer.parseInt(jTextFieldCod.getText()));
             ordem.setCliente((Pessoa) jComboBoxCliente.getSelectedItem());
@@ -1145,5 +1145,14 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
                 }
             }
         }.start();
+    }
+    
+    private boolean verificarQtdeDeCaracteresItens() {
+        if (jTextFieldItem1.getText().length() > 120 || jTextFieldItem2.getText().length() > 120 || jTextFieldItem3.getText().length() > 120 || jTextFieldItem4.getText().length() > 120 ) {
+            JOptionPane.showMessageDialog(rootPane, "Item(ns) com número de caracteres maior que o permitido! (max. 120 caracteres)");
+            return false;
+        } else {
+            return true;
+        }
     }
 }

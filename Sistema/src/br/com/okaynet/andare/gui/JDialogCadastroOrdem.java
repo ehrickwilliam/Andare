@@ -718,7 +718,7 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
     }
 
     private void salvar() {
-        if (validaCamposEmBranco()) {
+        if (validaCamposEmBranco() && verificarQtdeDeCaracteresItens()) {
             OrdemServico ordem = new OrdemServico();
             ordem.setCliente((Pessoa) jComboBoxCliente.getSelectedItem());
             ordem.setDataCadastro(Util.stringToCalendar(jTextFieldDataCadastro.getText()));
@@ -1027,45 +1027,48 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             jLabelItem1.setText(String.valueOf(qtdeCaracteres));
             jLabelItem1.setForeground(Color.red);
             jTextFieldItem1.setBackground(new Color(252, 196, 196));
-        }else{
+        } else {
             jLabelItem1.setText(String.valueOf(qtdeCaracteres));
-            jLabelItem1.setForeground(new Color(7,129,17));
+            jLabelItem1.setForeground(new Color(7, 129, 17));
             jTextFieldItem1.setBackground(Color.WHITE);
         }
     }
+
     private void atualizarNumeroDecaracteresItem2() {
         int qtdeCaracteres = contarCaracteres(jTextFieldItem2);
         if (qtdeCaracteres > 120) {
             jLabelItem2.setText(String.valueOf(qtdeCaracteres));
             jLabelItem2.setForeground(Color.red);
             jTextFieldItem2.setBackground(new Color(252, 196, 196));
-        }else{
+        } else {
             jLabelItem2.setText(String.valueOf(qtdeCaracteres));
-            jLabelItem2.setForeground(new Color(7,129,17));
+            jLabelItem2.setForeground(new Color(7, 129, 17));
             jTextFieldItem2.setBackground(Color.WHITE);
         }
     }
+
     private void atualizarNumeroDecaracteresItem3() {
         int qtdeCaracteres = contarCaracteres(jTextFieldItem3);
         if (qtdeCaracteres > 120) {
             jLabelItem3.setText(String.valueOf(qtdeCaracteres));
             jLabelItem3.setForeground(Color.red);
             jTextFieldItem3.setBackground(new Color(252, 196, 196));
-        }else{
+        } else {
             jLabelItem3.setText(String.valueOf(qtdeCaracteres));
-            jLabelItem3.setForeground(new Color(7,129,17));
+            jLabelItem3.setForeground(new Color(7, 129, 17));
             jTextFieldItem3.setBackground(Color.WHITE);
         }
     }
+
     private void atualizarNumeroDecaracteresItem4() {
         int qtdeCaracteres = contarCaracteres(jTextFieldItem4);
         if (qtdeCaracteres > 120) {
             jLabelItem4.setText(String.valueOf(qtdeCaracteres));
             jLabelItem4.setForeground(Color.red);
             jTextFieldItem4.setBackground(new Color(252, 196, 196));
-        }else{
+        } else {
             jLabelItem4.setText(String.valueOf(qtdeCaracteres));
-            jLabelItem4.setForeground(new Color(7,129,17));
+            jLabelItem4.setForeground(new Color(7, 129, 17));
             jTextFieldItem4.setBackground(Color.WHITE);
         }
     }
@@ -1087,5 +1090,14 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
                 }
             }
         }.start();
+    }
+
+    private boolean verificarQtdeDeCaracteresItens() {
+        if (jTextFieldItem1.getText().length() > 120 || jTextFieldItem2.getText().length() > 120 || jTextFieldItem3.getText().length() > 120 || jTextFieldItem4.getText().length() > 120 ) {
+            JOptionPane.showMessageDialog(rootPane, "Item(ns) com número de caracteres maior que o permitido! (max. 120 caracteres)");
+            return false;
+        } else {
+            return true;
+        }
     }
 }
