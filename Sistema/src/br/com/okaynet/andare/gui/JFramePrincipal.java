@@ -4,6 +4,7 @@
  */
 package br.com.okaynet.andare.gui;
 
+import br.com.okaynet.andare.bibliotecas.ReportManage;
 import br.com.okaynet.andare.bibliotecas.Util;
 import br.com.okaynet.andare.conexao.Data;
 import br.com.okaynet.andare.conexao.TransactionManager;
@@ -15,13 +16,18 @@ import br.com.okaynet.andare.model.ClienteJuridico;
 import br.com.okaynet.andare.model.Funcionario;
 import br.com.okaynet.andare.model.Pessoa;
 import br.com.okaynet.andare.model.Usuarios;
+import br.com.okaynet.andare.testes.testeRelatorio;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
 
 /**
  *
@@ -39,7 +45,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         Util.buscaAtendimentos(this.jLabelAtendimentos);
         Usuarios autenticado = (Usuarios) Data.hash.get("usuario");
         jLabelAdmin.setText(autenticado.getUsuario());
-        
+
         if (autenticado.getPermissoes() != null && autenticado.getPermissoes().length() > 0) {
             int indexOf = autenticado.getPermissoes().indexOf("A");
             if (indexOf > 0) {
@@ -172,6 +178,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem17 = new javax.swing.JMenuItem();
         jMenuItem18 = new javax.swing.JMenuItem();
+        jMenuItem19 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -449,8 +456,22 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuRelatorios.add(jMenuItem17);
 
         jMenuItem18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/137.png"))); // NOI18N
-        jMenuItem18.setText("Todos os Clientes");
+        jMenuItem18.setText("Todos os Clientes Físicos");
+        jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem18ActionPerformed(evt);
+            }
+        });
         jMenuRelatorios.add(jMenuItem18);
+
+        jMenuItem19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/137.png"))); // NOI18N
+        jMenuItem19.setText("Todos os Clientes Juridicos");
+        jMenuItem19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem19ActionPerformed(evt);
+            }
+        });
+        jMenuRelatorios.add(jMenuItem19);
 
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/137.png"))); // NOI18N
         jMenuItem2.setText("Todos os Funcionarios");
@@ -536,7 +557,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
             pessoa.add(clienteFisico);
         }
 
-        if (!fun.isEmpty() && !pessoa.isEmpty() ) {
+        if (!fun.isEmpty() && !pessoa.isEmpty()) {
             Util.abrirDialogCentralizado(new JDialogCadastroOrdem(this, true));
         } else {
             JOptionPane.showMessageDialog(rootPane, "Você não realizou o cadastro de clientes e funcionarios.");
@@ -585,8 +606,8 @@ public class JFramePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu4MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        if(jLabel2.isEnabled()){
-        Util.abrirDialogCentralizado(new JDialogPesquisaOrdemVencidas(this, true));
+        if (jLabel2.isEnabled()) {
+            Util.abrirDialogCentralizado(new JDialogPesquisaOrdemVencidas(this, true));
         }
     }//GEN-LAST:event_jLabel2MouseClicked
 
@@ -594,6 +615,25 @@ public class JFramePrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         Util.abrirDialogCentralizado(new JDialogSobre(this, true));
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
+        // TODO add your handling code here:
+
+        ReportManage report = new ReportManage();
+
+        try {
+            report.relatorioPronto("reportClientesFisico", "Relatório de clientes");
+        } catch (JRException ex) {
+            Logger.getLogger(testeRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(testeRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_jMenuItem18ActionPerformed
+
+    private void jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem19ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem19ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -651,6 +691,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
+    private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem5;
