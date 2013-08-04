@@ -174,6 +174,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItem18 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
@@ -459,6 +460,16 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
         jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/023.png"))); // NOI18N
         jMenu5.setText("Sobre");
+
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/022.png"))); // NOI18N
+        jMenuItem3.setText("Sobre o Sistema");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem3);
+
         jMenuBar1.add(jMenu5);
 
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/003.png"))); // NOI18N
@@ -579,6 +590,11 @@ public class JFramePrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jLabel2MouseClicked
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        Util.abrirDialogCentralizado(new JDialogSobre(this, true));
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -636,6 +652,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItemAddUser;
     private javax.swing.JMenuItem jMenuItemNovaOs;
@@ -658,7 +675,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void mudarFavicon() {
-        URL url = this.getClass().getResource("/br/com/okaynet/andare/icons/png/026.png");
+        URL url = this.getClass().getResource("/br/com/okaynet/andare/icons/faststone.png");
         Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
         this.setIconImage(imagemTitulo);
     }

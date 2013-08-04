@@ -27,6 +27,9 @@ public class JFrameLogin extends javax.swing.JFrame {
      */
     public JFrameLogin() {
         initComponents();
+
+        
+
         mudarFavicon();
         jTextUser.setBackground(new Color(58, 96, 99));
         jPassword.setBackground(new Color(58, 96, 99));
@@ -36,6 +39,8 @@ public class JFrameLogin extends javax.swing.JFrame {
         } catch (Exception ex) {
             System.out.println(ex);
         }
+
+
 
         HibernateConfiguration.setBase("andare");
         HibernateConfiguration.setHost("localhost:3306");
@@ -51,7 +56,7 @@ public class JFrameLogin extends javax.swing.JFrame {
             ResultSet execute = conexao.createStatement().executeQuery("show tables");
 
             if (!execute.next()) {
-                
+
                 Util.abrirDialogCentralizado(new JDialogCriacaoBase(this, true, null));
             }
 
@@ -128,7 +133,7 @@ public class JFrameLogin extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void mudarFavicon() {
-        URL url = this.getClass().getResource("/br/com/okaynet/andare/icons/png/026.png");
+        URL url = this.getClass().getResource("/br/com/okaynet/andare/icons/faststone.png");
         Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
         this.setIconImage(imagemTitulo);
     }
