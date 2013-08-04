@@ -475,6 +475,11 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/137.png"))); // NOI18N
         jMenuItem2.setText("Todos os Funcionarios");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenuRelatorios.add(jMenuItem2);
 
         jMenuBar1.add(jMenuRelatorios);
@@ -633,7 +638,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
     private void jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem19ActionPerformed
         // TODO add your handling code here:
-                ReportManage report = new ReportManage();
+        ReportManage report = new ReportManage();
 
         try {
             report.relatorioPronto("reportClientesJuridico", "Relatório de clientes");
@@ -643,6 +648,21 @@ public class JFramePrincipal extends javax.swing.JFrame {
             Logger.getLogger(testeRelatorio.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem19ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+
+        // TODO add your handling code here:
+
+        ReportManage report = new ReportManage();
+
+        try {
+            report.relatorioPronto("reportFuncionario", "Relatório de Funcionarios");
+        } catch (JRException ex) {
+            Logger.getLogger(testeRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(testeRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
