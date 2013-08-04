@@ -30,6 +30,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -48,6 +49,7 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
         preencher();
         iniciarPreencher();
         iniciarThreadCalculoValor();
+        iniciarThreadQtdeCarateres();
     }
 
     /**
@@ -114,6 +116,10 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
         jTextFieldItem3 = new javax.swing.JTextField();
         jTextFieldValor4 = new javax.swing.JTextField();
         jTextFieldItem4 = new javax.swing.JTextField();
+        jLabelItem2 = new javax.swing.JLabel();
+        jLabelItem1 = new javax.swing.JLabel();
+        jLabelItem4 = new javax.swing.JLabel();
+        jLabelItem3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu6 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
@@ -330,17 +336,45 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Serviços"));
 
+        jTextFieldItem1.setEditable(false);
+
         jLabel5.setText("Itens:");
 
+        jTextFieldValor1.setEditable(false);
         jTextFieldValor1.setText("0.0");
 
         jLabel6.setText("Valores R$:");
 
+        jTextFieldItem2.setEditable(false);
+
+        jTextFieldValor2.setEditable(false);
         jTextFieldValor2.setText("0.0");
 
+        jTextFieldValor3.setEditable(false);
         jTextFieldValor3.setText("0.0");
 
+        jTextFieldItem3.setEditable(false);
+
+        jTextFieldValor4.setEditable(false);
         jTextFieldValor4.setText("0.0");
+
+        jTextFieldItem4.setEditable(false);
+
+        jLabelItem2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelItem2.setForeground(new java.awt.Color(0, 153, 0));
+        jLabelItem2.setText("0");
+
+        jLabelItem1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelItem1.setForeground(new java.awt.Color(0, 153, 0));
+        jLabelItem1.setText("0");
+
+        jLabelItem4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelItem4.setForeground(new java.awt.Color(0, 153, 0));
+        jLabelItem4.setText("0");
+
+        jLabelItem3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelItem3.setForeground(new java.awt.Color(0, 153, 0));
+        jLabelItem3.setText("0");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -348,54 +382,62 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextFieldItem4, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
+                    .addComponent(jTextFieldItem3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextFieldItem2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5)
+                    .addComponent(jTextFieldItem1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelItem1)
+                    .addComponent(jLabelItem2)
+                    .addComponent(jLabelItem3)
+                    .addComponent(jLabelItem4))
+                .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldItem1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(0, 59, Short.MAX_VALUE))
-                            .addComponent(jTextFieldValor1)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextFieldItem2, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldValor2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextFieldItem3, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldValor3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextFieldItem4, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldValor4)))
+                        .addComponent(jLabel6)
+                        .addGap(0, 59, Short.MAX_VALUE))
+                    .addComponent(jTextFieldValor1)
+                    .addComponent(jTextFieldValor2)
+                    .addComponent(jTextFieldValor3)
+                    .addComponent(jTextFieldValor4))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldItem1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldValor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldValor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldItem2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldValor3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldItem3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldValor4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldItem4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabelItem1)
+                        .addGap(15, 15, 15)
+                        .addComponent(jLabelItem2)
+                        .addGap(15, 15, 15)
+                        .addComponent(jLabelItem3)
+                        .addGap(15, 15, 15)
+                        .addComponent(jLabelItem4))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextFieldItem1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldValor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldValor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldItem2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldValor3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldItem3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldValor4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldItem4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -474,7 +516,7 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
         String dataFormatadaNormal = formatadorTotal.format(data);
         try {
             int diferencaEntreDatas = diferencaEntreDatas(jFormattedTextFieldDataVencimento.getText(), dataFormatadaNormal) - 1;
-       
+
             if (diferencaEntreDatas > 0) {
                 double juro = Double.parseDouble(jTextFieldJuros.getText());
                 double valor = Double.parseDouble(jTextFieldValor.getText());
@@ -574,6 +616,10 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelItem1;
+    private javax.swing.JLabel jLabelItem2;
+    private javax.swing.JLabel jLabelItem3;
+    private javax.swing.JLabel jLabelItem4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
@@ -623,7 +669,7 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
                     jComboBoxBanco.setSelectedItem(ordem.getBanco());
                     jComboBoxTipoCheque.setSelectedItem(ordem.getTipoCheque());
                     jTextFieldJuros.setText(String.valueOf(ordem.getJuros()));
-                    
+
                     jTextFieldItem1.setText(ordem.getItem1());
                     jTextFieldItem2.setText(ordem.getItem2());
                     jTextFieldItem3.setText(ordem.getItem3());
@@ -632,8 +678,8 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
                     jTextFieldValor2.setText(String.valueOf(ordem.getValor2()));
                     jTextFieldValor3.setText(String.valueOf(ordem.getValor3()));
                     jTextFieldValor4.setText(String.valueOf(ordem.getValor4()));
-                    
-                    
+
+
                     jTextFieldEndereco.setText(ordem.getEndereco().getLogradouro());
                     jFormattedTextFieldNumero.setText(String.valueOf(ordem.getEndereco().getNumero()));
                     jTextFieldComplemento.setText(ordem.getEndereco().getComplemento());
@@ -722,13 +768,13 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
             ordem.setCliente((Pessoa) jComboBoxCliente.getSelectedItem());
             ordem.setDataCadastro(Util.stringToCalendar(jTextFieldDataCadastro.getText()));
             ordem.setDataVencimento(Util.stringToCalendar(jFormattedTextFieldDataVencimento.getText()));
-            
+
             ordem.setItem1(jTextFieldItem1.getText());
             ordem.setItem2(jTextFieldItem2.getText());
             ordem.setItem3(jTextFieldItem3.getText());
             ordem.setItem4(jTextFieldItem4.getText());
-            
-            
+
+
             ordem.setFuncionario((Funcionario) jComboBoxFuncionarios.getSelectedItem());
 
 
@@ -756,40 +802,41 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
                     JOptionPane.showMessageDialog(rootPane, "Erro no campo de juros, valor não confere");
                 }
             }
-            
-            Double valorTotal = 0.0;            
+
+            Double valorTotal = 0.0;
             try {
-                if(!jTextFieldValor1.getText().isEmpty()){
+                if (!jTextFieldValor1.getText().isEmpty()) {
                     ordem.setValor1(Double.parseDouble(jTextFieldValor1.getText()));
-                }else{
+                } else {
                     ordem.setValor1(0.0);
                 }
-                if(!jTextFieldValor2.getText().isEmpty()){
+                if (!jTextFieldValor2.getText().isEmpty()) {
                     ordem.setValor2(Double.parseDouble(jTextFieldValor2.getText()));
-                }else{
+                } else {
                     ordem.setValor2(0.0);
-                }if(!jTextFieldValor3.getText().isEmpty()){
+                }
+                if (!jTextFieldValor3.getText().isEmpty()) {
                     ordem.setValor3(Double.parseDouble(jTextFieldValor3.getText()));
-                }else{
+                } else {
                     ordem.setValor3(0.0);
                 }
-                if(!jTextFieldValor4.getText().isEmpty()){
+                if (!jTextFieldValor4.getText().isEmpty()) {
                     ordem.setValor4(Double.parseDouble(jTextFieldValor4.getText()));
-                }else{
+                } else {
                     ordem.setValor4(0.0);
                 }
                 valorTotal = calculcarValorTotal(ordem);
             } catch (Exception e) {
                 JOptionPane.showConfirmDialog(rootPane, "Erro no valor da ordem");
             }
-            
+
             ordem.setValorTotal(valorTotal);
             BigDecimal a = new BigDecimal(ordem.getValorTotal());
             BigDecimal aArredondado = a.divide(BigDecimal.ONE, 2, BigDecimal.ROUND_HALF_UP);
             Extenso extenso = new Extenso(aArredondado);
             Pessoa clienteAlvo = (Pessoa) jComboBoxCliente.getSelectedItem();
             ordem.setValorPorExtenso(extenso.toString().toUpperCase());
-            
+
             Endereco endereco = new Endereco();
             endereco.setBairro(jTextFieldBairro.getText());
             endereco.setLogradouro(jTextFieldEndereco.getText());
@@ -799,7 +846,7 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
             endereco.setTipoLogradouro(jComboBoxTipoLogradouro.getSelectedItem().toString());
             endereco.setNumero(Integer.parseInt(jFormattedTextFieldNumero.getText()));
             endereco.setTelefone1(clienteAlvo.getEndereco().getTelefone1());
-            
+
             ordem.setEndereco(endereco);
             TransactionManager.beginTransaction();
             new DaoOrdemServico().persistir(ordem);
@@ -901,7 +948,7 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
     }
 
     private void iniciarThreadCalculoValor() {
-       new Thread() {
+        new Thread() {
             @Override
             public void run() {
                 while (true) {
@@ -913,9 +960,9 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
                     }
                 }
             }
-        }.start(); 
+        }.start();
     }
-    
+
     private void calcularValorTotal() {
         double valor1 = 0.0;
         double valor2 = 0.0;
@@ -944,5 +991,72 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
         }
         total = valor1 + valor2 + valor3 + valor4;
         jTextFieldValor.setText(String.valueOf(total));
+    }
+
+    private int contarCaracteres(JTextField campoDeTexto) {
+        return campoDeTexto.getText().length();
+    }
+
+    private void atualizarNumeroDecaracteresItem1() {
+        int qtdeCaracteres = contarCaracteres(jTextFieldItem1);
+        if (qtdeCaracteres > 120) {
+            jLabelItem1.setText(String.valueOf(qtdeCaracteres));
+            jLabelItem1.setForeground(Color.red);
+        } else {
+            jLabelItem1.setText(String.valueOf(qtdeCaracteres));
+            jLabelItem1.setForeground(new Color(7, 129, 17));
+        }
+    }
+
+    private void atualizarNumeroDecaracteresItem2() {
+        int qtdeCaracteres = contarCaracteres(jTextFieldItem2);
+        if (qtdeCaracteres > 120) {
+            jLabelItem2.setText(String.valueOf(qtdeCaracteres));
+            jLabelItem2.setForeground(Color.red);
+        } else {
+            jLabelItem2.setText(String.valueOf(qtdeCaracteres));
+            jLabelItem2.setForeground(new Color(7, 129, 17));
+        }
+    }
+
+    private void atualizarNumeroDecaracteresItem3() {
+        int qtdeCaracteres = contarCaracteres(jTextFieldItem3);
+        if (qtdeCaracteres > 120) {
+            jLabelItem3.setText(String.valueOf(qtdeCaracteres));
+            jLabelItem3.setForeground(Color.red);
+        } else {
+            jLabelItem3.setText(String.valueOf(qtdeCaracteres));
+            jLabelItem3.setForeground(new Color(7, 129, 17));
+        }
+    }
+
+    private void atualizarNumeroDecaracteresItem4() {
+        int qtdeCaracteres = contarCaracteres(jTextFieldItem4);
+        if (qtdeCaracteres > 120) {
+            jLabelItem4.setText(String.valueOf(qtdeCaracteres));
+            jLabelItem4.setForeground(Color.red);
+        } else {
+            jLabelItem4.setText(String.valueOf(qtdeCaracteres));
+            jLabelItem4.setForeground(new Color(7, 129, 17));
+        }
+    }
+
+    private void iniciarThreadQtdeCarateres() {
+        new Thread() {
+            @Override
+            public void run() {
+                while (true) {
+                    atualizarNumeroDecaracteresItem1();
+                    atualizarNumeroDecaracteresItem2();
+                    atualizarNumeroDecaracteresItem3();
+                    atualizarNumeroDecaracteresItem4();
+                    try {
+                        sleep(300);
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+                }
+            }
+        }.start();
     }
 }
