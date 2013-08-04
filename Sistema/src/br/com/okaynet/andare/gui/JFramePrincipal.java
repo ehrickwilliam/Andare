@@ -453,6 +453,11 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
         jMenuItem17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/008.png"))); // NOI18N
         jMenuItem17.setText("Todas OS geral");
+        jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem17ActionPerformed(evt);
+            }
+        });
         jMenuRelatorios.add(jMenuItem17);
 
         jMenuItem18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/137.png"))); // NOI18N
@@ -663,6 +668,19 @@ public class JFramePrincipal extends javax.swing.JFrame {
             Logger.getLogger(testeRelatorio.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
+        // TODO add your handling code here:
+        ReportManage report = new ReportManage();
+
+        try {
+            report.relatorioPronto("reportOSGeral1", "Relatório Geral de Ordens de Serviço");
+        } catch (JRException ex) {
+            Logger.getLogger(testeRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(testeRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem17ActionPerformed
 
     /**
      * @param args the command line arguments
