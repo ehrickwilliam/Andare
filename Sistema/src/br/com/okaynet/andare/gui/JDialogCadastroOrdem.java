@@ -32,6 +32,7 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import net.sf.jasperreports.engine.JRException;
 
 /**
@@ -46,14 +47,15 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
     public JDialogCadastroOrdem(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
-        
+
+
         popularComboFuncionario();
         popularComboCliente();
         preencherEndereco();
         modificarEndereco();
         iniciarPreencher();
         iniciarThreadCalculoValor();
+        iniciarThreadQtdeCarateres();
         novo();
         Usuarios autenticado = (Usuarios) Data.hash.get("usuario");
         int indexOf = autenticado.getPermissoes().indexOf("I");
@@ -132,6 +134,10 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         jTextFieldItem3 = new javax.swing.JTextField();
         jTextFieldValor4 = new javax.swing.JTextField();
         jTextFieldItem4 = new javax.swing.JTextField();
+        jLabelItem4 = new javax.swing.JLabel();
+        jLabelItem1 = new javax.swing.JLabel();
+        jLabelItem2 = new javax.swing.JLabel();
+        jLabelItem3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
@@ -147,9 +153,9 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de OS");
         setFocusCycleRoot(false);
-        setMinimumSize(new java.awt.Dimension(608, 580));
+        setMinimumSize(new java.awt.Dimension(600, 590));
         setModal(true);
-        setPreferredSize(new java.awt.Dimension(608, 580));
+        setPreferredSize(new java.awt.Dimension(600, 590));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -352,7 +358,7 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Serviços"));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jTextFieldItem1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 43, 396, -1));
+        jPanel1.add(jTextFieldItem1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 43, 370, -1));
 
         jLabel5.setText("Itens:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 23, -1, -1));
@@ -362,18 +368,38 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
 
         jLabel6.setText("Valores R$:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 23, -1, -1));
-        jPanel1.add(jTextFieldItem2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 74, 396, -1));
+        jPanel1.add(jTextFieldItem2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 74, 370, -1));
 
         jTextFieldValor2.setText("0.0");
         jPanel1.add(jTextFieldValor2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 74, 114, -1));
 
         jTextFieldValor3.setText("0.0");
         jPanel1.add(jTextFieldValor3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 105, 114, -1));
-        jPanel1.add(jTextFieldItem3, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 105, 396, -1));
+        jPanel1.add(jTextFieldItem3, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 105, 370, -1));
 
         jTextFieldValor4.setText("0.0");
         jPanel1.add(jTextFieldValor4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 136, 114, -1));
-        jPanel1.add(jTextFieldItem4, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 136, 396, -1));
+        jPanel1.add(jTextFieldItem4, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 136, 370, -1));
+
+        jLabelItem4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelItem4.setForeground(new java.awt.Color(0, 153, 0));
+        jLabelItem4.setText("0");
+        jPanel1.add(jLabelItem4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, -1, -1));
+
+        jLabelItem1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelItem1.setForeground(new java.awt.Color(0, 153, 0));
+        jLabelItem1.setText("0");
+        jPanel1.add(jLabelItem1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, -1, -1));
+
+        jLabelItem2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelItem2.setForeground(new java.awt.Color(0, 153, 0));
+        jLabelItem2.setText("0");
+        jPanel1.add(jLabelItem2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, -1));
+
+        jLabelItem3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelItem3.setForeground(new java.awt.Color(0, 153, 0));
+        jLabelItem3.setText("0");
+        jPanel1.add(jLabelItem3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 560, 180));
 
@@ -599,6 +625,10 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelItem1;
+    private javax.swing.JLabel jLabelItem2;
+    private javax.swing.JLabel jLabelItem3;
+    private javax.swing.JLabel jLabelItem4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
@@ -728,27 +758,28 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             }
             Double valorTotal = 0.0;
             try {
-                if(!jTextFieldValor1.getText().isEmpty()){
+                if (!jTextFieldValor1.getText().isEmpty()) {
                     ordem.setValor1(Double.parseDouble(jTextFieldValor1.getText()));
-                }else{
+                } else {
                     ordem.setValor1(0.0);
                 }
-                if(!jTextFieldValor2.getText().isEmpty()){
+                if (!jTextFieldValor2.getText().isEmpty()) {
                     ordem.setValor2(Double.parseDouble(jTextFieldValor2.getText()));
-                }else{
+                } else {
                     ordem.setValor2(0.0);
-                }if(!jTextFieldValor3.getText().isEmpty()){
+                }
+                if (!jTextFieldValor3.getText().isEmpty()) {
                     ordem.setValor3(Double.parseDouble(jTextFieldValor3.getText()));
-                }else{
+                } else {
                     ordem.setValor3(0.0);
                 }
-                if(!jTextFieldValor4.getText().isEmpty()){
+                if (!jTextFieldValor4.getText().isEmpty()) {
                     ordem.setValor4(Double.parseDouble(jTextFieldValor4.getText()));
-                }else{
+                } else {
                     ordem.setValor4(0.0);
                 }
-                valorTotal = calculcarValorTotal(ordem); 
-                
+                valorTotal = calculcarValorTotal(ordem);
+
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(rootPane, "Erro no campo de valor. \n Verifique se você colocou virgulas e substitua por 'Ponto'");
                 return;
@@ -939,7 +970,7 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
     }
 
     private void iniciarThreadCalculoValor() {
-       new Thread() {
+        new Thread() {
             @Override
             public void run() {
                 while (true) {
@@ -951,9 +982,9 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
                     }
                 }
             }
-        }.start(); 
+        }.start();
     }
-    
+
     private void calcularValorTotal() {
         double valor1 = 0.0;
         double valor2 = 0.0;
@@ -982,5 +1013,69 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         }
         total = valor1 + valor2 + valor3 + valor4;
         jTextFieldValor.setText(String.valueOf(total));
+    }
+
+    private int contarCaracteres(JTextField campoDeTexto) {
+        return campoDeTexto.getText().length();
+    }
+
+    private void atualizarNumeroDecaracteresItem1() {
+        int qtdeCaracteres = contarCaracteres(jTextFieldItem1);
+        if (qtdeCaracteres > 120) {
+            jLabelItem1.setText(String.valueOf(qtdeCaracteres));
+            jLabelItem1.setForeground(Color.red);
+        }else{
+            jLabelItem1.setText(String.valueOf(qtdeCaracteres));
+            jLabelItem1.setForeground(new Color(7,129,17));
+        }
+    }
+    private void atualizarNumeroDecaracteresItem2() {
+        int qtdeCaracteres = contarCaracteres(jTextFieldItem2);
+        if (qtdeCaracteres > 120) {
+            jLabelItem2.setText(String.valueOf(qtdeCaracteres));
+            jLabelItem2.setForeground(Color.red);
+        }else{
+            jLabelItem2.setText(String.valueOf(qtdeCaracteres));
+            jLabelItem2.setForeground(new Color(7,129,17));
+        }
+    }
+    private void atualizarNumeroDecaracteresItem3() {
+        int qtdeCaracteres = contarCaracteres(jTextFieldItem3);
+        if (qtdeCaracteres > 120) {
+            jLabelItem3.setText(String.valueOf(qtdeCaracteres));
+            jLabelItem3.setForeground(Color.red);
+        }else{
+            jLabelItem3.setText(String.valueOf(qtdeCaracteres));
+            jLabelItem3.setForeground(new Color(7,129,17));
+        }
+    }
+    private void atualizarNumeroDecaracteresItem4() {
+        int qtdeCaracteres = contarCaracteres(jTextFieldItem4);
+        if (qtdeCaracteres > 120) {
+            jLabelItem4.setText(String.valueOf(qtdeCaracteres));
+            jLabelItem4.setForeground(Color.red);
+        }else{
+            jLabelItem4.setText(String.valueOf(qtdeCaracteres));
+            jLabelItem4.setForeground(new Color(7,129,17));
+        }
+    }
+
+    private void iniciarThreadQtdeCarateres() {
+        new Thread() {
+            @Override
+            public void run() {
+                while (true) {
+                    atualizarNumeroDecaracteresItem1();
+                    atualizarNumeroDecaracteresItem2();
+                    atualizarNumeroDecaracteresItem3();
+                    atualizarNumeroDecaracteresItem4();
+                    try {
+                        sleep(300);
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+                }
+            }
+        }.start();
     }
 }
