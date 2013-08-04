@@ -21,6 +21,9 @@ import br.com.okaynet.andare.model.Pessoa;
 import br.com.okaynet.andare.model.Usuarios;
 import br.com.okaynet.andare.testes.testeParametro;
 import br.com.okaynet.andare.testes.testeRelatorio;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -599,7 +602,9 @@ public class JDialogPesquisaOrdemMes extends javax.swing.JDialog {
                 JDialog viewer = new JDialog(new javax.swing.JFrame(), "Visualização da Ordem " + orderView.getId(), true);
                 viewer.setSize(900, 600);
                 viewer.setLocationRelativeTo(null);
-
+                URL url = this.getClass().getResource("/br/com/okaynet/andare/icons/faststone.png");
+                Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
+                viewer.setIconImage(imagemTitulo);
                 if (orderView.getCliente() instanceof ClienteFisico) {
                     jasperPrint = JasperFillManager.fillReportToFile("C:\\Okaynet\\Andare\\images\\OrdemServicoComplexaFisico.jasper", null, jrRS); //Aqui vc chama o relatório
                 } else {

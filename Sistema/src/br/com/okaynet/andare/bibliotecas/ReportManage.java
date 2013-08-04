@@ -7,6 +7,8 @@ package br.com.okaynet.andare.bibliotecas;
 import br.com.okaynet.andare.conexao.Conexao;
 import br.com.okaynet.andare.conexao.HibernateConfiguration;
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.lang.reflect.Field;
 import java.net.URL;
 import java.sql.SQLException;
@@ -144,6 +146,9 @@ public class ReportManage {
 
     public void relatorioPronto(String relatorio, String titulo) throws JRException, SQLException {
         JDialog viewer = new JDialog(new javax.swing.JFrame(), "Visualização do Relatório", true);
+        URL url = this.getClass().getResource("/br/com/okaynet/andare/icons/faststone.png");
+        Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
+        viewer.setIconImage(imagemTitulo);
         viewer.setSize(900, 600);
         viewer.setLocationRelativeTo(null);
         // obtem o arquivo de relatorio compilado

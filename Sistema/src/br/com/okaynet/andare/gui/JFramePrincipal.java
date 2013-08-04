@@ -633,6 +633,15 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
     private void jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem19ActionPerformed
         // TODO add your handling code here:
+                ReportManage report = new ReportManage();
+
+        try {
+            report.relatorioPronto("reportClientesJuridico", "Relatório de clientes");
+        } catch (JRException ex) {
+            Logger.getLogger(testeRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(testeRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jMenuItem19ActionPerformed
 
     /**
