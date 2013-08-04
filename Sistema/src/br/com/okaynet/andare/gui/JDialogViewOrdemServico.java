@@ -1002,42 +1002,47 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
         if (qtdeCaracteres > 120) {
             jLabelItem1.setText(String.valueOf(qtdeCaracteres));
             jLabelItem1.setForeground(Color.red);
-        } else {
+            jTextFieldItem1.setBackground(new Color(252, 196, 196));
+        }else{
             jLabelItem1.setText(String.valueOf(qtdeCaracteres));
-            jLabelItem1.setForeground(new Color(7, 129, 17));
+            jLabelItem1.setForeground(new Color(7,129,17));
+            jTextFieldItem1.setBackground(Color.WHITE);
         }
     }
-
     private void atualizarNumeroDecaracteresItem2() {
         int qtdeCaracteres = contarCaracteres(jTextFieldItem2);
         if (qtdeCaracteres > 120) {
             jLabelItem2.setText(String.valueOf(qtdeCaracteres));
             jLabelItem2.setForeground(Color.red);
-        } else {
+            jTextFieldItem2.setBackground(new Color(252, 196, 196));
+        }else{
             jLabelItem2.setText(String.valueOf(qtdeCaracteres));
-            jLabelItem2.setForeground(new Color(7, 129, 17));
+            jLabelItem2.setForeground(new Color(7,129,17));
+            jTextFieldItem2.setBackground(Color.WHITE);
         }
     }
-
     private void atualizarNumeroDecaracteresItem3() {
         int qtdeCaracteres = contarCaracteres(jTextFieldItem3);
         if (qtdeCaracteres > 120) {
             jLabelItem3.setText(String.valueOf(qtdeCaracteres));
             jLabelItem3.setForeground(Color.red);
-        } else {
+            jTextFieldItem3.setBackground(new Color(252, 196, 196));
+        }else{
             jLabelItem3.setText(String.valueOf(qtdeCaracteres));
-            jLabelItem3.setForeground(new Color(7, 129, 17));
+            jLabelItem3.setForeground(new Color(7,129,17));
+            jTextFieldItem3.setBackground(Color.WHITE);
         }
     }
-
     private void atualizarNumeroDecaracteresItem4() {
         int qtdeCaracteres = contarCaracteres(jTextFieldItem4);
         if (qtdeCaracteres > 120) {
             jLabelItem4.setText(String.valueOf(qtdeCaracteres));
             jLabelItem4.setForeground(Color.red);
-        } else {
+            jTextFieldItem4.setBackground(new Color(252, 196, 196));
+        }else{
             jLabelItem4.setText(String.valueOf(qtdeCaracteres));
-            jLabelItem4.setForeground(new Color(7, 129, 17));
+            jLabelItem4.setForeground(new Color(7,129,17));
+            jTextFieldItem4.setBackground(Color.WHITE);
         }
     }
 

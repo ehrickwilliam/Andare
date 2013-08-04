@@ -1084,9 +1084,11 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
         if (qtdeCaracteres > 120) {
             jLabelItem1.setText(String.valueOf(qtdeCaracteres));
             jLabelItem1.setForeground(Color.red);
+            jTextFieldItem1.setBackground(new Color(252, 196, 196));
         }else{
             jLabelItem1.setText(String.valueOf(qtdeCaracteres));
             jLabelItem1.setForeground(new Color(7,129,17));
+            jTextFieldItem1.setBackground(Color.WHITE);
         }
     }
     private void atualizarNumeroDecaracteresItem2() {
@@ -1094,9 +1096,11 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
         if (qtdeCaracteres > 120) {
             jLabelItem2.setText(String.valueOf(qtdeCaracteres));
             jLabelItem2.setForeground(Color.red);
+            jTextFieldItem2.setBackground(new Color(252, 196, 196));
         }else{
             jLabelItem2.setText(String.valueOf(qtdeCaracteres));
             jLabelItem2.setForeground(new Color(7,129,17));
+            jTextFieldItem2.setBackground(Color.WHITE);
         }
     }
     private void atualizarNumeroDecaracteresItem3() {
@@ -1104,9 +1108,11 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
         if (qtdeCaracteres > 120) {
             jLabelItem3.setText(String.valueOf(qtdeCaracteres));
             jLabelItem3.setForeground(Color.red);
+            jTextFieldItem3.setBackground(new Color(252, 196, 196));
         }else{
             jLabelItem3.setText(String.valueOf(qtdeCaracteres));
             jLabelItem3.setForeground(new Color(7,129,17));
+            jTextFieldItem3.setBackground(Color.WHITE);
         }
     }
     private void atualizarNumeroDecaracteresItem4() {
@@ -1114,9 +1120,11 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
         if (qtdeCaracteres > 120) {
             jLabelItem4.setText(String.valueOf(qtdeCaracteres));
             jLabelItem4.setForeground(Color.red);
+            jTextFieldItem4.setBackground(new Color(252, 196, 196));
         }else{
             jLabelItem4.setText(String.valueOf(qtdeCaracteres));
             jLabelItem4.setForeground(new Color(7,129,17));
+            jTextFieldItem4.setBackground(Color.WHITE);
         }
     }
 
