@@ -47,6 +47,7 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
         popularComboCliente();
         preencher();
         iniciarPreencher();
+        iniciarThreadCalculoValor();
     }
 
     /**
@@ -758,10 +759,25 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
             
             Double valorTotal = 0.0;            
             try {
-                ordem.setValor1(Double.parseDouble(jTextFieldValor1.getText()));
-                ordem.setValor2(Double.parseDouble(jTextFieldValor2.getText()));
-                ordem.setValor3(Double.parseDouble(jTextFieldValor3.getText()));
-                ordem.setValor4(Double.parseDouble(jTextFieldValor4.getText()));
+                if(!jTextFieldValor1.getText().isEmpty()){
+                    ordem.setValor1(Double.parseDouble(jTextFieldValor1.getText()));
+                }else{
+                    ordem.setValor1(0.0);
+                }
+                if(!jTextFieldValor2.getText().isEmpty()){
+                    ordem.setValor2(Double.parseDouble(jTextFieldValor2.getText()));
+                }else{
+                    ordem.setValor2(0.0);
+                }if(!jTextFieldValor3.getText().isEmpty()){
+                    ordem.setValor3(Double.parseDouble(jTextFieldValor3.getText()));
+                }else{
+                    ordem.setValor3(0.0);
+                }
+                if(!jTextFieldValor4.getText().isEmpty()){
+                    ordem.setValor4(Double.parseDouble(jTextFieldValor4.getText()));
+                }else{
+                    ordem.setValor4(0.0);
+                }
                 valorTotal = calculcarValorTotal(ordem);
             } catch (Exception e) {
                 JOptionPane.showConfirmDialog(rootPane, "Erro no valor da ordem");
@@ -882,5 +898,51 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
 
     private Double calculcarValorTotal(OrdemServico ordem) {
         return ordem.getValor1() + ordem.getValor2() + ordem.getValor3() + ordem.getValor4();
+    }
+
+    private void iniciarThreadCalculoValor() {
+       new Thread() {
+            @Override
+            public void run() {
+                while (true) {
+                    calcularValorTotal();
+                    try {
+                        sleep(2000);
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+                }
+            }
+        }.start(); 
+    }
+    
+    private void calcularValorTotal() {
+        double valor1 = 0.0;
+        double valor2 = 0.0;
+        double valor3 = 0.0;
+        double valor4 = 0.0;
+        double total = 0.0;
+        try {
+            valor1 = Double.parseDouble(jTextFieldValor1.getText());
+        } catch (Exception e) {
+            valor1 = 0.0;
+        }
+        try {
+            valor2 = Double.parseDouble(jTextFieldValor2.getText());
+        } catch (Exception e) {
+            valor2 = 0.0;
+        }
+        try {
+            valor3 = Double.parseDouble(jTextFieldValor3.getText());
+        } catch (Exception e) {
+            valor3 = 0.0;
+        }
+        try {
+            valor4 = Double.parseDouble(jTextFieldValor4.getText());
+        } catch (Exception e) {
+            valor4 = 0.0;
+        }
+        total = valor1 + valor2 + valor3 + valor4;
+        jTextFieldValor.setText(String.valueOf(total));
     }
 }
