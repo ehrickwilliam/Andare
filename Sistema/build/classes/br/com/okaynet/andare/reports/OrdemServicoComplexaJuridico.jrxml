@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="OrdemServicoComplexaFisico" language="groovy" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="3"/>
+	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[SELECT
      endereco.`id` AS endereco_id,
@@ -195,14 +195,14 @@ WHERE
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{pessoa_razaoSocial}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="###0.00;(###0.00)">
 				<reportElement x="25" y="137" width="73" height="20"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ordemservico_valorTotal}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="###0.00;(###0.00)">
 				<reportElement x="204" y="137" width="86" height="20"/>
 				<textElement>
 					<font size="14"/>
@@ -244,22 +244,22 @@ WHERE
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ordemservico_item4}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="###0.00;(###0.00)">
 				<reportElement x="221" y="200" width="69" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{ordemservico_valor1}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
+			<textField pattern="###0.00;(###0.00)" isBlankWhenNull="true">
 				<reportElement x="221" y="251" width="69" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{ordemservico_valor2}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
+			<textField pattern="###0.00;(###0.00)" isBlankWhenNull="true">
 				<reportElement x="221" y="305" width="69" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{ordemservico_valor3}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
+			<textField pattern="###0.00;(###0.00)" isBlankWhenNull="true">
 				<reportElement x="221" y="360" width="69" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{ordemservico_valor4}]]></textFieldExpression>

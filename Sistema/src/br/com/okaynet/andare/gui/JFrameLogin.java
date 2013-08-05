@@ -28,7 +28,7 @@ public class JFrameLogin extends javax.swing.JFrame {
     public JFrameLogin() {
         initComponents();
 
-        
+
 
         mudarFavicon();
         jTextUser.setBackground(new Color(58, 96, 99));
@@ -40,12 +40,20 @@ public class JFrameLogin extends javax.swing.JFrame {
             System.out.println(ex);
         }
 
-
-
-        HibernateConfiguration.setBase("andare");
-        HibernateConfiguration.setHost("localhost:3306");
-        HibernateConfiguration.setPass("root");
-        HibernateConfiguration.setUser("root");
+        try {
+            if (!jHost.getText().isEmpty()) {
+                HibernateConfiguration.setBase("andare");
+                HibernateConfiguration.setHost(jHost.getText()+":3306");
+                HibernateConfiguration.setPass("root");
+                HibernateConfiguration.setUser("root");
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Host Inválido!");
+                return;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Host Inválido!");
+            return;
+        }
 
         try {
 
@@ -78,6 +86,7 @@ public class JFrameLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         jTextUser = new javax.swing.JTextField();
+        jHost = new javax.swing.JTextField();
         jPassword = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabelLogo = new javax.swing.JLabel();
@@ -95,6 +104,21 @@ public class JFrameLogin extends javax.swing.JFrame {
         jTextUser.setOpaque(false);
         getContentPane().add(jTextUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 200, 20));
 
+        jHost.setEditable(false);
+        jHost.setBackground(new java.awt.Color(204, 204, 204));
+        jHost.setForeground(new java.awt.Color(51, 51, 51));
+        jHost.setText("127.0.0.1");
+        jHost.setToolTipText("");
+        jHost.setBorder(null);
+        jHost.setCaretColor(new java.awt.Color(153, 153, 153));
+        jHost.setOpaque(false);
+        jHost.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jHostActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jHost, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, 200, 20));
+
         jPassword.setBackground(new java.awt.Color(204, 204, 204));
         jPassword.setForeground(new java.awt.Color(51, 51, 51));
         jPassword.setBorder(null);
@@ -108,7 +132,7 @@ public class JFrameLogin extends javax.swing.JFrame {
                 jLabel1MouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 100, 30));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, 120, 30));
 
         jLabelLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/login.jpg"))); // NOI18N
@@ -125,7 +149,13 @@ public class JFrameLogin extends javax.swing.JFrame {
 
         verificarLogin(jTextUser.getText(), jPassword.getText());
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jHostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jHostActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jHostActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField jHost;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelLogo;
     private javax.swing.JPasswordField jPassword;
