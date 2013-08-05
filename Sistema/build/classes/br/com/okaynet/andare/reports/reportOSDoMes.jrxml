@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportOSDoMes" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.464100000000001"/>
+	<property name="ireport.x" value="32"/>
+	<property name="ireport.y" value="36"/>
+	<queryString>
+		<![CDATA[SELECT
+     endereco.`id` AS endereco_id,
+     endereco.`bairro` AS endereco_bairro,
+     endereco.`cep` AS endereco_cep,
+     endereco.`cidade` AS endereco_cidade,
+     endereco.`complemento` AS endereco_complemento,
+     endereco.`logradouro` AS endereco_logradouro,
+     endereco.`numero` AS endereco_numero,
+     endereco.`telefone1` AS endereco_telefone1,
+     endereco.`telefone2` AS endereco_telefone2,
+     endereco.`telefone3` AS endereco_telefone3,
+     endereco.`tipoLogradouro` AS endereco_tipoLogradouro,
+     ordemservico.`id` AS ordemservico_id,
+     ordemservico.`banco` AS ordemservico_banco,
+     ordemservico.`dataCadastro` AS ordemservico_dataCadastro,
+     ordemservico.`dataVencimento` AS ordemservico_dataVencimento,
+     ordemservico.`item1` AS ordemservico_item1,
+     ordemservico.`item2` AS ordemservico_item2,
+     ordemservico.`item3` AS ordemservico_item3,
+     ordemservico.`item4` AS ordemservico_item4,
+     ordemservico.`juros` AS ordemservico_juros,
+     ordemservico.`parcelas` AS ordemservico_parcelas,
+     ordemservico.`parcelasRestantes` AS ordemservico_parcelasRestantes,
+     ordemservico.`status` AS ordemservico_status,
+     ordemservico.`tipoCheque` AS ordemservico_tipoCheque,
+     ordemservico.`valor1` AS ordemservico_valor1,
+     ordemservico.`valor2` AS ordemservico_valor2,
+     ordemservico.`valor3` AS ordemservico_valor3,
+     ordemservico.`valor4` AS ordemservico_valor4,
+     ordemservico.`valorPorExtenso` AS ordemservico_valorPorExtenso,
+     ordemservico.`valorTotal` AS ordemservico_valorTotal,
+     ordemservico.`cliente_id` AS ordemservico_cliente_id,
+     ordemservico.`endereco_id` AS ordemservico_endereco_id,
+     ordemservico.`funcionario_id` AS ordemservico_funcionario_id,
+     pessoa.`DTYPE` AS pessoa_DTYPE,
+     pessoa.`id` AS pessoa_id,
+     pessoa.`dataCadastro` AS pessoa_dataCadastro,
+     pessoa.`email` AS pessoa_email,
+     pessoa.`cpf` AS pessoa_cpf,
+     pessoa.`nascimento` AS pessoa_nascimento,
+     pessoa.`nome` AS pessoa_nome,
+     pessoa.`rg` AS pessoa_rg,
+     pessoa.`sobrenome` AS pessoa_sobrenome,
+     pessoa.`cnpj` AS pessoa_cnpj,
+     pessoa.`inscricao` AS pessoa_inscricao,
+     pessoa.`razaoSocial` AS pessoa_razaoSocial,
+     pessoa.`responsavel` AS pessoa_responsavel,
+     pessoa.`referencia1` AS pessoa_referencia1,
+     pessoa.`referencia2` AS pessoa_referencia2,
+     pessoa.`referencia3` AS pessoa_referencia3,
+     pessoa.`endereco_id` AS pessoa_endereco_id
+FROM
+     pessoa, ordemservico, endereco
+WHERE
+     pessoa.`id` = ordemservico.`cliente_id` AND endereco.`id` = ordemservico.`endereco_id`]]>
+	</queryString>
+	<field name="endereco_id" class="java.lang.Integer"/>
+	<field name="endereco_bairro" class="java.lang.String"/>
+	<field name="endereco_cep" class="java.lang.String"/>
+	<field name="endereco_cidade" class="java.lang.String"/>
+	<field name="endereco_complemento" class="java.lang.String"/>
+	<field name="endereco_logradouro" class="java.lang.String"/>
+	<field name="endereco_numero" class="java.lang.Integer"/>
+	<field name="endereco_telefone1" class="java.lang.String"/>
+	<field name="endereco_telefone2" class="java.lang.String"/>
+	<field name="endereco_telefone3" class="java.lang.String"/>
+	<field name="endereco_tipoLogradouro" class="java.lang.String"/>
+	<field name="ordemservico_id" class="java.lang.Integer"/>
+	<field name="ordemservico_banco" class="java.lang.String"/>
+	<field name="ordemservico_dataCadastro" class="java.sql.Date"/>
+	<field name="ordemservico_dataVencimento" class="java.sql.Date"/>
+	<field name="ordemservico_item1" class="java.lang.String"/>
+	<field name="ordemservico_item2" class="java.lang.String"/>
+	<field name="ordemservico_item3" class="java.lang.String"/>
+	<field name="ordemservico_item4" class="java.lang.String"/>
+	<field name="ordemservico_juros" class="java.lang.Double"/>
+	<field name="ordemservico_parcelas" class="java.lang.Integer"/>
+	<field name="ordemservico_parcelasRestantes" class="java.lang.Integer"/>
+	<field name="ordemservico_status" class="java.lang.String"/>
+	<field name="ordemservico_tipoCheque" class="java.lang.String"/>
+	<field name="ordemservico_valor1" class="java.lang.Double"/>
+	<field name="ordemservico_valor2" class="java.lang.Double"/>
+	<field name="ordemservico_valor3" class="java.lang.Double"/>
+	<field name="ordemservico_valor4" class="java.lang.Double"/>
+	<field name="ordemservico_valorPorExtenso" class="java.lang.String"/>
+	<field name="ordemservico_valorTotal" class="java.lang.Double"/>
+	<field name="ordemservico_cliente_id" class="java.lang.Integer"/>
+	<field name="ordemservico_endereco_id" class="java.lang.Integer"/>
+	<field name="ordemservico_funcionario_id" class="java.lang.Integer"/>
+	<field name="pessoa_DTYPE" class="java.lang.String"/>
+	<field name="pessoa_id" class="java.lang.Integer"/>
+	<field name="pessoa_dataCadastro" class="java.sql.Date"/>
+	<field name="pessoa_email" class="java.lang.String"/>
+	<field name="pessoa_cpf" class="java.lang.String"/>
+	<field name="pessoa_nascimento" class="java.sql.Date"/>
+	<field name="pessoa_nome" class="java.lang.String"/>
+	<field name="pessoa_rg" class="java.lang.String"/>
+	<field name="pessoa_sobrenome" class="java.lang.String"/>
+	<field name="pessoa_cnpj" class="java.lang.String"/>
+	<field name="pessoa_inscricao" class="java.lang.String"/>
+	<field name="pessoa_razaoSocial" class="java.lang.String"/>
+	<field name="pessoa_responsavel" class="java.lang.String"/>
+	<field name="pessoa_referencia1" class="java.lang.String"/>
+	<field name="pessoa_referencia2" class="java.lang.String"/>
+	<field name="pessoa_referencia3" class="java.lang.String"/>
+	<field name="pessoa_endereco_id" class="java.lang.Integer"/>
+	<group name="ordemservico_id">
+		<groupExpression><![CDATA[$F{ordemservico_id}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="554" height="30"/>
+				<textElement>
+					<font fontName="Times New Roman" size="24"/>
+				</textElement>
+				<text><![CDATA[Relatório do Mês Corrente de Ordens de Serviço Andare]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<staticText>
+				<reportElement x="284" y="0" width="95" height="15"/>
+				<textElement/>
+				<text><![CDATA[RG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="379" y="0" width="203" height="15"/>
+				<textElement/>
+				<text><![CDATA[Email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="582" y="0" width="110" height="15"/>
+				<textElement/>
+				<text><![CDATA[Fone Principal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="172" y="0" width="112" height="15"/>
+				<textElement/>
+				<text><![CDATA[CNPJ/CPF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="172" height="15"/>
+				<textElement/>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="692" y="0" width="110" height="15"/>
+				<textElement/>
+				<text><![CDATA[Valor Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="151" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="802" height="15" forecolor="#FFFFFF" backcolor="#CCCCCC"/>
+			</rectangle>
+			<textField>
+				<reportElement x="284" y="15" width="95" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pessoa_rg}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="172" y="15" width="112" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pessoa_cpf}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="582" y="15" width="110" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{endereco_telefone1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="692" y="15" width="110" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ordemservico_valorTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="379" y="15" width="203" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pessoa_email}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="15" width="172" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pessoa_razaoSocial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ordemservico_id}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="15" width="172" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pessoa_nome}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="172" y="15" width="112" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pessoa_cnpj}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="474" y="40" width="108" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{endereco_bairro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="379" y="40" width="95" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{endereco_complemento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="284" y="40" width="16" height="15"/>
+				<textElement/>
+				<text><![CDATA[Nº:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="40" width="45" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{endereco_tipoLogradouro}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="29" width="802" height="2"/>
+			</line>
+			<textField>
+				<reportElement x="300" y="40" width="79" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{endereco_numero}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="692" y="40" width="110" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{endereco_cidade}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="582" y="40" width="110" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{endereco_cep}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="45" y="40" width="239" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{endereco_logradouro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="592" y="65" width="210" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ordemservico_status}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="45" y="65" width="74" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ordemservico_dataCadastro}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="300" y="65" width="71" height="15"/>
+				<textElement/>
+				<text><![CDATA[Qtde parcelas:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="119" y="65" width="95" height="15"/>
+				<textElement/>
+				<text><![CDATA[Data de Vencimento:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="53" width="802" height="2"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="65" width="45" height="15"/>
+				<textElement/>
+				<text><![CDATA[Emissão:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="371" y="65" width="49" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ordemservico_parcelas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="510" y="65" width="44" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ordemservico_parcelasRestantes}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="214" y="65" width="86" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ordemservico_dataVencimento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="419" y="65" width="90" height="15"/>
+				<textElement/>
+				<text><![CDATA[Parcelas restantes:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="553" y="65" width="39" height="15" forecolor="#990000"/>
+				<textElement/>
+				<text><![CDATA[Status:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="702" y="120" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ordemservico_valor3}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="702" y="90" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ordemservico_valor1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="661" y="90" width="41" height="15"/>
+				<textElement/>
+				<text><![CDATA[Valores:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="45" y="105" width="616" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ordemservico_item2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="90" width="45" height="15"/>
+				<textElement/>
+				<text><![CDATA[Serviços:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="45" y="90" width="616" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ordemservico_item1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="702" y="135" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ordemservico_valor4}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="45" y="120" width="616" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ordemservico_item3}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="45" y="135" width="616" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ordemservico_item4}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="702" y="105" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ordemservico_valor2}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="32" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="762" y="12" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="682" y="12" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="12" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

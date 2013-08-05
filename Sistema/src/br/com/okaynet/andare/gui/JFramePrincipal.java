@@ -690,11 +690,9 @@ public class JFramePrincipal extends javax.swing.JFrame {
         ReportManage report = new ReportManage();
 
         try {
-<<<<<<< HEAD
+
             report.relatorioPronto("reportTodasOs", "Relatório de Funcionarios");
-=======
-            report.relatorioPronto("reportOSGeral2", "Relatório Geral de Ordens de Serviço");
->>>>>>> b9c8cdb6fbaa96ab7e8b971a691a4eff143fc07b
+
         } catch (JRException ex) {
             Logger.getLogger(testeRelatorio.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -702,7 +700,6 @@ public class JFramePrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
-<<<<<<< HEAD
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
         // TODO add your handling code here:
         Date data = new Date();
@@ -797,8 +794,6 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jMenuItem15ActionPerformed
 
-=======
->>>>>>> b9c8cdb6fbaa96ab7e8b971a691a4eff143fc07b
     /**
      * @param args the command line arguments
      */

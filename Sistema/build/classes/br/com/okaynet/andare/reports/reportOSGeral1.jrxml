@@ -5,17 +5,23 @@
 	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[SELECT
-     endereco.`id` AS endereco_id,
-     endereco.`bairro` AS endereco_bairro,
-     endereco.`cep` AS endereco_cep,
-     endereco.`cidade` AS endereco_cidade,
-     endereco.`complemento` AS endereco_complemento,
-     endereco.`logradouro` AS endereco_logradouro,
-     endereco.`numero` AS endereco_numero,
-     endereco.`telefone1` AS endereco_telefone1,
-     endereco.`telefone2` AS endereco_telefone2,
-     endereco.`telefone3` AS endereco_telefone3,
-     endereco.`tipoLogradouro` AS endereco_tipoLogradouro,
+     pessoa.`DTYPE` AS pessoa_DTYPE,
+     pessoa.`id` AS pessoa_id,
+     pessoa.`dataCadastro` AS pessoa_dataCadastro,
+     pessoa.`email` AS pessoa_email,
+     pessoa.`cpf` AS pessoa_cpf,
+     pessoa.`nascimento` AS pessoa_nascimento,
+     pessoa.`nome` AS pessoa_nome,
+     pessoa.`rg` AS pessoa_rg,
+     pessoa.`sobrenome` AS pessoa_sobrenome,
+     pessoa.`cnpj` AS pessoa_cnpj,
+     pessoa.`inscricao` AS pessoa_inscricao,
+     pessoa.`razaoSocial` AS pessoa_razaoSocial,
+     pessoa.`responsavel` AS pessoa_responsavel,
+     pessoa.`referencia1` AS pessoa_referencia1,
+     pessoa.`referencia2` AS pessoa_referencia2,
+     pessoa.`referencia3` AS pessoa_referencia3,
+     pessoa.`endereco_id` AS pessoa_endereco_id,
      ordemservico.`id` AS ordemservico_id,
      ordemservico.`banco` AS ordemservico_banco,
      ordemservico.`dataCadastro` AS ordemservico_dataCadastro,
@@ -38,39 +44,23 @@
      ordemservico.`cliente_id` AS ordemservico_cliente_id,
      ordemservico.`endereco_id` AS ordemservico_endereco_id,
      ordemservico.`funcionario_id` AS ordemservico_funcionario_id,
-     pessoa.`DTYPE` AS pessoa_DTYPE,
-     pessoa.`id` AS pessoa_id,
-     pessoa.`dataCadastro` AS pessoa_dataCadastro,
-     pessoa.`email` AS pessoa_email,
-     pessoa.`cpf` AS pessoa_cpf,
-     pessoa.`nascimento` AS pessoa_nascimento,
-     pessoa.`nome` AS pessoa_nome,
-     pessoa.`rg` AS pessoa_rg,
-     pessoa.`sobrenome` AS pessoa_sobrenome,
-     pessoa.`cnpj` AS pessoa_cnpj,
-     pessoa.`inscricao` AS pessoa_inscricao,
-     pessoa.`razaoSocial` AS pessoa_razaoSocial,
-     pessoa.`responsavel` AS pessoa_responsavel,
-     pessoa.`referencia1` AS pessoa_referencia1,
-     pessoa.`referencia2` AS pessoa_referencia2,
-     pessoa.`referencia3` AS pessoa_referencia3,
-     pessoa.`endereco_id` AS pessoa_endereco_id
+     endereco.`id` AS endereco_id,
+     endereco.`bairro` AS endereco_bairro,
+     endereco.`cep` AS endereco_cep,
+     endereco.`cidade` AS endereco_cidade,
+     endereco.`complemento` AS endereco_complemento,
+     endereco.`logradouro` AS endereco_logradouro,
+     endereco.`numero` AS endereco_numero,
+     endereco.`telefone1` AS endereco_telefone1,
+     endereco.`telefone2` AS endereco_telefone2,
+     endereco.`telefone3` AS endereco_telefone3,
+     endereco.`tipoLogradouro` AS endereco_tipoLogradouro
 FROM
-     pessoa, ordemservico, endereco
-WHERE
-     pessoa.`id` = ordemservico.`cliente_id` AND endereco.`id` = ordemservico.`endereco_id`]]>
+     `pessoa` pessoa INNER JOIN `ordemservico` ordemservico ON pessoa.`id` = ordemservico.`funcionario_id`
+     AND pessoa.`id` = ordemservico.`cliente_id`
+     INNER JOIN `endereco` endereco ON ordemservico.`endereco_id` = endereco.`id`
+     AND endereco.`id` = pessoa.`endereco_id`]]>
 	</queryString>
-	<field name="endereco_id" class="java.lang.Integer"/>
-	<field name="endereco_bairro" class="java.lang.String"/>
-	<field name="endereco_cep" class="java.lang.String"/>
-	<field name="endereco_cidade" class="java.lang.String"/>
-	<field name="endereco_complemento" class="java.lang.String"/>
-	<field name="endereco_logradouro" class="java.lang.String"/>
-	<field name="endereco_numero" class="java.lang.Integer"/>
-	<field name="endereco_telefone1" class="java.lang.String"/>
-	<field name="endereco_telefone2" class="java.lang.String"/>
-	<field name="endereco_telefone3" class="java.lang.String"/>
-	<field name="endereco_tipoLogradouro" class="java.lang.String"/>
 	<field name="ordemservico_id" class="java.lang.Integer"/>
 	<field name="ordemservico_banco" class="java.lang.String"/>
 	<field name="ordemservico_dataCadastro" class="java.sql.Date"/>
@@ -110,6 +100,17 @@ WHERE
 	<field name="pessoa_referencia2" class="java.lang.String"/>
 	<field name="pessoa_referencia3" class="java.lang.String"/>
 	<field name="pessoa_endereco_id" class="java.lang.Integer"/>
+	<field name="endereco_id" class="java.lang.Integer"/>
+	<field name="endereco_bairro" class="java.lang.String"/>
+	<field name="endereco_cep" class="java.lang.String"/>
+	<field name="endereco_cidade" class="java.lang.String"/>
+	<field name="endereco_complemento" class="java.lang.String"/>
+	<field name="endereco_logradouro" class="java.lang.String"/>
+	<field name="endereco_numero" class="java.lang.Integer"/>
+	<field name="endereco_telefone1" class="java.lang.String"/>
+	<field name="endereco_telefone2" class="java.lang.String"/>
+	<field name="endereco_telefone3" class="java.lang.String"/>
+	<field name="endereco_tipoLogradouro" class="java.lang.String"/>
 	<group name="ordemservico_id">
 		<groupExpression><![CDATA[$F{ordemservico_id}]]></groupExpression>
 	</group>
@@ -176,6 +177,11 @@ WHERE
 	</columnHeader>
 	<detail>
 		<band height="83" splitType="Stretch">
+			<textField>
+				<reportElement uuid="d99d6e8c-6072-4c32-a236-0d323de6b110" x="0" y="0" width="141" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pessoa_id}]]></textFieldExpression>
+			</textField>
 			<textField>
 				<reportElement uuid="8281de5f-d5bf-4999-9d39-40000b2ba820" x="141" y="0" width="119" height="20"/>
 				<textElement/>
@@ -252,11 +258,6 @@ WHERE
 			<line>
 				<reportElement uuid="4d473b42-65d6-4a88-980c-4f52c6a71b81" x="3" y="73" width="799" height="1"/>
 			</line>
-			<textField>
-				<reportElement uuid="224927a5-272a-402a-b297-61722efea31e" x="3" y="0" width="138" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{pessoa_nome}]]></textFieldExpression>
-			</textField>
 		</band>
 	</detail>
 	<pageFooter>
