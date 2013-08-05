@@ -674,7 +674,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         ReportManage report = new ReportManage();
 
         try {
-            report.relatorioPronto("reportOSGeral1", "Relatório Geral de Ordens de Serviço");
+            report.relatorioPronto("reportOSGeral2", "Relatório Geral de Ordens de Serviço");
         } catch (JRException ex) {
             Logger.getLogger(testeRelatorio.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
