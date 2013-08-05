@@ -6,7 +6,9 @@ package br.com.okaynet.andare.gui;
 
 import br.com.okaynet.andare.bibliotecas.ReportManage;
 import br.com.okaynet.andare.bibliotecas.Util;
+import br.com.okaynet.andare.conexao.Conexao;
 import br.com.okaynet.andare.conexao.Data;
+import br.com.okaynet.andare.conexao.HibernateConfiguration;
 import br.com.okaynet.andare.conexao.TransactionManager;
 import br.com.okaynet.andare.daos.DaoClienteFisico;
 import br.com.okaynet.andare.daos.DaoClienteJuridico;
@@ -16,18 +18,27 @@ import br.com.okaynet.andare.model.ClienteJuridico;
 import br.com.okaynet.andare.model.Funcionario;
 import br.com.okaynet.andare.model.Pessoa;
 import br.com.okaynet.andare.model.Usuarios;
+import br.com.okaynet.andare.testes.testeParametro;
 import br.com.okaynet.andare.testes.testeRelatorio;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -449,6 +460,11 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
         jMenuItem15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/026.png"))); // NOI18N
         jMenuItem15.setText("Todas OS do mês ");
+        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem15ActionPerformed(evt);
+            }
+        });
         jMenuRelatorios.add(jMenuItem15);
 
         jMenuItem17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/008.png"))); // NOI18N
@@ -674,7 +690,11 @@ public class JFramePrincipal extends javax.swing.JFrame {
         ReportManage report = new ReportManage();
 
         try {
+<<<<<<< HEAD
+            report.relatorioPronto("reportTodasOs", "Relatório de Funcionarios");
+=======
             report.relatorioPronto("reportOSGeral2", "Relatório Geral de Ordens de Serviço");
+>>>>>>> b9c8cdb6fbaa96ab7e8b971a691a4eff143fc07b
         } catch (JRException ex) {
             Logger.getLogger(testeRelatorio.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -682,6 +702,103 @@ public class JFramePrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
+<<<<<<< HEAD
+    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
+        // TODO add your handling code here:
+        Date data = new Date();
+        SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM");
+        String dataFormatada = formatador.format(data);
+        Connection conexao;
+        try {
+            conexao = Conexao.getConnection();
+            conexao.createStatement().execute("use " + HibernateConfiguration.getBase());
+            ResultSet executeQuery = conexao.createStatement().executeQuery("SELECT\n"
+                    + "     endereco.`id` AS endereco_id,\n"
+                    + "     endereco.`bairro` AS endereco_bairro,\n"
+                    + "     endereco.`cep` AS endereco_cep,\n"
+                    + "     endereco.`cidade` AS endereco_cidade,\n"
+                    + "     endereco.`complemento` AS endereco_complemento,\n"
+                    + "     endereco.`logradouro` AS endereco_logradouro,\n"
+                    + "     endereco.`numero` AS endereco_numero,\n"
+                    + "     endereco.`telefone1` AS endereco_telefone1,\n"
+                    + "     endereco.`telefone2` AS endereco_telefone2,\n"
+                    + "     endereco.`telefone3` AS endereco_telefone3,\n"
+                    + "     endereco.`tipoLogradouro` AS endereco_tipoLogradouro,\n"
+                    + "     ordemservico.`id` AS ordemservico_id,\n"
+                    + "     ordemservico.`banco` AS ordemservico_banco,\n"
+                    + "     ordemservico.`dataCadastro` AS ordemservico_dataCadastro,\n"
+                    + "     ordemservico.`dataVencimento` AS ordemservico_dataVencimento,\n"
+                    + "     ordemservico.`item1` AS ordemservico_item1,\n"
+                    + "     ordemservico.`item2` AS ordemservico_item2,\n"
+                    + "     ordemservico.`item3` AS ordemservico_item3,\n"
+                    + "     ordemservico.`item4` AS ordemservico_item4,\n"
+                    + "     ordemservico.`juros` AS ordemservico_juros,\n"
+                    + "     ordemservico.`parcelas` AS ordemservico_parcelas,\n"
+                    + "     ordemservico.`parcelasRestantes` AS ordemservico_parcelasRestantes,\n"
+                    + "     ordemservico.`status` AS ordemservico_status,\n"
+                    + "     ordemservico.`tipoCheque` AS ordemservico_tipoCheque,\n"
+                    + "     ordemservico.`valor1` AS ordemservico_valor1,\n"
+                    + "     ordemservico.`valor2` AS ordemservico_valor2,\n"
+                    + "     ordemservico.`valor3` AS ordemservico_valor3,\n"
+                    + "     ordemservico.`valor4` AS ordemservico_valor4,\n"
+                    + "     ordemservico.`valorPorExtenso` AS ordemservico_valorPorExtenso,\n"
+                    + "     ordemservico.`valorTotal` AS ordemservico_valorTotal,\n"
+                    + "     ordemservico.`cliente_id` AS ordemservico_cliente_id,\n"
+                    + "     ordemservico.`endereco_id` AS ordemservico_endereco_id,\n"
+                    + "     ordemservico.`funcionario_id` AS ordemservico_funcionario_id,\n"
+                    + "     pessoa.`DTYPE` AS pessoa_DTYPE,\n"
+                    + "     pessoa.`id` AS pessoa_id,\n"
+                    + "     pessoa.`dataCadastro` AS pessoa_dataCadastro,\n"
+                    + "     pessoa.`email` AS pessoa_email,\n"
+                    + "     pessoa.`cpf` AS pessoa_cpf,\n"
+                    + "     pessoa.`nascimento` AS pessoa_nascimento,\n"
+                    + "     pessoa.`nome` AS pessoa_nome,\n"
+                    + "     pessoa.`rg` AS pessoa_rg,\n"
+                    + "     pessoa.`sobrenome` AS pessoa_sobrenome,\n"
+                    + "     pessoa.`cnpj` AS pessoa_cnpj,\n"
+                    + "     pessoa.`inscricao` AS pessoa_inscricao,\n"
+                    + "     pessoa.`razaoSocial` AS pessoa_razaoSocial,\n"
+                    + "     pessoa.`responsavel` AS pessoa_responsavel,\n"
+                    + "     pessoa.`referencia1` AS pessoa_referencia1,\n"
+                    + "     pessoa.`referencia2` AS pessoa_referencia2,\n"
+                    + "     pessoa.`referencia3` AS pessoa_referencia3,\n"
+                    + "     pessoa.`endereco_id` AS pessoa_endereco_id\n"
+                    + "FROM\n"
+                    + "     pessoa, ordemservico, endereco\n"
+                    + "WHERE\n"
+                    + "     pessoa.`id` = ordemservico.`cliente_id` AND endereco.`id` = ordemservico.`endereco_id` AND ordemservico.`dataCadastro` LIKE '%" + dataFormatada + "%'ORDER BY ordemservico.id");
+
+
+            JRResultSetDataSource jrRS = new JRResultSetDataSource(executeQuery);
+
+
+            String jasperPrint;
+            try {
+                JDialog viewer = new JDialog(new javax.swing.JFrame(), "Visualização Relatório do Mês ", true);
+                viewer.setSize(900, 600);
+                viewer.setLocationRelativeTo(null);
+                URL url = this.getClass().getResource("/br/com/okaynet/andare/icons/faststone.png");
+                Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
+                viewer.setIconImage(imagemTitulo);
+                jasperPrint = JasperFillManager.fillReportToFile("C:\\Okaynet\\Andare\\images\\reportOsMes.jasper", null, jrRS); //Aqui vc chama o relatório
+               
+
+                JasperViewer jrviewer = new JasperViewer(jasperPrint, false, false);
+
+                viewer.getContentPane().add(jrviewer.getContentPane());
+                viewer.setVisible(true);
+            } catch (JRException ex) {
+                Logger.getLogger(testeParametro.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(testeRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_jMenuItem15ActionPerformed
+
+=======
+>>>>>>> b9c8cdb6fbaa96ab7e8b971a691a4eff143fc07b
     /**
      * @param args the command line arguments
      */

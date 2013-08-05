@@ -222,6 +222,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Todas OS do m&#xea;s "/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem15ActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem17">
               <Properties>
