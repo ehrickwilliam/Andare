@@ -27,7 +27,7 @@ public class JFrameLogin extends javax.swing.JFrame {
      */
     public JFrameLogin() {
         initComponents();
-
+    
 
 
         mudarFavicon();
@@ -90,6 +90,10 @@ public class JFrameLogin extends javax.swing.JFrame {
         jPassword = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabelLogo = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        Sistema = new javax.swing.JMenu();
+        Entrar = new javax.swing.JMenuItem();
+        Sair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Andare Adesivos Login");
@@ -139,6 +143,32 @@ public class JFrameLogin extends javax.swing.JFrame {
         jLabelLogo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 620, 420));
 
+        Sistema.setText("Sistema");
+
+        Entrar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ENTER, 0));
+        Entrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/047.png"))); // NOI18N
+        Entrar.setText("Fazer Login");
+        Entrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EntrarActionPerformed(evt);
+            }
+        });
+        Sistema.add(Entrar);
+
+        Sair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
+        Sair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/048.png"))); // NOI18N
+        Sair.setText("Sair");
+        Sair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SairActionPerformed(evt);
+            }
+        });
+        Sistema.add(Sair);
+
+        jMenuBar1.add(Sistema);
+
+        setJMenuBar(jMenuBar1);
+
         getAccessibleContext().setAccessibleDescription("Login");
 
         pack();
@@ -154,10 +184,24 @@ public class JFrameLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jHostActionPerformed
 
+    private void EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrarActionPerformed
+        // TODO add your handling code here:
+        verificarLogin(jTextUser.getText(), jPassword.getText());
+    }//GEN-LAST:event_EntrarActionPerformed
+
+    private void SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SairActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_SairActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Entrar;
+    private javax.swing.JMenuItem Sair;
+    private javax.swing.JMenu Sistema;
     private javax.swing.JTextField jHost;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelLogo;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPasswordField jPassword;
     private javax.swing.JTextField jTextUser;
     // End of variables declaration//GEN-END:variables

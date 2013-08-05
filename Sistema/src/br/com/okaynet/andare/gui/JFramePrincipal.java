@@ -319,6 +319,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenu6.setText("Clientes");
         jMenu6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
+        jMenuItemTodosClientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItemTodosClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/book.png"))); // NOI18N
         jMenuItemTodosClientes.setText("Todos os Clientes");
         jMenuItemTodosClientes.addActionListener(new java.awt.event.ActionListener() {
@@ -328,6 +329,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         });
         jMenu6.add(jMenuItemTodosClientes);
 
+        jMenuItemNovoClienteJuridico.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItemNovoClienteJuridico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/book_add.png"))); // NOI18N
         jMenuItemNovoClienteJuridico.setText("Adicionar Novo Cliente Juridico");
         jMenuItemNovoClienteJuridico.addActionListener(new java.awt.event.ActionListener() {
@@ -337,6 +339,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         });
         jMenu6.add(jMenuItemNovoClienteJuridico);
 
+        jMenuItemNovoClienteFisico.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_3, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItemNovoClienteFisico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/book_add.png"))); // NOI18N
         jMenuItemNovoClienteFisico.setText("Adicionar Novo Cliente Fisico");
         jMenuItemNovoClienteFisico.addActionListener(new java.awt.event.ActionListener() {
@@ -351,6 +354,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/user_male_16.png"))); // NOI18N
         jMenu1.setText("Funcionarios");
 
+        jMenuItemTodosFuncionarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_4, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItemTodosFuncionarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/building.png"))); // NOI18N
         jMenuItemTodosFuncionarios.setText("Todos os Funcionarios");
         jMenuItemTodosFuncionarios.addActionListener(new java.awt.event.ActionListener() {
@@ -360,6 +364,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItemTodosFuncionarios);
 
+        jMenuItemNovoFuncionario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_5, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItemNovoFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/building_add.png"))); // NOI18N
         jMenuItemNovoFuncionario.setText("Adicionar Novo Funcionario");
         jMenuItemNovoFuncionario.addActionListener(new java.awt.event.ActionListener() {
@@ -374,6 +379,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/ordem.png"))); // NOI18N
         jMenu2.setText("Ordem de Serviço (OS)");
 
+        jMenuItemOsMes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_6, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItemOsMes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/application_form.png"))); // NOI18N
         jMenuItemOsMes.setText("Todas as OS do mês");
         jMenuItemOsMes.addActionListener(new java.awt.event.ActionListener() {
@@ -383,6 +389,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItemOsMes);
 
+        jMenuItemNovaOs.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_7, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItemNovaOs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/application_form_add.png"))); // NOI18N
         jMenuItemNovaOs.setText("Nova OS");
         jMenuItemNovaOs.addActionListener(new java.awt.event.ActionListener() {
@@ -444,6 +451,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenu3.add(jMenuItemAddUser);
         jMenu3.add(jSeparator2);
 
+        jMenuItem13.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_8, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/068.png"))); // NOI18N
         jMenuItem13.setText("Alterar Minha Senha");
         jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
@@ -508,6 +516,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/023.png"))); // NOI18N
         jMenu5.setText("Sobre");
 
+        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_0, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/022.png"))); // NOI18N
         jMenuItem3.setText("Sobre o Sistema");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
