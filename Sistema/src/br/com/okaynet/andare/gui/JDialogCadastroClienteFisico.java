@@ -284,12 +284,12 @@ public class JDialogCadastroClienteFisico extends javax.swing.JDialog {
             }
         });
         jMenuPesquizar.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-            }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenuPesquizarMenuSelected(evt);
             }
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
         });
         jMenuPesquizar.addActionListener(new java.awt.event.ActionListener() {
@@ -527,6 +527,7 @@ public class JDialogCadastroClienteFisico extends javax.swing.JDialog {
                 new DaoClienteFisico().persistir(cliente);
                 TransactionManager.commit();
                 limparCampos();
+                JOptionPane.showMessageDialog(rootPane, "Registro salvo com sucesso !");
             } catch (RuntimeException ex) {
                 TransactionManager.rollback();
                 JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro ao gravar os dados");

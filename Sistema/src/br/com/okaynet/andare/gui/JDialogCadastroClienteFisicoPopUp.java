@@ -505,6 +505,7 @@ public class JDialogCadastroClienteFisicoPopUp extends javax.swing.JDialog {
             try {
                 new DaoClienteFisico().persistir(cliente);
                 TransactionManager.commit();
+                JOptionPane.showMessageDialog(rootPane, "Registro salvo com sucesso !");
                 this.dispose();
             } catch (RuntimeException ex) {
                 TransactionManager.rollback();

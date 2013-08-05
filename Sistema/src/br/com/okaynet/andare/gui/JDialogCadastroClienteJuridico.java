@@ -277,12 +277,12 @@ public class JDialogCadastroClienteJuridico extends javax.swing.JDialog {
             }
         });
         jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-            }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenu4MenuSelected(evt);
             }
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
         });
         jMenu4.addActionListener(new java.awt.event.ActionListener() {
@@ -519,6 +519,7 @@ public class JDialogCadastroClienteJuridico extends javax.swing.JDialog {
                 new DaoClienteJuridico().persistir(cliente);
                 TransactionManager.commit();
                 limparCampos();
+                JOptionPane.showMessageDialog(rootPane, "Registro salvo com sucesso !");
             } catch (RuntimeException ex) {
                 TransactionManager.rollback();
                 JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro ao gravar os dados");

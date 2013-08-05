@@ -801,6 +801,7 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
             TransactionManager.beginTransaction();
             new DaoOrdemServico().persistir(ordem);
             TransactionManager.commit();
+            JOptionPane.showMessageDialog(rootPane, "Registro salvo com sucesso !");
             this.dispose();
 
         } else {

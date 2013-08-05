@@ -394,12 +394,12 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
             }
         });
         jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-            }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenu4MenuSelected(evt);
             }
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
         });
         jMenu4.addActionListener(new java.awt.event.ActionListener() {
@@ -762,6 +762,7 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
             TransactionManager.beginTransaction();
             new DaoOrdemServico().persistir(ordem);
             TransactionManager.commit();
+            JOptionPane.showMessageDialog(rootPane, "Registro salvo com sucesso !");
             this.dispose();
 
         } else {

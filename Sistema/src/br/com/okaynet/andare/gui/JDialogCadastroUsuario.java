@@ -136,7 +136,7 @@ public class JDialogCadastroUsuario extends javax.swing.JDialog {
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel7.setText("Nada selecionado e tudo selecionado dara permissão total para o usuário");
+        jLabel7.setText("Tudo selecionado dara permissão total para o usuário");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
         jCheckBoxClienteCon.setText("Consultar");
@@ -227,12 +227,12 @@ public class JDialogCadastroUsuario extends javax.swing.JDialog {
             }
         });
         jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-            }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenu4MenuSelected(evt);
             }
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
         });
         jMenu4.addActionListener(new java.awt.event.ActionListener() {
@@ -485,6 +485,7 @@ public class JDialogCadastroUsuario extends javax.swing.JDialog {
                         Data.hash.remove("usuario");
                         Data.hash.put("usuario", usuario);
                         limparCampos();
+                        JOptionPane.showMessageDialog(rootPane, "Registro salvo com sucesso !");
                     } catch (RuntimeException ex) {
                         TransactionManager.rollback();
                         JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro ao gravar os dados");

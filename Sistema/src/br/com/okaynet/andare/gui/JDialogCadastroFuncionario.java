@@ -281,12 +281,12 @@ public class JDialogCadastroFuncionario extends javax.swing.JDialog {
             }
         });
         jMenuPesquisar.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-            }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenuPesquisarMenuSelected(evt);
             }
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
         });
         jMenuPesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -523,6 +523,7 @@ public class JDialogCadastroFuncionario extends javax.swing.JDialog {
                 new DaoFuncionario().persistir(funcionario);
                 TransactionManager.commit();
                 limparCampos();
+                JOptionPane.showMessageDialog(rootPane, "Registro salvo com sucesso !");
             } catch (RuntimeException ex) {
                 TransactionManager.rollback();
                 JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro ao gravar os dados");

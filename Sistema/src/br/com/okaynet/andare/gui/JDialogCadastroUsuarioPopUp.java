@@ -112,7 +112,7 @@ public class JDialogCadastroUsuarioPopUp extends javax.swing.JDialog {
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel7.setText("Nada selecionado e tudo selecionado dara permissão total para o usuário");
+        jLabel7.setText("Tudo selecionado dara permissão total para o usuário");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
         jCheckBoxClienteCon.setText("Consultar");
@@ -404,6 +404,7 @@ public class JDialogCadastroUsuarioPopUp extends javax.swing.JDialog {
                 limparCampos();
                 Data.hash.remove("usuario");
                 Data.hash.put("usuario", usuario);
+                JOptionPane.showMessageDialog(rootPane, "Registro salvo com sucesso !");
             } catch (RuntimeException ex) {
                 TransactionManager.rollback();
                 JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro ao gravar os dados");
