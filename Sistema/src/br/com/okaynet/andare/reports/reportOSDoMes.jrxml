@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportOSGeral2" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-	<property name="ireport.zoom" value="1.331000000000001"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="16"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportOSDoMes" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.464100000000001"/>
+	<property name="ireport.x" value="32"/>
+	<property name="ireport.y" value="36"/>
 	<queryString>
 		<![CDATA[SELECT
      endereco.`id` AS endereco_id,
@@ -117,35 +117,25 @@ WHERE
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="36" splitType="Stretch">
+		<band height="37" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="371" height="30"/>
+				<reportElement x="0" y="0" width="554" height="30"/>
 				<textElement>
 					<font fontName="Times New Roman" size="24"/>
 				</textElement>
-				<text><![CDATA[Relatório Geral de Ordens de Serviço Andare]]></text>
+				<text><![CDATA[Relatório do Mês Corrente de Ordens de Serviço Andare]]></text>
 			</staticText>
 		</band>
 	</title>
 	<columnHeader>
-		<band height="17" splitType="Stretch">
-			<staticText>
-				<reportElement x="0" y="0" width="172" height="15"/>
-				<textElement/>
-				<text><![CDATA[Cliente]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="172" y="0" width="112" height="15"/>
-				<textElement/>
-				<text><![CDATA[CNPJ/CPF]]></text>
-			</staticText>
+		<band height="16" splitType="Stretch">
 			<staticText>
 				<reportElement x="284" y="0" width="95" height="15"/>
 				<textElement/>
 				<text><![CDATA[RG]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="379" y="0" width="255" height="15"/>
+				<reportElement x="379" y="0" width="203" height="15"/>
 				<textElement/>
 				<text><![CDATA[Email]]></text>
 			</staticText>
@@ -155,6 +145,16 @@ WHERE
 				<text><![CDATA[Fone Principal]]></text>
 			</staticText>
 			<staticText>
+				<reportElement x="172" y="0" width="112" height="15"/>
+				<textElement/>
+				<text><![CDATA[CNPJ/CPF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="172" height="15"/>
+				<textElement/>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<staticText>
 				<reportElement x="692" y="0" width="110" height="15"/>
 				<textElement/>
 				<text><![CDATA[Valor Total]]></text>
@@ -162,12 +162,42 @@ WHERE
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="158" splitType="Stretch">
+		<band height="151" splitType="Stretch">
 			<rectangle>
 				<reportElement x="0" y="0" width="802" height="15" forecolor="#FFFFFF" backcolor="#CCCCCC"/>
 			</rectangle>
 			<textField>
-				<reportElement x="52" y="0" width="100" height="15"/>
+				<reportElement x="284" y="15" width="95" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pessoa_rg}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="172" y="15" width="112" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pessoa_cpf}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="582" y="15" width="110" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{endereco_telefone1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="692" y="15" width="110" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ordemservico_valorTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="379" y="15" width="203" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pessoa_email}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="15" width="172" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pessoa_razaoSocial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="100" height="15"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{ordemservico_id}]]></textFieldExpression>
 			</textField>
@@ -181,201 +211,171 @@ WHERE
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{pessoa_cnpj}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="172" y="15" width="112" height="15"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{pessoa_cpf}]]></textFieldExpression>
-			</textField>
 			<textField>
-				<reportElement x="379" y="15" width="203" height="15"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{pessoa_email}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="582" y="15" width="110" height="15"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{endereco_telefone1}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="692" y="15" width="110" height="15"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{ordemservico_valorTotal}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="284" y="15" width="95" height="15"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{pessoa_rg}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="0" y="41" width="45" height="15"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{endereco_tipoLogradouro}]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="0" y="15" width="172" height="15"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{pessoa_razaoSocial}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="45" y="41" width="239" height="15"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{endereco_logradouro}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="284" y="41" width="16" height="15"/>
-				<textElement/>
-				<text><![CDATA[Nº:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="300" y="41" width="79" height="15"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{endereco_numero}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="474" y="41" width="108" height="15"/>
+				<reportElement x="474" y="40" width="108" height="15"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{endereco_bairro}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="379" y="41" width="95" height="15"/>
+				<reportElement x="379" y="40" width="95" height="15"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{endereco_complemento}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="284" y="40" width="16" height="15"/>
+				<textElement/>
+				<text><![CDATA[Nº:]]></text>
+			</staticText>
 			<textField>
-				<reportElement x="582" y="41" width="110" height="15"/>
+				<reportElement x="0" y="40" width="45" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{endereco_tipoLogradouro}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="29" width="802" height="2"/>
+			</line>
+			<textField>
+				<reportElement x="300" y="40" width="79" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{endereco_numero}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="692" y="40" width="110" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{endereco_cidade}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="582" y="40" width="110" height="15"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{endereco_cep}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="692" y="41" width="110" height="15"/>
+				<reportElement x="45" y="40" width="239" height="15"/>
 				<textElement/>
-				<textFieldExpression><![CDATA[$F{endereco_cidade}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{endereco_logradouro}]]></textFieldExpression>
 			</textField>
-			<line>
-				<reportElement x="0" y="30" width="802" height="2"/>
-			</line>
-			<line>
-				<reportElement x="29" y="56" width="802" height="2"/>
-			</line>
-			<staticText>
-				<reportElement x="0" y="68" width="45" height="15"/>
-				<textElement/>
-				<text><![CDATA[Emissão:]]></text>
-			</staticText>
 			<textField>
-				<reportElement x="45" y="68" width="74" height="15"/>
+				<reportElement x="592" y="65" width="210" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ordemservico_status}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="45" y="65" width="74" height="15"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{ordemservico_dataCadastro}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="119" y="68" width="95" height="15"/>
+				<reportElement x="300" y="65" width="71" height="15"/>
+				<textElement/>
+				<text><![CDATA[Qtde parcelas:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="119" y="65" width="95" height="15"/>
 				<textElement/>
 				<text><![CDATA[Data de Vencimento:]]></text>
 			</staticText>
+			<line>
+				<reportElement x="0" y="53" width="802" height="2"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="65" width="45" height="15"/>
+				<textElement/>
+				<text><![CDATA[Emissão:]]></text>
+			</staticText>
 			<textField>
-				<reportElement x="214" y="68" width="86" height="15"/>
+				<reportElement x="371" y="65" width="49" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ordemservico_parcelas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="510" y="65" width="44" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ordemservico_parcelasRestantes}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="214" y="65" width="86" height="15"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{ordemservico_dataVencimento}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="300" y="68" width="71" height="15"/>
-				<textElement/>
-				<text><![CDATA[Qtde parcelas:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="371" y="68" width="49" height="15"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{ordemservico_parcelas}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="420" y="68" width="90" height="15"/>
+				<reportElement x="419" y="65" width="90" height="15"/>
 				<textElement/>
 				<text><![CDATA[Parcelas restantes:]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="510" y="68" width="44" height="15"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{ordemservico_parcelasRestantes}]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement x="553" y="68" width="39" height="15" forecolor="#990000"/>
+				<reportElement x="553" y="65" width="39" height="15" forecolor="#990000"/>
 				<textElement/>
 				<text><![CDATA[Status:]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="592" y="68" width="210" height="15"/>
+			<textField isBlankWhenNull="true">
+				<reportElement x="702" y="120" width="100" height="15"/>
 				<textElement/>
-				<textFieldExpression><![CDATA[$F{ordemservico_status}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ordemservico_valor3}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="702" y="90" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ordemservico_valor1}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="93" width="45" height="15"/>
+				<reportElement x="661" y="90" width="41" height="15"/>
+				<textElement/>
+				<text><![CDATA[Valores:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="45" y="105" width="616" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ordemservico_item2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="90" width="45" height="15"/>
 				<textElement/>
 				<text><![CDATA[Serviços:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="45" y="93" width="616" height="15"/>
+				<reportElement x="45" y="90" width="616" height="15"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{ordemservico_item1}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="661" y="93" width="41" height="15"/>
-				<textElement/>
-				<text><![CDATA[Valores:]]></text>
-			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="702" y="93" width="100" height="15"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{ordemservico_valor1}]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="45" y="138" width="616" height="15"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{ordemservico_item4}]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="702" y="138" width="100" height="15"/>
+				<reportElement x="702" y="135" width="100" height="15"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{ordemservico_valor4}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement x="45" y="108" width="616" height="15"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{ordemservico_item2}]]></textFieldExpression>
-			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="702" y="108" width="100" height="15"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{ordemservico_valor2}]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="45" y="123" width="616" height="15"/>
+				<reportElement x="45" y="120" width="616" height="15"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{ordemservico_item3}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="702" y="123" width="100" height="15"/>
+				<reportElement x="45" y="135" width="616" height="15"/>
 				<textElement/>
-				<textFieldExpression><![CDATA[$F{ordemservico_valor3}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ordemservico_item4}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="702" y="105" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ordemservico_valor2}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="28" splitType="Stretch">
-			<textField>
-				<reportElement x="682" y="8" width="80" height="20"/>
-				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
-			</textField>
+	<pageFooter>
+		<band height="32" splitType="Stretch">
 			<textField evaluationTime="Report">
-				<reportElement x="762" y="8" width="40" height="20"/>
+				<reportElement x="762" y="12" width="40" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="682" y="12" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="0" y="8" width="100" height="20"/>
+				<reportElement x="0" y="12" width="100" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 		</band>
-	</columnFooter>
+	</pageFooter>
 </jasperReport>
