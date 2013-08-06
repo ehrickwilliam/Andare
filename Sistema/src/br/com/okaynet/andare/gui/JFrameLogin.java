@@ -143,6 +143,10 @@ public class JFrameLogin extends javax.swing.JFrame {
         jLabelLogo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 620, 420));
 
+        jMenuBar1.setMaximumSize(new java.awt.Dimension(1, 1));
+        jMenuBar1.setMinimumSize(new java.awt.Dimension(1, 1));
+        jMenuBar1.setPreferredSize(new java.awt.Dimension(1, 1));
+
         Sistema.setText("Sistema");
 
         Entrar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ENTER, 0));

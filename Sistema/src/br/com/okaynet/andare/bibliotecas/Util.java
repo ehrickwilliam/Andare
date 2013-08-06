@@ -1,10 +1,13 @@
 package br.com.okaynet.andare.bibliotecas;
 
+import br.com.okaynet.andare.conexao.HibernateConfiguration;
 import br.com.okaynet.andare.daos.DaoOrdemServico;
 import java.awt.Component;
 import java.awt.Image;
 import static java.lang.Thread.sleep;
 import java.math.BigInteger;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
@@ -106,6 +109,18 @@ public class Util {
             public void run() {
                 while (true) {
                     label.setText(Util.getDateTime());
+
+                    DateFormat format = new SimpleDateFormat("HH:mm:ss");
+                    Date dateBackUp = new Date();
+                    if (format.format(dateBackUp).equals("10:30:00")) {
+                        try {
+                            if (InetAddress.getLocalHost().getHostAddress().equals("192.168.1.30")) {
+                                Util.backupDoSistema();
+                            }
+                        } catch (UnknownHostException ex) {
+                        }
+                    }
+
                     try {
                         sleep(1000);
                     } catch (Exception e) {
@@ -288,5 +303,18 @@ public class Util {
         BigInteger hash = new BigInteger(1, md.digest(senha.getBytes()));
         sen = hash.toString(16);
         return sen;
+    }
+
+    private static void backupDoSistema() {
+        Date data = new Date();
+        SimpleDateFormat formatadorTotal = new SimpleDateFormat("dd-MM-yyyy-HH-mm-ss");
+        String dataFormatadaNormal = formatadorTotal.format(data);
+        try {
+            String comando = "C:\\Arquivos de programas\\MySQL\\MySQL Server 5.6\\bin\\mysqldump.exe";
+            ProcessBuilder pb = new ProcessBuilder(comando, "--user=" + HibernateConfiguration.getUser(), "--password=" + HibernateConfiguration.getPass(), HibernateConfiguration.getBase(), "--result-file=C:\\Okaynet\\Andare\\Backup\\Backup_" + dataFormatadaNormal + ".sql");
+            pb.start();
+        } catch (Exception exc) {
+            JOptionPane.showMessageDialog(null, "Aconteceu algo inesperado ao executar o Backup!");
+        }
     }
 }

@@ -78,6 +78,7 @@ public class JDialogCadastroUsuario extends javax.swing.JDialog {
         jCheckBoxRelatorios = new javax.swing.JCheckBox();
         jCheckBoxAdminOrdem = new javax.swing.JCheckBox();
         jLabel13 = new javax.swing.JLabel();
+        jCheckBoxBackUp = new javax.swing.JCheckBox();
         jLabel8 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
@@ -200,6 +201,9 @@ public class JDialogCadastroUsuario extends javax.swing.JDialog {
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel13.setText("Clientes:");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        jCheckBoxBackUp.setText("BackUp Sistema");
+        jPanel1.add(jCheckBoxBackUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 560, 170));
 
@@ -360,6 +364,7 @@ public class JDialogCadastroUsuario extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton7;
     private javax.swing.JCheckBox jCheckBoxAdminOrdem;
+    private javax.swing.JCheckBox jCheckBoxBackUp;
     private javax.swing.JCheckBox jCheckBoxClienteAdd;
     private javax.swing.JCheckBox jCheckBoxClienteCon;
     private javax.swing.JCheckBox jCheckBoxClienteRemove;
@@ -475,6 +480,9 @@ public class JDialogCadastroUsuario extends javax.swing.JDialog {
                     }
                     if (jCheckBoxUsuarioRemove.isSelected()) {
                         permissoes.append("L");
+                    }
+                    if(jCheckBoxBackUp.isSelected()){
+                        permissoes.append("U");
                     }
                     usuario.setPermissoes(permissoes.toString());
 

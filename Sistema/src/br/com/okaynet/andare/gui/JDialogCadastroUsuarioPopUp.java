@@ -75,6 +75,7 @@ public class JDialogCadastroUsuarioPopUp extends javax.swing.JDialog {
         jCheckBoxRelatorios = new javax.swing.JCheckBox();
         jLabel13 = new javax.swing.JLabel();
         jCheckBoxAdminOrdem = new javax.swing.JCheckBox();
+        jCheckBoxBackUp = new javax.swing.JCheckBox();
         jLabel8 = new javax.swing.JLabel();
         jPasswordFieldSenha = new javax.swing.JPasswordField();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -176,6 +177,9 @@ public class JDialogCadastroUsuarioPopUp extends javax.swing.JDialog {
 
         jCheckBoxAdminOrdem.setText("Todas as OS ");
         jPanel1.add(jCheckBoxAdminOrdem, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, -1, -1));
+
+        jCheckBoxBackUp.setText("BackUp Sistema");
+        jPanel1.add(jCheckBoxBackUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 560, 170));
 
@@ -288,6 +292,7 @@ public class JDialogCadastroUsuarioPopUp extends javax.swing.JDialog {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox jCheckBoxAdminOrdem;
+    private javax.swing.JCheckBox jCheckBoxBackUp;
     private javax.swing.JCheckBox jCheckBoxClienteAdd;
     private javax.swing.JCheckBox jCheckBoxClienteCon;
     private javax.swing.JCheckBox jCheckBoxClienteRemove;
@@ -394,6 +399,9 @@ public class JDialogCadastroUsuarioPopUp extends javax.swing.JDialog {
             }
             if (jCheckBoxUsuarioRemove.isSelected()) {
                 permissoes.append("L");
+            }
+            if (jCheckBoxBackUp.isSelected()) {
+                permissoes.append("U");
             }
             usuario.setPermissoes(permissoes.toString());
 
@@ -525,6 +533,11 @@ public class JDialogCadastroUsuarioPopUp extends javax.swing.JDialog {
                         indexOf = permissoes.indexOf("O");
                         if (indexOf > -1) {
                             jCheckBoxRelatorios.doClick();
+                        }
+                        
+                        indexOf = permissoes.indexOf("U");
+                        if (indexOf > -1) {
+                            jCheckBoxBackUp.doClick();
                         }
                     }
                 }

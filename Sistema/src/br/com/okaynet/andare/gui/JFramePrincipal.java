@@ -93,6 +93,13 @@ public class JFramePrincipal extends javax.swing.JFrame {
             } else {
                 jMenuItemNovaOs.setEnabled(false);
             }
+            
+            indexOf = autenticado.getPermissoes().indexOf("U");
+            if (indexOf > 0) {
+                jMenuItem6.setEnabled(true);
+            } else {
+                jMenuItem6.setEnabled(false);
+            }
 
             indexOf = autenticado.getPermissoes().indexOf("I");
             if (indexOf > 0) {
@@ -153,6 +160,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jToolBar1 = new javax.swing.JToolBar();
         jButton8 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -183,6 +191,8 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItemUserCom = new javax.swing.JMenuItem();
         jMenuItemAddUser = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenuItem13 = new javax.swing.JMenuItem();
         jMenuRelatorios = new javax.swing.JMenu();
@@ -198,6 +208,8 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItem1.setText("jMenuItem1");
 
         jMenuItem5.setText("jMenuItem5");
+
+        jMenuItem4.setText("jMenuItem4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Andare Adesivos - Gerenciamento");
@@ -449,6 +461,16 @@ public class JFramePrincipal extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jMenuItemAddUser);
+        jMenu3.add(jSeparator3);
+
+        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/okaynet/andare/icons/png/027.png"))); // NOI18N
+        jMenuItem6.setText("BackUp do Sistema");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem6);
         jMenu3.add(jSeparator2);
 
         jMenuItem13.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_8, java.awt.event.InputEvent.CTRL_MASK));
@@ -787,7 +809,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
                 Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
                 viewer.setIconImage(imagemTitulo);
                 jasperPrint = JasperFillManager.fillReportToFile("C:\\Okaynet\\Andare\\images\\reportOsMes.jasper", null, jrRS); //Aqui vc chama o relatório
-               
+
 
                 JasperViewer jrviewer = new JasperViewer(jasperPrint, false, false);
 
@@ -802,6 +824,11 @@ public class JFramePrincipal extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jMenuItem15ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+        backupDoSistema();
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -862,7 +889,9 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItemAddUser;
     private javax.swing.JMenuItem jMenuItemNovaOs;
     private javax.swing.JMenuItem jMenuItemNovoClienteFisico;
@@ -880,6 +909,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 
@@ -887,5 +917,24 @@ public class JFramePrincipal extends javax.swing.JFrame {
         URL url = this.getClass().getResource("/br/com/okaynet/andare/icons/faststone.png");
         Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
         this.setIconImage(imagemTitulo);
+    }
+
+    private void backupDoSistema() {
+        Date data = new Date();
+        SimpleDateFormat formatadorTotal = new SimpleDateFormat("dd-MM-yyyy-HH-mm-ss");
+        String dataFormatadaNormal = formatadorTotal.format(data);
+        try {
+            String comando = "C:\\Arquivos de programas\\MySQL\\MySQL Server 5.6\\bin\\mysqldump.exe";
+            ProcessBuilder pb = new ProcessBuilder(comando, "--user=" + HibernateConfiguration.getUser(), "--password=" + HibernateConfiguration.getPass(), HibernateConfiguration.getBase(), "--result-file=C:\\Okaynet\\Andare\\Backup\\Backup_" + dataFormatadaNormal + ".sql");
+            pb.start();
+            JOptionPane.showMessageDialog(null, "Backup criado com sucesso !");
+            try {
+                Runtime.getRuntime().exec("explorer C:\\Okaynet\\Andare\\Backup\\");
+            } catch (java.io.IOException ex) {
+                JOptionPane.showMessageDialog(null, "Aconteceu algo inesperado ao executar o Backup!");
+            }
+        } catch (Exception exc) {
+            JOptionPane.showMessageDialog(null, "Aconteceu algo inesperado ao executar o Backup!");
+        }
     }
 }
