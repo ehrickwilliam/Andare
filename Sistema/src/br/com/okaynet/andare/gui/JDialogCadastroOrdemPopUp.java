@@ -79,42 +79,19 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jTextFieldDataCadastro = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jTextFieldEndereco = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jComboBoxTipoLogradouro = new javax.swing.JComboBox();
         jLabel10 = new javax.swing.JLabel();
         jTextFieldComplemento = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jTextFieldBairro = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jComboBoxCidade = new javax.swing.JComboBox();
         jComboBoxStatus = new javax.swing.JComboBox();
         jLabel20 = new javax.swing.JLabel();
-        jComboBoxTipoCheque = new javax.swing.JComboBox();
         jComboBoxCliente = new javax.swing.JComboBox();
         jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jCheckBoxEndereco = new javax.swing.JCheckBox();
-        jFormattedTextFieldDataVencimento = new javax.swing.JFormattedTextField();
         jFormattedTextFieldNumero = new javax.swing.JFormattedTextField();
         jFormattedTextFieldCep = new javax.swing.JFormattedTextField();
-        jLabel23 = new javax.swing.JLabel();
-        jFormattedTextFieldValorPar = new javax.swing.JFormattedTextField();
-        jLabel24 = new javax.swing.JLabel();
-        jTextFieldJuros = new javax.swing.JTextField();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
         jComboBoxFuncionarios = new javax.swing.JComboBox();
-        jLabel27 = new javax.swing.JLabel();
-        jComboBoxBanco = new javax.swing.JComboBox();
-        jTextFieldValor = new javax.swing.JTextField();
-        jComboBoxQuantParcelas = new javax.swing.JComboBox();
-        jComboBoxParcelasRest = new javax.swing.JComboBox();
         jPanel1 = new javax.swing.JPanel();
         jTextFieldItem1 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -126,10 +103,44 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
         jTextFieldItem3 = new javax.swing.JTextField();
         jTextFieldValor4 = new javax.swing.JTextField();
         jTextFieldItem4 = new javax.swing.JTextField();
+        jLabelItem4 = new javax.swing.JLabel();
         jLabelItem1 = new javax.swing.JLabel();
         jLabelItem2 = new javax.swing.JLabel();
         jLabelItem3 = new javax.swing.JLabel();
-        jLabelItem4 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jTextFieldValorCheque = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jTextFieldAgencia = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jTextFieldConta = new javax.swing.JTextField();
+        jFormattedTextFieldCnpjCheque = new javax.swing.JFormattedTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jFormattedTextFieldDataCheque = new javax.swing.JFormattedTextField();
+        jTextFieldJuros = new javax.swing.JTextField();
+        jTextFieldNomeCheque = new javax.swing.JTextField();
+        jComboBoxTipoCheque = new javax.swing.JComboBox();
+        jComboBoxBanco = new javax.swing.JComboBox();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jComboBoxParcelasRest = new javax.swing.JComboBox();
+        jFormattedTextFieldValorPar = new javax.swing.JFormattedTextField();
+        jComboBoxQuantParcelas = new javax.swing.JComboBox();
+        jTextFieldValor = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jFormattedTextFieldDataVencimento = new javax.swing.JFormattedTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jCheckBoxEndereco = new javax.swing.JCheckBox();
+        jComboBoxTipoLogradouro = new javax.swing.JComboBox();
+        jLabel9 = new javax.swing.JLabel();
+        jTextFieldBairro = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jComboBoxCidade = new javax.swing.JComboBox();
+        jLabel14 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu4 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
@@ -143,9 +154,9 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de OS");
-        setMinimumSize(new java.awt.Dimension(600, 590));
+        setMinimumSize(new java.awt.Dimension(895, 590));
         setModal(true);
-        setPreferredSize(new java.awt.Dimension(600, 590));
+        setPreferredSize(new java.awt.Dimension(895, 590));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -163,56 +174,27 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
         jLabel2.setText("Código:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel3.setText("Data Vencimento* :");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
-
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel4.setText("Status* :");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 30, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel8.setText("Valor* ##.# :");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, -1, 10));
-
         jTextFieldEndereco.setEditable(false);
-        getContentPane().add(jTextFieldEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 240, -1));
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel9.setText("Endereço* :");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
-
-        jComboBoxTipoLogradouro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rua", "Avenida" }));
-        getContentPane().add(jComboBoxTipoLogradouro, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
+        getContentPane().add(jTextFieldEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 370, -1));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel10.setText("Numero* :");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, -1, -1));
 
         jTextFieldComplemento.setEditable(false);
-        getContentPane().add(jTextFieldComplemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, 170, -1));
+        getContentPane().add(jTextFieldComplemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, 170, -1));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel11.setText("Complemento* :");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, -1, -1));
+        jLabel11.setText("Conta Corrente:");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 130, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel12.setText("CEP* :");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
-
-        jTextFieldBairro.setEditable(false);
-        getContentPane().add(jTextFieldBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, 130, -1));
-
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel13.setText("Bairro* :");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, -1, -1));
-
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel14.setText("Cidade* :");
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, -1, -1));
-
-        jComboBoxCidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Abatiá", "Adrianópolis", "Agudos do Sul", "Almirante Tamandaré", "Altamira do Paraná", "Alto Paraíso", "Alto Paraná", "Alto Piquiri", "Altônia", "Alvorada do Sul", "Amaporã", "Ampére", "Anahy", "Andirá", "Ângulo", "Antonina", "Antônio Olinto", "Apucarana", "Arapongas", "Arapoti", "Arapuã", "Araruna", "Araucária", "Ariranha do Ivaí", "Assaí", "Assis Chateaubriand", "Astorga", "Atalaia", "Balsa Nova", "Bandeirantes", "Barbosa Ferraz", "Barra do Jacaré", "Barracão", "Bela Vista da Caroba", "Bela Vista do Paraíso", "Bituruna", "Boa Esperança", "Boa Esperança do Iguaçu", "Boa Ventura de São Roque", "Boa Vista da Aparecida", "Bocaiuva do Sul", "Bom Jesus do Sul", "Bom Sucesso", "Bom Sucesso do Sul", "Borrazópolis", "Braganey", "Brasilândia do Sul", "Cafeara", "Cafelândia", "Cafezal do Sul", "Califórnia", "Cambará", "Cambé", "Cambira", "Campina da Lagoa", "Campina do Simão", "Campina Grande do Sul", "Campo Bonito", "Campo do Tenente", "Campo Largo", "Campo Magro", "Campo Mourão", "Cândido de Abreu", "Candói", "Cantagalo", "Capanema", "Capitão Leônidas Marques", "Carambeí", "Carlópolis", "Cascavel", "Castro", "Catanduvas", "Centenário do Sul", "Cerro Azul", "Céu Azul", "Chopinzinho", "Cianorte", "Cidade Gaúcha", "Clevelândia", "Colombo", "Colorado", "Congonhinhas", "Conselheiro Mairinck", "Contenda", "Corbélia", "Cornélio Procópio", "Coronel Domingos Soares", "Coronel Vivida", "Corumbataí do Sul", "Cruz Machado", "Cruzeiro do Iguaçu", "Cruzeiro do Oeste", "Cruzeiro do Sul", "Cruzmaltina", "Curitiba", "Curiúva", "Diamante do Norte", "Diamante do Sul", "Diamante d'Oeste", "Dois Vizinhos", "Douradina", "Doutor Camargo", "Doutor Ulysses", "Enéas Marques", "Engenheiro Beltrão", "Entre Rios do Oeste", "Esperança Nova", "Espigão Alto do Iguaçu", "Farol", "Faxinal", "Fazenda Rio Grande", "Fênix", "Fernandes Pinheiro", "Figueira", "Flor da Serra do Sul", "Floraí", "Floresta", "Florestópolis", "Flórida", "Formosa do Oeste", "Foz do Iguaçu", "Foz do Jordão", "Francisco Alves", "Francisco Beltrão", "General Carneiro", "Godoy Moreira", "Goioerê", "Goioxim", "Grandes Rios", "Guaíra", "Guairaçá", "Guamiranga", "Guapirama", "Guaporema", "Guaraci", "Guaraniaçu", "Guarapuava", "Guaraqueçaba", "Guaratuba", "Honório Serpa", "Ibaiti", "Ibema", "Ibiporã", "Icaraíma", "Iguaraçu", "Iguatu", "Imbaú", "Imbituva", "Inácio Martins", "Inajá", "Indianópolis", "Ipiranga", "Iporã", "Iracema do Oeste", "Irati", "Iretama", "Itaguajé", "Itaipulândia", "Itambaracá", "Itambé", "Itapejara d'Oeste", "Itaperuçu", "Itaúna do Sul", "Ivaí", "Ivaiporã", "Ivaté", "Ivatuba", "Jaboti", "Jacarezinho", "Jaguapitã", "Jaguariaíva", "Jandaia do Sul", "Janiópolis", "Japira", "Japurá", "Jardim Alegre", "Jardim Olinda", "Jataizinho", "Jesuítas", "Joaquim Távora", "Jundiaí do Sul", "Juranda", "Jussara", "Kaloré", "Lapa", "Laranjal", "Laranjeiras do Sul", "Leópolis", "Lidianópolis", "Lindoeste", "Loanda", "Lobato", "Londrina", "Luiziana", "Lunardelli", "Lupionópolis", "Mallet", "Mamborê", "Mandaguaçu", "Mandaguari", "Mandirituba", "Manfrinópolis", "Mangueirinha", "Manoel Ribas", "Marechal Cândido Rondon", "Maria Helena", "Marialva", "Marilândia do Sul", "Marilena", "Mariluz", "Maringá", "Mariópolis", "Maripá", "Marmeleiro", "Marquinho", "Marumbi", "Matelândia", "Matinhos", "Mato Rico", "Mauá da Serra", "Medianeira", "Mercedes", "Mirador", "Miraselva", "Missal", "Moreira Sales", "Morretes", "Munhoz de Melo", "Nossa Senhora das Graças", "Nova Aliança do Ivaí", "Nova América da Colina", "Nova Aurora", "Nova Cantu", "Nova Esperança", "Nova Esperança do Sudoeste", "Nova Fátima", "Nova Laranjeiras", "Nova Londrina", "Nova Olímpia", "Nova Prata do Iguaçu", "Nova Santa Bárbara", "Nova Santa Rosa", "Nova Tebas", "Novo Itacolomi", "Ortigueira", "Ourizona", "Ouro Verde do Oeste", "Paiçandu", "Palmas", "Palmeira", "Palmital", "Palotina", "Paraíso do Norte", "Paranacity", "Paranaguá", "Paranapoema", "Paranavaí", "Pato Bragado", "Pato Branco", "Paula Freitas", "Paulo Frontin", "Peabiru", "Perobal", "Pérola", "Pérola d'Oeste", "Piên", "Pinhais", "Pinhal de São Bento", "Pinhalão", "Pinhão", "Piraí do Sul", "Pitanga", "Pitangueiras", "Planaltina do Paraná", "Planalto", "Ponta Grossa", "Pontal do Paraná", "Porecatu", "Porto Amazonas", "Porto Barreiro", "Porto Rico", "Porto Vitória", "Prado Ferreira", "Pranchita", "Presidente Castelo Branco", "Primeiro de Maio", "Prudentópolis", "Prudentópolis", "Quarto Centenário", "Quatiguá", "Quatro Barras", "Quatro Pontes", "Quedas do Iguaçu", "Querência do Norte", "Quinta do Sol", "Quitandinha", "Ramilândia", "Rancho Alegre", "Rancho Alegre d'Oeste", "Realeza", "Rebouças", "Renascença", "Reserva", "Reserva do Iguaçu", "Ribeirão Claro", "Ribeirão do Pinhal", "Rio Azul", "Rio Bom", "Rio Bonito do Iguaçu", "Rio Branco do Ivaí", "Rio Branco do Sul", "Rio Negro", "Rolândia", "Roncador", "Rondon", "Rosário do Ivaí", "Sabáudia", "Salgado Filho", "Salto do Itararé", "Salto do Lontra", "Santa Amélia", "Santa Cecília do Pavão", "Santa Cruz de Monte Castelo", "Santa Fé", "Santa Helena", "Santa Inês", "Santa Isabel do Ivaí", "Santa Izabel do Oeste", "Santa Lúcia", "Santa Maria do Oeste", "Santa Mariana", "Santa Mônica", "Santa Tereza do Oeste", "Santa Terezinha de Itaipu", "Santana do Itararé", "Santo Antônio da Platina", "Santo Antônio do Caiuá", "Santo Antônio do Paraíso", "Santo Antônio do Sudoeste", "Santo Inácio", "São Carlos do Ivaí", "São Jerônimo da Serra", "São João", "São João do Caiuá", "São João do Ivaí", "São João do Triunfo", "São Jorge do Ivaí", "São Jorge do Patrocínio", "São Jorge d'Oeste", "São José da Boa Vista", "São José das Palmeiras", "São José dos Pinhais", "São Manoel do Paraná", "São Mateus do Sul", "São Miguel do Iguaçu", "São Pedro do Iguaçu", "São Pedro do Ivaí", "São Pedro do Paraná", "São Sebastião da Amoreira", "São Tomé", "Sapopema", "Sarandi", "Saudade do Iguaçu", "Sengés", "Serranópolis do Iguaçu", "Sertaneja", "Sertanópolis", "Siqueira Campos", "Sulina", "Tamarana", "Tamboara", "Tapejara", "Tapira", "Teixeira Soares", "Telêmaco Borba", "Terra Boa", "Terra Rica", "Terra Roxa", "Tibagi", "Tijucas do Sul", "Toledo", "Tomazina", "Três Barras do Paraná", "Tunas do Paraná", "Tuneiras do Oeste", "Tupãssi", "Turvo", "Ubiratã", "Umuarama", "União da Vitória", "Uniflor", "Uraí", "Ventania", "Vera Cruz do Oeste", "Verê", "Virmond", "Vitorino", "Wenceslau Braz", "Xambrê" }));
-        getContentPane().add(jComboBoxCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, 120, -1));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 230, -1, -1));
 
         jComboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Aguardando Pagamento", "Pagamento Concluido", "Pagamento em Cheque" }));
         jComboBoxStatus.addActionListener(new java.awt.event.ActionListener() {
@@ -229,10 +211,7 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel20.setText("Funcionario* :");
-        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
-
-        jComboBoxTipoCheque.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "A vista", "Deposito", "Cruzado" }));
-        getContentPane().add(jComboBoxTipoCheque, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 140, -1));
+        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 30, -1, -1));
 
         jComboBoxCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -244,15 +223,194 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
                 jComboBoxClientePropertyChange(evt);
             }
         });
-        getContentPane().add(jComboBoxCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 140, -1));
+        getContentPane().add(jComboBoxCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 50, 140, -1));
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel21.setText("Cliente* :");
-        getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, -1, -1));
+        getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 30, -1, -1));
+
+        jFormattedTextFieldNumero.setEditable(false);
+        jFormattedTextFieldNumero.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        getContentPane().add(jFormattedTextFieldNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 60, -1));
+
+        jFormattedTextFieldCep.setEditable(false);
+        try {
+            jFormattedTextFieldCep.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        getContentPane().add(jFormattedTextFieldCep, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 250, 160, -1));
+
+        getContentPane().add(jComboBoxFuncionarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 50, 140, -1));
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Serviços"));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTextFieldItem1.setMaximumSize(new java.awt.Dimension(370, 2147483647));
+        jTextFieldItem1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextFieldItem1FocusGained(evt);
+            }
+        });
+        jPanel1.add(jTextFieldItem1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 43, 680, -1));
+
+        jLabel5.setText("Itens:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 23, -1, -1));
+
+        jTextFieldValor1.setText("0.0");
+        jPanel1.add(jTextFieldValor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 40, 114, -1));
+
+        jLabel6.setText("Valores R$:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 20, -1, -1));
+        jPanel1.add(jTextFieldItem2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 74, 680, -1));
+
+        jTextFieldValor2.setText("0.0");
+        jPanel1.add(jTextFieldValor2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 70, 114, -1));
+
+        jTextFieldValor3.setText("0.0");
+        jPanel1.add(jTextFieldValor3, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 100, 114, -1));
+        jPanel1.add(jTextFieldItem3, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 105, 680, -1));
+
+        jTextFieldValor4.setText("0.0");
+        jPanel1.add(jTextFieldValor4, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 130, 114, -1));
+        jPanel1.add(jTextFieldItem4, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 136, 680, -1));
+
+        jLabelItem4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelItem4.setForeground(new java.awt.Color(0, 153, 0));
+        jLabelItem4.setText("0");
+        jPanel1.add(jLabelItem4, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 140, -1, -1));
+
+        jLabelItem1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelItem1.setForeground(new java.awt.Color(0, 153, 0));
+        jLabelItem1.setText("0");
+        jPanel1.add(jLabelItem1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 50, -1, -1));
+
+        jLabelItem2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelItem2.setForeground(new java.awt.Color(0, 153, 0));
+        jLabelItem2.setText("0");
+        jPanel1.add(jLabelItem2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 80, -1, -1));
+
+        jLabelItem3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelItem3.setForeground(new java.awt.Color(0, 153, 0));
+        jLabelItem3.setText("0");
+        jPanel1.add(jLabelItem3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 110, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 860, 180));
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel15.setText("Complemento* :");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 230, -1, -1));
+        getContentPane().add(jTextFieldValorCheque, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 150, 80, -1));
+
+        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel17.setText("Valor do cheque:");
+        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 130, -1, -1));
+
+        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel18.setText("Bom  p/:");
+        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 130, -1, -1));
+        getContentPane().add(jTextFieldAgencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 150, 70, -1));
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel19.setText("Agência:");
+        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 130, -1, -1));
+        getContentPane().add(jTextFieldConta, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 150, 80, -1));
+
+        try {
+            jFormattedTextFieldCnpjCheque.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jFormattedTextFieldCnpjCheque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextFieldCnpjChequeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jFormattedTextFieldCnpjCheque, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 150, 110, -1));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel7.setText("CNPJ* :");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, -1, -1));
+
+        try {
+            jFormattedTextFieldDataCheque.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        getContentPane().add(jFormattedTextFieldDataCheque, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 150, 70, -1));
+
+        jTextFieldJuros.setText("0");
+        jTextFieldJuros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldJurosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextFieldJuros, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 110, -1));
+        getContentPane().add(jTextFieldNomeCheque, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 160, -1));
+
+        jComboBoxTipoCheque.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "A vista", "Deposito", "Cruzado" }));
+        getContentPane().add(jComboBoxTipoCheque, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 110, -1));
+
+        jComboBoxBanco.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "Banco do Brasil", "Bradesco", "Caixa", "HSBC", "Itaú", "Safra", "Santander", "Sicredi" }));
+        getContentPane().add(jComboBoxBanco, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 110, -1));
+
+        jLabel26.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel26.setText("Banco do cheque:");
+        getContentPane().add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 120, 10));
+
+        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel27.setText("Tipo do cheque:");
+        getContentPane().add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 80, 10));
+
+        jComboBoxParcelasRest.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        getContentPane().add(jComboBoxParcelasRest, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 50, -1));
+
+        jFormattedTextFieldValorPar.setEditable(false);
+        jFormattedTextFieldValorPar.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        getContentPane().add(jFormattedTextFieldValorPar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 60, -1));
+
+        jComboBoxQuantParcelas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        getContentPane().add(jComboBoxQuantParcelas, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 50, -1));
+
+        jTextFieldValor.setEditable(false);
+        jTextFieldValor.setText("0.0");
+        jTextFieldValor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldValorActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextFieldValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 70, -1));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel8.setText("Valor* ##.# :");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, 10));
 
         jLabel22.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel22.setText("Qnt. Parc:");
-        getContentPane().add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, -1, 10));
+        getContentPane().add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, -1, 10));
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel24.setText("Parc. Rest:");
+        getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, -1, 10));
+
+        jLabel25.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel25.setText("Valor Parc:");
+        getContentPane().add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 50, 10));
+
+        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel23.setText("Juros % ao dia:");
+        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 80, 10));
+
+        try {
+            jFormattedTextFieldDataVencimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        getContentPane().add(jFormattedTextFieldDataVencimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 150, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel3.setText("Data Vencimento* :");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
 
         jCheckBoxEndereco.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jCheckBoxEndereco.setForeground(new java.awt.Color(204, 0, 0));
@@ -265,123 +423,26 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
         });
         getContentPane().add(jCheckBoxEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
 
-        try {
-            jFormattedTextFieldDataVencimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        getContentPane().add(jFormattedTextFieldDataVencimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 150, -1));
+        jComboBoxTipoLogradouro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rua", "Avenida" }));
+        getContentPane().add(jComboBoxTipoLogradouro, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
 
-        jFormattedTextFieldNumero.setEditable(false);
-        jFormattedTextFieldNumero.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        getContentPane().add(jFormattedTextFieldNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, 60, -1));
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel9.setText("Endereço* :");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
-        jFormattedTextFieldCep.setEditable(false);
-        try {
-            jFormattedTextFieldCep.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        getContentPane().add(jFormattedTextFieldCep, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 160, -1));
+        jTextFieldBairro.setEditable(false);
+        getContentPane().add(jTextFieldBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 130, -1));
 
-        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel23.setText("Juros % ao dia:");
-        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, 80, 10));
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel13.setText("Bairro* :");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
 
-        jFormattedTextFieldValorPar.setEditable(false);
-        jFormattedTextFieldValorPar.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        getContentPane().add(jFormattedTextFieldValorPar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 100, 60, -1));
+        jComboBoxCidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Abatiá", "Adrianópolis", "Agudos do Sul", "Almirante Tamandaré", "Altamira do Paraná", "Alto Paraíso", "Alto Paraná", "Alto Piquiri", "Altônia", "Alvorada do Sul", "Amaporã", "Ampére", "Anahy", "Andirá", "Ângulo", "Antonina", "Antônio Olinto", "Apucarana", "Arapongas", "Arapoti", "Arapuã", "Araruna", "Araucária", "Ariranha do Ivaí", "Assaí", "Assis Chateaubriand", "Astorga", "Atalaia", "Balsa Nova", "Bandeirantes", "Barbosa Ferraz", "Barra do Jacaré", "Barracão", "Bela Vista da Caroba", "Bela Vista do Paraíso", "Bituruna", "Boa Esperança", "Boa Esperança do Iguaçu", "Boa Ventura de São Roque", "Boa Vista da Aparecida", "Bocaiuva do Sul", "Bom Jesus do Sul", "Bom Sucesso", "Bom Sucesso do Sul", "Borrazópolis", "Braganey", "Brasilândia do Sul", "Cafeara", "Cafelândia", "Cafezal do Sul", "Califórnia", "Cambará", "Cambé", "Cambira", "Campina da Lagoa", "Campina do Simão", "Campina Grande do Sul", "Campo Bonito", "Campo do Tenente", "Campo Largo", "Campo Magro", "Campo Mourão", "Cândido de Abreu", "Candói", "Cantagalo", "Capanema", "Capitão Leônidas Marques", "Carambeí", "Carlópolis", "Cascavel", "Castro", "Catanduvas", "Centenário do Sul", "Cerro Azul", "Céu Azul", "Chopinzinho", "Cianorte", "Cidade Gaúcha", "Clevelândia", "Colombo", "Colorado", "Congonhinhas", "Conselheiro Mairinck", "Contenda", "Corbélia", "Cornélio Procópio", "Coronel Domingos Soares", "Coronel Vivida", "Corumbataí do Sul", "Cruz Machado", "Cruzeiro do Iguaçu", "Cruzeiro do Oeste", "Cruzeiro do Sul", "Cruzmaltina", "Curitiba", "Curiúva", "Diamante do Norte", "Diamante do Sul", "Diamante d'Oeste", "Dois Vizinhos", "Douradina", "Doutor Camargo", "Doutor Ulysses", "Enéas Marques", "Engenheiro Beltrão", "Entre Rios do Oeste", "Esperança Nova", "Espigão Alto do Iguaçu", "Farol", "Faxinal", "Fazenda Rio Grande", "Fênix", "Fernandes Pinheiro", "Figueira", "Flor da Serra do Sul", "Floraí", "Floresta", "Florestópolis", "Flórida", "Formosa do Oeste", "Foz do Iguaçu", "Foz do Jordão", "Francisco Alves", "Francisco Beltrão", "General Carneiro", "Godoy Moreira", "Goioerê", "Goioxim", "Grandes Rios", "Guaíra", "Guairaçá", "Guamiranga", "Guapirama", "Guaporema", "Guaraci", "Guaraniaçu", "Guarapuava", "Guaraqueçaba", "Guaratuba", "Honório Serpa", "Ibaiti", "Ibema", "Ibiporã", "Icaraíma", "Iguaraçu", "Iguatu", "Imbaú", "Imbituva", "Inácio Martins", "Inajá", "Indianópolis", "Ipiranga", "Iporã", "Iracema do Oeste", "Irati", "Iretama", "Itaguajé", "Itaipulândia", "Itambaracá", "Itambé", "Itapejara d'Oeste", "Itaperuçu", "Itaúna do Sul", "Ivaí", "Ivaiporã", "Ivaté", "Ivatuba", "Jaboti", "Jacarezinho", "Jaguapitã", "Jaguariaíva", "Jandaia do Sul", "Janiópolis", "Japira", "Japurá", "Jardim Alegre", "Jardim Olinda", "Jataizinho", "Jesuítas", "Joaquim Távora", "Jundiaí do Sul", "Juranda", "Jussara", "Kaloré", "Lapa", "Laranjal", "Laranjeiras do Sul", "Leópolis", "Lidianópolis", "Lindoeste", "Loanda", "Lobato", "Londrina", "Luiziana", "Lunardelli", "Lupionópolis", "Mallet", "Mamborê", "Mandaguaçu", "Mandaguari", "Mandirituba", "Manfrinópolis", "Mangueirinha", "Manoel Ribas", "Marechal Cândido Rondon", "Maria Helena", "Marialva", "Marilândia do Sul", "Marilena", "Mariluz", "Maringá", "Mariópolis", "Maripá", "Marmeleiro", "Marquinho", "Marumbi", "Matelândia", "Matinhos", "Mato Rico", "Mauá da Serra", "Medianeira", "Mercedes", "Mirador", "Miraselva", "Missal", "Moreira Sales", "Morretes", "Munhoz de Melo", "Nossa Senhora das Graças", "Nova Aliança do Ivaí", "Nova América da Colina", "Nova Aurora", "Nova Cantu", "Nova Esperança", "Nova Esperança do Sudoeste", "Nova Fátima", "Nova Laranjeiras", "Nova Londrina", "Nova Olímpia", "Nova Prata do Iguaçu", "Nova Santa Bárbara", "Nova Santa Rosa", "Nova Tebas", "Novo Itacolomi", "Ortigueira", "Ourizona", "Ouro Verde do Oeste", "Paiçandu", "Palmas", "Palmeira", "Palmital", "Palotina", "Paraíso do Norte", "Paranacity", "Paranaguá", "Paranapoema", "Paranavaí", "Pato Bragado", "Pato Branco", "Paula Freitas", "Paulo Frontin", "Peabiru", "Perobal", "Pérola", "Pérola d'Oeste", "Piên", "Pinhais", "Pinhal de São Bento", "Pinhalão", "Pinhão", "Piraí do Sul", "Pitanga", "Pitangueiras", "Planaltina do Paraná", "Planalto", "Ponta Grossa", "Pontal do Paraná", "Porecatu", "Porto Amazonas", "Porto Barreiro", "Porto Rico", "Porto Vitória", "Prado Ferreira", "Pranchita", "Presidente Castelo Branco", "Primeiro de Maio", "Prudentópolis", "Prudentópolis", "Quarto Centenário", "Quatiguá", "Quatro Barras", "Quatro Pontes", "Quedas do Iguaçu", "Querência do Norte", "Quinta do Sol", "Quitandinha", "Ramilândia", "Rancho Alegre", "Rancho Alegre d'Oeste", "Realeza", "Rebouças", "Renascença", "Reserva", "Reserva do Iguaçu", "Ribeirão Claro", "Ribeirão do Pinhal", "Rio Azul", "Rio Bom", "Rio Bonito do Iguaçu", "Rio Branco do Ivaí", "Rio Branco do Sul", "Rio Negro", "Rolândia", "Roncador", "Rondon", "Rosário do Ivaí", "Sabáudia", "Salgado Filho", "Salto do Itararé", "Salto do Lontra", "Santa Amélia", "Santa Cecília do Pavão", "Santa Cruz de Monte Castelo", "Santa Fé", "Santa Helena", "Santa Inês", "Santa Isabel do Ivaí", "Santa Izabel do Oeste", "Santa Lúcia", "Santa Maria do Oeste", "Santa Mariana", "Santa Mônica", "Santa Tereza do Oeste", "Santa Terezinha de Itaipu", "Santana do Itararé", "Santo Antônio da Platina", "Santo Antônio do Caiuá", "Santo Antônio do Paraíso", "Santo Antônio do Sudoeste", "Santo Inácio", "São Carlos do Ivaí", "São Jerônimo da Serra", "São João", "São João do Caiuá", "São João do Ivaí", "São João do Triunfo", "São Jorge do Ivaí", "São Jorge do Patrocínio", "São Jorge d'Oeste", "São José da Boa Vista", "São José das Palmeiras", "São José dos Pinhais", "São Manoel do Paraná", "São Mateus do Sul", "São Miguel do Iguaçu", "São Pedro do Iguaçu", "São Pedro do Ivaí", "São Pedro do Paraná", "São Sebastião da Amoreira", "São Tomé", "Sapopema", "Sarandi", "Saudade do Iguaçu", "Sengés", "Serranópolis do Iguaçu", "Sertaneja", "Sertanópolis", "Siqueira Campos", "Sulina", "Tamarana", "Tamboara", "Tapejara", "Tapira", "Teixeira Soares", "Telêmaco Borba", "Terra Boa", "Terra Rica", "Terra Roxa", "Tibagi", "Tijucas do Sul", "Toledo", "Tomazina", "Três Barras do Paraná", "Tunas do Paraná", "Tuneiras do Oeste", "Tupãssi", "Turvo", "Ubiratã", "Umuarama", "União da Vitória", "Uniflor", "Uraí", "Ventania", "Vera Cruz do Oeste", "Verê", "Virmond", "Vitorino", "Wenceslau Braz", "Xambrê" }));
+        getContentPane().add(jComboBoxCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 120, -1));
 
-        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel24.setText("Parc. Rest:");
-        getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, -1, 10));
-
-        jTextFieldJuros.setText("0");
-        jTextFieldJuros.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldJurosActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextFieldJuros, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, 110, -1));
-
-        jLabel25.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel25.setText("Valor Parc:");
-        getContentPane().add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, 50, 10));
-
-        jLabel26.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel26.setText("Banco do cheque:");
-        getContentPane().add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 120, 10));
-
-        getContentPane().add(jComboBoxFuncionarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 140, -1));
-
-        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel27.setText("Tipo do cheque:");
-        getContentPane().add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 80, 10));
-
-        jComboBoxBanco.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "Banco do Brasil", "Bradesco", "Caixa", "HSBC", "Itaú", "Safra", "Santander", "Sicredi" }));
-        getContentPane().add(jComboBoxBanco, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 140, -1));
-
-        jTextFieldValor.setEditable(false);
-        jTextFieldValor.setText("0.0");
-        jTextFieldValor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldValorActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextFieldValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 70, -1));
-
-        jComboBoxQuantParcelas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
-        getContentPane().add(jComboBoxQuantParcelas, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 50, -1));
-
-        jComboBoxParcelasRest.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
-        getContentPane().add(jComboBoxParcelasRest, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, 50, -1));
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Serviços"));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jTextFieldItem1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 43, 375, -1));
-
-        jLabel5.setText("Itens:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 23, -1, -1));
-
-        jTextFieldValor1.setText("0.0");
-        jPanel1.add(jTextFieldValor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 43, 114, -1));
-
-        jLabel6.setText("Valores R$:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 23, -1, -1));
-        jPanel1.add(jTextFieldItem2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 74, 375, -1));
-
-        jTextFieldValor2.setText("0.0");
-        jPanel1.add(jTextFieldValor2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 74, 114, -1));
-
-        jTextFieldValor3.setText("0.0");
-        jPanel1.add(jTextFieldValor3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 105, 114, -1));
-        jPanel1.add(jTextFieldItem3, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 105, 375, -1));
-
-        jTextFieldValor4.setText("0.0");
-        jPanel1.add(jTextFieldValor4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 136, 114, -1));
-        jPanel1.add(jTextFieldItem4, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 136, 375, -1));
-
-        jLabelItem1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabelItem1.setForeground(new java.awt.Color(0, 153, 0));
-        jLabelItem1.setText("0");
-        jPanel1.add(jLabelItem1, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 51, -1, -1));
-
-        jLabelItem2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabelItem2.setForeground(new java.awt.Color(0, 153, 0));
-        jLabelItem2.setText("0");
-        jPanel1.add(jLabelItem2, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 81, -1, -1));
-
-        jLabelItem3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabelItem3.setForeground(new java.awt.Color(0, 153, 0));
-        jLabelItem3.setText("0");
-        jPanel1.add(jLabelItem3, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 111, -1, -1));
-
-        jLabelItem4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabelItem4.setForeground(new java.awt.Color(0, 153, 0));
-        jLabelItem4.setText("0");
-        jPanel1.add(jLabelItem4, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 141, -1, -1));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 560, 180));
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel14.setText("Cidade* :");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, -1, -1));
 
         jMenuBar1.setMinimumSize(new java.awt.Dimension(56, 31));
         jMenuBar1.setPreferredSize(new java.awt.Dimension(396, 31));
@@ -394,10 +455,10 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
             }
         });
         jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenu4MenuSelected(evt);
-            }
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
             public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
@@ -473,13 +534,35 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
 
     private void jComboBoxStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxStatusActionPerformed
         // TODO add your handling code here:
-        // TODO add your handling code here:
         if (jComboBoxStatus.getSelectedIndex() == 2) {
             jComboBoxBanco.setEnabled(true);
             jComboBoxTipoCheque.setEnabled(true);
+            jTextFieldNomeCheque.setEnabled(true);
+            jFormattedTextFieldCnpjCheque.setEnabled(true);
+            jTextFieldValorCheque.setEnabled(true);
+            jFormattedTextFieldDataCheque.setEnabled(true);
+            jTextFieldAgencia.setEnabled(true);
+            jTextFieldConta.setEnabled(true);
+
         } else {
             jComboBoxBanco.setEnabled(false);
             jComboBoxTipoCheque.setEnabled(false);
+            jTextFieldNomeCheque.setEnabled(false);
+            jFormattedTextFieldCnpjCheque.setEnabled(false);
+            jTextFieldValorCheque.setEnabled(false);
+            jFormattedTextFieldDataCheque.setEnabled(false);
+            jTextFieldAgencia.setEnabled(false);
+            jTextFieldConta.setEnabled(false);
+            jTextFieldNomeCheque.setText(null);
+            jFormattedTextFieldCnpjCheque.setText(null);
+            jTextFieldValorCheque.setText(null);
+            jFormattedTextFieldDataCheque.setText(null);
+            jTextFieldAgencia.setText(null);
+            jTextFieldConta.setText(null);
+            jComboBoxBanco.setSelectedIndex(0);
+            jComboBoxTipoCheque.setSelectedIndex(0);
+            jComboBoxStatus.setSelectedIndex(0);
+
         }
     }//GEN-LAST:event_jComboBoxStatusActionPerformed
 
@@ -488,23 +571,40 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
         if (jComboBoxStatus.getSelectedIndex() == 2) {
             jComboBoxBanco.setEnabled(true);
             jComboBoxTipoCheque.setEnabled(true);
+            jTextFieldNomeCheque.setEnabled(true);
+            jFormattedTextFieldCnpjCheque.setEnabled(true);
+            jTextFieldValorCheque.setEnabled(true);
+            jFormattedTextFieldDataCheque.setEnabled(true);
+            jTextFieldAgencia.setEnabled(true);
+            jTextFieldConta.setEnabled(true);
         } else {
             jComboBoxBanco.setEnabled(false);
             jComboBoxTipoCheque.setEnabled(false);
+            jTextFieldNomeCheque.setEnabled(false);
+            jFormattedTextFieldCnpjCheque.setEnabled(false);
+            jTextFieldValorCheque.setEnabled(false);
+            jFormattedTextFieldDataCheque.setEnabled(false);
+            jTextFieldAgencia.setEnabled(false);
+            jTextFieldConta.setEnabled(false);
+
         }
     }//GEN-LAST:event_jComboBoxStatusPropertyChange
-
-    private void jComboBoxClientePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jComboBoxClientePropertyChange
-    }//GEN-LAST:event_jComboBoxClientePropertyChange
 
     private void jComboBoxClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxClienteActionPerformed
         // TODO add your handling code here:
         preencherEndereco();
     }//GEN-LAST:event_jComboBoxClienteActionPerformed
 
-    private void jCheckBoxEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxEnderecoActionPerformed
-        modificarEndereco();
-    }//GEN-LAST:event_jCheckBoxEnderecoActionPerformed
+    private void jComboBoxClientePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jComboBoxClientePropertyChange
+    }//GEN-LAST:event_jComboBoxClientePropertyChange
+
+    private void jTextFieldItem1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldItem1FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldItem1FocusGained
+
+    private void jFormattedTextFieldCnpjChequeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldCnpjChequeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextFieldCnpjChequeActionPerformed
 
     private void jTextFieldJurosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldJurosActionPerformed
         // TODO add your handling code here:
@@ -513,6 +613,10 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
     private void jTextFieldValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldValorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldValorActionPerformed
+
+    private void jCheckBoxEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxEnderecoActionPerformed
+        modificarEndereco();
+    }//GEN-LAST:event_jCheckBoxEnderecoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -567,6 +671,8 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
     private javax.swing.JComboBox jComboBoxTipoCheque;
     private javax.swing.JComboBox jComboBoxTipoLogradouro;
     private javax.swing.JFormattedTextField jFormattedTextFieldCep;
+    private javax.swing.JFormattedTextField jFormattedTextFieldCnpjCheque;
+    private javax.swing.JFormattedTextField jFormattedTextFieldDataCheque;
     private javax.swing.JFormattedTextField jFormattedTextFieldDataVencimento;
     private javax.swing.JFormattedTextField jFormattedTextFieldNumero;
     private javax.swing.JFormattedTextField jFormattedTextFieldValorPar;
@@ -576,6 +682,10 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
@@ -589,6 +699,7 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelItem1;
@@ -604,9 +715,11 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField jTextFieldAgencia;
     private javax.swing.JTextField jTextFieldBairro;
     private javax.swing.JTextField jTextFieldCod;
     private javax.swing.JTextField jTextFieldComplemento;
+    private javax.swing.JTextField jTextFieldConta;
     private javax.swing.JTextField jTextFieldDataCadastro;
     private javax.swing.JTextField jTextFieldEndereco;
     private javax.swing.JTextField jTextFieldItem1;
@@ -614,11 +727,13 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldItem3;
     private javax.swing.JTextField jTextFieldItem4;
     private javax.swing.JTextField jTextFieldJuros;
+    private javax.swing.JTextField jTextFieldNomeCheque;
     private javax.swing.JTextField jTextFieldValor;
     private javax.swing.JTextField jTextFieldValor1;
     private javax.swing.JTextField jTextFieldValor2;
     private javax.swing.JTextField jTextFieldValor3;
     private javax.swing.JTextField jTextFieldValor4;
+    private javax.swing.JTextField jTextFieldValorCheque;
     // End of variables declaration//GEN-END:variables
 
     private void novo() {
@@ -710,6 +825,12 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
             ordem.setStatus(jComboBoxStatus.getSelectedItem().toString());
             ordem.setBanco(jComboBoxBanco.getSelectedItem().toString());
             ordem.setTipoCheque(jComboBoxTipoCheque.getSelectedItem().toString());
+            ordem.setNomeDoCheque(jTextFieldNomeCheque.getText());
+            ordem.setCnpjDoCheque(jFormattedTextFieldCnpjCheque.getText());
+            ordem.setValorDoCheque(jTextFieldValorCheque.getText());
+            ordem.setDataCheque(jFormattedTextFieldDataCheque.getText());
+            ordem.setAgenciaCheque(jTextFieldAgencia.getText());
+            ordem.setContaCheque(jTextFieldConta.getText());
 
             if (!jTextFieldJuros.getText().isEmpty()) {
                 try {
@@ -944,6 +1065,14 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
                     jComboBoxCliente.setSelectedItem(ordem.getCliente());
                     jTextFieldValor.setText(String.valueOf(ordem.getValorTotal()));
                     jComboBoxQuantParcelas.setSelectedItem(ordem.getParcelas());
+
+                    jTextFieldNomeCheque.setText(ordem.getNomeDoCheque());
+                    jFormattedTextFieldCnpjCheque.setText(ordem.getCnpjDoCheque());
+                    jTextFieldValorCheque.setText(ordem.getValorDoCheque());
+                    jFormattedTextFieldDataCheque.setText(ordem.getDataCheque());
+                    jTextFieldAgencia.setText(ordem.getAgenciaCheque());
+                    jTextFieldConta.setText(ordem.getContaCheque());
+
 
                     jComboBoxParcelasRest.setSelectedIndex((ordem.getParcelasRestantes() - 1));
 

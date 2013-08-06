@@ -64,6 +64,63 @@ public class OrdemServico implements Serializable {
     private String tipoCheque;
     private double juros;
     private String valorPorExtenso;
+    
+    private String nomeDoCheque;
+    private String cnpjDoCheque;
+    private String valorDoCheque;
+    private String dataCheque;
+    private String agenciaCheque;
+    private String contaCheque;
+
+    public String getNomeDoCheque() {
+        return nomeDoCheque;
+    }
+
+    public void setNomeDoCheque(String nomeDoCheque) {
+        this.nomeDoCheque = nomeDoCheque;
+    }
+
+    public String getCnpjDoCheque() {
+        return cnpjDoCheque;
+    }
+
+    public void setCnpjDoCheque(String cnpjDoCheque) {
+        this.cnpjDoCheque = cnpjDoCheque;
+    }
+
+    public String getValorDoCheque() {
+        return valorDoCheque;
+    }
+
+    public void setValorDoCheque(String valorDoCheque) {
+        this.valorDoCheque = valorDoCheque;
+    }
+
+    public String getDataCheque() {
+        return dataCheque;
+    }
+
+    public void setDataCheque(String dataCheque) {
+        this.dataCheque = dataCheque;
+    }
+
+    public String getAgenciaCheque() {
+        return agenciaCheque;
+    }
+
+    public void setAgenciaCheque(String agenciaCheque) {
+        this.agenciaCheque = agenciaCheque;
+    }
+
+    public String getContaCheque() {
+        return contaCheque;
+    }
+
+    public void setContaCheque(String contaCheque) {
+        this.contaCheque = contaCheque;
+    }
+    
+    
 
     public OrdemServico() {
     }

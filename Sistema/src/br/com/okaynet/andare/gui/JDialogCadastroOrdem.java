@@ -589,12 +589,6 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             jFormattedTextFieldDataCheque.setEnabled(true);
             jTextFieldAgencia.setEnabled(true);
             jTextFieldConta.setEnabled(true);
-            jTextFieldNomeCheque.setText(null);
-            jFormattedTextFieldCnpjCheque.setText(null);
-            jTextFieldValorCheque.setText(null);
-            jFormattedTextFieldDataCheque.setText(null);
-            jTextFieldAgencia.setText(null);
-            jTextFieldConta.setText(null);
         } else {
             jComboBoxBanco.setEnabled(false);
             jComboBoxTipoCheque.setEnabled(false);
@@ -610,12 +604,16 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             jFormattedTextFieldDataCheque.setText(null);
             jTextFieldAgencia.setText(null);
             jTextFieldConta.setText(null);
+            jComboBoxBanco.setSelectedIndex(0);
+            jComboBoxTipoCheque.setSelectedIndex(0);
+            jComboBoxStatus.setSelectedIndex(0);
+
         }
     }//GEN-LAST:event_jComboBoxStatusActionPerformed
 
     private void jComboBoxStatusPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jComboBoxStatusPropertyChange
         // TODO add your handling code here:
-   if (jComboBoxStatus.getSelectedIndex() == 2) {
+        if (jComboBoxStatus.getSelectedIndex() == 2) {
             jComboBoxBanco.setEnabled(true);
             jComboBoxTipoCheque.setEnabled(true);
             jTextFieldNomeCheque.setEnabled(true);
@@ -623,13 +621,6 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             jTextFieldValorCheque.setEnabled(true);
             jFormattedTextFieldDataCheque.setEnabled(true);
             jTextFieldAgencia.setEnabled(true);
-            jTextFieldConta.setEnabled(true);
-            jTextFieldNomeCheque.setText(null);
-            jFormattedTextFieldCnpjCheque.setText(null);
-            jTextFieldValorCheque.setText(null);
-            jFormattedTextFieldDataCheque.setText(null);
-            jTextFieldAgencia.setText(null);
-            jTextFieldConta.setText(null);
         } else {
             jComboBoxBanco.setEnabled(false);
             jComboBoxTipoCheque.setEnabled(false);
@@ -639,12 +630,6 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             jFormattedTextFieldDataCheque.setEnabled(false);
             jTextFieldAgencia.setEnabled(false);
             jTextFieldConta.setEnabled(false);
-            jTextFieldNomeCheque.setText(null);
-            jFormattedTextFieldCnpjCheque.setText(null);
-            jTextFieldValorCheque.setText(null);
-            jFormattedTextFieldDataCheque.setText(null);
-            jTextFieldAgencia.setText(null);
-            jTextFieldConta.setText(null);
         }
     }//GEN-LAST:event_jComboBoxStatusPropertyChange
 
@@ -812,6 +797,15 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
         jTextFieldComplemento.setText(null);
         jTextFieldDataCadastro.setText(null);
         jTextFieldEndereco.setText(null);
+        jTextFieldNomeCheque.setText(null);
+        jFormattedTextFieldCnpjCheque.setText(null);
+        jTextFieldValorCheque.setText(null);
+        jFormattedTextFieldDataCheque.setText(null);
+        jTextFieldAgencia.setText(null);
+        jTextFieldConta.setText(null);
+        jComboBoxBanco.setSelectedIndex(0);
+        jComboBoxTipoCheque.setSelectedIndex(0);
+        jComboBoxStatus.setSelectedIndex(0);
         jTextFieldJuros.setText("0");
         jFormattedTextFieldCep.setText(null);
         jFormattedTextFieldDataVencimento.setText(null);
@@ -886,6 +880,12 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             ordem.setStatus(jComboBoxStatus.getSelectedItem().toString());
             ordem.setBanco(jComboBoxBanco.getSelectedItem().toString());
             ordem.setTipoCheque(jComboBoxTipoCheque.getSelectedItem().toString());
+            ordem.setNomeDoCheque(jTextFieldNomeCheque.getText());
+            ordem.setCnpjDoCheque(jFormattedTextFieldCnpjCheque.getText());
+            ordem.setValorDoCheque(jTextFieldValorCheque.getText());
+            ordem.setDataCheque(jFormattedTextFieldDataCheque.getText());
+            ordem.setAgenciaCheque(jTextFieldAgencia.getText());
+            ordem.setContaCheque(jTextFieldConta.getText());
 
             if (!jTextFieldJuros.getText().isEmpty()) {
                 try {

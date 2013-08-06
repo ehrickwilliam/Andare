@@ -45,7 +45,7 @@ public class DaoGenerics<T> implements Dao<T> {
     public List<T> listar(String filtro, String campo) {
         List<T> lista = null;
         if (filtro != null) {
-            Query query = session.createQuery("FROM " + alvo.getSimpleName() + " WHERE " + campo + " LIKE '%" + filtro + "%'");
+            Query query = session.createQuery("FROM " + alvo.getSimpleName() + " WHERE " + campo + " LIKE '%" + filtro + "%' ORDER BY "+campo);
             lista = query.list();
         }
         return lista;
