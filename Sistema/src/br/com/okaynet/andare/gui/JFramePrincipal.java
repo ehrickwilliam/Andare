@@ -924,7 +924,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         SimpleDateFormat formatadorTotal = new SimpleDateFormat("dd-MM-yyyy-HH-mm-ss");
         String dataFormatadaNormal = formatadorTotal.format(data);
         try {
-            String comando = "C:\\Arquivos de programas\\MySQL\\MySQL Server 5.6\\bin\\mysqldump.exe";
+            String comando = "C:\\Arquivos de programas\\MySQL\\MySQL Server 5.0\\bin\\mysqldump.exe";
             ProcessBuilder pb = new ProcessBuilder(comando, "--user=" + HibernateConfiguration.getUser(), "--password=" + HibernateConfiguration.getPass(), HibernateConfiguration.getBase(), "--result-file=C:\\Okaynet\\Andare\\Backup\\Backup_" + dataFormatadaNormal + ".sql");
             pb.start();
             JOptionPane.showMessageDialog(null, "Backup criado com sucesso !");

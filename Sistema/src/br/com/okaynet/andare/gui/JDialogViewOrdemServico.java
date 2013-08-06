@@ -423,6 +423,14 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
     }//GEN-LAST:event_jComboBoxStatusActionPerformed
 
     private void jComboBoxStatusPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jComboBoxStatusPropertyChange
+        // TODO add your handling code here:
+        if (jComboBoxStatus.getSelectedIndex() == 2) {
+            jComboBoxBanco.setEnabled(true);
+            jComboBoxTipoCheque.setEnabled(true);
+        } else {
+            jComboBoxBanco.setEnabled(false);
+            jComboBoxTipoCheque.setEnabled(false);
+        }
     }//GEN-LAST:event_jComboBoxStatusPropertyChange
 
     private void jComboBoxClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxClienteActionPerformed
@@ -610,22 +618,22 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
                     jTextFieldItem4.setText(ordem.getItem4());
                     if (ordem.getValor1() != null) {
                         jTextFieldValor1.setText(String.valueOf(ordem.getValor1()));
-                    }else{
+                    } else {
                         jTextFieldValor1.setText(null);
                     }
                     if (ordem.getValor2() != null) {
                         jTextFieldValor2.setText(String.valueOf(ordem.getValor2()));
-                    }else{
+                    } else {
                         jTextFieldValor2.setText(null);
                     }
                     if (ordem.getValor3() != null) {
                         jTextFieldValor3.setText(String.valueOf(ordem.getValor3()));
-                    }else{
+                    } else {
                         jTextFieldValor3.setText(null);
                     }
                     if (ordem.getValor4() != null) {
                         jTextFieldValor4.setText(String.valueOf(ordem.getValor4()));
-                    }else{
+                    } else {
                         jTextFieldValor4.setText(null);
                     }
 
@@ -763,17 +771,17 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
                 if (!jTextFieldValor2.getText().isEmpty()) {
                     ordem.setValor2(Double.parseDouble(jTextFieldValor2.getText()));
                 } else {
-                   // ordem.setValor2(0.0);
+                    // ordem.setValor2(0.0);
                 }
                 if (!jTextFieldValor3.getText().isEmpty()) {
                     ordem.setValor3(Double.parseDouble(jTextFieldValor3.getText()));
                 } else {
-                   // ordem.setValor3(0.0);
+                    // ordem.setValor3(0.0);
                 }
                 if (!jTextFieldValor4.getText().isEmpty()) {
                     ordem.setValor4(Double.parseDouble(jTextFieldValor4.getText()));
                 } else {
-                   // ordem.setValor4(0.0);
+                    // ordem.setValor4(0.0);
                 }
                 valorTotal = Double.parseDouble(jTextFieldValor.getText());
             } catch (Exception e) {
@@ -943,5 +951,4 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
         total = valor1 + valor2 + valor3 + valor4;
         jTextFieldValor.setText(String.valueOf(total));
     }
-
 }
