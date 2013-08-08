@@ -491,7 +491,7 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
             jTextFieldConta.setText(null);
             jComboBoxBanco.setSelectedIndex(0);
             jComboBoxTipoCheque.setSelectedIndex(0);
-            jComboBoxStatus.setSelectedIndex(0);
+            // o erro ta aqui .-. =>jComboBoxStatus.setSelectedIndex(0);
         }
     }//GEN-LAST:event_jComboBoxStatusActionPerformed
 
