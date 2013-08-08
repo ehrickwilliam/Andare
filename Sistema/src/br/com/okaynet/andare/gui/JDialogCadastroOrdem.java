@@ -489,12 +489,12 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             }
         });
         jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-            }
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenu4MenuSelected(evt);
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
         });
         jMenu4.addActionListener(new java.awt.event.ActionListener() {
@@ -606,7 +606,7 @@ public class JDialogCadastroOrdem extends javax.swing.JDialog {
             jTextFieldConta.setText(null);
             jComboBoxBanco.setSelectedIndex(0);
             jComboBoxTipoCheque.setSelectedIndex(0);
-            //jComboBoxStatus.setSelectedIndex(0);
+            jComboBoxStatus.setSelectedIndex(0);
 
         }
     }//GEN-LAST:event_jComboBoxStatusActionPerformed

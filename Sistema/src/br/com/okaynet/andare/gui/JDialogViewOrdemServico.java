@@ -483,15 +483,6 @@ public class JDialogViewOrdemServico extends javax.swing.JDialog {
             jFormattedTextFieldDataCheque.setEnabled(false);
             jTextFieldAgencia.setEnabled(false);
             jTextFieldConta.setEnabled(false);
-            jTextFieldNomeCheque.setText(null);
-            jFormattedTextFieldCnpjCheque.setText(null);
-            jTextFieldValorCheque.setText(null);
-            jFormattedTextFieldDataCheque.setText(null);
-            jTextFieldAgencia.setText(null);
-            jTextFieldConta.setText(null);
-            jComboBoxBanco.setSelectedIndex(0);
-            jComboBoxTipoCheque.setSelectedIndex(0);
-            // o erro ta aqui .-. =>jComboBoxStatus.setSelectedIndex(0);
         }
     }//GEN-LAST:event_jComboBoxStatusActionPerformed
 

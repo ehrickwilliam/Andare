@@ -455,12 +455,12 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
             }
         });
         jMenu4.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-            }
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
                 jMenu4MenuSelected(evt);
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
         });
         jMenu4.addActionListener(new java.awt.event.ActionListener() {
@@ -553,15 +553,6 @@ public class JDialogCadastroOrdemPopUp extends javax.swing.JDialog {
             jFormattedTextFieldDataCheque.setEnabled(false);
             jTextFieldAgencia.setEnabled(false);
             jTextFieldConta.setEnabled(false);
-            jTextFieldNomeCheque.setText(null);
-            jFormattedTextFieldCnpjCheque.setText(null);
-            jTextFieldValorCheque.setText(null);
-            jFormattedTextFieldDataCheque.setText(null);
-            jTextFieldAgencia.setText(null);
-            jTextFieldConta.setText(null);
-            jComboBoxBanco.setSelectedIndex(0);
-            jComboBoxTipoCheque.setSelectedIndex(0);
-            //jComboBoxStatus.setSelectedIndex(0);
 
         }
     }//GEN-LAST:event_jComboBoxStatusActionPerformed
